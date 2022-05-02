@@ -116,7 +116,7 @@ function login(){
                 localStorage.removeItem("__question");
                 localStorage.removeItem("__access");
 
-                location.reload();
+                window.location.href="student.html";
             }
         },
         error: function(request,msg,error) {
