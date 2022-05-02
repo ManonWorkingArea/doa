@@ -35,22 +35,21 @@ resetPassword()
 
 renderProfile();
 
-function __session(){
-    $.ajax({
-        url: 'https://api.fti.academy/api/session',
-        type : "POST",
-        data: formData,
-        dataType: "json",
-        contentType : "text/plain",
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3"); 
-        },
-        success: function(result) {
-        },
-        error: function(request,msg,error) {
+function __session(pagename){
+    var token   = Cookies.get('__session');
+
+    var pathname = window.location.pathname;
+    pathname = pathname.replace("/", "");
+    pathname = pathname.replace(".html", "");
+    console.log(pathname);
+    if (token == undefined) {
+        window.location.href="index.html";
+    } else {
+        if(pathname!=pagename)
+        {
+            window.location.href="student.html";
         }
-    });
+    }
 }
 
 function login(){   
@@ -348,7 +347,7 @@ function login_token(){
             var studentArray = JSON.stringify(result);
             //console.log(result.isStudent);
             if (result.isStudent=="no") {
-                window.location.href="permission.php";
+                window.location.href="permission.html";
             } else{
                 Cookies.set('__session', result.token, {expires:1})
                 Cookies.set('__student', studentArray, {expires:1})
@@ -360,7 +359,7 @@ function login_token(){
                 // Clear Answer
                 localStorage.removeItem("__question");
                 localStorage.removeItem("__access");
-                window.location.href="student.php";
+                window.location.href="student.html";
             }
         },
         error: function(request,msg,error) {
@@ -800,6 +799,27 @@ function renderCourseContent(datatype) {
     }
 }
 
+function getFirebasePlayer()
+{
+    var token   = Cookies.get('__session');
+    var course  = localStorage.getItem('__course');
+
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/user?user=' + token,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+            // handle success
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
 
 function renderCourseContentAll(datatype){
     var token   = Cookies.get('__session');
