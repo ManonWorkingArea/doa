@@ -684,7 +684,7 @@ function logout() {
     Cookies.remove('__student');
     localStorage.clear();
     $.isLoading( "hide" );
-    location.reload();
+    window.location.href="index.html";
 }
 
 function reloadContent(){
