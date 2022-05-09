@@ -824,6 +824,8 @@ function getFirebasePlayer()
             $(".lesson-topic").html(result.data.info.topic);
             $(".lesson-detail").html(result.data.info.description);
 
+            console.log(result.data.players)
+
             $.each(result.data.players, function (key, item){
                 $("#topic-table").append(
                 "<tr class='topic-" + item.status + "' id='" + item.code + "'>"
