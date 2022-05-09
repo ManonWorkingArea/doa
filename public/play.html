@@ -127,12 +127,12 @@
 
                                 <div class="col-md-6">
                                     <div class="player-time">
-                                        <span class="player-time-cuerrent"></span>/<span class="player-time-total"><?php echo $output["vdo_timer"];?></span>
+                                        <span class="player-time-cuerrent"></span>/<span class="player-time-total">1234</span>
                                     </dvi>
                                 </div>
 
                                 <input type="hidden" id="post_topic_timer" name="post_topic_timer" value="">
-                                <input type="hidden" id="topiclastplay" name="topiclastplay" value="<?php echo $second;?>">
+                                <input type="hidden" id="topiclastplay" name="topiclastplay" value="0">
                             </div>
                         </div>
                     </div>
@@ -393,7 +393,7 @@
                     logoPath:"images/logo-dark.png",
                     logoMargins:5,
                     //controller settings
-                    showController:'<?php echo $show;?>',                  					
+                    showController:'yes',                  					
                     showDefaultControllerForVimeo:"no",
                     showScrubberWhenControllerIsHidden:"yes",
                     showControllerWhenVideoIsStopped:"yes",
@@ -567,7 +567,7 @@
             function stopHandler(time)
             {
                 currentTime = $('#post_topic_timer').val();
-                player = '<?php echo $output["player"]['pid']?>';
+                player = 'ep1';
 
                 var playerTimer  = localStorage.getItem('__player_timer_' + player);
 
@@ -576,7 +576,7 @@
                 $.ajax(
                 {
                     type : "POST",
-                    url : "https://player.fti.academy/api/stoper/<?php echo $output["player"]['student']?>/<?php echo $output["player"]['pid']?>/" + time + "/" + playerTimer,
+                    url : "https://player.fti.academy/api/stoper/215/ep1/" + time + "/" + playerTimer,
                     data : {'player':player},
                     dataType : "json",
                     success : function(response)
@@ -586,7 +586,7 @@
                         //-----------------------
                         if(status==="true")
                         {
-                            window.location.href="course.php?option=next#<?php echo $topic_token;?>";
+                            window.location.href="course.php?option=next#ep2";
                         }
                     }
                 });
@@ -674,7 +674,7 @@
 
             function playResume()
             {
-                player = '<?php echo $output["player"]['pid']?>';
+                player = 'ep1';
                 //var playerTimer  = localStorage.getItem('__player_last_' + player);
                 //playerTimer = $('#topiclastplay').val();
                 playerTimer = '0';
@@ -683,7 +683,7 @@
             }
             function updatetimer(time)
             {
-                player = '<?php echo $output["player"]['pid']?>';
+                player = 'ep1';
                 // Save Sec to localStorage
                 var lastPlayer  = localStorage.getItem('__player_timer_' + player);
                 //console.log("Update Timer : " + lastPlayer);
@@ -726,7 +726,7 @@
                     $.ajax(
                     {
                         type : "POST",  
-                        url : "https://player.fti.academy/api/timer_filebase/<?php echo $output["player"]['student']?>/<?php echo $output["player"]['pid']?>/" + time + "/" + playerTimer,
+                        url : "https://player.fti.academy/api/timer_filebase/GaPI0s18IzNDxusKYgmS/ep1/" + time + "/" + playerTimer,
                         data : {'time':time,'player':player},
                         dataType : "json",
                         success : function(response)
@@ -787,7 +787,7 @@
 
             function pauseTimer(time)
             {
-                player = '<?php echo $output["player"]['pid']?>';
+                player = 'ep1';
                 var playerTimer  = localStorage.getItem('__player_timer_' + player);
                 localStorage.setItem('__player_timer_' + player, "0");
 
@@ -820,7 +820,7 @@
                 $.ajax(
                 {
                     type : "POST",  
-                    url : "https://player.fti.academy/api/timer_filebase/<?php echo $output["player"]['student']?>/<?php echo $output["player"]['pid']?>/" + time + "/" + playerTimer,
+                    url : "https://player.fti.academy/api/timer_filebase/GaPI0s18IzNDxusKYgmS/ep1/" + time + "/" + playerTimer,
                     data : {'time':time,'player':player},
                     dataType : "json",
                     success : function(response)
