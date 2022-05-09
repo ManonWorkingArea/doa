@@ -855,7 +855,7 @@ function getFirebasePlayerTopic()
     var course  = localStorage.getItem('__course');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
-        url: '/user/course/player?user=' + token + '&course=215&player=' + code,
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player?user=' + token + '&course=215&player=' + code,
         type : "GET",
         dataType: "json",
         contentType : "text/plain",
@@ -866,31 +866,7 @@ function getFirebasePlayerTopic()
         success: function(result) {
             $.isLoading( "hide" );
             // handle success
-            $(".lesson-name").html(result.data.info.title);
-            $(".lesson-period").html(result.data.info.period);
-            $(".lesson-date").html(result.data.info.date);
-            $(".lesson-time").html(result.data.info.time + " ชั่วโมง");
-            $(".lesson-day").html(result.data.info.days + " วัน");
-            $(".lesson-topic").html(result.data.info.topic);
-            $(".lesson-detail").html(result.data.info.description);
-
-            console.log(result.data.players)
-
-            $.each(result.data.players, function (key, item){
-                $("#topic-table").append(
-                "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
-                    +"<th class='p-3'>"
-                        +"<div class='align-items-center'>"
-                            +"<i class='" + item.typeicon + " h6'></i>"
-                            +"<p class='mb-0 d-inline fw-normal h6 ms-1'><a href='play.html?token=" + item.uid + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
-                            +"<p class='mb-0 d-inline fw-normal'> " + item.current + " </p>"
-                            +"<p class='mb-0 d-inline fw-normal topic-duration-badge'> " + item.duration + " </p>"
-                        +"</div>"
-                    +"</th>"
-                    +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + item.status + "</span></td>"
-                +"</tr>"
-                )
-            });
+            $("#topic_video_source").html(result.data.video);
         },
         error: function(request,msg,error) {
         }
