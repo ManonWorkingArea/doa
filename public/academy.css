@@ -1262,3 +1262,8 @@ hr.hr-text::before {
 .custom-actions-btns .btn {
   margin: .3rem 0 .3rem .3rem;
 }
+
+.topic-duration-badge {
+  background: #0062cc;
+  color: #fff;
+}
