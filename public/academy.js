@@ -1054,6 +1054,8 @@ function renderNext()
 }
 
 function renderPlayer(){
+
+    /*
     var code    = $.urlParam('token');
     //console.log("GET param = " + code);
     var course  = localStorage.getItem('__course');
@@ -1091,6 +1093,8 @@ function renderPlayer(){
     //renderCoursePercent();
     renderCurrent()
     $.isLoading( "hide" );
+
+    */
 }
 
 function renderCurrent(){
