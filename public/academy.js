@@ -800,10 +800,10 @@ function renderCourseContent(datatype) {
 }
 
 function getFirebasePlayer()
-{
+{   
     var token   = Cookies.get('__session');
     var course  = localStorage.getItem('__course');
-
+    $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
         url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
         type : "GET",
@@ -814,6 +814,7 @@ function getFirebasePlayer()
             xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
+            $.isLoading( "hide" );
             // handle success
             $(".lesson-name").html(result.data.info.title);
             $(".lesson-period").html(result.data.info.period);
