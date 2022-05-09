@@ -866,7 +866,7 @@ function getFirebasePlayerTopic()
         success: function(result) {
             $.isLoading( "hide" );
             // handle success
-            $("#topic_video_source").html(result.data.video);
+            $("#topic_video_source").val(result.data.video);
         },
         error: function(request,msg,error) {
         }
