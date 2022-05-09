@@ -363,7 +363,7 @@
                     startAtTime:"",
                     stopAtTime:"",
                     startAtVideoSource:0,
-                    videoSource:[{source:"https://content.fti.academy/fti-doa/16445526561827314469/16460730281740887454/164719676457943601.mp4"}],
+                    videoSource:[{source:""}],
                     posterPath:"",
                     showErrorInfo:"no",
                     fillEntireScreenWithPoster:"yes",
@@ -595,15 +595,18 @@
 
             function updateVideoSourceHandler(e)
             {
+                mplayer.setPosterSource("https://content.fti.academy/fti-doa/16445526561827314469/16460730281740887454/164719676457943601.mp4");
             }
 
             function updatePosterSourceHandler(e)
             {
+                
             }
 
             function play()
             {
                 mplayer.play();
+                updateVideoSourceHandler();
             }
 
             function restart()
