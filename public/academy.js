@@ -805,7 +805,7 @@ function getFirebasePlayer()
     var course  = localStorage.getItem('__course');
 
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/course?user=' + token + '&course=215',
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
         type : "GET",
         dataType: "json",
         contentType : "text/plain",
