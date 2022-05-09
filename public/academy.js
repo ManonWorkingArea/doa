@@ -834,10 +834,10 @@ function getFirebasePlayer()
                             +"<i class='" + item.typeicon + " h6'></i>"
                             +"<p class='mb-0 d-inline fw-normal h6 ms-1'><a href='" + item.url + "' class='' title='" + item.tip + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
                             +"<p class='mb-0 d-inline fw-normal'>" + item.current + "</p>"
-                            +"<p class='mb-0 d-inline fw-normal'>" + item.percent_gui + "</p>"
+                            +"<p class='mb-0 d-inline fw-normal'>" + item.duration + "</p>"
                         +"</div>"
                     +"</th>"
-                    +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + item.icon_percent + "</span></td>"
+                    +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + item.status + "</span></td>"
                 +"</tr>"
                 )
             });
