@@ -818,8 +818,8 @@ function getFirebasePlayer()
             $(".lesson-name").html(result.data.info.title);
             $(".lesson-period").html(result.data.info.period);
             $(".lesson-date").html(result.data.info.date);
-            $(".lesson-time").html(result.data.info.time);
-            $(".lesson-day").html(result.data.info.day);
+            $(".lesson-time").html(result.data.info.time + " ชั่วโมง");
+            $(".lesson-day").html(result.data.info.days + " วัน");
             $(".lesson-topic").html(result.data.info.topic);
             $(".lesson-detail").html(result.data.info.description);
         },
