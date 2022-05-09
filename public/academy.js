@@ -823,6 +823,22 @@ function getFirebasePlayer()
             $(".lesson-day").html(result.data.info.days + " วัน");
             $(".lesson-topic").html(result.data.info.topic);
             $(".lesson-detail").html(result.data.info.description);
+
+            $.each(result.data.players, function (key, item){
+                $("#topic-table").append(
+                "<tr class='topic-" + item.status + "' id='" + item.code + "'>"
+                    +"<th class='p-3'>"
+                        +"<div class='align-items-center'>"
+                            +"<i class='" + item.typeicon + " h6'></i>"
+                            +"<p class='mb-0 d-inline fw-normal h6 ms-1'><a href='" + item.url + "' class='' title='" + item.tip + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
+                            +"<p class='mb-0 d-inline fw-normal'>" + item.current + "</p>"
+                            +"<p class='mb-0 d-inline fw-normal'>" + item.percent_gui + "</p>"
+                        +"</div>"
+                    +"</th>"
+                    +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + item.icon_percent + "</span></td>"
+                +"</tr>"
+                )
+            });
         },
         error: function(request,msg,error) {
         }
