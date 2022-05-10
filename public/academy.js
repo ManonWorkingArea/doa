@@ -867,6 +867,7 @@ function getFirebasePlayerTopic()
             // handle success
             $("#topic_video_source").val(result.data.video);
             $("#topic_course").val(course);
+            $(".player-time-total").html(data.duration);
         },
         error: function(request,msg,error) {
         }
