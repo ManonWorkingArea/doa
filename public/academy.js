@@ -853,6 +853,19 @@ function getFirebasePlayer()
             console.log(result.data.players)
 
             $.each(result.data.players, function (key, item){
+
+                // Icon
+                if(item.status=="pending") {
+                    status_icon = "<i class='uil uil-lock'></i>";
+                }
+                else if(item.status=="processing") {
+                    status_icon = "<i class='uil uil-caret-right'></i>";
+                }
+                else if(item.status=="finish") {
+                    status_icon = "<i class='uil uil-check-circle'></i>";
+                }
+                
+                // 
                 $("#topic-table").append(
                 "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
                     +"<th class='p-3'>"
