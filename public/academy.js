@@ -847,16 +847,14 @@ function getFirebasePlayer()
     });
 }
 
-
 function getFirebasePlayerTopic()
 {   
     var code    = $.urlParam('token');
     var course  = $.urlParam('session');
     var token   = Cookies.get('__session');
-    var course  = localStorage.getItem('__course');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player?user=' + token + '&course=215&player=' + code,
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player?user=' + token + '&course=' + course + '&player=' + code,
         type : "GET",
         dataType: "json",
         contentType : "text/plain",
