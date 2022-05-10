@@ -711,14 +711,12 @@
                 var student     = JSON.parse(student);
                 var topic_play  = Cookies.get('__topic');
 
-                var jsonObj = 
-                {
+                var jsonObj = {
                     "user": token,
                     "course": course,
                     "player": code,
                 }
-
-                formData        = JSON.stringify(formData);
+                
                 $.ajax(
                 {
                     type : "POST",  
