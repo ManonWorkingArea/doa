@@ -813,7 +813,7 @@ function updateFirebasePlayer(token,course,code)
         type : "POST",
         dataType: "json",
         contentType : "application/json",
-        data: jsonObj,
+        data: JSON.stringify(jsonObj),
         beforeSend: function(xhr) {
             xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
             xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
