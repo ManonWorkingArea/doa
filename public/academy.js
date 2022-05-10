@@ -43,11 +43,11 @@ function __session(pagename){
     pathname = pathname.replace(".html", "");
     console.log(pathname);
     if (token == undefined) {
-        //window.location.href="index.html";
+        window.location.href="index.html";
     } else {
         if(pathname!=pagename)
         {
-            //window.location.href="student.html";
+            window.location.href="student.html";
         }
     }
 }
