@@ -832,7 +832,7 @@ function getFirebasePlayer()
                     +"<th class='p-3'>"
                         +"<div class='align-items-center'>"
                             +"<i class='" + item.typeicon + " h6'></i>"
-                            +"<p class='mb-0 d-inline fw-normal h6 ms-1'><a href='play.html?token=" + item.uid + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
+                            +"<p class='mb-0 d-inline fw-normal h6 ms-1'><a href='play.html?token=" + item.uid + "&session=" + item.uid + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
                             +"<p class='mb-0 d-inline fw-normal'> " + item.current + " </p>"
                             +"<p class='mb-0 d-inline fw-normal topic-duration-badge'> " + item.duration + " </p>"
                         +"</div>"
@@ -851,6 +851,7 @@ function getFirebasePlayer()
 function getFirebasePlayerTopic()
 {   
     var code    = $.urlParam('token');
+    var course  = $.urlParam('session');
     var token   = Cookies.get('__session');
     var course  = localStorage.getItem('__course');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
@@ -867,6 +868,7 @@ function getFirebasePlayerTopic()
             $.isLoading( "hide" );
             // handle success
             $("#topic_video_source").val(result.data.video);
+            $("#topic_course").val(course);
         },
         error: function(request,msg,error) {
         }

@@ -134,6 +134,7 @@
                                 <input type="text" id="post_topic_timer" name="post_topic_timer" value="">
                                 <input type="text" id="topiclastplay" name="topiclastplay" value="0">
                                 <input type="text" id="topic_video_source" name="topic_video_source" value="">
+                                <input type="text" id="topic_course" name="topic_course" value="">
                             </div>
                         </div>
                     </div>
@@ -570,12 +571,12 @@
 
             function stopHandler(time)
             {
-                currentTime = $('#post_topic_timer').val();
-                player = 'ep1';
+                currentTime   = $('#post_topic_timer').val();
+                player        = "";
+                course        = "";
+                //var playerTimer     = localStorage.getItem('__player_timer_' + player);
 
-                var playerTimer  = localStorage.getItem('__player_timer_' + player);
-
-                localStorage.setItem('__player_timer_' + player, "0");
+                //localStorage.setItem('__player_timer_' + player, "0");
 
                 /*
                 $.ajax(
