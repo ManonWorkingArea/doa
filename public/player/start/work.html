@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>test</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1 user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="content/global.css">
+		
+		<script type="text/javascript" src="../js/FWDEVPSubtitle.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPData.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPlayer.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPVideoScreen.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPShareWindow.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPComplexButton.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPContextMenu.js"></script>
+		<script type="text/javascript" src="../js/FWDConsole.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPController.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPDisplayObject.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPEventDispatcher.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPInfo.js"></script>
+		<script type="text/javascript" src="../js/FWDAnimation.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPPreloader.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPVolumeButton.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPUtils.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPPoster.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPSimpleButton.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPTransformDisplayObject.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPHider.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPYoutubeScreen.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPVimeoScreen.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPYTBQButton.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPLogo.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPEmbedWindow.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPSimpleSizeButton.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPAdsStart.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPAdsButton.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPAnnotations.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPAnnotation.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPPopupAds.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPPopupAddButton.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPVimeoScreen.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPAudioScreen.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPPassword.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPOPWindow.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPLightBox.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPOpener.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPPreloader2.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPScrubberToolip.js"></script>
+		<script type="text/javascript" src="../js/FWDEVPContextMenuButton.js"></script>
+
+		<!-- Setup EVP -->
+		<script type="text/javascript">
+			
+			FWDEVPlayer.videoStartBehaviour = "pause";
+			FWDConsole.setPrototype();
+			//var logger = new FWDConsole();
+
+
+			FWDEVPUtils.onReady(function(){
+				new FWDEVPlayer({		
+					//main settings
+					instanceName:"player1",
+					parentId:"myDiv",
+					mainFolderPath:"content",
+					initializeOnlyWhenVisible:"no",
+					skinPath:"minimal_skin_dark",
+					displayType:"responsive",
+					autoScale:"yes",
+					fillEntireVideoScreen:"no",
+					goFullScreenOnButtonPlay:"no",
+					playsinline:"yes",
+					openDownloadLinkOnMobile:"no",
+					googleAnalyticsTrackingCode:"UA-122352201-1",
+					useResumeOnPlay:"no",
+					useVectorIcons:"no",
+					useHEXColorsForSkin:"no",
+					useWithoutVideoScreen:"no",
+					normalHEXButtonsColor:"#FF0000",
+					preloaderBackgroundColor:"#000000",
+					preloaderFillColor:"#FFFFFF",
+					privateVideoPassword:"428c841430ea18a70f7b06525d4b748a",
+					startAtVideoSource:2,
+					startAtTime:"",
+					stopAtTime:"",
+					videoSource:[
+						{source:"https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8", label:"small version"},
+						{source:"https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd", label:"hd720"},
+						{source:"content/videos/fwd-720p.mp4", source2:"content/videos/s.mov", label:"hd720"},
+						{source:"content/audio/1.mp3", label:"hd720"},
+						{source:"https://www.youtube.com/watch?v=AYaD7N6HL94", label:"hd1080"},
+						{source:"https://vimeo.com/66865270", label:"hd1080"},
+					],
+					posterPath:"content/posters/mp4-poster.jpg",
+					googleAnalyticsTrackingCode:"",
+					showErrorInfo:"yes",
+					fillEntireScreenWithPoster:"yes",
+					disableDoubleClickFullscreen:"no",
+					addKeyboardSupport:"yes",
+					autoPlay:"no",
+					autoPlayText:"Click to Unmute",
+					loop:"no",
+					scrubAtTimeAtFirstPlay:"00:00:00",
+					maxWidth:900,
+					maxHeight:540,
+					volume:.2,
+					greenScreenTolerance:200,
+					backgroundColor:"#000000",
+					posterBackgroundColor:"#0099FF",
+					//lightbox settings
+					closeLightBoxWhenPlayComplete:"no",
+					lightBoxBackgroundOpacity:.6,
+					lightBoxBackgroundColor:"#000000",
+					//logo settings
+					showLogo:"yes",
+					hideLogoWithController:"yes",
+					logoPosition:"topRight",
+					logoLink:"http://www.webdesign-flash.ro",
+					logoMargins:5,
+					//controller settings
+					showControllerWhenVideoIsStopped:"yes",
+					showDefaultControllerForVimeo:"yes",
+					showScrubberWhenControllerIsHidden:"yes",
+					showVolumeScrubber:"yes",
+					showVolumeButton:"yes",
+					showTime:"yes",
+					showRewindButton:"yes",
+					showQualityButton:"yes",
+					showShareButton:"yes",
+					showEmbedButton:"yes",
+					showDownloadButton:"yes",
+					showChromecastButton:"no",
+					showFullScreenButton:"yes",
+					showMainScrubberToolTipLabel:"yes",
+					repeatBackground:"yes",
+					controllerHeight:47,
+					controllerHideDelay:300,
+					startSpaceBetweenButtons:7,
+					spaceBetweenButtons:9,
+					mainScrubberOffestTop:14,
+					scrubbersOffsetWidth:4,
+					timeOffsetLeftWidth:5,
+					timeOffsetRightWidth:3,
+					volumeScrubberWidth:80,
+					volumeScrubberOffsetRightWidth:0,
+					timeColor:"#777777",
+					youtubeQualityButtonNormalColor:"#777777",
+					youtubeQualityButtonSelectedColor:"#FFFFFF",
+					scrubbersToolTipLabelBackgroundColor:"#FFFFFF",
+					scrubbersToolTipLabelFontColor:"#5a5a5a",
+					//redirect at video end
+					redirectURL:"",
+					redirectTarget:"_blank",
+					//redirect at video end
+					redirectURL:"", 
+					redirectTarget:"_blank",
+					//cuepoints
+					executeCuepointsOnlyOnce:"no",
+					cuepoints:[],
+					//popup commercial ads
+					showPopupAdsCloseButton:"yes",
+					popupCommercialAdsSource:[
+						//{imagePath:"http://4uweb.site/tv/wp-content/uploads/2020/04/TEST.gif", timeStart:"00:00:00", timeEnd:"00:10:10", link:"http://www.webdesign-flash.ro", target:"_blank"},
+						//{imagePath:"content/images/img.jpg", timeStart:"00:00:05", timeEnd:"00:00:10", link:"http://www.webdesign-flash.ro", target:"_blank"},
+						//{google_ad_client:"ca-pub-9227170916808685", timeStart:"00:00:11", timeEnd:"00:00:20", google_ad_slot:"7711195609", google_ad_width:800, google_ad_height:150},
+						//{google_ad_client:"ca-pub-9227170916808685", timeStart:"01:00:13", timeEnd:"00:00:20", google_ad_slot:"7863647968", google_ad_width:500, google_ad_height:85},
+						//{imagePath:"content/images/img2.jpg", timeStart:"00:01:22", timeEnd:"00:00:52", link:"http://www.webdesign-flash.ro", target:"_blank"}
+					],
+					//annotations
+					annotiationsListId:"none",
+					showAnnotationsPositionTool:"no",
+					//subtitles
+					showSubtitleButton:"yes",
+					subtitlesOffLabel:"Subtitle off",
+					startAtSubtitle:1,
+					subtitlesSource:[
+						{subtitlePath:"content/subtitles/english_subtitle.vtt", subtileLabel:"English"},
+						{subtitlePath:"content/subtitles/romanian_subtitle.vtt", subtileLabel:"Romanian"},
+						{subtitlePath:"content/subtitles/spanish_subtitle.vtt", subtileLabel:"Spanish"}
+					],
+					//sticky on scroll
+					stickyOnScroll:"yes",
+					stickyOnScrollShowOpener:"yes",
+					stickyOnScrollWidth:"700",
+					stickyOnScrollHeight:"394",
+					//sticky display settings
+					showOpener:"yes",
+					showOpenerPlayPauseButton:"yes",
+					verticalPosition:"bottom",
+					horizontalPosition:"center",
+					showPlayerByDefault:"yes",
+					animatePlayer:"yes",
+					openerAlignment:"right",
+					mainBackgroundImagePath:"content/minimal_skin_dark/main-background.png",
+					openerEqulizerOffsetTop:-1,
+					openerEqulizerOffsetLeft:3,
+					offsetX:0,
+					offsetY:0,
+					//embed window
+					embedWindowCloseButtonMargins:15,
+					borderColor:"#333333",
+					mainLabelsColor:"#FFFFFF",
+					secondaryLabelsColor:"#a1a1a1",
+					shareAndEmbedTextColor:"#5a5a5a",
+					inputBackgroundColor:"#000000",
+					inputColor:"#FFFFFF",
+					//playback rate / speed
+					showPlaybackRateButton:"yes",
+					defaultPlaybackRate:"1", //0.25, 0.5, 1, 1.25, 1.5, 2
+					//audio visualizer
+					audioVisualizerLinesColor:"#0099FF",
+					audioVisualizerCircleColor:"#FFFFFF",
+					//google analitycs
+					
+					//a to b loop
+					useAToB:"yes",
+					atbTimeBackgroundColor:"transparent",
+					atbTimeTextColorNormal:"#FFFFFF",
+					atbTimeTextColorSelected:"#FF0000",
+					atbButtonTextNormalColor:"#888888",
+					atbButtonTextSelectedColor:"#FFFFFF",
+					atbButtonBackgroundNormalColor:"#FFFFFF",
+					atbButtonBackgroundSelectedColor:"#000000",
+					//thumbnails preview
+					thumbnailsPreview:"content/thumbnails.vtt",
+					thumbnailsPreview:"auto",
+					thumbnailsPreviewWidth:196,
+					thumbnailsPreviewHeight:110,
+					thumbnailsPreviewBackgroundColor:"#000000",
+					thumbnailsPreviewBorderColor:"#666",
+					thumbnailsPreviewLabelBackgroundColor:"#666",
+					thumbnailsPreviewLabelFontColor:"#FFF",
+					//ads
+					openNewPageAtTheEndOfTheAds:"no",
+					sadsSource:[
+						{source:"https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8", timeStart:"00:00:05", timeToHoldAds:2, thumbnailSource:"content/images/thumbnail.jpg", link:"http://www.google.ro", target:"_blank"},
+						{source:"content/videos/ad.mp4", timeStart:"00:00:10", timeToHoldAds:4, thumbnailSource:"content/images/thumbnail.jpg", link:"http://www.webdesign-flash.ro", target:"_blank"},
+						{source:"https://www.youtube.com/watch?v=4QMQOJTYRBU", timeStart:"00:00:20", timeToHoldAds:2, thumbnailSource:"content/images/thumbnail.jpg", link:"http://www.google.ro", target:"_blank"},
+						
+						{source:"https://vimeo.com/66865270", timeStart:"00:00:30", timeToHoldAds:2, thumbnailSource:"content/images/thumbnail.jpg", link:"http://www.google.ro", target:"_blank"},
+						{source:"content/images/ad.jpg", timeStart:"00:00:40", addDuration:"00:00:10", timeToHoldAds:4, thumbnailSource:"content/images/thumbnail.jpg", link:"http://www.webdesign-flash.ro/p/evp/content/images/ad.jpg", target:"_blank"},
+						{source:"https://cartoonsmart.com/", timeStart:"00:00:50", addDuration:"00:00:10", timeToHoldAds:4, thumbnailSource:"content/images/thumbnail.jpg"}
+					],
+					
+					adsButtonsPosition:"right",
+					skipToVideoText:"You can skip to video in: ",
+					skipToVideoButtonText:"Skip Ad",
+					timeToHoldAds:4,
+					adsTextNormalColor:"#999999",
+					adsTextSelectedColor:"#FFFFFF",
+					adsBorderNormalColor:"#666666",
+					adsBorderSelectedColor:"#FFFFFF",
+					// context menu
+					contextMenuType:'none',
+					showScriptDeveloper:"yes",
+					contextMenuBackgroundColor:"#1f1f1f",
+					contextMenuBorderColor:"#1f1f1f",
+					contextMenuSpacerColor:"#333",
+					contextMenuItemNormalColor:"#888888",
+					contextMenuItemSelectedColor:"#FFFFFF",
+					contextMenuItemDisabledColor:"#444",
+					//loggin
+					isLoggedIn:"yes",
+					playVideoOnlyWhenLoggedIn:"yes",
+					loggedInMessage:"Please login to view this video.",
+					//vast advertisement
+					//vastSource:"content/vast/VMAP Pre-, Mid-, and Post-rolls, Single Ads Non-linear in between.xml",
+					//vastSource:"content/vast/VMAP Mid-roll.xml",
+					//vastSource:"//googleads.g.doubleclick.net/pagead/ads?ad_type=video&client=ca-video-pub-4968145218643279&videoad_start_delay=0&description_url=http%3A%2F%2Fwww.google.com&max_ad_duration=40000&adtest=on",
+					//vastSource:"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=",
+					vastLinearStartTime:"00:00:00",
+					vastClickTroughTarget:"_blank",
+				});
+
+				
+				
+				registerAPI();
+				initSelect();
+				
+				container = document.getElementById('ad_container');
+				
+				/*
+				window.google_ad_client = "ca-pub-9227170916808685";
+				window.google_ad_slot = "7711195609";
+				window.google_ad_width = 800;
+				window.google_ad_height = 150;
+
+				// container is where you want the ad to be inserted
+				var container = document.getElementById('ad_container');
+				console.log(container);
+				var w = document.write;
+				document.write = function (content) {
+					container.innerHTML = content;
+					document.write = w;
+				};
+
+				var script = document.createElement('script');
+				script.type = 'text/javascript';
+				script.src = 'http://pagead2.googlesyndication.com/pagead/show_ads.js';
+				document.body.appendChild(script);
+				*/
+				
+			});
+			
+			
+			var lightboxIntervalId;
+			openLightboxWhenPageReady();
+			function openLightboxWhenPageReady(){
+				clearInterval(lightboxIntervalId);
+				if(window["player1"]){
+					//window["player1"].showLightbox();
+				}else{
+					lightboxIntervalId = setInterval(openLightboxWhenPageReady, 100);
+				}
+			};
+		
+			
+			//Register API (an setInterval is required because the player is not available until the youtube API is loaded).
+			var registerAPIInterval;
+			function registerAPI(){
+				clearInterval(registerAPIInterval);
+				if(window.player1){
+					
+					player1.addListener(FWDEVPlayer.PLAYBACK_RATE_CHANGE, playbackRateChange);
+					player1.addListener(FWDEVPlayer.READY, readyHandler);
+					player1.addListener(FWDEVPlayer.PLAY, playHandler);
+					player1.addListener(FWDEVPlayer.PAUSE, pauseHandler);
+					player1.addListener(FWDEVPlayer.STOP, stopHandler);
+					player1.addListener(FWDEVPlayer.UPDATE_VIDEO_SOURCE, updateVideoSourceHandler);
+					player1.addListener(FWDEVPlayer.UPDATE_POSTER_SOURCE, updatePosterSourceHandler);
+					player1.addListener(FWDEVPlayer.SAFE_TO_SCRUB, safeToScrub);
+					player1.addListener(FWDEVPlayer.VAST_LOADED_DONE, vastLoadedDone);
+					
+				}else{
+					registerAPIInterval = setInterval(registerAPI, 100);
+				}
+			};
+
+			//API event listeners examples
+			function safeToScrub(){
+				
+				//player1.scrubbAtTime("00:00:10")
+			}
+			
+			function playbackRateChange(e){
+				//console.log(e.rate);
+			}
+			
+			function readyHandler(e){
+				
+				console.log("API -- ready to use");
+			}
+
+			function playHandler(e){
+				//console.log("API -- play");
+			}
+
+			function pauseHandler(e){
+				//console.log("API -- pause");
+			}
+
+			function stopHandler(e){
+				//console.log("API -- stop");
+			}
+
+			function updateVideoSourceHandler(e){
+				//console.log("API -- video source update: " + player1.getVideoSource());
+			}
+
+			function updatePosterSourceHandler(e){
+				//console.log("API -- video source update: " + player1.getPosterSource());
+			}
+
+			//API methods examples
+			function play(){
+				player1.play();
+			}
+
+			function pause(){
+				player1.pause();
+			}
+
+			function stop(){
+				player1.stop();
+			}
+
+			function scrub(percent){
+				player1.scrub(percent);
+			}
+
+			function setVolume(percent){
+				player1.setVolume(percent);
+			}
+
+			function goFullScreen(){
+				player1.goFullScreen();
+			}
+
+			function setPosterSource(){
+				player1.setPosterSource("content/posters/youtube-poster.jpg");
+			}
+			
+			function setAudioSource(){
+				player1.setVideoSource("content/audio/1.mp3");
+			}
+			
+			function setVimeoSource(){
+				player1.setVideoSource("https://vimeo.com/channels/staffpicks/148662087");
+			}
+			
+			function setYoutubeSource(){
+				player1.setVideoSource("https://www.youtube.com/watch?v=bqhM0L394Y8&list=RD1Rxkx-aSSDY&index=20");
+			}
+			
+			function setHLSSource(){
+				player1.setVideoSource("https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8");
+			}
+			
+
+			function setMp4Source(){
+				player1.setVideoSource("content/videos/dragon.mp4");
+			}
+			
+			function changeColors(){
+				player1.updateHEXColors(getRandomColor(),getRandomColor());
+			}
+			
+			function getRandomColor() {
+				var letters = '0123456789ABCDEF';
+				var color = '#';
+				for (var i = 0; i < 6; i++ ) {
+					color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}
+			
+			
+			function initSelect(){
+				mySelect = document.getElementById('mySelect');
+				mySelect.addEventListener('change', function(e){
+					window['player1'].setVastSource(e.target.value);
+					
+				});
+			}
+			
+			var allowToPlay = false;
+			function vastLoadedDone(){
+				if(!FWDEVPUtils.isMobile && allowToPlay) window['player1'].play();
+				allowToPlay = true;
+			}
+		</script>	
+	</head>
+
+	<body style="background-color:#aaaaaa; padding:0px; margin:0px;">	
+		<div id="myDiv"></div>
+		<div id="myDiv2" style="float:left;"></div>
+		<div id="myDiv3" style="float:left;"></div>
+		<div id="myDiv4" style="float:left;"></div>
+		<div id="myDiv5" style="float:left;"></div>
+		<div id="myDiv6" style="float:left;"></div>
+		
+		
+
+		<div style="width:200px;">Ourrrr portfolio contains a vast number of plugins: sliders, video players, audio players, video & image backgrounds, carousels, coverflows, lightbox, panaorama, 360 image and product viewers, image zoomers, image galleries and much more, pretty much all you might need to build an website or wordpress theme. The products are built with attention to details and and have jQuery / javascript, HTML5 and WordPress versions.</div>
+
+
+		<button type="button" onclick="window['player1'].setVastSource('http://webdesign-flash.ro/w/evp/content/vast/vmap-preroll.xml')">set vast source</button>
+		<button type="button" onclick="window['player1'].showLightbox()">open lightbox</button>
+		<button type="button" onclick="changeColors()">CHange hex colors</button>
+		<button type="button" onclick="play()">play</button>
+		<button type="button" onclick="pause()">pause</button>
+		<button type="button" onclick="stop()">stop</button>
+		<button type="button" onclick="scrub(.5)">scrub to half</button>
+		<button type="button" onclick="setVolume(.5)">set volume to half</button>
+		<button type="button" onclick="goFullScreen(.5)">go full screen</button>
+		<button type="button" onclick="setPosterSource()">set poster source</button>
+		<button type="button" onclick="setAudioSource()">set audio source</button>
+		<button type="button" onclick="setVimeoSource()">set vimeo source</button>
+		<button type="button" onclick="setHLSSource()">set HLS source</button>
+		<button type="button" onclick="setYoutubeSource()">set youtube source</button>
+		<button type="button" onclick="setMp4Source()">set mp4 source</button>
+		
+		<select id="mySelect">
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/Single-inline-linear.xml">Single Inline Linear</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/Single Skippable Inline.xml">Single Inline Skippable </option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/Single Inline Linear Pod With 3 Ads.xml">Single Inline Linear Pod With 3 Ads</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/Single Non-linear long.xml">Single Non-linear Inline</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP Pre-roll.xml">VMAP Pre-roll</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP Pre-roll + Bumper.xml">VMAP Pre-roll + Bumper</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP Mid-roll.xml">VMAP Mid-roll</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP Post-roll.xml">VMAP Post-roll</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP Pre-, Mid-, and Post-rolls, Single Ads.xml">VMAP Pre-, Mid-, and Post-rolls, Single Ads</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single Ad.xml"> VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single Ad</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP - Pre-roll Single Ad, Mid-roll Optimized Pod with 3 Ads, Post-roll Single Ad (bumpers around all ad breaks).xml">VMAP - Pre-roll Single Ad, Mid-roll Optimized Pod with 3 Ads, Post-roll Single Ad (bumpers around all ad breaks)</option>
+			 <option value="http://webdesign-flash.ro/w/evp/content/vast/VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single (non linear between breaks) Ad.xml">VMAP - Pre-roll Single Ad, Mid-roll Standard Pod with 3 ads, Post-roll Single (non linear between breaks) Ad</option>
+		</select>
+		
+	
+		
+		<!-- Adds -->
+		<ul id="fwdAds"  style="display:none">
+			<li data-video-source="content/videos/ad.mp4" data-start="00:00:00">
+			<li data-video-source="content/videos/ad.mp4" data-start="00:00:20">
+			<li data-video-source="content/videos/ad.mp4" data-start="00:00:35">
+		</ul>
+		
+		<!-- Annotations -->
+		<ul id="fwdAnnotations" style="display:none">
+			<li data-start-time="00:00:00" data-end-time="00:00:29" data-left="40" data-top="45" data-show-close-button="yes" data-normal-state-class="EVPAnnotationNormal">
+				<div> Annotations like this can be added with ease!</div>
+			</li>
+			
+			<li data-start-time="00:00:02" data-end-time="00:00:29" data-left="40" data-top="85" data-show-close-button="yes" data-click-source="http://www.webdesign-flash.ro" data-click-source-target="_blank" data-normal-state-class="EVPAnnotationLinkNormal" data-selected-state-class="EVPAnnotationLinkSelected">
+				<div><span style="font-weight:bold; text-decoration: underline;">LINK</span> support, href and target can be specified, also animation between annotation states is possible as you can see here on hover.</div>
+			</li>
+			
+			<li data-start-time="00:00:03" data-end-time="00:00:29" data-left="40" data-top="167" data-show-close-button="yes" data-click-source="alert('This is a javascript function called using the annotations feature of Easy Video Player!');" data-click-source-target="_blank" data-normal-state-class="EVPAnnotationJavascriptNormal" data-selected-state-class="EVPAnnotationJavascriptSelected">
+				<div><span <span style="font-weight:bold; text-decoration: underline;">JAVASCRIPT</span> support, a javascript function can be called on click.</div>
+			</li>
+			
+			<li data-start-time="00:00:04" data-end-time="00:00:29" data-left="460" data-top="46" data-normal-state-class="EVPAnnotationCSSNormal">
+				<div>
+				<p><span style="color:#0099FF; font-familly:myFont; font-weight:bold;">FULL CSS SUPPORT</span></p>
+				<p><span style="color:#FFFFFF; font-familly:myFont; font-weight:bold;">OPTIONAL CLOSE BUTTON</span></div></p>
+				<p><span style="color:#0099FF; font-familly:myFont; font-weight:bold;">FULL HTML SUPPORT</span></div></p>
+				<p>The <span style="color:#0099FF; font-familly:myFont; font-weight:bold; text-decoration: underline;">start</span> / <span style="color:#0099FF; font-familly:myFont; font-weight:bold; text-decoration: underline;">show</span> time and <span style="color:#FFFFFF; font-familly:myFont; font-weight:bold; text-decoration: underline;">end</span> / <span style="color:#FFFFFF; font-familly:myFont; font-weight:bold; text-decoration: underline;">stop</span> time for each annotation can be specified with ease.<p>
+			</li>
+			
+			<li data-start-time="00:00:32" data-end-time="00:01:06" data-left="398" data-top="45" data-show-close-button="no" data-normal-state-class="EVPAnnotationAPINormal">
+				<div>ANNOTATIONS CAN BE USED TO CALL API METHODS!</div>
+			</li>
+			
+			<li data-start-time="00:00:33" data-end-time="00:01:06" data-left="640" data-top="85" data-show-close-button="no" data-click-source="player2.play();" data-normal-state-class="EVPAnnotationPlayNormal" data-selected-state-class="EVPAnnotationPlaySelected">
+				<div>play</div>
+			</li>
+			
+			<li data-start-time="00:00:34" data-end-time="00:01:06" data-left="640" data-top="125" data-show-close-button="no" data-click-source="player2.pause();" data-normal-state-class="EVPAnnotationPlayNormal" data-selected-state-class="EVPAnnotationPlaySelected">
+				<div>pause</div>
+			</li>
+			
+			<li data-start-time="00:00:35" data-end-time="00:01:06" data-left="640" data-top="165" data-show-close-button="no" data-click-source="player2.scrub(0.6);" data-normal-state-class="EVPAnnotationPlayNormal" data-selected-state-class="EVPAnnotationPlaySelected">
+				<div>scrub to 60%</div>
+			</li>
+			
+			<li data-start-time="00:00:36" data-end-time="00:01:06" data-left="640" data-top="205" data-show-close-button="no" data-click-source="player2.setVolume(0.5);" data-normal-state-class="EVPAnnotationPlayNormal" data-selected-state-class="EVPAnnotationPlaySelected">
+				<div>set volume to 50%</div>
+			</li>
+			
+			<li data-start-time="00:00:37" data-end-time="00:01:06" data-left="640" data-top="245" data-show-close-button="no" data-click-source="player2.goFullScreen();" data-normal-state-class="EVPAnnotationPlayNormal" data-selected-state-class="EVPAnnotationPlaySelected">
+				<div>go full screen</div>
+			</li>
+			
+		</ul>
+	
+	</body>
+
+		
+	</body>
+</html>
+
+https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonlybumper&cmsid=496&vid=short_onecue&correlator=
+
+https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpreonlybumper&cmsid=496&vid=short_onecue&correlator=
