@@ -694,7 +694,7 @@
                 //mplayer.scrubbAtTime(playerTimer);
                 mplayer.play();
             }
-            
+
             function updatetimer(time)
             {
                 player = 'ep1';
@@ -718,6 +718,8 @@
                     "player": code,
                 }
 
+                updateFirebasePlayer(token,course,code);
+                /*
                 $.ajax(
                 {
                     type : "POST",  
@@ -736,6 +738,8 @@
                     {
                     }
                 });
+
+                */
 
 
                 /*

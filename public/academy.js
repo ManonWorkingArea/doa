@@ -799,6 +799,31 @@ function renderCourseContent(datatype) {
     }
 }
 
+function updateFirebasePlayer(token,course,code)
+{
+    var jsonObj = {
+        "user": token,
+        "course": course,
+        "player": code,
+    }
+
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player',
+        type : "POST",
+        dataType: "json",
+        contentType : "application/json",
+        data: jsonObj,
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
+
 function getFirebasePlayer()
 {   
     var token   = Cookies.get('__session');
