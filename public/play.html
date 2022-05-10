@@ -699,110 +699,101 @@
                 // Save Sec to localStorage
                // var lastPlayer  = localStorage.getItem('__player_timer_' + player);
                 //console.log("Update Timer : " + lastPlayer);
-                
-                if(lastPlayer<trigger_config)
-                {
-                    newTimer  = (lastPlayer-0) + 1;
-                    //localStorage.setItem('__player_timer_' + player, newTimer);
-                }
+            
+                //var playerTimer  = localStorage.getItem('__player_timer_' + player);
+                //localStorage.setItem('__player_timer_' + player, "0");
 
-                if(lastPlayer==trigger_config)
-                {
-                    var playerTimer  = localStorage.getItem('__player_timer_' + player);
-                    //localStorage.setItem('__player_timer_' + player, "0");
+                var student     = Cookies.get('__student');
+                var student     = JSON.parse(student);
+                var topic_play  = Cookies.get('__topic');
+                /*
+                var ref         = firebase.database().ref('data/'+ student.permission.student_id +'/player/');
+                var query       = ref.orderByChild('topic').equalTo(topic_play);
 
-                    var student     = Cookies.get('__student');
-                    var student     = JSON.parse(student);
-                    var topic_play  = Cookies.get('__topic');
-                    /*
-                    var ref         = firebase.database().ref('data/'+ student.permission.student_id +'/player/');
-                    var query       = ref.orderByChild('topic').equalTo(topic_play);
-
-                    query.once('value', function(snapshot) {
-                    if (snapshot.exists()){
-                        firebase.database().ref('data/'+ student.permission.student_id +'/player/').orderByChild("topic").equalTo(topic_play).on("child_added", (snap) => {
-                            console.log(snap.val().pid);
-                            var player              = {};
-                            player['sid']           = student.permission.student_id;
-                            player['trigger']       = playerTimer;
-                            player['token']         = snap.val().pid;
-                            player['total']         = snap.val().total;
-                            player['counter']       = snap.val().counter;
-                            player['countdown']     = snap.val().countdown;
-                            // Update Player Content
-                            updatePlayer(player);
-                        });
-                    }
+                query.once('value', function(snapshot) {
+                if (snapshot.exists()){
+                    firebase.database().ref('data/'+ student.permission.student_id +'/player/').orderByChild("topic").equalTo(topic_play).on("child_added", (snap) => {
+                        console.log(snap.val().pid);
+                        var player              = {};
+                        player['sid']           = student.permission.student_id;
+                        player['trigger']       = playerTimer;
+                        player['token']         = snap.val().pid;
+                        player['total']         = snap.val().total;
+                        player['counter']       = snap.val().counter;
+                        player['countdown']     = snap.val().countdown;
+                        // Update Player Content
+                        updatePlayer(player);
                     });
-                    */
-                    /*
-                    $.ajax(
+                }
+                });
+                */
+                /*
+                $.ajax(
+                {
+                    type : "POST",  
+                    url : "https://player.fti.academy/api/timer_filebase/GaPI0s18IzNDxusKYgmS/ep1/" + time + "/" + playerTimer,
+                    data : {'time':time,'player':player},
+                    dataType : "json",
+                    success : function(response)
                     {
-                        type : "POST",  
-                        url : "https://player.fti.academy/api/timer_filebase/GaPI0s18IzNDxusKYgmS/ep1/" + time + "/" + playerTimer,
-                        data : {'time':time,'player':player},
-                        dataType : "json",
-                        success : function(response)
+                        status 	= response.status
+                        time 	= response.time
+
+                        // Update Topic Detail
+                        var play  = Cookies.get('__play');
+                        var topic = localStorage.getItem('__topic');
+                        var topic = JSON.parse(topic);
+                        playIndex = topic.findIndex((obj => obj.code == play));
+
+                        topic[playIndex].percent_gui    = response.percent_gui;
+                        topic[playIndex].icon_percent   = response.icon_percent;
+                        topic[playIndex].current        = response.currentText;
+
+                        localStorage.setItem('__topic', JSON.stringify(topic));
+
+                        // Update Element
+                        $('#' + play + ' .player-current-area').html(response.currentText);
+                        $('#' + play + ' .player-percent-area .progress-bar').css('width', response.topic_percent + '%');
+                        $('#' + play + ' .icon_percent').html(response.icon_percent);
+
+                        $('#topiclastplay').val(response.second);
+                        $('.player_last_play').text(response.time);
+                        // Update Topic Detail
+
+                        if(status==="false")
                         {
-                            status 	= response.status
-                            time 	= response.time
-
-                            // Update Topic Detail
-                            var play  = Cookies.get('__play');
-                            var topic = localStorage.getItem('__topic');
-                            var topic = JSON.parse(topic);
-                            playIndex = topic.findIndex((obj => obj.code == play));
-
-                            topic[playIndex].percent_gui    = response.percent_gui;
-                            topic[playIndex].icon_percent   = response.icon_percent;
-                            topic[playIndex].current        = response.currentText;
-
-                            localStorage.setItem('__topic', JSON.stringify(topic));
-
-                            // Update Element
-                            $('#' + play + ' .player-current-area').html(response.currentText);
-                            $('#' + play + ' .player-percent-area .progress-bar').css('width', response.topic_percent + '%');
-                            $('#' + play + ' .icon_percent').html(response.icon_percent);
-
-                            $('#topiclastplay').val(response.second);
-                            $('.player_last_play').text(response.time);
-                            // Update Topic Detail
-
-                            if(status==="false")
-                            {
-                                mplayer.stop();
-                            }
-                            else
-                            {
-                                mplayer.play();
-                            }
-                        },
-                        error: function(request,msg,error) 
-                        {
-                            var error   = localStorage.getItem('__update_error_timeout_' + player);
-                            newError    = (error-0) + 1;
-                            localStorage.setItem('__update_error_timeout_' + player, newError);
-
-                            if(request.status===0){
-                                updatetimer(time);
-                            }
-                            else if(request.status===500){
-                                updatetimer(time);
-                            }
-                            else{
-                                errorMSG = request.responseJSON;
-                            }
-
+                            mplayer.stop();
                         }
-                    });
-                    */
-                }
+                        else
+                        {
+                            mplayer.play();
+                        }
+                    },
+                    error: function(request,msg,error) 
+                    {
+                        var error   = localStorage.getItem('__update_error_timeout_' + player);
+                        newError    = (error-0) + 1;
+                        localStorage.setItem('__update_error_timeout_' + player, newError);
+
+                        if(request.status===0){
+                            updatetimer(time);
+                        }
+                        else if(request.status===500){
+                            updatetimer(time);
+                        }
+                        else{
+                            errorMSG = request.responseJSON;
+                        }
+
+                    }
+                });
+                */
             }
 
             function pauseTimer(time)
             {
                 player = 'ep1';
-                var playerTimer  = localStorage.getItem('__player_timer_' + player);
+                //var playerTimer  = localStorage.getItem('__player_timer_' + player);
                 //localStorage.setItem('__player_timer_' + player, "0");
 
                 var student     = Cookies.get('__student');
