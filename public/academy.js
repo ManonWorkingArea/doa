@@ -856,7 +856,7 @@ function getFirebasePlayer()
 
                 // Icon
                 if(item.status=="pending") {
-                    status_icon = "<i class='uil uil-clock text-primary'></i>";
+                    status_icon = "<i class='uil uil-clock text-muted'></i>";
                 }
                 else if(item.status=="processing") {
                     status_icon = "<i class='uil uil-play text-primary'></i>";
