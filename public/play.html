@@ -694,6 +694,7 @@
                 //mplayer.scrubbAtTime(playerTimer);
                 mplayer.play();
             }
+            
             function updatetimer(time)
             {
                 player = 'ep1';
@@ -716,13 +717,18 @@
                     "course": course,
                     "player": code,
                 }
-                
+
                 $.ajax(
                 {
                     type : "POST",  
                     url : "https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player",
                     data: jsonObj,
-                    dataType : "json",
+                    dataType: "json",
+                    contentType : "text/plain",
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                        xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+                    },
                     success : function(response)
                     {
                     },
