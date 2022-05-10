@@ -698,25 +698,34 @@
 
             function updatetimer(time)
             {
-                var code        = $.urlParam('token');
-                var course      = $.urlParam('session');
-                var token       = Cookies.get('__session');
-                var student     = Cookies.get('__student');
-                var student     = JSON.parse(student);
-                var topic_play  = Cookies.get('__topic');
-
+                var code      = $.urlParam('token');
+                var course    = $.urlParam('session');
+                var token     = Cookies.get('__session');
                 var jsonObj = {
                     "user": token,
                     "course": course,
                     "player": code,
                     "data": "3",
                 }
-                
+
+                var url = "https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player/updateTime";
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", url);
+                xhr.setRequestHeader('Content-type', 'application/json')
+                xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    console.log(xhr.status);
+                    console.log(xhr.responseText);
+                }};
+
+                xhr.send(JSON.stringify(jsonObj));
+
+                /*
                 $.ajax({
-                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player/updateTime',
+                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player/updateTime',
                     type : "POST",
                     dataType: "json",
-                    contentType : "text/plain",
+                    contentType : "application/json",
                     data: jsonObj,
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
@@ -728,6 +737,7 @@
                     }
                 });
 
+                */
                 /*
                 $.ajax(
                 {
