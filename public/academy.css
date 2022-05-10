@@ -1268,3 +1268,8 @@ hr.hr-text::before {
   border-radius: 4px;
   float: left;
 }
+
+.topic-name-list
+{
+  float: left;
+}
