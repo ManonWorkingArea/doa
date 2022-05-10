@@ -805,10 +805,11 @@ function updateFirebasePlayer(token,course,code)
         "user": token,
         "course": course,
         "player": code,
+        "data": "3",
     }
 
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player',
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player/updateTime',
         type : "POST",
         dataType: "json",
         contentType : "application/json",
