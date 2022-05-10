@@ -703,10 +703,37 @@
             
                 //var playerTimer  = localStorage.getItem('__player_timer_' + player);
                 //localStorage.setItem('__player_timer_' + player, "0");
+                var code    = $.urlParam('token');
+                var course  = $.urlParam('session');
+                var token   = Cookies.get('__session');
 
                 var student     = Cookies.get('__student');
                 var student     = JSON.parse(student);
                 var topic_play  = Cookies.get('__topic');
+
+                var jsonObj = 
+                {
+                    "user": token,
+                    "course": course,
+                    "player": code,
+                }
+
+                formData        = JSON.stringify(formData);
+                $.ajax(
+                {
+                    type : "POST",  
+                    url : "https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player",
+                    data: jsonObj,
+                    dataType : "json",
+                    success : function(response)
+                    {
+                    },
+                    error: function(request,msg,error) 
+                    {
+                    }
+                });
+
+
                 /*
                 var ref         = firebase.database().ref('data/'+ student.permission.student_id +'/player/');
                 var query       = ref.orderByChild('topic').equalTo(topic_play);
