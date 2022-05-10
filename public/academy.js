@@ -872,7 +872,7 @@ function getFirebasePlayer()
                             +"<i class='" + item.typeicon + " h6'></i>"
                             +"<p class='mb-0 d-inline fw-normal h6 ms-1'><a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
                             +"<p class='mb-0 d-inline fw-normal'> " + item.current + " </p>"
-                            +"<p class='mb-0 d-inline fw-normal topic-duration-badge'> " + item.duration + " </p>"
+                            +"<p class='mb-0 d-inline fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> " + item.duration + " </p>"
                         +"</div>"
                     +"</th>"
                     +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + status_icon + "</span></td>"
