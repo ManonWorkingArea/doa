@@ -856,15 +856,14 @@ function getFirebasePlayer()
 
                 // Icon
                 if(item.status=="pending") {
-                    status_icon = "<i class='uil uil-lock'></i>";
+                    status_icon = "<i class='uil uil-clock'></i>";
                 }
                 else if(item.status=="processing") {
-                    status_icon = "<i class='uil uil-caret-right'></i>";
+                    status_icon = "<i class='uil uil-play'></i>";
                 }
                 else if(item.status=="finish") {
                     status_icon = "<i class='uil uil-check-circle'></i>";
                 }
-                
                 // 
                 $("#topic-table").append(
                 "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
