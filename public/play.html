@@ -680,7 +680,7 @@
                 }
 
                 $('.player-time-cuerrent').text(e.currentTime);
-                localStorage.setItem('__player_last_' + player, e.currentTime);
+                //localStorage.setItem('__player_last_' + player, e.currentTime);
             }
 
             function playResume()
@@ -696,19 +696,19 @@
             {
                 player = 'ep1';
                 // Save Sec to localStorage
-                var lastPlayer  = localStorage.getItem('__player_timer_' + player);
+               // var lastPlayer  = localStorage.getItem('__player_timer_' + player);
                 //console.log("Update Timer : " + lastPlayer);
                 
                 if(lastPlayer<trigger_config)
                 {
                     newTimer  = (lastPlayer-0) + 1;
-                    localStorage.setItem('__player_timer_' + player, newTimer);
+                    //localStorage.setItem('__player_timer_' + player, newTimer);
                 }
 
                 if(lastPlayer==trigger_config)
                 {
                     var playerTimer  = localStorage.getItem('__player_timer_' + player);
-                    localStorage.setItem('__player_timer_' + player, "0");
+                    //localStorage.setItem('__player_timer_' + player, "0");
 
                     var student     = Cookies.get('__student');
                     var student     = JSON.parse(student);
@@ -802,7 +802,7 @@
             {
                 player = 'ep1';
                 var playerTimer  = localStorage.getItem('__player_timer_' + player);
-                localStorage.setItem('__player_timer_' + player, "0");
+                //localStorage.setItem('__player_timer_' + player, "0");
 
                 var student     = Cookies.get('__student');
                 var student     = JSON.parse(student);
