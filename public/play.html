@@ -719,6 +719,20 @@
                     "data": "3",
                 }
 
+                var url = "https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player/updateTime";
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", url);
+
+                xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    console.log(xhr.status);
+                    console.log(xhr.responseText);
+                }};
+
+                xhr.send(JSON.stringify(jsonObj));
+
+                /*
                 $.ajax({
                     url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player/updateTime',
                     type : "POST",
@@ -734,6 +748,8 @@
                     error: function(request,msg,error) {
                     }
                 });
+
+                */
                 /*
                 $.ajax(
                 {
