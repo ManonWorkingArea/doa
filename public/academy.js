@@ -809,7 +809,7 @@ function updateFirebasePlayer(token,course,code)
     }
 
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api//user/course/player/updateTime',
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player/updateTime',
         type : "POST",
         dataType: "json",
         contentType : "application/json",
