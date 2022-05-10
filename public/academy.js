@@ -876,7 +876,7 @@ function getFirebasePlayer()
                             +"<p class='mb-0 d-inline fw-normal topic-duration-badge'> " + item.duration + " </p>"
                         +"</div>"
                     +"</th>"
-                    +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + item.status + "</span></td>"
+                    +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + status_icon + "</span></td>"
                 +"</tr>"
                 )
             });
