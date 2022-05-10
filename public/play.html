@@ -701,6 +701,10 @@
                 var code      = $.urlParam('token');
                 var course    = $.urlParam('session');
                 var token     = Cookies.get('__session');
+
+                updateFirebasePlayer(token, course, code);
+
+                /*
                 var jsonObj = {
                     "user": token,
                     "course": course,
@@ -719,6 +723,8 @@
                 }};
 
                 xhr.send(JSON.stringify(jsonObj));
+
+                */
 
                 /*
                 $.ajax({
