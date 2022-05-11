@@ -1288,6 +1288,11 @@ hr.hr-text::before {
   margin: .3rem 0 .3rem .3rem;
 }
 
+.topic-active .topic-duration-badge {
+  background: #fff;
+  color: #0062cc;
+}
+
 .topic-duration-badge {
   background: #0062cc;
   color: #fff;
