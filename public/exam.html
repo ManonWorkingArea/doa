@@ -701,7 +701,14 @@
                         xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
                     },
                     success: function(result) {
-                        window.location.href = "exam_wait.html";
+                        if(mode==="pretest")
+                        {
+                            window.location.href = "exam_wait.html?target=course";
+                        }
+                        else if(mode==="posttest")
+                        {
+                            window.location.href = "exam_wait.html?target=student";
+                        }
                     },
                     error: function(request,msg,error) {
                     }

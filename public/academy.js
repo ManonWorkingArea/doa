@@ -2009,6 +2009,12 @@ function renderSession()
     $('#student').val(token);
 }
 
+function openCallback()
+{
+    var target  = $.urlParam('target');
+    window.location.href= target + ".html";
+}
+
 function updateFirebasePlayer(token,course,code)
 {
     var jsonObj = {
