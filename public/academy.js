@@ -2137,7 +2137,7 @@ function getFirebasePlayer()
                     status_icon = "<i class='uil uil-clock text-muted'></i>";
                 }
                 else if(item.status=="processing") {
-                    status_icon = "<i class='uil uil-play text-primary'></i>";
+                    status_icon = "<i class='uil uil-play text-warning'></i>";
                 }
                 else if(item.status=="finish") {
                     status_icon = "<i class='uil uil-check-circle text-success'></i>";
