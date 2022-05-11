@@ -2181,9 +2181,11 @@ function getFirebasePlayerTopic()
             $.isLoading( "hide" );
             // handle success
             console.log(result.data.timer);
+
+            $("#" + code).addClass("topic-play");
+
             if(result.data.timer <1)
             {
-                
                 //finish video
                 finishPlayer(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title);
             }
