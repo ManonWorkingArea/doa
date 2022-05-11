@@ -2053,7 +2053,7 @@ function checkFirebasePlayer()
             pretestArray = result.data.info.score.pretest
             console.log(pretestArray)
 
-            if(pretestArray.title !== null && pretestArray.title !== ''  && pretestArray.title !==undefined) {
+            if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
                 window.location.href="course.html";
             } else {
                 console.log(pretestArray.length);
@@ -2082,7 +2082,7 @@ function openExam(session,mode)
             pretestArray = result.data.info.score.pretest
             console.log(pretestArray)
 
-            if(pretestArray.title !== null && pretestArray.title !== ''  && pretestArray.title !==undefined) {
+            if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
                 window.location.href="course.html";
             } else {
                 window.location.href="exam.html?session=" + session + "&mode=" + mode;
