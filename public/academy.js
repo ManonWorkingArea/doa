@@ -2100,6 +2100,25 @@ function getFirebasePlayer()
 
             console.log(result.data.players)
 
+            pretestArray = result.data.info.score.pretest
+            console.log(pretestArray)
+            if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
+            {
+            } 
+            else 
+            {
+                $("#topic-table").append(
+                    "<tr class='topic-processing' id='exam-pretest'>"
+                        +"<th class='p-3'>"
+                            +"<div class='align-items-center'>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session=215&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</a></p>"
+                            +"</div>"
+                        +"</th>"
+                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                    +"</tr>"
+                    )
+            }
+
             $.each(result.data.players, function (key, item){
 
                 // Icon
@@ -2112,26 +2131,6 @@ function getFirebasePlayer()
                 else if(item.status=="finish") {
                     status_icon = "<i class='uil uil-check-circle text-success'></i>";
                 }
-
-                pretestArray = result.data.info.score.pretest
-                console.log(pretestArray)
-                if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
-                {
-                } 
-                else 
-                {
-                    $("#topic-table").append(
-                        "<tr class='topic-processing' id='exam-pretest'>"
-                            +"<th class='p-3'>"
-                                +"<div class='align-items-center'>"
-                                    +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session=215&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</a></p>"
-                                +"</div>"
-                            +"</th>"
-                            +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
-                        +"</tr>"
-                        )
-                }
-                
                 // 
                 $("#topic-table").append(
                 "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
