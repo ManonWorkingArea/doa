@@ -1047,9 +1047,6 @@ function renderPlayer(){
     $.isLoading( "hide" );
 
     */
-
-    var code    = $.urlParam('token');
-    $("#" + code).addClass("topic-play");
 }
 
 function renderCurrent(){
@@ -2145,6 +2142,7 @@ function getFirebasePlayer()
                 else if(item.status=="finish") {
                     status_icon = "<i class='uil uil-check-circle text-success'></i>";
                 }
+                
                 // 
                 $("#topic-table").append(
                 "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
@@ -2159,6 +2157,9 @@ function getFirebasePlayer()
                 +"</tr>"
                 )
             });
+
+            var code = $.urlParam('token');
+            $("#" + code).addClass("topic-play");
         },
         error: function(request,msg,error) {
         }
