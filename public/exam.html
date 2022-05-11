@@ -2071,183 +2071,182 @@
 
         <script>
 
-            $(function() {
-                //console.log("ready!");
-                //renderExam();
-    
-                var parent  = $("#contest-table");
-                var divs    = parent.children();
-                var item    = parent.children("div.quiz-number");
-                var order   = 0;
-                while (divs.length) {
-                    parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-                    order++;
-                }
-    
-                counter = 1; //initialze to 1
-                //looping through class div -> class abc
-                $("#contest-table .quiz-item").each(function() {
-                    //getting span where count is display replace with new
-                    $(this).find('.quiz-number').html(counter.toString().padStart(2, '0') + ".");
-                     counter++;
-                })
-    
-                $('#record-popup-alert').modal({
-                    backdrop: 'static',
-                    keyboard: false  // to prevent closing with Esc button (if you want this too)
-                })
-                
-                $('#timeout-popup-alert').modal({
-                    backdrop: 'static',
-                    keyboard: false  // to prevent closing with Esc button (if you want this too)
-                })
-            });
-    
-            var countDownDate   = moment().add(60, 'minutes').toDate().getTime();
-    
-            function timecheck() 
-            {
-                if(countDownDate==="")
-                {
-                    //location.reload();
-                }
-                else
-                {
-                    setInterval(function() 
-                    {
-                        var now         = moment().toDate().getTime();
-                        var distance    = countDownDate - now;
-                        var days        = Math.floor(distance / (1000 * 60 * 60 * 24));
-                        var hours       = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes     = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds     = Math.floor((distance % (1000 * 60)) / 1000);
-    
-                        hours           = hours.toString().padStart(2, '0');
-                        minutes         = minutes.toString().padStart(2, '0')
-                        seconds         = seconds.toString().padStart(2, '0')
-    
-                        $("#demo").html(hours + ":" + minutes + ":" + seconds)
-                        $(".show-time-meter").html(hours + ":" + minutes + ":" + seconds);
-    
-                        if (distance < 0){
-                            clearInterval();
-                            $("#demo").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
-                            $(".show-time-meter").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
-                            //$('#timeout-popup-alert').modal('show');
-                            //$('#send_btn').remove();
-                        }
-                    }, 1000);
-                }
+        $(function() {
+            //console.log("ready!");
+            //renderExam();
+
+            var parent  = $("#contest-table");
+            var divs    = parent.children();
+            var item    = parent.children("div.quiz-number");
+            var order   = 0;
+            while (divs.length) {
+                parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+                order++;
             }
-    
-            $('.quiz input').on('change', function(){
-                root  = $(this).attr('data-root');
-                inner = $(this).attr('data-inner');
-                $('[data-quiz="'+ root +'"]').removeClass('active');
-                $('[data-answer="'+ inner +'"]').addClass('active');
-                getCurrentScore()
-            });
-    
-            function examExit() {
-                location.reload();
-            }
-    
-            function submitContest() {
-    
-                var numberOfRadio         = $('.quiz-item').length
-                var numberOfCheckedRadio  = $('input:radio:checked').length
-    
-                // EXAM INPUT DATA
-                var firstname   = $("#firstname").val();
-                var lastname    = $("#lastname").val();
-                var email       = $("#email").val();
-                var phone       = $("#phone").val();
-                var objective   = $("#objective").val();
-                var token       = $("#token").val();
-                    // EXAM INPUT DATA
-    
-                if(numberOfCheckedRadio<numberOfRadio)
-                {
-                    alert("ยังทำแบบทดสอบไม่ครบ");
-                }
-                else if(firstname=="" && lastname=="" && email=="" && phone=="")
-                {
-                    alert("กรอกข้อมูลผู้สอบให้ครบถ้วน");
-                }
-                else
-                {
-                    var rawArray        = new Array(); 
-                    var now             = moment().toDate().getTime();
-                    var arrayLength     = quizArray.length;
-                    var successAction   = "0";
-                    var trigger         = $("#demo").html()
-    
-                    $('#record-popup-alert').modal('show');
-                   
-                    progressStatus = true;
-    
-                    $('input:radio').each( function(){
-                        var radio = $(this)[0];
-                        if($(this).is(':checked')) {
-                            root    = $(this).attr('data-root');
-                            inner  = $(this).attr('data-inner');
-                            var newdata = {
-                                "quiz"   : root,
-                                "answer" : inner,
-                                "timestamp" : now,
-                            };
-                            rawArray.push(newdata);
-                        }
-                    });
-    
-                    $.ajax(
-                    {
-                        type : "POST",  
-                        url : "https://api.fti.academy/api/exam/record-alt",
-                        data : {'raw':rawArray,'firstname':firstname,'lastname':lastname,'phone':phone,'email':email,'objective':objective,'token':token},
-                        dataType: "json",
-                        contentType : "text/plain",
-                        beforeSend: function(xhr) 
-                        {
-                            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-                            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
-                        },
-                        success : function(response)
-                        {
-                            window.location.href = "exam_wait2.php";
-                        },
-                        error: function(request,msg,error) {
-                            if(request.status===0){
-                                submitContest() 
-                            }
-                            else if(request.status===500){
-                                submitContest() 
-                            }
-                            else{
-                                errorMSG = request.responseJSON;
-                            }
-                        }
-                    });
-                }
-            }
-    
-            function callClick() {
-                
-            }
-    
-            function getCurrentScore() {
-                var numberOfRadio = $('.quiz-item').length
-                var numberOfCheckedRadio = $('input:radio:checked').length
-                $('.current').html(numberOfCheckedRadio + "/" + numberOfRadio);
-                $('.show-exam-meter').html(numberOfCheckedRadio + "/" + numberOfRadio);
-            }
+
+            counter = 1; //initialze to 1
+            //looping through class div -> class abc
+            $("#contest-table .quiz-item").each(function() {
+                //getting span where count is display replace with new
+                $(this).find('.quiz-number').html(counter.toString().padStart(2, '0') + ".");
+                    counter++;
+            })
+
+            $('#record-popup-alert').modal({
+                backdrop: 'static',
+                keyboard: false  // to prevent closing with Esc button (if you want this too)
+            })
             
-            getCurrentScore();
-            timecheck();
-    
-            </script>
+            $('#timeout-popup-alert').modal({
+                backdrop: 'static',
+                keyboard: false  // to prevent closing with Esc button (if you want this too)
+            })
+        });
 
+        var countDownDate   = moment().add(60, 'minutes').toDate().getTime();
 
+        function timecheck() 
+        {
+            if(countDownDate==="")
+            {
+                //location.reload();
+            }
+            else
+            {
+                setInterval(function() 
+                {
+                    var now         = moment().toDate().getTime();
+                    var distance    = countDownDate - now;
+                    var days        = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours       = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes     = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds     = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    hours           = hours.toString().padStart(2, '0');
+                    minutes         = minutes.toString().padStart(2, '0')
+                    seconds         = seconds.toString().padStart(2, '0')
+
+                    $("#demo").html(hours + ":" + minutes + ":" + seconds)
+                    $(".show-time-meter").html(hours + ":" + minutes + ":" + seconds);
+
+                    if (distance < 0){
+                        clearInterval();
+                        $("#demo").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
+                        $(".show-time-meter").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
+                        //$('#timeout-popup-alert').modal('show');
+                        //$('#send_btn').remove();
+                    }
+                }, 1000);
+            }
+        }
+
+        $('.quiz input').on('change', function(){
+            root  = $(this).attr('data-root');
+            inner = $(this).attr('data-inner');
+            $('[data-quiz="'+ root +'"]').removeClass('active');
+            $('[data-answer="'+ inner +'"]').addClass('active');
+            getCurrentScore()
+        });
+
+        function examExit() {
+            location.reload();
+        }
+
+        function submitContest() {
+
+            var numberOfRadio         = $('.quiz-item').length
+            var numberOfCheckedRadio  = $('input:radio:checked').length
+
+            // EXAM INPUT DATA
+            var firstname   = $("#firstname").val();
+            var lastname    = $("#lastname").val();
+            var email       = $("#email").val();
+            var phone       = $("#phone").val();
+            var objective   = $("#objective").val();
+            var token       = $("#token").val();
+                // EXAM INPUT DATA
+
+            if(numberOfCheckedRadio<numberOfRadio)
+            {
+                alert("ยังทำแบบทดสอบไม่ครบ");
+            }
+            else if(firstname=="" && lastname=="" && email=="" && phone=="")
+            {
+                alert("กรอกข้อมูลผู้สอบให้ครบถ้วน");
+            }
+            else
+            {
+                var rawArray        = new Array(); 
+                var now             = moment().toDate().getTime();
+                var arrayLength     = quizArray.length;
+                var successAction   = "0";
+                var trigger         = $("#demo").html()
+
+                $('#record-popup-alert').modal('show');
+                
+                progressStatus = true;
+
+                $('input:radio').each( function(){
+                    var radio = $(this)[0];
+                    if($(this).is(':checked')) {
+                        root    = $(this).attr('data-root');
+                        inner  = $(this).attr('data-inner');
+                        var newdata = {
+                            "quiz"   : root,
+                            "answer" : inner,
+                            "timestamp" : now,
+                        };
+                        rawArray.push(newdata);
+                    }
+                });
+
+                $.ajax(
+                {
+                    type : "POST",  
+                    url : "https://api.fti.academy/api/exam/record-alt",
+                    data : {'raw':rawArray,'firstname':firstname,'lastname':lastname,'phone':phone,'email':email,'objective':objective,'token':token},
+                    dataType: "json",
+                    contentType : "text/plain",
+                    beforeSend: function(xhr) 
+                    {
+                        xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                        xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+                    },
+                    success : function(response)
+                    {
+                        window.location.href = "exam_wait2.php";
+                    },
+                    error: function(request,msg,error) {
+                        if(request.status===0){
+                            submitContest() 
+                        }
+                        else if(request.status===500){
+                            submitContest() 
+                        }
+                        else{
+                            errorMSG = request.responseJSON;
+                        }
+                    }
+                });
+            }
+        }
+
+        function callClick() {
+            
+        }
+
+        function getCurrentScore() {
+            var numberOfRadio = $('.quiz-item').length
+            var numberOfCheckedRadio = $('input:radio:checked').length
+            $('.current').html(numberOfCheckedRadio + "/" + numberOfRadio);
+            $('.show-exam-meter').html(numberOfCheckedRadio + "/" + numberOfRadio);
+        }
+        
+        getCurrentScore();
+        renderExamProfile();
+        timecheck();
+
+        </script>
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
         <script>
