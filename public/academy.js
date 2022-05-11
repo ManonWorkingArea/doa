@@ -1047,6 +1047,9 @@ function renderPlayer(){
     $.isLoading( "hide" );
 
     */
+
+    var code    = $.urlParam('token');
+    $("#" + code).addClass("topic-play");
 }
 
 function renderCurrent(){
@@ -2181,8 +2184,6 @@ function getFirebasePlayerTopic()
             $.isLoading( "hide" );
             // handle success
             console.log(result.data.timer);
-
-            $("#" + code).addClass("topic-play");
 
             if(result.data.timer <1)
             {
