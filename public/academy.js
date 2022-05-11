@@ -902,10 +902,54 @@ function getFirebasePlayerTopic()
         success: function(result) {
             $.isLoading( "hide" );
             // handle success
+            console.log(result.data.timer);
+            if(result.data.timer <1)
+            {
+                
+                //finish video
+                finishPlayer(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title);
+            }
             $("#topic_video_source").val(result.data.video);
             $("#topic_course").val(course);
             $(".active-topic-name").html(result.data.title);
             $(".player-time-total").html(result.data.duration);
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
+
+function finishPlayer(user,course,player,play, status, duration, uid, video, timer, course, title)
+{   
+    //
+    console.log("Finish Player");
+    var jsonObj = {
+        "user": user,
+        "course": course,
+        "player": player,
+        "data": {
+            "play": play,
+            "status": "finish",
+            "duration": duration,
+            "uid": uid,
+            "video": video,
+            "timer": timer,
+            "course": course,
+            "title": title
+        }
+    }
+
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course',
+        type : "POST",
+        dataType: "json",
+        contentType : "application/json",
+        data: JSON.stringify(jsonObj),
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
         },
         error: function(request,msg,error) {
         }
@@ -1427,12 +1471,6 @@ function renderProfile(){
     }
     //--- Student Notification
     notification();
-}
-
-
-function renderExamProfile(){
-    var token   = Cookies.get('__session');
-    $('.student-token').val(token);
 }
 
 function renderRepeatRegisterStudent(){
