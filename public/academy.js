@@ -2012,7 +2012,11 @@ function renderSession()
 function openCallback()
 {
     var target  = $.urlParam('target');
-    window.location.href= target + ".html";
+    if(target !== null && target !== ''  && target !==undefined) {
+        window.location.href= target + ".html";
+    } else {
+        window.location.href= "student.html";
+    }
 }
 
 function updateFirebasePlayer(token,course,code)
