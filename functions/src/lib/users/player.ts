@@ -85,16 +85,18 @@ const Player = {
       };
     }
     const play: number = data.play;
-    const timer: number = data.timer;
+    let timer: number = data.timer;
+    timer = timer - deltaTime;
+    if(timer < 0)timer = 0;
 
     try {
       await query.update({
         play: play + deltaTime,
-        timer: timer - deltaTime,
+        timer: timer,
       });
       return {
         success: true,
-        finish: (timer - deltaTime <= 0),
+        finish: (timer <= 0),
       };
     } catch (error) {
       return {
