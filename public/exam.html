@@ -631,7 +631,7 @@
                 $('input:radio').each( function(){
                     var radio = $(this)[0];
                     if($(this).is(':checked')) {
-                        root    = $(this).attr('data-root');
+                        root   = $(this).attr('data-root');
                         inner  = $(this).attr('data-inner');
                         var newdata = {
                             "quiz"   : root,
@@ -701,6 +701,7 @@
                         }
                     }
                 }
+                /*
 
                 $.ajax({
                     url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course',
@@ -725,12 +726,14 @@
                     error: function(request,msg,error) {
                     }
                 });
-                /*
+
+                */
+                
                 $.ajax(
                 {
                     type : "POST",  
-                    url : "https://api.fti.academy/api/exam/record-alt",
-                    data : {'raw':rawArray,'firstname':firstname,'lastname':lastname,'phone':phone,'email':email,'objective':objective,'token':token},
+                    url : "https://api.fti.academy/api/exam/record-firebase",
+                    data : {'raw':rawArray, 'session':session, 'trigger':trigger, 'objective':objective, 'token':token, 'mode':mode, 'course':course},
                     dataType: "json",
                     contentType : "text/plain",
                     beforeSend: function(xhr) 
@@ -740,7 +743,14 @@
                     },
                     success : function(response)
                     {
-                        window.location.href = "exam_wait2.php";
+                        if(mode==="pretest")
+                        {
+                            window.location.href = "course.html";
+                        }
+                        else
+                        {
+                            window.location.href = "exam_wait.html";
+                        }
                     },
                     error: function(request,msg,error) {
                         if(request.status===0){
@@ -754,7 +764,6 @@
                         }
                     }
                 });
-                */
             }
         }
 
