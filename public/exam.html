@@ -647,25 +647,55 @@
                 var mode      = $.urlParam('mode');
                 var token     = Cookies.get('__session');
 
-                var jsonObj = {
-                    "user": token,
-                    "course": course,
-                    "data": {
-                        "info": {
-                            "title": "หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่น 2",
-                            "description":"การอบรมผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร ปีงบประมาณ ๒๕๖๕",
-                            "period": "รุ่น 2",
-                            "time": "20",
-                            "topic": "13",
-                            "days": "30",
-                            "date": "วันที่ 16 พ.ค. - 14 มิ.ย.65",
-                            "score": {
-                                mode: {
-                                    "structure": rawArray,
-                                    "title": objective,
-                                    "trigger":trigger,
-                                    "adddate":now,
-                                    "result":""
+                if(mode=="pretest")
+                {
+                    var jsonObj = {
+                        "user": token,
+                        "course": course,
+                        "data": {
+                            "info": {
+                                "title": "หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่น 2",
+                                "description":"การอบรมผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร ปีงบประมาณ ๒๕๖๕",
+                                "period": "รุ่น 2",
+                                "time": "20",
+                                "topic": "13",
+                                "days": "30",
+                                "date": "วันที่ 16 พ.ค. - 14 มิ.ย.65",
+                                "score": {
+                                    "pretest": {
+                                        "structure": rawArray,
+                                        "title": objective,
+                                        "trigger":trigger,
+                                        "adddate":now,
+                                        "result":""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else if(mode=="posttest")
+                {
+                    var jsonObj = {
+                        "user": token,
+                        "course": course,
+                        "data": {
+                            "info": {
+                                "title": "หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่น 2",
+                                "description":"การอบรมผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร ปีงบประมาณ ๒๕๖๕",
+                                "period": "รุ่น 2",
+                                "time": "20",
+                                "topic": "13",
+                                "days": "30",
+                                "date": "วันที่ 16 พ.ค. - 14 มิ.ย.65",
+                                "score": {
+                                    "posttest": {
+                                        "structure": rawArray,
+                                        "title": objective,
+                                        "trigger":trigger,
+                                        "adddate":now,
+                                        "result":""
+                                    }
                                 }
                             }
                         }
