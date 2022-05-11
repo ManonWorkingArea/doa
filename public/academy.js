@@ -457,7 +457,7 @@ function editprofile() {
             $.isLoading( "hide" );
             var studentArray = JSON.stringify(result.student);
             Cookies.set('__student', studentArray, {expires:1})
-            window.location.href="student.php";
+            window.location.href="student.html";
         },
         error: function(request,msg,error) {
             $.isLoading( "hide" );
@@ -2159,4 +2159,10 @@ function find(){
         console.log(snapshot.val());
         //console.log(JSON.stringify(snapshot.val(), null, 4));
     });
+}
+
+function renderSession()
+{
+    var token   = Cookies.get('__session');
+    $('#student').val(token);
 }

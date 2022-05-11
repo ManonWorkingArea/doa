@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>กรมวิชาการเกษตร - แก้ไขข้อมูลส่วนตัว</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="TechyDevs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Ffavicon.ico?alt=media&token=9729026e-83ca-4f97-a3b2-79ded306ab11">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css" integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.8.55/css/materialdesignicons.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <!-- Main Css -->
+    <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fstyle.css?alt=media&token=a8ee131c-7ee8-45d2-9005-31624ddfb8e6" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fcolors%2Fdefault.css?alt=media&token=53dc6813-4ba8-4505-9100-e0928e52282b" rel="stylesheet" id="color-opt">
+    <link href="academy.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    <style>
+    .score-number
+    {
+        font-size: 30px;
+        font-weight: bold;
+        color: #000;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <!-- <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Loader -->
+    
+    <!-- Navbar STart -->
+    <header id="topnav" class="defaultscroll sticky">
+        <div class="container">
+            <!-- Logo container-->
+            <a class="logo" href="index.html">
+                <span class="logo-light-mode">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
+                </span>
+                <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-dark-mode" alt="">
+            </a>
+
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+            
+                <ul class="buy-button list-inline mb-0">
+                    <li class="list-inline-item mb-0">
+                        <a href="student.html">
+                            <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
+                        </a>
+                    </li>
+                    <li class="list-inline-item mb-0">
+                        <a href="javascript:void(0);" onclick="logout();">
+                            <div class="btn btn-icon btn-pills btn-danger"><i data-feather="power" class="fea icon-sm"></i></div>
+                        </a>
+                    </li>
+                </ul>
+        
+                <div id="navigation">
+                    <ul class="navigation-menu nav-light">
+                        <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
+                        <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
+                        <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
+                        <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
+                        <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
+                        <li><a href="student.html" target="" class="sub-menu-item">ผู้อบรม</a></li>
+                    </ul>
+                </div>
+                
+
+        </div><!--end container-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+    
+    <!-- Hero Start -->
+    <section class="bg-profile d-table w-100 bg-primary" style="background: url('https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Faccount%2Fbg.png?alt=media&token=7d8e1c6a-0ae5-498d-b642-e7868288d76e') center center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card public-profile border-0 rounded shadow" style="z-index: 1;">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-lg-2 col-md-3 text-md-start text-center">
+                                    <img src="" class="avatar avatar-large rounded-circle shadow d-block mx-auto student-avatar" alt="">
+                                </div><!--end col-->
+
+                                <div class="col-lg-10 col-md-9">
+                                    <div class="row align-items-end">
+                                        <div class="col-md-7 text-md-start text-center mt-4 mt-sm-0">
+                                            <h3 class="title mb-0 student-name">...</h3>
+                                            <small class="text-success h6 me-2"><i data-feather="user-check" class="fea icon-sm me-2"></i> ยืนยันบัญชีแล้ว</small>
+                                            <ul class="list-inline mb-0 mt-3">
+                                                <li class="list-inline-item me-2"><i data-feather="mail" class="fea icon-sm me-2"></i><span class="student-email">...</span></li>
+                                                <li class="list-inline-item"><i data-feather="phone" class="fea icon-sm me-2"></i><span class="student-phone">...</span></li>
+                                            </ul>
+                                            <div class="student-toolbar">
+                                                <a href="edit.html" class="btn btn-sm btn-primary"><i class="mdi mdi-pencil"> </i> แก้ไขข้อมูล</a>
+                                                <a href="password.html" class="btn btn-sm btn-light"><i class="mdi mdi-key"> </i> เปลี่ยนรหัส</a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-light" onclick="logout();"><i class="mdi mdi-power"> </i> ออกจากระบบ</a>
+                                            </div>
+                                        </div><!--end col-->
+        
+                                    </div><!--end row-->
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--ed container-->
+    </section><!--end section-->
+    <!-- Hero End -->
+
+    <!-- Profile Start -->
+    <section class="section profile-session">
+        <div class="container mt-lg-3">
+            <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
+                <div class="sidebar sticky-bar p-4 rounded shadow">
+                    <div class="widget">
+                        <div class="border-bottom pb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>ข้อมูลส่วนตัว :</h5>
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center">
+                                    <i data-feather="mail" class="fea icon-ex-md text-muted me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="text-primary mb-0">อีเมล์ :</h6>
+                                        <a href="javascript:void(0)" class="text-muted student-email">...</a>
+                                    </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                    <i data-feather="phone" class="fea icon-ex-md text-muted me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="text-primary mb-0">เบอร์โทร :</h6>
+                                        <a href="javascript:void(0)" class="text-muted student-phone">...</a>
+                                    </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                    <i data-feather="calendar" class="fea icon-ex-md text-muted me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="text-primary mb-0">วันที่ลงทะเบียน :</h6>
+                                        <a href="javascript:void(0)" class="text-muted student-regdate">...</a>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                        </div>
+                        <ul class="list-unstyled sidebar-nav mb-0" id="navmenu-nav">
+                        <li class="navbar-item account-menu px-0 mt-2">
+                            <a href="javascript:void(0);" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
+                                <span class="h4 mb-0"><i class="uil uil-setting"></i></span>
+                                <h6 class="mb-0 ms-2">ตั้งค่า</h6>
+                            </a>
+                        </li>
+                        <li class="navbar-item account-menu px-0 mt-2">
+                            <a href="javascript:void(0);" onclick="logout();" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
+                                <span class="h4 mb-0"><i class="uil uil-dashboard"></i></span>
+                                <h6 class="mb-0 ms-2">ออกจากระบบ</h6>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+            <div class="col-lg-8 col-12">
+            <div class="card border-0 rounded shadow">
+            <div class="card-body">
+                
+                <form id="frm-edit">
+                    <div class="alert-block"></div>
+                    <input type="hidden" name="student" id="student" value="">
+                    <div class="mt-3 text-md-start text-center d-sm-flex">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Fuser%2F01.jpg?alt=media&token=395c5b46-900a-484c-b6a6-060d7cc64f39" id="avatar-preview" class="avatar float-md-left avatar-medium shadow me-md-4" alt="">
+                        <div class="mt-md-4 mt-3 mt-sm-0">
+                            <input type="file" name="avatar-upload" id="avatar-upload" onchange="encodeImgtoBase64_avatar(this)">
+                            <input type="hidden" name="avatar" id="avatar">
+                            <a href="javascript:void(0)" class="btn btn-primary mt-2" id="avatar-change-btn">เปลี่ยนรูปประจำตัว</a>
+                            <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">ลบ</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mt-3 text-md-start text-center d-sm-flex">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Fuser%2F01.jpg?alt=media&token=395c5b46-900a-484c-b6a6-060d7cc64f39" id="idcard-preview" class="avatar float-md-left avatar-medium shadow me-md-4" alt="">
+                        <div class="mt-md-4 mt-3 mt-sm-0">
+                            <input type="file" name="idcard-upload" id="idcard-upload" onchange="encodeImgtoBase64_idcard(this)">
+                            <input type="hidden" name="idcard" id="idcard">
+                            <a href="javascript:void(0)" class="btn btn-primary mt-2" id="idcard-change-btn">เปลี่ยนรูปบัตรประชาชน</a>
+                            <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">ลบ</a>
+                        </div>
+                    </div>
+                
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">ชื่อ</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="user" class="fea icon-sm icons"></i>
+                                    <input name="firstname" id="firstname" type="text" class="form-control ps-5" placeholder="ชื่อ :">
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">นามสกุล</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="user-check" class="fea icon-sm icons"></i>
+                                    <input name="lastname" id="lastname" type="text" class="form-control ps-5" placeholder="นามสกุล :">
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">อีเมล์</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="mail" class="fea icon-sm icons"></i>
+                                    <input name="email" id="email" type="email" class="form-control ps-5" placeholder="อีเมล์ :">
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">เบอร์โทร</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="bookmark" class="fea icon-sm icons"></i>
+                                    <input name="phone" id="phone" type="text" class="form-control ps-5" placeholder="เบอร์โทร :">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">หมายเลขบัตรประชาชน</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="bookmark" class="fea icon-sm icons"></i>
+                                    <input name="citizen" id="citizen" type="text" class="form-control ps-5" placeholder="เบอร์โทร :">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </form>
+                    <!--end row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary" type="button" onclick="editprofile();"><i class="mdi mdi-content-save"> </i> บันทึกข้อมูล</button>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                
+                <!--end form-->
+
+            </div>
+            <!--end container-->
+        </section>
+        <!--end section-->
+    <!-- Profile End -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-py-60">
+                    <div class="row">
+                        <div class="col-6 mb-0 mb-md-4 pb-0">
+                            <p class="">ติดต่อสอบถามข้อมูล</p>
+                            <strong>กรมวิชาการเกษตร</strong><br>
+                            กลุ่มสารวัตรเกษตร กรมวิชาการเกษตร<br>
+                            เบอร์โทร : 02-940-5434 / 02-940-6670 ต่อ 121-124<br>
+                            email: inspector.doa@gmail.com
+                        </div>
+                        <!--end col-->
+                        <div class="col-6 mb-0 mb-md-4 pb-0">
+                            <p class="">ติดต่อสอบถามข้อมูล</p>
+                            <strong>สภาอุตสาหกรรมแห่งประเทศไทย</strong><br>
+                            FTI Academy <br> 
+                            เบอร์โทร : 1453 กด 12<br>
+                            email: thassaneewanr@fti.or.th
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-py-30 footer-bar">
+            <div class="container text-center">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="text-sm-start">
+                            <p class="mb-0">
+                                © 2022 กรมวิชาการเกษตร. Engine with <i class="mdi mdi-heart text-danger"></i> by <a href="https://fti.academy/" target="_blank" class="text-reset">fti.academy</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookies Start -->
+    <!-- <div class="cookie-popup bg-white shadow rounded py-3 px-4">
+        <p class="text-muted mb-0">This website uses cookies to provide you with a great user experience. By using it, you accept our <a href="https://shreethemes.in" target="_blank" class="text-success h6">use of cookies</a></p>
+        <div class="cookie-popup-actions text-end">
+            <button><i class="uil uil-times text-dark fs-4"></i></button>
+        </div>
+    </div> -->
+    <!--Note: Cookies Js including in plugins.init.js (path like; js/plugins.init.js) and Cookies css including in _helper.scss (path like; scss/_helper.scss)-->
+    <!-- Cookies End -->
+
+    <!-- Back to top -->
+    <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>
+    <!-- Back to top -->
+
+    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <!-- Main Js -->
+    <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+    <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+    <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
+    <script src="academy.js"></script>
+    <script>
+    //checkLobby();
+    </script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
+    <script>
+        
+    __session("edit");
+    renderSession();
+    renderEditProfile();
+
+    Pusher.logToConsole = false;    
+    var pusher = new Pusher('4b7d1b6027780eadf73d',{
+        cluster: 'ap1'
+    });
+    var channel = pusher.subscribe('my-channel');
+    var token   = Cookies.get('__session');
+    channel.bind('my-event', function(data)
+    {
+        if(data.mode == "clear"){
+            logout();
+        }
+        if(data.token==token){
+            switch (data.mode){
+                case "logout":
+                logout()
+                break;
+                case "reload":
+                resetData();
+                break;
+                case "check":
+                online();
+                break;
+                case "alert":
+                remoteAlert(data.title,data.text);
+                break;
+            }
+        }
+    });
+    function remoteAlert(title,text)
+    {
+        $.alert(text,function(){});
+    }
+    function online()
+    {
+        if(window.matchMedia("(max-width: 767px)").matches){
+            device = "mobile";
+        } else{
+            device = "desktop";
+        }
+        $.ajax(
+        {
+            type : "POST",  
+            url : "https://player.fti.academy/api/online/" + token + "/student/" + device,
+            dataType : "json",
+            success : function(response){}
+        });
+    }
+    </script>
+    <style>
+    .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
+    .alert_msg{position:fixed;width:280px;left:50%;margin-left:-140px;top:20%;z-index:1000;border:1px solid #ccc;border-radius:4px;box-shadow:0 0 15px rgba(0,0,0,.3);background:#fff;animation: alertshow .2s ease}
+    .alert_content{padding:20px;font-size:14px;text-align:left}
+    .alert_buttons{text-align:center;border-top:1px solid #ccc;-webkit-user-select:none}
+    .alert_buttons .alert_btn{display:inline-block;width:50%;border:none;height:45px;line-height:45px;font-size:14px;outline:0;-webkit-appearance:none;background:#fff;-webkit-tap-highlight-color:transparent;border-radius:0 0 4px 4px;}
+    .alert_buttons .alert_btn:only-child{width:100%}
+    .alert_buttons .alert_btn:first-child+.alert_btn{border-left:1px solid #ccc;border-radius:0 0 4px 0;}
+    .alert_tips{position:fixed;z-index:10176523;width:100%;top:55%;pointer-events:none;text-align:center;}
+    .alert_tips div{box-siziong:border-box;display:inline-block;padding:15px;border-radius:10px;background:rgba(0,0,0,.7);min-width:50px;max-width:230px;text-align:center;color:#fff;animation: tipsshow 3s .01s ease;opacity:0;}
+    @keyframes alertshow {0% {opacity: 0;transform: scale(.5)}70% {opacity: .7;transform: scale(1.05)}100% {opacity: 1;transform: scale(1)}}
+    @keyframes tipsshow {0% {opacity: 0;transform:scale(1.4) rotateX(-360deg)}20% {opacity:1;transform:scale(1) rotateX(0deg)}80% {opacity:1;transform:scale(1) rotateX(0deg)}100% {opacity:0;transform:scale(1.4) rotateX(360deg)}}
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M0JGCQ3SKK');
+
+    function remoteAlert(title,text)
+    {
+        $.alert(text,function(){});
+    }
+
+    </script>
+
+</body>
+</html>
