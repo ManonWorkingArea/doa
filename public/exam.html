@@ -2005,6 +2005,8 @@
         <script>
 
         __session("exam");
+        renderExamProfile();
+        
         Pusher.logToConsole = false;    
         var pusher = new Pusher('4b7d1b6027780eadf73d',{
             cluster: 'ap1'
@@ -2243,7 +2245,6 @@
         }
         
         getCurrentScore();
-        renderExamProfile();
         timecheck();
 
         </script>
