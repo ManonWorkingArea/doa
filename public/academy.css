@@ -1294,6 +1294,8 @@ hr.hr-text::before {
 }
 
 .topic-duration-badge {
+  background: #0062cc;
+  color: #fff;
   padding: 3px 5px 3px 5px;
   font-size: 12px;
   border-radius: 4px;
