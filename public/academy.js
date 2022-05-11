@@ -2171,8 +2171,14 @@ function getFirebasePlayerTopic()
 
             if(result.data.timer <1)
             {
-                finishPlayer(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title);
+                updatePlayerStatus(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title, "finish");
             }
+
+            if(result.data.status =="pending")
+            {
+                updatePlayerStatus(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title, "processing");
+            }
+
             $("#topic_video_source").val(result.data.video);
             $("#topic_course").val(course);
             $(".active-topic-name").html(result.data.title);
@@ -2207,17 +2213,17 @@ function updateFirebasePlayer(token,course,code)
     });
 }
 
-function finishPlayer(user,course,player,play, status, duration, uid, video, timer, course, title)
+function updatePlayerStatus(user,course,player,play, status, duration, uid, video, timer, course, title, new_status)
 {   
     //
-    console.log("Finish Player");
+    console.log( new_status + " : Player");
     var jsonObj = {
         "user": user,
         "course": course,
         "player": player,
         "data": {
             "play": play,
-            "status": "finish",
+            "status": new_status,
             "duration": duration,
             "uid": uid,
             "video": video,
