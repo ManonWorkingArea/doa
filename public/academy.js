@@ -1429,6 +1429,12 @@ function renderProfile(){
     notification();
 }
 
+
+function renderExamProfile(){
+    var token   = Cookies.get('__session');
+    $('.student-token').val(token);
+}
+
 function renderRepeatRegisterStudent(){
     getProfileRepeat();
 }

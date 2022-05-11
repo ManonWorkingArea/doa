@@ -21,7 +21,7 @@
 
         <!-- javascript -->
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        
+
         <link href="academy.css" rel="stylesheet" type="text/css" id="theme-opt" />
     </head>
 
@@ -38,15 +38,16 @@
         <!-- Loader -->
         
         <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky bg-white">
+        <header id="topnav" class="defaultscroll sticky">
             <div class="container">
                 <!-- Logo container-->
                 <a class="logo" href="index.html">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
+                    <span class="logo-light-mode">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
+                    </span>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-dark-mode" alt="">
                 </a>
-                
-                <!-- Logo End -->
 
                 <!-- End Logo container-->
                 <div class="menu-extras">
@@ -62,38 +63,34 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-
-                <ul class="buy-button list-inline mb-0">
-                    <li class="list-inline-item mb-0">
-                        <a href="register.html">
-                            <div class="btn btn-icon btn-pills btn-primary"><i data-feather="user-plus" class="fea icon-sm"></i></div>
-                        </a>
-                    </li>
-                    
-                    <li class="list-inline-item ps-1 mb-0">
-                        <a href="login.html">
-                            <div class="btn btn-icon btn-pills btn-primary"><i data-feather="key" class="fea icon-sm"></i></div>
-                        </a>
-                    </li>
-                </ul>
-        
-                <div id="navigation">
-                    <ul class="navigation-menu">
-                        <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
-                        <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
-                        <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
-                        <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
-                        <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
-                        <li><a href="login.html" target="" class="sub-menu-item">เข้าสู่ระบบ</a></li>
+                    <ul class="buy-button list-inline mb-0">
+                        <li class="list-inline-item mb-0">
+                            <a href="student.html">
+                            <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
+                            </a>
+                        </li>
+                        <li class="list-inline-item mb-0">
+                            <a href="javascript:void(0);" onclick="logout();">
+                                <div class="btn btn-icon btn-pills btn-danger"><i data-feather="power" class="fea icon-sm"></i></div>
+                            </a>
+                        </li>
                     </ul>
-                </div>
-
+            
+                    <div id="navigation">
+                        <ul class="navigation-menu">
+                            <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
+                            <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
+                            <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
+                            <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
+                            <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
+                            <li><a href="student.html" target="" class="sub-menu-item">ผู้อบรม</a></li>
+                        </ul>
+                    </div>
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
         
-
-        <section class="section section-player">
+        <section class="section section-exam">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 mt-2 pt-2 pt-sm-0">
@@ -116,40 +113,10 @@
 
                     <div class="col-lg-6 pt-2">
                         <div class="mb-3">
-                            <label class="form-label">ชื่อผู้สอบ <span class="text-danger">*</span></label>
+                            <label class="form-label">Student Session <span class="text-danger">*</span></label>
                             <div class="form-icon position-relative">
                                 <i data-feather="user" class="fea icon-sm icons"></i>
-                                <input type="text" class="form-control ps-5" placeholder="ชื่อผู้สอบ" id="firstname" name="firstname" required="">
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label class="form-label">นามสกุลผู้สอบ <span class="text-danger">*</span></label>
-                            <div class="form-icon position-relative">
-                                <i data-feather="user" class="fea icon-sm icons"></i>
-                                <input type="text" class="form-control ps-5" placeholder="นามสกุลผู้สอบ" id="lastname" name="lastname" required="">
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label class="form-label">อีเมล์ผู้สอบ <span class="text-danger">*</span></label>
-                            <div class="form-icon position-relative">
-                                <i data-feather="user" class="fea icon-sm icons"></i>
-                                <input type="text" class="form-control ps-5" placeholder="อีเมล์ผู้สอบ" id="email" name="email" required="">
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label class="form-label">เบอร์โทรผู้สอบ <span class="text-danger">*</span></label>
-                            <div class="form-icon position-relative">
-                                <i data-feather="user" class="fea icon-sm icons"></i>
-                                <input type="text" class="form-control ps-5" placeholder="เบอร์โทรผู้สอบ" id="phone" name="phone" required="">
+                                <input type="text" class="form-control ps-5" placeholder="Student Session" id="session" name="session" required="">
                             </div>
                         </div>
                     </div><!--end col-->
