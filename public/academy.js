@@ -2051,14 +2051,15 @@ function checkFirebasePlayer()
         },
         success: function(result) {
             $.isLoading( "hide" );
-            console.log(result.data.info.score.pretest)
+            pretestArray = result.data.info.score.pretest
+            console.log(pretestArray)
 
-            if (typeof result.data.info.score.pretest != "undefined" && result.data.info.score.pretest != null && result.data.info.score.pretest.length != null && result.data.info.score.pretest.length > 0) {
+            if (typeof pretestArray != "undefined" && pretestArray != null && pretestArray.length != null && pretestArray.length > 0) {
                 window.location.href="course.php";
             }
             else
             {
-                
+                console.log(pretestArray.length);
             }
         },
         error: function(request,msg,error) {
