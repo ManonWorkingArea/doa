@@ -2148,7 +2148,7 @@ function getFirebasePlayer()
                 "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
                     +"<th class='p-3'>"
                         +"<div class='align-items-center'>"
-                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6 ms-1'><a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
+                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6 topic-name-title'><a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
                         +"</div>"
                     +"</th>"
                     +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> " + item.duration + " </p></td>"
