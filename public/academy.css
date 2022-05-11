@@ -1303,14 +1303,8 @@ hr.hr-text::before {
 
 .topic-name-list
 {
-
 }
 
 .topic-name-list a
 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 }
