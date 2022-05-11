@@ -2160,6 +2160,10 @@ function getFirebasePlayer()
 
             var code = $.urlParam('token');
             $("#" + code).addClass("topic-play");
+
+            $("#" + code).removeClass("topic-finish");
+            $("#" + code).removeClass("topic-processing");
+            $("#" + code).removeClass("topic-pending");
         },
         error: function(request,msg,error) {
         }
