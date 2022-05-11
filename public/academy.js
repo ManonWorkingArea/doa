@@ -2029,8 +2029,6 @@ function checkFirebasePlayer()
         dataType: "json",
         contentType : "text/plain",
         beforeSend: function(xhr) {
-            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
             $.isLoading( "hide" );
@@ -2088,8 +2086,6 @@ function getFirebasePlayer()
         dataType: "json",
         contentType : "text/plain",
         beforeSend: function(xhr) {
-            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
             $.isLoading( "hide" );
@@ -2167,8 +2163,6 @@ function getFirebasePlayerTopic()
         dataType: "json",
         contentType : "text/plain",
         beforeSend: function(xhr) {
-            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
             $.isLoading( "hide" );
@@ -2177,7 +2171,6 @@ function getFirebasePlayerTopic()
 
             if(result.data.timer <1)
             {
-                //finish video
                 finishPlayer(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title);
             }
             $("#topic_video_source").val(result.data.video);
@@ -2206,8 +2199,6 @@ function updateFirebasePlayer(token,course,code)
         contentType : "application/json",
         data: JSON.stringify(jsonObj),
         beforeSend: function(xhr) {
-            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
         },
@@ -2243,11 +2234,8 @@ function finishPlayer(user,course,player,play, status, duration, uid, video, tim
         contentType : "application/json",
         data: JSON.stringify(jsonObj),
         beforeSend: function(xhr) {
-            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
-            console.log("Finish : " + result);
         },
         error: function(request,msg,error) {
         }
