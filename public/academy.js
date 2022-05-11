@@ -2054,11 +2054,9 @@ function checkFirebasePlayer()
             pretestArray = result.data.info.score.pretest
             console.log(pretestArray)
 
-            if (typeof pretestArray != "undefined" && pretestArray != null && pretestArray.length != null && pretestArray.length > 0) {
-                window.location.href="course.php";
-            }
-            else
-            {
+            if (Array.isArray(pretestArray)) {
+                window.location.href="course.html";
+            } else {
                 console.log(pretestArray.length);
             }
         },
