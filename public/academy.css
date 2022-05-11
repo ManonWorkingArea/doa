@@ -1299,10 +1299,18 @@ hr.hr-text::before {
   padding: 3px 10px 3px 10px;
   font-size: 13px;
   border-radius: 4px;
-  float: left;
 }
 
 .topic-name-list
 {
-  float: left;
+
+}
+
+.topic-name-list a
+{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
