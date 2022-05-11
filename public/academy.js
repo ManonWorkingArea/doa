@@ -2019,32 +2019,6 @@ function openCallback()
     }
 }
 
-function updateFirebasePlayer(token,course,code)
-{
-    var jsonObj = {
-        "user": token,
-        "course": course,
-        "player": code,
-        "data": "3",
-    }
-
-    $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player/updateTime',
-        type : "POST",
-        dataType: "json",
-        contentType : "application/json",
-        data: JSON.stringify(jsonObj),
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
-        },
-        success: function(result) {
-        },
-        error: function(request,msg,error) {
-        }
-    });
-}
-
 function checkFirebasePlayer()
 {   
     var token   = Cookies.get('__session');
@@ -2216,6 +2190,32 @@ function getFirebasePlayerTopic()
     });
 }
 
+function updateFirebasePlayer(token,course,code)
+{
+    var jsonObj = {
+        "user": token,
+        "course": course,
+        "player": code,
+        "data": "3",
+    }
+
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player/updateTime',
+        type : "POST",
+        dataType: "json",
+        contentType : "application/json",
+        data: JSON.stringify(jsonObj),
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
+
 function finishPlayer(user,course,player,play, status, duration, uid, video, timer, course, title)
 {   
     //
@@ -2237,7 +2237,7 @@ function finishPlayer(user,course,player,play, status, duration, uid, video, tim
     }
 
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course',
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player',
         type : "POST",
         dataType: "json",
         contentType : "application/json",
