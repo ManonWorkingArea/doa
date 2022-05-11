@@ -2056,7 +2056,7 @@ function checkFirebasePlayer()
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
                 window.location.href="course.html";
             } else {
-                console.log(pretestArray.length);
+                console.log(pretestArray);
             }
         },
         error: function(request,msg,error) {
