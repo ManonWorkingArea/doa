@@ -2038,7 +2038,6 @@ function updateFirebasePlayer(token,course,code)
 function checkFirebasePlayer()
 {   
     var token   = Cookies.get('__session');
-    var course  = localStorage.getItem('__course');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
         url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
@@ -2058,6 +2057,35 @@ function checkFirebasePlayer()
                 window.location.href="course.html";
             } else {
                 console.log(pretestArray.length);
+            }
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
+
+function openExam(session,mode)
+{
+    var token   = Cookies.get('__session');
+    $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+            $.isLoading( "hide" );
+            pretestArray = result.data.info.score.pretest
+            console.log(pretestArray)
+
+            if(pretestArray.title !== null && pretestArray.title !== ''  && pretestArray.title !==undefined) {
+                window.location.href="course.html";
+            } else {
+                window.location.href="exam.html?session=" + session + "&mode=" + mode;
             }
         },
         error: function(request,msg,error) {
