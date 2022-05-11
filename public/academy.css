@@ -1293,6 +1293,11 @@ hr.hr-text::before {
   color: #0062cc !important;
 }
 
+.topic-pending .topic-duration-badge {
+  background: #9d9d9d !important;
+  color: #fff !important;
+}
+
 .topic-duration-badge {
   background: #0062cc;
   color: #fff;
