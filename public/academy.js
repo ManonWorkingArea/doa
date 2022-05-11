@@ -950,6 +950,7 @@ function finishPlayer(user,course,player,play, status, duration, uid, video, tim
             xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
+            console.log("Finish : " + result);
         },
         error: function(request,msg,error) {
         }
