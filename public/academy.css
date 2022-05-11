@@ -1317,4 +1317,5 @@ hr.hr-text::before {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 30px;
 }
