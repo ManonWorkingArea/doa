@@ -543,9 +543,9 @@
                 if(window.mplayer)
                 {
                     mplayer.addListener(FWDEVPlayer.READY, readyHandler);
+                    mplayer.addListener(FWDEVPlayer.STOP, stopHandler);
                     mplayer.addListener(FWDEVPlayer.PLAY, playHandler);
                     mplayer.addListener(FWDEVPlayer.PAUSE, pauseHandler);
-                    mplayer.addListener(FWDEVPlayer.STOP, stopHandler);
                     mplayer.addListener(FWDEVPlayer.UPDATE_TIME, updateTimeHandler);
                     mplayer.addListener(FWDEVPlayer.UPDATE_TIME, getCurrentTimer);
                 }
@@ -566,8 +566,10 @@
 
             function playHandler(e)
             {
+                console.log("Play");
                 $('#pausebtn').show();
                 $('#playbtn').hide();
+                starter = true;
             }
 
             function pauseHandler(e)
