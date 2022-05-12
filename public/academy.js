@@ -2022,6 +2022,7 @@ function openCallback()
 function checkFirebasePlayer()
 {   
     var token   = Cookies.get('__session');
+    var mode    = $.urlParam('mode');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
         url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
@@ -2032,14 +2033,30 @@ function checkFirebasePlayer()
         },
         success: function(result) {
             $.isLoading( "hide" );
-            pretestArray = result.data.info.score.pretest
-            console.log(pretestArray)
 
-            if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
-                window.location.href="course.html";
-            } else {
-                console.log(pretestArray);
+            if(mode=="pretest")
+            {
+                pretestArray = result.data.info.score.pretest
+                console.log(pretestArray)
+    
+                if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
+                    window.location.href="course.html";
+                } else {
+                    console.log(pretestArray);
+                }
             }
+            else if(mode=="posttest")
+            {
+                posttestArray = result.data.info.score.posttest
+                console.log(posttestArray)
+
+                if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                    window.location.href="course.html";
+                } else {
+                    console.log(posttestArray);
+                }
+            }
+            
         },
         error: function(request,msg,error) {
         }
@@ -2104,65 +2121,114 @@ function getFirebasePlayer()
             console.log(pretestArray)
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
             {
+                enroll_status = true;
             } 
             else 
             {
+                enroll_status = false;
                 $("#topic-table").append(
+                "<tr class='topic-processing' id='exam-pretest'>"
+                    +"<th class='p-3'>"
+                        +"<div class='align-items-center'>"
+                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session=215&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</a></p>"
+                        +"</div>"
+                    +"</th>"
+                    +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                +"</tr>"
+                )
+            }
+
+            total_item = 0;
+            finish_item = 0;
+
+            $.each(result.data.players, function (key, item){
+
+                // Check Topic Status
+                //
+                if(item.status=="pending") {
+                    status_icon = "<i class='uil uil-clock text-muted status-icon-data'></i> <span class='status-icon-label'>รอเรียน</span>";
+                }
+                else if(item.status=="processing") {
+                    status_icon = "<i class='uil uil-play text-warning status-icon-data'></i> <span class='status-icon-label'>เรียนแล้ว</span>";
+                }
+                else if(item.status=="finish") {
+                    status_icon = "<i class='uil uil-check-circle text-success status-icon-data'></i> <span class='status-icon-label'>จบแล้ว</span>";
+                    finish_item++;
+                }
+
+                // Check Enroll Status for topic url
+                //
+                if(enroll_status)
+                {
+                    topic_link = "<a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='topic-name-title' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a>";
+                }
+                else
+                {
+                    topic_link = "<a href='javascript:void(0);' class='topic-name-title' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a>";
+                }
+
+                // Add topic item to table
+                // 
+                play_timer = secondsTimeSpanToHMS(item.play);
+                $("#topic-table").append(
+                "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
+                    +"<th class='p-3'>"
+                        +"<div class='align-items-center'>"
+                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + topic_link + "</p>"
+                            +"<p class='mb-0 d-inline fw-normal topic-timer-data'>" + play_timer + " / " + item.duration + "</p>"
+                        +"</div>"
+                    +"</th>"
+                    +"<td><p class='mb-0 fw-normal'>" + status_icon + " </p></td>"
+                +"</tr>"
+                )
+                /*
+                $("#topic-table").append(
+                "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
+                    +"<th class='p-3'>"
+                        +"<div class='align-items-center'>"
+                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6 ms-1'><a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
+                        +"</div>"
+                    +"</th>"
+                    +"<td><p class='mb-0 d-inline fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> " + item.duration + " </p></td>"
+                    +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + status_icon + "</span></td>"
+                +"</tr>"
+                )
+                */
+                total_item++;
+            });
+
+            var code = $.urlParam('token');
+            $("#" + code).addClass("topic-play");
+            $("#" + code).removeClass("topic-finish");
+            $("#" + code).removeClass("topic-processing");
+            $("#" + code).removeClass("topic-pending");
+
+            // Process Enroll Percent Data
+            //
+            $(".enrol_item_finish").html(finish_item);
+            $(".enrol_item_total").html(total_item);
+            finish_percent = (100/total_item)*finish_item;
+            $(".progress-bar").css("width", finish_percent + "%");
+
+            if(finish_item>1)
+            {
+                posttestArray = result.data.info.score.posttest
+                console.log(posttestArray)
+
+                if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                } else {
+                    $("#topic-table").append(
                     "<tr class='topic-processing' id='exam-pretest'>"
                         +"<th class='p-3'>"
                             +"<div class='align-items-center'>"
-                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session=215&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</a></p>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session=215&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
                             +"</div>"
                         +"</th>"
                         +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
                     +"</tr>"
                     )
+                }
             }
-
-            $.each(result.data.players, function (key, item){
-
-                // Icon
-                if(item.status=="pending") {
-                    status_icon = "<i class='uil uil-clock text-muted'></i>";
-                }
-                else if(item.status=="processing") {
-                    status_icon = "<i class='uil uil-play text-warning'></i>";
-                }
-                else if(item.status=="finish") {
-                    status_icon = "<i class='uil uil-check-circle text-success'></i>";
-                }
-                // 
-                $("#topic-table").append(
-                "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
-                    +"<th class='p-3'>"
-                        +"<div class='align-items-center'>"
-                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='topic-name-title' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
-                        +"</div>"
-                    +"</th>"
-                    +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> " + item.duration + " </p></td>"
-                +"</tr>"
-                )
-                /*
-                $("#topic-table").append(
-                    "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
-                        +"<th class='p-3'>"
-                            +"<div class='align-items-center'>"
-                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6 ms-1'><a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a></p>"
-                            +"</div>"
-                        +"</th>"
-                        +"<td><p class='mb-0 d-inline fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> " + item.duration + " </p></td>"
-                        +"<td class='p-3 text-end'><i class='" + item.icon + "'></i> <span class='icon_percent'>" + status_icon + "</span></td>"
-                    +"</tr>"
-                    )
-                    */
-            });
-
-            var code = $.urlParam('token');
-            $("#" + code).addClass("topic-play");
-
-            $("#" + code).removeClass("topic-finish");
-            $("#" + code).removeClass("topic-processing");
-            $("#" + code).removeClass("topic-pending");
         },
         error: function(request,msg,error) {
         }
@@ -2213,7 +2279,7 @@ function updateFirebasePlayer(token,course,code)
         "user": token,
         "course": course,
         "player": code,
-        "data": "3",
+        "data": "1",
     }
 
     $.ajax({
@@ -2265,3 +2331,11 @@ function updatePlayerStatus(user,course,player,play, status, duration, uid, vide
         }
     });
 }
+
+function secondsTimeSpanToHMS(s) {
+    var h = Math.floor(s / 3600); //Get whole hours
+    s -= h * 3600;
+    var m = Math.floor(s / 60); //Get remaining minutes
+    s -= m * 60;
+    return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+  }
