@@ -1314,6 +1314,10 @@ function renderProfile(){
     }
     //--- Student Notification
     notification();
+    $("img").bind("error", function (e) {
+        var $this = $(this);
+        $(this).attr("src","https://burgmaier.com/wp-content/uploads/2021/05/Musterbild-Mann.jpg");
+      });
 }
 
 function renderRepeatRegisterStudent(){
