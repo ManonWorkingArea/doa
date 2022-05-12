@@ -216,7 +216,9 @@
 
                 <div class="col-lg-9 col-12">
 
-                    <div id="notification-area" class="pt-2"></div>
+                    <div id="course-area" class="pt-3"></div>
+
+                    <div id="notification-area" class=""></div>
 
                     <div id="order-area" class="pt-2 pb-2"></div>
 
@@ -354,7 +356,7 @@
     <script>
         
     __session("student");
-    renderRegisterConfirm('FuVOj3EWVHljmjX3DBBN')
+    getFirebaseUser()
 
     Pusher.logToConsole = false;    
     var pusher = new Pusher('4b7d1b6027780eadf73d',{

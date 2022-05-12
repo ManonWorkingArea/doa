@@ -635,84 +635,185 @@
                 var mode      = $.urlParam('mode');
                 var token     = Cookies.get('__session');
 
-                if(mode=="pretest")
-                {
-                    var jsonObj = {
-                        "user": token,
-                        "course": course,
-                        "data": {
-                            "info": {
-                                "title": "หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่น 2",
-                                "description":"การอบรมผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร ปีงบประมาณ ๒๕๖๕",
-                                "period": "รุ่น 2",
-                                "time": "20",
-                                "topic": "13",
-                                "days": "30",
-                                "date": "วันที่ 16 พ.ค. - 14 มิ.ย.65",
-                                "score": {
-                                    "pretest": {
-                                        "structure": rawArray,
-                                        "title": objective,
-                                        "trigger":trigger,
-                                        "adddate":now,
-                                        "result":""
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                else if(mode=="posttest")
-                {
-                    var jsonObj = {
-                        "user": token,
-                        "course": course,
-                        "data": {
-                            "info": {
-                                "title": "หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่น 2",
-                                "description":"การอบรมผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร ปีงบประมาณ ๒๕๖๕",
-                                "period": "รุ่น 2",
-                                "time": "20",
-                                "topic": "13",
-                                "days": "30",
-                                "date": "วันที่ 16 พ.ค. - 14 มิ.ย.65",
-                                "score": {
-                                    "posttest": {
-                                        "structure": rawArray,
-                                        "title": objective,
-                                        "trigger":trigger,
-                                        "adddate":now,
-                                        "result":""
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
                 $.ajax({
-                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course',
-                    type : "POST",
+                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=' + course,
+                    type : "GET",
                     dataType: "json",
-                    contentType : "application/json",
-                    data: JSON.stringify(jsonObj),
+                    contentType : "text/plain",
                     beforeSend: function(xhr) {
-                        xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-                        xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
                     },
                     success: function(result) {
-                        if(mode==="pretest")
+                        $.isLoading( "hide" );
+
+                        if(mode=="pretest")
                         {
-                            window.location.href = "exam_wait.html?target=course";
+                            posttestArray = result.data.info.score.posttest
+                            if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) 
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "pretest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                },
+                                                "posttest": {
+                                                    "structure": posttestArray.structure,
+                                                    "title": posttestArray.title,
+                                                    "trigger":posttestArray.trigger,
+                                                    "adddate":posttestArray.adddate,
+                                                    "result":posttestArray.result
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "pretest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        else if(mode==="posttest")
+                        else if(mode=="posttest")
                         {
-                            window.location.href = "exam_wait.html?target=student";
+                            pretestArray = result.data.info.score.pretest
+
+                            if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "posttest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                },
+                                                "pretest": {
+                                                    "structure": pretestArray.structure,
+                                                    "title": pretestArray.title,
+                                                    "trigger":pretestArray.trigger,
+                                                    "adddate":pretestArray.adddate,
+                                                    "result":pretestArray.result
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "posttest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
+
+                        $.ajax({
+                            url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course',
+                            type : "POST",
+                            dataType: "json",
+                            contentType : "application/json",
+                            data: JSON.stringify(jsonObj),
+                            beforeSend: function(xhr) {
+                                xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                                xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+                            },
+                            success: function(result) {
+                                if(mode==="pretest")
+                                {
+                                    window.location.href = "exam_wait.html?target=course&session=" + course;
+                                }
+                                else if(mode==="posttest")
+                                {
+                                    window.location.href = "exam_wait.html?target=student";
+                                }
+                            },
+                            error: function(request,msg,error) {
+                            }
+                        });
                     },
                     error: function(request,msg,error) {
                     }
                 });
+
+                
 
                 /*
                 

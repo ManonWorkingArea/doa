@@ -96,7 +96,7 @@
                         <ul class="breadcrumb bg-white rounded shadow mb-0 px-4 py-2">
                             <li class="breadcrumb-item"><a href="index.html">หน้าหลัก</a></li>
                             <li class="breadcrumb-item"><a href="student.html">สมาชิก</a></li>
-                            <li class="breadcrumb-item"><a href="course.html">หลักสูตร</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);" onclick="openCourse();">หลักสูตร</a></li>
                             <li class="breadcrumb-item active" aria-current="page"><span class="active-topic-name"></span></li>
                         </ul>
                     </nav>
@@ -128,7 +128,7 @@
 
                                 <div class="col-md-6">
                                     <div class="player-time">
-                                        <span class="player-time-cuerrent">00:00:00</span>/<span class="player-time-total">00:00:00</span>
+                                        <span class="player-time-cuerrent"></span>/<span class="player-time-total">00:00:00</span>
                                     </dvi>
                                 </div>
 
@@ -533,6 +533,7 @@
             var timer           = 0;
             var trigger         = 0;
             var count           = 36000000;
+            var starter          = false;
 
             var registerAPIInterval;
 
@@ -560,6 +561,7 @@
                 $('.player-time-cuerrent').text("00:00:00");
                 updateVideoSourceHandler();
                 playResume();
+                console.log(starter);
             }
 
             function playHandler(e)
@@ -573,39 +575,20 @@
                 $('#pausebtn').hide();
                 $('#playbtn').show();
                 currentTime = $('#post_topic_timer').val();
-                //console.log("Pause at " + currentTime);
                 pauseTimer(currentTime);
             }
 
             function stopHandler(time)
             {
-                currentTime   = $('#post_topic_timer').val();
-                player        = "";
-                course        = "";
-                //var playerTimer     = localStorage.getItem('__player_timer_' + player);
-
-                //localStorage.setItem('__player_timer_' + player, "0");
-
-                /*
-                $.ajax(
+                if(starter)
                 {
-                    type : "POST",
-                    url : "https://player.fti.academy/api/stoper/215/ep1/" + time + "/" + playerTimer,
-                    data : {'player':player},
-                    dataType : "json",
-                    success : function(response)
-                    {
-                        status 	= response.status
-                        msg 	= response.return
-                        //-----------------------
-                        if(status==="true")
-                        {
-                            window.location.href="course.php?option=next#ep2";
-                        }
-                    }
-                });
+                    console.log("Stop Handle");
+                    var code    = $.urlParam('token');
+                    var course  = $.urlParam('session');
+                    var token   = Cookies.get('__session');
 
-                */
+                    stopFirebasePlayer(token, course, code);
+                }
             }
 
             function updateVideoSourceHandler(e)
@@ -623,6 +606,8 @@
             {
                 mplayer.play();
                 updateVideoSourceHandler();
+                starter = true;
+                console.log(starter);
             }
 
             function restart()
@@ -687,15 +672,13 @@
                     updatetimer(e.currentTime);
                     $('#post_topic_timer').val(e.currentTime);
                 }
-
                 $('.player-time-cuerrent').text(e.currentTime);
-                //localStorage.setItem('__player_last_' + player, e.currentTime);
             }
 
             function playResume()
             {
-                playerTimer = '0';
-                mplayer.play();
+                //playerTimer = '0';
+                //mplayer.play();
             }
 
             function updatetimer(time)
@@ -710,92 +693,11 @@
             function pauseTimer(time)
             {
                 player = 'ep1';
-                //var playerTimer  = localStorage.getItem('__player_timer_' + player);
-                //localStorage.setItem('__player_timer_' + player, "0");
 
                 var student     = Cookies.get('__student');
                 var student     = JSON.parse(student);
                 var topic_play  = Cookies.get('__topic');
-                /*
-                var ref         = firebase.database().ref('data/'+ student.permission.student_id +'/player/');
-                var query       = ref.orderByChild('topic').equalTo(topic_play);
-
-                query.once('value', function(snapshot){
-                if (snapshot.exists()){
-                    firebase.database().ref('data/'+ student.permission.student_id +'/player/').orderByChild("topic").equalTo(topic_play).on("child_added", (snap) => {
-                        console.log(snap.val().pid);
-                        var player              = {};
-                        player['sid']           = student.permission.student_id;
-                        player['trigger']       = playerTimer;
-                        player['token']         = snap.val().pid;
-                        player['total']         = snap.val().total;
-                        player['counter']       = snap.val().counter;
-                        player['countdown']     = snap.val().countdown;
-                        // Update Player Content
-                        updatePlayer(player);
-                    });
-                }
-                });
-
-                */
-
-                /*
-
-                $.ajax(
-                {
-                    type : "POST",  
-                    url : "https://player.fti.academy/api/timer_filebase/GaPI0s18IzNDxusKYgmS/ep1/" + time + "/" + playerTimer,
-                    data : {'time':time,'player':player},
-                    dataType : "json",
-                    success : function(response)
-                    {
-                        // Update Topic Detail
-                        var play  = Cookies.get('__play');
-                        var topic = localStorage.getItem('__topic');
-                        var topic = JSON.parse(topic);
-                        playIndex = topic.findIndex((obj => obj.code == play));
-
-                        topic[playIndex].percent_gui    = response.percent_gui;
-                        topic[playIndex].icon_percent   = response.icon_percent;
-                        topic[playIndex].current        = response.currentText;
-
-                        localStorage.setItem('__topic', JSON.stringify(topic));
-
-                        // Update Element
-                        $('#' + play + ' .player-current-area').html(response.currentText);
-                        $('#' + play + ' .player-percent-area .progress-bar').css('width', response.topic_percent + '%');
-                        $('#' + play + ' .icon_percent').html(response.icon_percent);
-
-                        $('.player_progress').html(response.topic_percent + '%');
-
-                        $('#topiclastplay').val(response.second);
-                        $('.player_last_play').text(response.time);
-                        // Update Topic Detail
-                    },
-                    error: function(request,msg,error) 
-                    {
-                        var error   = localStorage.getItem('__update_error_timeout_' + player);
-                        newError    = (error-0) + 1;
-                        localStorage.setItem('__update_error_timeout_' + player, newError);
-
-                        if(request.status===0){
-                            pauseTimer(time);
-                        }
-                        else if(request.status===500){
-                            pauseTimer(time);
-                        }
-                        else{
-                            errorMSG = request.responseJSON;
-                        }
-                    }
-                });
-
-                */
             }
-
-            // 6
             </script>
-
-            
     </body>
 </html>

@@ -2012,11 +2012,18 @@ function renderSession()
 function openCallback()
 {
     var target  = $.urlParam('target');
+    var course  = $.urlParam('session');
     if(target !== null && target !== ''  && target !==undefined) {
-        window.location.href= target + ".html";
+        window.location.href= target + ".html?session=" + course;
     } else {
         window.location.href= "student.html";
     }
+}
+
+function openCourse()
+{
+    var course  = $.urlParam('session');
+    window.location.href= "course.html?session=" + course;
 }
 
 function checkFirebasePlayer()
@@ -2092,13 +2099,78 @@ function openExam(session,mode)
     });
 }
 
-function getFirebasePlayer()
+function getFirebaseUser()
 {   
     var token   = Cookies.get('__session');
     var course  = localStorage.getItem('__course');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/?user=' + token,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+        },
+        success: function(result) {
+            $.isLoading( "hide" );
+
+            console.log(result);
+
+            $.each(result.data.courses, function (key, item){
+
+                // Add topic item to table
+                // 
+
+                posttestArray = item.info.score.posttest
+                console.log(posttestArray)
+
+                if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                    $("#course-area").append(
+                        "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
+                            +"<div class='card blog rounded shadow'>"
+                                +"<a href='javascript:void(0);'>"
+                                    +"</a><div class='card-body content'><a href='javascript:void(0);'>"
+                                        +"</a><h5><a href='javascript:void(0);'></a><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                        +"<p class='post-meta'>"+item.info.description+"</p>"
+                                        +"<p class='post-meta'>"+item.info.date+"</p>"
+                                        +"<div class='post-meta d-flex justify-content-between mt-3'>"
+                                        +"<a href='javascript:void(0);' class='btn w-100 btn-lg btn-light'> จบหลักสูตรแล้ว</a>"
+                                        +"</div>"
+                                    +"</div>"
+                            +"</div>"
+                        +"</div>"
+                        )
+                } else {
+                    $("#course-area").append(
+                        "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
+                            +"<div class='card blog rounded shadow'>"
+                                +"<a href='course.html?session="+item.info.uid+"'>"
+                                    +"</a><div class='card-body content'><a href='course.html?session="+item.info.uid+"'>"
+                                        +"</a><h5><a href='course.html?session="+item.info.uid+"'></a><a href='course.html?session="+item.info.uid+"' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                        +"<p class='post-meta'>"+item.info.description+"</p>"
+                                        +"<p class='post-meta'>"+item.info.date+"</p>"
+                                        +"<div class='post-meta d-flex justify-content-between mt-3'>"
+                                        +"<a href='course.html?session="+item.info.uid+"' class='btn w-100 btn-lg btn-primary'> เข้าเรียน <i class='uil uil-angle-right-b align-middle'></i></a>"
+                                        +"</div>"
+                                    +"</div>"
+                            +"</div>"
+                        +"</div>"
+                        )
+                }
+            });
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
+
+function getFirebasePlayer()
+{   
+    var token   = Cookies.get('__session');
+    var course  = $.urlParam('session');
+    $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=' + course,
         type : "GET",
         dataType: "json",
         contentType : "text/plain",
@@ -2130,7 +2202,7 @@ function getFirebasePlayer()
                 "<tr class='topic-processing' id='exam-pretest'>"
                     +"<th class='p-3'>"
                         +"<div class='align-items-center'>"
-                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session=215&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</a></p>"
+                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</a></p>"
                         +"</div>"
                     +"</th>"
                     +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
@@ -2210,7 +2282,7 @@ function getFirebasePlayer()
             finish_percent = (100/total_item)*finish_item;
             $(".progress-bar").css("width", finish_percent + "%");
 
-            if(finish_item>1)
+            if(finish_item>12)
             {
                 posttestArray = result.data.info.score.posttest
                 console.log(posttestArray)
@@ -2221,7 +2293,7 @@ function getFirebasePlayer()
                     "<tr class='topic-processing' id='exam-pretest'>"
                         +"<th class='p-3'>"
                             +"<div class='align-items-center'>"
-                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session=215&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session="+course+"&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
                             +"</div>"
                         +"</th>"
                         +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
@@ -2255,12 +2327,12 @@ function getFirebasePlayerTopic()
 
             if(result.data.timer <1)
             {
-                updatePlayerStatus(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title, "finish");
+                //updatePlayerStatus(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title, "finish");
             }
 
             if(result.data.status =="pending")
             {
-                updatePlayerStatus(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title, "processing");
+                //updatePlayerStatus(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title, "processing");
             }
 
             $("#topic_video_source").val(result.data.video);
@@ -2295,6 +2367,68 @@ function updateFirebasePlayer(token,course,code)
         error: function(request,msg,error) {
         }
     });
+}
+
+function stopFirebasePlayer(token,course,code)
+{
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player?user=' + token + '&course=' + course + '&player=' + code,
+        type : "GET",
+        dataType: "json",
+        contentType : "application/json",
+        beforeSend: function(xhr) {
+        },
+        success: function(result) {
+            console.log(result)
+
+            var jsonObj = {
+                "user": token,
+                "course": course,
+                "player": code,
+                "data": result.data.timer,
+            }
+        
+            $.ajax({
+                url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player/updateTime',
+                type : "POST",
+                dataType: "json",
+                contentType : "application/json",
+                data: JSON.stringify(jsonObj),
+                beforeSend: function(xhr) {
+                },
+                success: function(result) {
+                    console.log(result)
+                },
+                error: function(request,msg,error) {
+                }
+            });
+        },
+        error: function(request,msg,error) {
+        }
+    });
+    /*
+
+    var jsonObj = {
+        "user": token,
+        "course": course,
+        "player": code,
+        "data": "1",
+    }
+
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/player/updateTime',
+        type : "POST",
+        dataType: "json",
+        contentType : "application/json",
+        data: JSON.stringify(jsonObj),
+        beforeSend: function(xhr) {
+        },
+        success: function(result) {
+        },
+        error: function(request,msg,error) {
+        }
+    });
+    */
 }
 
 function updatePlayerStatus(user,course,player,play, status, duration, uid, video, timer, course, title, new_status)
