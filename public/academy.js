@@ -2058,7 +2058,7 @@ function checkFirebasePlayer()
             }
             else if(mode=="posttest")
             {
-                posttestArray = result.data.info.score.posttest
+                posttestArray = result.data.scores.posttest
                 console.log(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
@@ -2089,7 +2089,7 @@ function openExam(session,mode)
         },
         success: function(result) {
             $.isLoading( "hide" );
-            pretestArray = result.data.info.score.pretest
+            pretestArray = result.data.scores.pretest
             console.log(pretestArray)
 
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
@@ -2125,7 +2125,7 @@ function getFirebaseUser()
                 // Add topic item to table
                 // 
 
-                posttestArray = item.info.score.posttest
+                posttestArray = result.data.scores.posttest
                 console.log(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
