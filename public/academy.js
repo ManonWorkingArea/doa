@@ -2124,8 +2124,8 @@ function getFirebaseUser()
 
                 // Add topic item to table
                 // 
-
-                posttestArray = result.data.scores.posttest
+                course_id = item.scores.posttest
+                posttestArray = item.scores.posttest
                 console.log(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {

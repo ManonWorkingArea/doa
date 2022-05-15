@@ -1856,7 +1856,7 @@
 
                             <div class="quiz-action">
                                 <div class="btn-group d-flex" role="group" aria-label="...">
-                                    <button type="button" class="btn btn-primary w-100" onclick="submitContest();" id="send_btn">ส่งคำตอบ</button>
+                                    <button type="button" class="btn btn-primary w-100" onclick="submitContest('manual');" id="send_btn">ส่งคำตอบ</button>
                                 </div>
                             </div>
 
@@ -1881,7 +1881,7 @@
                     </div>
 
                     <div class="col-12 col-md-4">
-                        <button type="button" class="btn btn-primary w-100" onclick="submitContest();" id="send_btn">ส่งคำตอบ</button>
+                        <button type="button" class="btn btn-primary w-100" onclick="submitContest('manual');" id="send_btn">ส่งคำตอบ</button>
                     </div>
 
                 </div>
@@ -1905,13 +1905,13 @@
 
         <div class="modal fade" id="timeout-popup-alert" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded shadow border-0" onclick="timeupSubmit();">
+                <div class="modal-content rounded shadow border-0" onclick="submitContest('time');">
                     <div class="modal-body py-5">
                         <div class="text-center">
                             <div class="mt-4">
                                 <h4>เวลาในการทำแบบทดสอบหมดแล้ว.</h4>
                                 <p class="text-muted">ระบบจะทำการดึงข้อมูลสำรองของคุณ กรุณาคลิ๊กปุ่มส่งคำตอบเพื่อส่งข้อมูลการทำแบบทดสอบของคุณมาที่ระบบ...</p>
-                                <a href="javascript:void(0);" class="btn w-100 btn-lg btn-primary" onclick="timeupSubmit();">ส่งคำตอบ <i class="uil uil-angle-right-b align-middle"></i></a>
+                                <a href="javascript:void(0);" class="btn w-100 btn-lg btn-primary" onclick="submitContest('time');">ส่งคำตอบ <i class="uil uil-angle-right-b align-middle"></i></a>
                             </div>
                         </div>
                     </div>
@@ -2101,7 +2101,7 @@
             })
         });
 
-        var countDownDate   = moment().add(10, 'minutes').toDate().getTime();
+        var countDownDate   = moment().add(1, 'minutes').toDate().getTime();
 
         function timecheck() 
         {
@@ -2131,8 +2131,8 @@
                         clearInterval();
                         $("#demo").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
                         $(".show-time-meter").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
-                        //$('#timeout-popup-alert').modal('show');
-                        //$('#send_btn').remove();
+                        $('#timeout-popup-alert').modal('show');
+                        $('#send_btn').remove();
                     }
                 }, 1000);
             }
@@ -2150,7 +2150,7 @@
             location.reload();
         }
 
-        function submitContest() {
+        function submitContest(type) {
 
             var numberOfRadio         = $('.quiz-item').length
             var numberOfCheckedRadio  = $('input:radio:checked').length
@@ -2159,11 +2159,11 @@
             var objective   = $("#objective").val();
                 // EXAM INPUT DATA
 
-            if(numberOfCheckedRadio<numberOfRadio)
+            if(numberOfCheckedRadio<numberOfRadio && type=='manual')
             {
                 alert("ยังทำแบบทดสอบไม่ครบ");
             }
-            else
+            else if(type=='time')
             {
                 var rawArray        = new Array(); 
                 var now             = moment().toDate().getTime();
@@ -2194,6 +2194,7 @@
                 var mode      = $.urlParam('mode');
                 var token     = Cookies.get('__session');
 
+                /*
                 $.ajax({
                     url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=' + course,
                     type : "GET",
@@ -2372,17 +2373,18 @@
                     }
                 });
 
-                
+                */
 
-                /*
-                
+            
                 $.ajax(
                 {
                     type : "POST",  
                     url : "https://api.fti.academy/api/exam/record-firebase",
                     data : {'raw':rawArray, 'session':session, 'trigger':trigger, 'objective':objective, 'token':token, 'mode':mode, 'course':course},
                     dataType: "json",
-                    contentType : "text/plain",
+                    cache : true,
+                    processData: true,
+                    contentType : "application/json",
                     beforeSend: function(xhr) 
                     {
                         xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
@@ -2392,11 +2394,11 @@
                     {
                         if(mode==="pretest")
                         {
-                            window.location.href = "course.html";
+                            //window.location.href = "course.html";
                         }
                         else
                         {
-                            window.location.href = "exam_wait.html";
+                            //window.location.href = "exam_wait.html";
                         }
                     },
                     error: function(request,msg,error) {
@@ -2412,7 +2414,7 @@
                     }
                 });
 
-                */
+                
             }
         }
 
