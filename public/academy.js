@@ -2047,7 +2047,7 @@ function checkFirebasePlayer()
 
             if(mode=="pretest")
             {
-                pretestArray = result.data.info.score.pretest
+                pretestArray = result.data.scores.pretest
                 console.log(pretestArray)
     
                 if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
@@ -2190,10 +2190,11 @@ function getFirebasePlayer()
             $(".lesson-day").html(result.data.info.days + " วัน");
             $(".lesson-topic").html(result.data.info.topic);
             $(".lesson-detail").html(result.data.info.description);
+            $(".lesson-poster").attr("src",result.data.info.poster);
 
             console.log(result.data.players)
 
-            pretestArray = result.data.info.score.pretest
+            pretestArray = result.data.scores.pretest
             console.log(pretestArray)
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
             {
@@ -2288,7 +2289,7 @@ function getFirebasePlayer()
 
             if(finish_item>12)
             {
-                posttestArray = result.data.info.score.posttest
+                posttestArray = result.data.scores.posttest
                 console.log(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
