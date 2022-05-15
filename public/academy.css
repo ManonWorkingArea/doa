@@ -1311,6 +1311,7 @@ hr.hr-text::before {
   border-radius: 4px;
   width: 75px;
   display: block;
+  text-align: center;
 }
 
 .topic-name-list
@@ -1368,6 +1369,17 @@ hr.hr-text::before {
 {
   display: none;
 }
+
+.user-block
+{
+  display: none;
+}
+
+.guest-block
+{
+  display: none;
+}
+
 
 .topic-name-title small 
 {

@@ -1280,11 +1280,17 @@ function renderProfile(){
     {
         $('#user-nav').hide();
         $('#guest-nav').show();
+
+        $('.user-block').hide();
+        $('.guest-block').show();
     }
     else
     {
         $('#user-nav').show();
         $('#guest-nav').hide();
+
+        $('.user-block').show();
+        $('.guest-block').hide();
 
         var student = JSON.parse(student);
 
@@ -1899,49 +1905,6 @@ function accessLobby(){
 }
 
 function callClick(root,inner){
-    var access      = localStorage.getItem('__access');
-    var access      = JSON.parse(access);
-    var student     = Cookies.get('__student');
-    var student     = JSON.parse(student);
-    var studentID   = student.permission.student_id;
-
-    /*
-    firebase.database().ref('data/' + studentID + '/exam/').orderByChild('contest').equalTo(access.contest_id).once("value", function(snapshot) 
-    {
-        console.log(snapshot.val());
-        snapshot.forEach(function(dataRow) 
-        {
-            firebase.database().ref('data/' + studentID + '/exam/' + dataRow.key).once("value", function(snapshot){
-              console.log(dataRow.key + " : " + snapshot.val().status);
-              if(snapshot.val().status==="accept")
-              {
-                var answer = {};
-                answer['quiz']    = root;
-                answer['answer']  = inner;
-                addAnswer(dataRow.key,studentID,answer);
-              }
-            });
-        });
-    });
-
-    */
-
-    /*
-    var ref         = firebase.database().ref('data/' + studentID + '/exam/');
-    var query       = ref.orderByChild('contest').equalTo(access.contest_id);
-    query.once('value', function(snapshot) {
-        if (snapshot.exists()){
-            var arr = snapshot.val();
-            var arr2 = Object.keys(arr);
-            var key = arr2[0];
-            var answer = {};
-            answer['quiz']    = root;
-            answer['answer']  = inner;
-            addAnswer(key,studentID,answer);
-        }
-    });
-
-    */
 }
 
 
@@ -2210,7 +2173,7 @@ function getFirebasePlayer()
                                 +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='javascript:void(0);' class='topic-name-title'><strong>แบบทดสอบก่อนเรียน</strong></br><small>ทำแบบทดสอบก่อนเรียนแล้ว</small></a></p>"
                             +"</div>"
                         +"</th>"
-                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> "+pretestArray.result+"/50 ข้อ </p></td>"
+                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> "+pretestArray.result+" คะแนน</p></td>"
                     +"</tr>"
                     )
             } 
