@@ -58,15 +58,15 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="score-result text-center"> 
-                                                <h1 class="success">ท่านได้ทำข้อสอบเรียบร้อยแล้ว</h1>
-                                                <p>ระบบได้รับคำตอบของคุณแล้ว ทางทีมงานจะทำการประกาศผลสอบ ตามประกาศหน้าเว็บ</p>
+                                                <h1 class="success" id="result-score"></h1>
+                                                <p>คุณสามารถเริ่มต้นการเรียนตามหลักสูตรได้แล้วค่ะ</p>
                                             </div>
                                         
                                         </div>
 
                                         <div class="col-lg-12 mb-0">
                                             <div class="d-grid">
-                                                <a href="javascript:void(0);" class="btn btn-primary" onclick="openCallback();">กลับหน้าหลัก</a>
+                                                <a href="javascript:void(0);" class="btn btn-primary" onclick="openCallback();">เข้าเรียน</a>
                                             </div>
                                         </div>
                                     </div>
@@ -112,6 +112,7 @@
         // Usage
         $.cachedScript( "academy" ).done(function( script, textStatus ) {
         console.log( "load Default JS : " + textStatus );
+        renderResult();
         });
         </script>
         <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
@@ -126,7 +127,9 @@
         <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
         <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
         
+        
         <script>
+        
         Pusher.logToConsole = false;    
         var pusher = new Pusher('4b7d1b6027780eadf73d',{
             cluster: 'ap1'

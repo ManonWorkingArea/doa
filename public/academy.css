@@ -1358,3 +1358,20 @@ hr.hr-text::before {
 {
   float: right;
 }
+
+#user-nav
+{
+  display: none;
+}
+
+#guest-nav
+{
+  display: none;
+}
+
+.topic-name-title small 
+{
+  font-size: 13px;
+  color: #0d6efd;
+  line-height: 10px;
+}

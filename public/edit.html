@@ -349,6 +349,24 @@
 
     <!-- javascript -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+            dataType: "script",
+            cache: false,
+            url: url + ".js?v=" + $.now()
+        });
+        return jQuery.ajax( options );
+        };
+        // Usage
+        $.cachedScript( "academy" ).done(function( script, textStatus ) {
+        console.log( "load Default JS : " + textStatus );
+        __session("edit");
+        renderSession();
+        renderEditProfile();
+        });
+        </script>
     <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
@@ -360,7 +378,7 @@
     <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
     <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
     <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
-    <script src="academy.js"></script>
+    
     <script>
     //checkLobby();
     </script>
@@ -368,9 +386,7 @@
     <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
     <script>
         
-    __session("edit");
-    renderSession();
-    renderEditProfile();
+    
 
     Pusher.logToConsole = false;    
     var pusher = new Pusher('4b7d1b6027780eadf73d',{

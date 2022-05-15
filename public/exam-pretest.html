@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>กรมวิชาการเกษตร - แบบทดสอบ</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="author" content="TechyDevs">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- http-equiv -->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv='cache-control' content='no-cache'>
+        <meta http-equiv='expires' content='0'>
+        <meta http-equiv='pragma' content='no-cache'>
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Ffavicon.ico?alt=media&token=9729026e-83ca-4f97-a3b2-79ded306ab11">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css"/>
+        <!-- Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.8.55/css/materialdesignicons.min.css" rel="stylesheet" media="all">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+        <!-- Main Css -->
+        <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fstyle.css?alt=media&token=a8ee131c-7ee8-45d2-9005-31624ddfb8e6" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fcolors%2Fdefault.css?alt=media&token=53dc6813-4ba8-4505-9100-e0928e52282b" rel="stylesheet" id="color-opt">
+        
+        <link href="academy.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    </head>
+
+    <body>
+        <!-- Loader -->
+        <!-- <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Loader -->
+        
+        <!-- Navbar STart -->
+        <header id="topnav" class="defaultscroll sticky">
+            <div class="container">
+                <!-- Logo container-->
+                <a class="logo" href="index.html">
+                    <span class="logo-light-mode">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
+                    </span>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-dark-mode" alt="">
+                </a>
+
+                <!-- End Logo container-->
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </div>
+                </div>
+                    <ul class="buy-button list-inline mb-0">
+                        <li class="list-inline-item mb-0">
+                            <a href="student.html">
+                            <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
+                            </a>
+                        </li>
+                        <li class="list-inline-item mb-0">
+                            <a href="javascript:void(0);" onclick="logout();">
+                                <div class="btn btn-icon btn-pills btn-danger"><i data-feather="power" class="fea icon-sm"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+            
+                    <div id="navigation">
+                        <ul class="navigation-menu">
+                            <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
+                            <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
+                            <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
+                            <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
+                            <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
+                            <li><a href="student.html" target="" class="sub-menu-item">ผู้อบรม</a></li>
+                        </ul>
+                    </div>
+            </div><!--end container-->
+        </header><!--end header-->
+        <!-- Navbar End -->
+        
+        <section class="section section-exam">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mt-2 pt-2 pt-sm-0">
+                        <h5 class="text-danger">*** คำแนะนำในการทำแบบทดสอบ ***</h5>
+                        <div class="d-flex key-feature align-items-center p-3 rounded shadow mt-4 bg-danger text-white">
+                            1.แบบทดสอบจะเริ่มจับเวลาเมื่อเริ่มทำแบบทดสอบ<br>
+                            2.หากพบว่านาฬิกาจับเวลาแสดงเวลาผิด ให้หยุดทำแบบทดสอบ ทำการบันทึกภาพหน้าจอ และแจ้งทีมงานผ่านช่องทาง Line OA : @ftiacademy https://lin.ee/xBi6Nn<br>
+                            3.ห้ามปิดหน้าต่างนี้ถ้ายังทำแบบทดสอบไม่ครบทุกข้อ และยังไม่ได้กดส่งคำตอบ เพราะข้อมูลการทำแบบทดสอบของคุณจะสูญหาย<br>
+                            4.หากคุณใช้งานบน in-app Browser ผ่านโปรแกรม Line หรือ Facebook บนมือถือ ต้องทำการทำแบบทดสอบและกดส่งคำตอบ ก่อนปิดหน้าต่างเว็บ เพื่อป้องกันข้อมูลสูญหาย<br>
+                            5.คะแนนของคุณจะถูกประมวลผลหลังจากสอบเสร็จ กรุณารอประกาศจากทีมงานเพื่อตรวจสอบผลการทดสอบอีกครั้ง<br>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="objective" name="objective" required="" value="แบบทดสอบก่อนเรียนรุ่นที่ 2">
+                    <input type="hidden" id="token" name="token" required="" value="fGpuTMqChlsWQkz6sHZDZ6BEqtRfZi">
+                    <input type="hidden" id="session" name="session" required="">
+
+                    <div class="col-lg-12 mt-2 pt-2 mb-5 pt-sm-0">
+                        <div class="card blog blog-detail border-0 shadow rounded">
+
+                            <div class="toolbar">
+                                <span class="label">เวลาคงเหลือ</span>
+                                <h1 id="demo" class="show-time-meter">00:00:00</h1>
+                                <hr>
+                                <span class="label">ทำแบบทดสอบไปแล้ว</span>
+                                <h1 id="score">
+                                    <span class="current show-exam-meter">0/50</span>
+                                </h1>
+                            </div>
+
+                            <div class="quiz" id="contest-table">
+                                <div class="quiz-item">
+                                    <div class="quiz-question">
+                                        <span class="quiz-number">01</span>
+                                        <span class="quiz-text">
+                                            <p><span id="docs-internal-guid-2cfef551-7fff-d528-815f-330ffde359e9"></span></p>
+                                            <p><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Sarabun, sans-serif; font-size: 16pt; white-space: pre-wrap;">ข้อใดเป็นการป้องกันกำจัดแมลงศัตรูพืชโดยชีววิธี</span></p>
+                                        </span>
+                                    </div>
+                                    <ul data-quiz-question="386" id="answer-Qz-DOA_164589324933642">
+                                        <li class="quiz-answer" data-quiz="386" data-answer="1433">
+                                            <label for="1433">
+                                            <div class="check"><input type="radio" id="1433" name="386" value="1433" data-root="386" data-inner="1433" onclick="callClick('386','1433');"></div>
+                                            <div class="text">การใช้สารยับยั้งการลอกคราบของแมลง</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="386" data-answer="1431">
+                                            <label for="1431">
+                                            <div class="check"><input type="radio" id="1431" name="386" value="1431" data-root="386" data-inner="1431" onclick="callClick('386','1431');"></div>
+                                            <div class="text">การไขน้ำท่วมแปลงผักก่อนปลูก</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="386" data-answer="1434">
+                                            <label for="1434">
+                                            <div class="check"><input type="radio" id="1434" name="386" value="1434" data-root="386" data-inner="1434" onclick="callClick('386','1434');"></div>
+                                            <div class="text">ถูกทั้งข้อ การไขน้ำท่วมแปลงผักก่อนปลูก และ การใช้แตนเบียนทำลายไข่หนอนกออ้อย</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="386" data-answer="1432">
+                                            <label for="1432">
+                                            <div class="check"><input type="radio" id="1432" name="386" value="1432" data-root="386" data-inner="1432" onclick="callClick('386','1432');"></div>
+                                            <div class="text">การใช้แตนเบียนทำลายไข่หนอนกออ้อย</div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="quiz-item">
+                                    <div class="quiz-question">
+                                        <span class="quiz-number">02</span>
+                                        <span class="quiz-text">
+                                            <p><span id="docs-internal-guid-ed6b977c-7fff-2435-9a1d-148f07649b40"><span style="font-size: 16pt; font-family: Sarabun, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">สารในข้อใดมีประสิทธิภาพป้องกันกำจัดเพลี้ยจั๊กจั่น และแมลงหวี่ขาว</span></span><br></p>
+                                        </span>
+                                    </div>
+                                    <ul data-quiz-question="390" id="answer-Qz-DOA_164589405365900">
+                                        <li class="quiz-answer" data-quiz="390" data-answer="1450">
+                                            <label for="1450">
+                                            <div class="check"><input type="radio" id="1450" name="390" value="1450" data-root="390" data-inner="1450" onclick="callClick('390','1450');"></div>
+                                            <div class="text">ถูกทั้งข้อ เชื้อไวรัสเอ็นพีวี (NPV) และ บูโพรเฟซิน</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="390" data-answer="1449">
+                                            <label for="1449">
+                                            <div class="check"><input type="radio" id="1449" name="390" value="1449" data-root="390" data-inner="1449" onclick="callClick('390','1449');"></div>
+                                            <div class="text">เฮกซีไทอะซ็อกซ์</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="390" data-answer="1447">
+                                            <label for="1447">
+                                            <div class="check"><input type="radio" id="1447" name="390" value="1447" data-root="390" data-inner="1447" onclick="callClick('390','1447');"></div>
+                                            <div class="text">เชื้อไวรัสเอ็นพีวี (NPV)</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="390" data-answer="1448">
+                                            <label for="1448">
+                                            <div class="check"><input type="radio" id="1448" name="390" value="1448" data-root="390" data-inner="1448" onclick="callClick('390','1448');"></div>
+                                            <div class="text">บูโพรเฟซิน</div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="quiz-item">
+                                    <div class="quiz-question">
+                                        <span class="quiz-number">03</span>
+                                        <span class="quiz-text">
+                                            <p><span id="docs-internal-guid-1bf84776-7fff-ff6f-2f49-41c141a6dc40"></span></p>
+                                            <p><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Sarabun, sans-serif; font-size: 16pt; white-space: pre-wrap;">ช่องทางสำคัญมากที่สุดที่เกษตรกรมีโอกาสจะได้รับอันตรายจากสารเคมีกำจัดศัตรูพืช</span></p>
+                                        </span>
+                                    </div>
+                                    <ul data-quiz-question="410" id="answer-Qz-DOA_164589535591849">
+                                        <li class="quiz-answer" data-quiz="410" data-answer="1527">
+                                            <label for="1527">
+                                            <div class="check"><input type="radio" id="1527" name="410" value="1527" data-root="410" data-inner="1527" onclick="callClick('410','1527');"></div>
+                                            <div class="text">ทางปาก</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="410" data-answer="1529">
+                                            <label for="1529">
+                                            <div class="check"><input type="radio" id="1529" name="410" value="1529" data-root="410" data-inner="1529" onclick="callClick('410','1529');"></div>
+                                            <div class="text">ทางผิวหนัง</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="410" data-answer="1530">
+                                            <label for="1530">
+                                            <div class="check"><input type="radio" id="1530" name="410" value="1530" data-root="410" data-inner="1530" onclick="callClick('410','1530');"></div>
+                                            <div class="text">ทางการหายใจ </div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="410" data-answer="1528">
+                                            <label for="1528">
+                                            <div class="check"><input type="radio" id="1528" name="410" value="1528" data-root="410" data-inner="1528" onclick="callClick('410','1528');"></div>
+                                            <div class="text">ทางเข็มฉีดยา</div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="quiz-item">
+                                    <div class="quiz-question">
+                                        <span class="quiz-number">04</span>
+                                        <span class="quiz-text">
+                                            <p><span id="docs-internal-guid-6292dfa6-7fff-2ab7-2331-2f3f5bc14f2e"></span></p>
+                                            <p><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Sarabun, sans-serif; font-size: 16pt; white-space: pre-wrap;">ฉลากของวัตถุอันตรายที่ถูกต้องควรมีลักษณะอย่างไร</span></p>
+                                        </span>
+                                    </div>
+                                    <ul data-quiz-question="422" id="answer-Qz-DOA_164589595766910">
+                                        <li class="quiz-answer" data-quiz="422" data-answer="1578">
+                                            <label for="1578">
+                                            <div class="check"><input type="radio" id="1578" name="422" value="1578" data-root="422" data-inner="1578" onclick="callClick('422','1578');"></div>
+                                            <div class="text">ถูกทุกข้อ</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="422" data-answer="1577">
+                                            <label for="1577">
+                                            <div class="check"><input type="radio" id="1577" name="422" value="1577" data-root="422" data-inner="1577" onclick="callClick('422','1577');"></div>
+                                            <div class="text">ใช้ภาษาไทย และภาษาต่างประเทศอื่นๆ เพื่อให้ผู้ใช้ที่เป็นแรงงานต่างด้าวเข้าใจได้ง่าย</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="422" data-answer="1575">
+                                            <label for="1575">
+                                            <div class="check"><input type="radio" id="1575" name="422" value="1575" data-root="422" data-inner="1575" onclick="callClick('422','1575');"></div>
+                                            <div class="text">มีขนาดที่เหมาะสมกับผลิตภัณฑ์และสามารถมองเห็นได้ชัดเจน</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="422" data-answer="1576">
+                                            <label for="1576">
+                                            <div class="check"><input type="radio" id="1576" name="422" value="1576" data-root="422" data-inner="1576" onclick="callClick('422','1576');"></div>
+                                            <div class="text">มีการยกตัวอย่างของผู้ที่เคยใช้แล้วได้ผลดี แนบประกอบในฉลาก</div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="quiz-item">
+                                    <div class="quiz-question">
+                                        <span class="quiz-number">05</span>
+                                        <span class="quiz-text">
+                                            <p><span id="docs-internal-guid-5f3e092b-7fff-6611-223c-e300ef4b5e55"></span></p>
+                                            <p><span style="background-color: transparent; color: rgb(0, 0, 0); font-family: Sarabun, sans-serif; font-size: 16pt; white-space: pre-wrap;">ข้อใดกล่าวถูกต้องเกี่ยวกับการพ่นในอัตราสูงหรือแบบน้ำมาก (High volume)</span></p>
+                                        </span>
+                                    </div>
+                                    <ul data-quiz-question="380" id="answer-Qz-DOA_164589291377287">
+                                        <li class="quiz-answer" data-quiz="380" data-answer="1407">
+                                            <label for="1407">
+                                            <div class="check"><input type="radio" id="1407" name="380" value="1407" data-root="380" data-inner="1407" onclick="callClick('380','1407');"></div>
+                                            <div class="text">การพ่นในอัตรา 20 - 80 ลิตรต่อไร่</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="380" data-answer="1408">
+                                            <label for="1408">
+                                            <div class="check"><input type="radio" id="1408" name="380" value="1408" data-root="380" data-inner="1408" onclick="callClick('380','1408');"></div>
+                                            <div class="text">การพ่นในอัตรา 3.5 - 20 ลิตรต่อไร่</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="380" data-answer="1409">
+                                            <label for="1409">
+                                            <div class="check"><input type="radio" id="1409" name="380" value="1409" data-root="380" data-inner="1409" onclick="callClick('380','1409');"></div>
+                                            <div class="text">การพ่นในอัตรา 80 ลิตรต่อไร่ ขึ้นไป</div>
+                                            </label>
+                                        </li>
+                                        <li class="quiz-answer" data-quiz="380" data-answer="1410">
+                                            <label for="1410">
+                                            <div class="check"><input type="radio" id="1410" name="380" value="1410" data-root="380" data-inner="1410" onclick="callClick('380','1410');"></div>
+                                            <div class="text">ถูกทุกข้อ</div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="quiz-action">
+                                <div class="btn-group d-flex" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-primary w-100" onclick="submitContest('manual');" id="send_btn">ส่งคำตอบ</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="footer_toolbar">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-6 col-md-4"> 
+                        <span class="show-text-meter">ทำไปแล้ว</span>
+                        <span class="show-exam-meter"></span>
+                    </div>
+
+                    <div class="col-6 col-md-4">
+                        <span class="show-text-meter">เวลาคงเหลือ</span>
+                        <span class="show-time-meter">00:00:00</span>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <button type="button" class="btn btn-primary w-100" onclick="submitContest('manual');" id="send_btn">ส่งคำตอบ</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="record-popup-alert" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded shadow border-0">
+                    <div class="modal-body py-5">
+                        <div class="text-center">
+                            <div class="mt-4">
+                                <h4>กำลังบันทึกคำตอบของคุณ.</h4>
+                                <p class="text-muted">เพื่อป้องกันข้อมูลการทำแบบทดสอบสูญหาย อย่าปิดการแจ้งเตือนและหน้าต่างนี้...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="timeout-popup-alert" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded shadow border-0" onclick="submitContest('time');">
+                    <div class="modal-body py-5">
+                        <div class="text-center">
+                            <div class="mt-4">
+                                <h4>เวลาในการทำแบบทดสอบหมดแล้ว.</h4>
+                                <p class="text-muted">ระบบจะทำการดึงข้อมูลสำรองของคุณ กรุณาคลิ๊กปุ่มส่งคำตอบเพื่อส่งข้อมูลการทำแบบทดสอบของคุณมาที่ระบบ...</p>
+                                <a href="javascript:void(0);" class="btn w-100 btn-lg btn-primary" onclick="submitContest('time');">ส่งคำตอบ <i class="uil uil-angle-right-b align-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-py-60">
+                        <div class="row">
+                            <div class="col-6 mb-0 mb-md-4 pb-0">
+                                <p class="">ติดต่อสอบถามข้อมูล</p>
+                                <strong>กรมวิชาการเกษตร</strong><br>
+                                กลุ่มสารวัตรเกษตร กรมวิชาการเกษตร<br>
+                                เบอร์โทร : 02-940-5434 / 02-940-6670 ต่อ 121-124<br>
+                                email: inspector.doa@gmail.com
+                            </div>
+                            <!--end col-->
+                            <div class="col-6 mb-0 mb-md-4 pb-0">
+                                <p class="">ติดต่อสอบถามข้อมูล</p>
+                                <strong>สภาอุตสาหกรรมแห่งประเทศไทย</strong><br>
+                                FTI Academy <br> 
+                                เบอร์โทร : 1453 กด 12<br>
+                                email: thassaneewanr@fti.or.th
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-py-30 footer-bar">
+                <div class="container text-center">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <div class="text-sm-start">
+                                <p class="mb-0">
+                                    © 2022 กรมวิชาการเกษตร. Engine with <i class="mdi mdi-heart text-danger"></i> by <a href="https://fti.academy/" target="_blank" class="text-reset">fti.academy</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="browser"></span>
+        </footer>
+
+        <!-- Cookies Start -->
+        <!-- <div class="cookie-popup bg-white shadow rounded py-3 px-4">
+            <p class="text-muted mb-0">This website uses cookies to provide you with a great user experience. By using it, you accept our <a href="https://shreethemes.in" target="_blank" class="text-success h6">use of cookies</a></p>
+            <div class="cookie-popup-actions text-end">
+                <button><i class="uil uil-times text-dark fs-4"></i></button>
+            </div>
+        </div> -->
+        <!--Note: Cookies Js including in plugins.init.js (path like; js/plugins.init.js) and Cookies css including in _helper.scss (path like; scss/_helper.scss)-->
+        <!-- Cookies End -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>
+        <!-- Back to top -->
+
+        <!-- javascript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script>
+        jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+            dataType: "script",
+            cache: false,
+            url: url + ".js?v=" + $.now()
+        });
+        return jQuery.ajax( options );
+        };
+        // Usage
+        $.cachedScript( "academy" ).done(function( script, textStatus ) {
+        console.log( "load Default JS : " + textStatus );
+        __session("exam-pretest");
+        checkFirebasePlayer();
+        });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
+        
+        <!-- Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <!-- Icons -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+        <!-- Main Js -->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
+        <script>
+        //checkLobby();
+        </script>
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+        <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
+        
+        <script>
+
+        
+
+        var token   = Cookies.get('__session');
+        $('#session').val(token);
+
+        Pusher.logToConsole = false;    
+        var pusher = new Pusher('4b7d1b6027780eadf73d',{
+            cluster: 'ap1'
+        });
+        var channel = pusher.subscribe('my-channel');
+        var token   = Cookies.get('__session');
+        channel.bind('my-event', function(data)
+        {
+            if(data.mode == "clear"){
+                logout();
+            }
+            if(data.token==token){
+                switch (data.mode){
+                    case "logout":
+                    logout()
+                    break;
+                    case "reload":
+                    resetData();
+                    break;
+                    case "check":
+                    online();
+                    break;
+                    case "alert":
+                    remoteAlert(data.title,data.text);
+                    break;
+                }
+            }
+        });
+        function remoteAlert(title,text)
+        {
+            $.alert(text,function(){});
+        }
+        function online()
+        {
+            if(window.matchMedia("(max-width: 767px)").matches){
+                device = "mobile";
+            } else{
+                device = "desktop";
+            }
+            $.ajax(
+            {
+                type : "POST",  
+                url : "https://player.fti.academy/api/online/" + token + "/home/" + device,
+                dataType : "json",
+                success : function(response){}
+            });
+        }
+        </script>
+        <style>
+        .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
+        .alert_msg{position:fixed;width:280px;left:50%;margin-left:-140px;top:20%;z-index:1000;border:1px solid #ccc;border-radius:4px;box-shadow:0 0 15px rgba(0,0,0,.3);background:#fff;animation: alertshow .2s ease}
+        .alert_content{padding:20px;font-size:14px;text-align:left}
+        .alert_buttons{text-align:center;border-top:1px solid #ccc;-webkit-user-select:none}
+        .alert_buttons .alert_btn{display:inline-block;width:50%;border:none;height:45px;line-height:45px;font-size:14px;outline:0;-webkit-appearance:none;background:#fff;-webkit-tap-highlight-color:transparent;border-radius:0 0 4px 4px;}
+        .alert_buttons .alert_btn:only-child{width:100%}
+        .alert_buttons .alert_btn:first-child+.alert_btn{border-left:1px solid #ccc;border-radius:0 0 4px 0;}
+        .alert_tips{position:fixed;z-index:10176523;width:100%;top:55%;pointer-events:none;text-align:center;}
+        .alert_tips div{box-siziong:border-box;display:inline-block;padding:15px;border-radius:10px;background:rgba(0,0,0,.7);min-width:50px;max-width:230px;text-align:center;color:#fff;animation: tipsshow 3s .01s ease;opacity:0;}
+        @keyframes alertshow {0% {opacity: 0;transform: scale(.5)}70% {opacity: .7;transform: scale(1.05)}100% {opacity: 1;transform: scale(1)}}
+        @keyframes tipsshow {0% {opacity: 0;transform:scale(1.4) rotateX(-360deg)}20% {opacity:1;transform:scale(1) rotateX(0deg)}80% {opacity:1;transform:scale(1) rotateX(0deg)}100% {opacity:0;transform:scale(1.4) rotateX(360deg)}}
+        </style>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+        <script>
+
+        $(function() {
+            //console.log("ready!");
+            //renderExam();
+
+            var parent  = $("#contest-table");
+            var divs    = parent.children();
+            var item    = parent.children("div.quiz-number");
+            var order   = 0;
+            while (divs.length) {
+                parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+                order++;
+            }
+
+            counter = 1; //initialze to 1
+            //looping through class div -> class abc
+            $("#contest-table .quiz-item").each(function() {
+                //getting span where count is display replace with new
+                $(this).find('.quiz-number').html(counter.toString().padStart(2, '0') + ".");
+                    counter++;
+            })
+
+            $('#record-popup-alert').modal({
+                backdrop: 'static',
+                keyboard: false  // to prevent closing with Esc button (if you want this too)
+            })
+            
+            $('#timeout-popup-alert').modal({
+                backdrop: 'static',
+                keyboard: false  // to prevent closing with Esc button (if you want this too)
+            })
+        });
+
+        var countDownDate   = moment().add(1, 'minutes').toDate().getTime();
+
+        function timecheck() 
+        {
+            if(countDownDate==="")
+            {
+                //location.reload();
+            }
+            else
+            {
+                setInterval(function() 
+                {
+                    var now         = moment().toDate().getTime();
+                    var distance    = countDownDate - now;
+                    var days        = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours       = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes     = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds     = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    hours           = hours.toString().padStart(2, '0');
+                    minutes         = minutes.toString().padStart(2, '0')
+                    seconds         = seconds.toString().padStart(2, '0')
+
+                    $("#demo").html(hours + ":" + minutes + ":" + seconds)
+                    $(".show-time-meter").html(hours + ":" + minutes + ":" + seconds);
+
+                    if (distance < 0){
+                        clearInterval();
+                        $("#demo").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
+                        $(".show-time-meter").html("เวลาหมดแล้ว กรุณาส่งคำตอบ");
+                        $('#timeout-popup-alert').modal('show');
+                        $('#send_btn').remove();
+                    }
+                }, 1000);
+            }
+        }
+
+        $('.quiz input').on('change', function(){
+            root  = $(this).attr('data-root');
+            inner = $(this).attr('data-inner');
+            $('[data-quiz="'+ root +'"]').removeClass('active');
+            $('[data-answer="'+ inner +'"]').addClass('active');
+            getCurrentScore()
+        });
+
+        function examExit() {
+            location.reload();
+        }
+
+        function submitContest2(type) {
+
+            var numberOfRadio         = $('.quiz-item').length
+            var numberOfCheckedRadio  = $('input:radio:checked').length
+
+            // EXAM INPUT DATA
+            var objective   = $("#objective").val();
+                // EXAM INPUT DATA
+
+            if(numberOfCheckedRadio<numberOfRadio && type=='manual')
+            {
+                alert("ยังทำแบบทดสอบไม่ครบ");
+            }
+            else if(type=='time')
+            {
+                var rawArray        = new Array(); 
+                var now             = moment().toDate().getTime();
+                var arrayLength     = quizArray.length;
+                var successAction   = "0";
+                var trigger         = $("#demo").html()
+
+                $('#record-popup-alert').modal('show');
+                
+                progressStatus = true;
+
+                $('input:radio').each( function(){
+                    var radio = $(this)[0];
+                    if($(this).is(':checked')) {
+                        root   = $(this).attr('data-root');
+                        inner  = $(this).attr('data-inner');
+                        var newdata = {
+                            "quiz"   : root,
+                            "answer" : inner,
+                            "timestamp" : now,
+                        };
+                        rawArray.push(newdata);
+                    }
+                });
+
+                var code      = $.urlParam('token');
+                var course    = $.urlParam('session');
+                var mode      = $.urlParam('mode');
+                var token     = Cookies.get('__session');
+
+                /*
+                $.ajax({
+                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=' + course,
+                    type : "GET",
+                    dataType: "json",
+                    contentType : "text/plain",
+                    beforeSend: function(xhr) {
+                    },
+                    success: function(result) {
+                        $.isLoading( "hide" );
+
+                        if(mode=="pretest")
+                        {
+                            posttestArray = result.data.info.score.posttest
+                            if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) 
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "pretest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                },
+                                                "posttest": {
+                                                    "structure": posttestArray.structure,
+                                                    "title": posttestArray.title,
+                                                    "trigger":posttestArray.trigger,
+                                                    "adddate":posttestArray.adddate,
+                                                    "result":posttestArray.result
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "pretest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if(mode=="posttest")
+                        {
+                            pretestArray = result.data.info.score.pretest
+
+                            if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "posttest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                },
+                                                "pretest": {
+                                                    "structure": pretestArray.structure,
+                                                    "title": pretestArray.title,
+                                                    "trigger":pretestArray.trigger,
+                                                    "adddate":pretestArray.adddate,
+                                                    "result":pretestArray.result
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var jsonObj = 
+                                {
+                                    "user": token,
+                                    "course": course,
+                                    "data": {
+                                        "info": {
+                                            "title": result.data.info.title,
+                                            "description":result.data.info.description,
+                                            "period": result.data.info.period,
+                                            "time": result.data.info.time,
+                                            "topic": result.data.info.topic,
+                                            "days": result.data.info.days,
+                                            "uid": result.data.info.uid,
+                                            "date": result.data.info.date,
+                                            "score": {
+                                                "posttest": {
+                                                    "structure": rawArray,
+                                                    "title": objective,
+                                                    "trigger":trigger,
+                                                    "adddate":now,
+                                                    "result":""
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        $.ajax({
+                            url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course',
+                            type : "POST",
+                            dataType: "json",
+                            contentType : "application/json",
+                            data: JSON.stringify(jsonObj),
+                            beforeSend: function(xhr) {
+                                xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                                xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+                            },
+                            success: function(result) {
+                                if(mode==="pretest")
+                                {
+                                    window.location.href = "exam_wait.html?target=course&session=" + course;
+                                }
+                                else if(mode==="posttest")
+                                {
+                                    window.location.href = "exam_wait.html?target=student";
+                                }
+                            },
+                            error: function(request,msg,error) {
+                            }
+                        });
+                    },
+                    error: function(request,msg,error) {
+                    }
+                });
+
+                */
+
+            
+                $.ajax(
+                {
+                    type : "POST",  
+                    url : "https://api.fti.academy/api/exam/record-firebase",
+                    data : {'raw':rawArray, 'session':session, 'trigger':trigger, 'objective':objective, 'token':token, 'mode':mode, 'course':course},
+                    dataType: "json",
+                    cache : false,
+                    beforeSend: function(xhr) 
+                    {
+                        xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                        xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+                    },
+                    success : function(response)
+                    {
+                        if(mode==="pretest")
+                        {
+                            //window.location.href = "course.html";
+                        }
+                        else
+                        {
+                            //window.location.href = "exam_wait.html";
+                        }
+                    },
+                    error: function(request,msg,error) {
+                        if(request.status===0){
+                            submitContest() 
+                        }
+                        else if(request.status===500){
+                            submitContest() 
+                        }
+                        else{
+                            errorMSG = request.responseJSON;
+                        }
+                    }
+                });
+
+                
+            }
+        }
+
+        function submitContest(type) {
+
+            var numberOfRadio         = $('.quiz-item').length
+            var numberOfCheckedRadio  = $('input:radio:checked').length
+
+            // EXAM INPUT DATA
+            var objective   = $("#objective").val();
+            // EXAM INPUT DATA
+            exam_process = false;
+
+            if(type=='manual')
+            {
+                if(numberOfCheckedRadio<numberOfRadio)
+                {
+                    alert("ยังทำแบบทดสอบไม่ครบ");
+                    exam_process = false;
+                }
+                else
+                {
+                    exam_process = true;
+                }
+            }
+            else if(type=='time')
+            {
+                exam_process = true;
+            }
+
+            if(exam_process)
+            {
+                // * PROCESS EXAM DATA * //
+                var rawArray        = new Array(); 
+                var now             = moment().toDate().getTime();
+                var arrayLength     = quizArray.length;
+                var successAction   = "0";
+                var trigger         = $("#demo").html()
+                var exam            = $("#token").val()
+
+                $('#record-popup-alert').modal('show');
+                
+                progressStatus = true;
+
+                $('input:radio').each( function(){
+                    var radio = $(this)[0];
+                    if($(this).is(':checked')) {
+                        root   = $(this).attr('data-root');
+                        inner  = $(this).attr('data-inner');
+                        var newdata = {
+                            "quiz"   : root,
+                            "answer" : inner,
+                            "timestamp" : now,
+                        };
+                        rawArray.push(newdata);
+                    }
+                });
+
+                var code      = $.urlParam('token');
+                var course    = $.urlParam('session');
+                var mode      = $.urlParam('mode');
+                var token     = Cookies.get('__session');
+                
+                $.ajax(
+                {
+                    type : "POST",  
+                    url : "https://api.fti.academy/api/exam/record-firebase",
+                    data :{"raw":rawArray,"session":token, "trigger":trigger, "objective":objective, "token":exam, "mode":mode, "course":course},
+                    dataType: "json",
+                    cache : false,
+                    beforeSend: function(xhr) 
+                    {
+                        xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                        xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+                    },
+                    success : function(response)
+                    {
+                        if(mode==="pretest")
+                        {
+                            window.location.href = "exam_result.html?target=course&session=" + course + "&mode=" + mode + "&result=" + response.result;
+                        }
+                        else
+                        {
+                            window.location.href = "exam_wait.html?target=student&session=" + course;
+                        }
+                    },
+                    error: function(request,msg,error) {
+                        if(request.status===0){
+                            submitContest() 
+                        }
+                        else if(request.status===500){
+                            submitContest() 
+                        }
+                        else{
+                            errorMSG = request.responseJSON;
+                        }
+                    }
+                });
+            }
+        }
+
+
+
+        function callClick() {
+            
+        }
+
+        function getCurrentScore() {
+            var numberOfRadio = $('.quiz-item').length
+            var numberOfCheckedRadio = $('input:radio:checked').length
+            $('.current').html(numberOfCheckedRadio + "/" + numberOfRadio);
+            $('.show-exam-meter').html(numberOfCheckedRadio + "/" + numberOfRadio);
+        }
+        
+        getCurrentScore();
+        timecheck();
+
+        </script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M0JGCQ3SKK');
+        </script>
+        
+    </body>
+</html>

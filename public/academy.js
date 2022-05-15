@@ -36,11 +36,10 @@ resetPassword()
 renderProfile();
 
 function __session(pagename){
-    var token   = Cookies.get('__session');
-
-    var pathname = window.location.pathname;
-    pathname = pathname.replace("/", "");
-    pathname = pathname.replace(".html", "");
+    var token       = Cookies.get('__session');
+    var pathname    = window.location.pathname;
+    pathname        = pathname.replace("/", "");
+    pathname        = pathname.replace(".html", "");
     console.log(pathname);
     if (token == undefined) {
         window.location.href="index.html";
@@ -1276,48 +1275,53 @@ function getCerification(){
 
 function renderProfile(){
     var student = Cookies.get('__student');
-    var student = JSON.parse(student);
+    
+    if (student == undefined)
+    {
+        $('#user-nav').hide();
+        $('#guest-nav').show();
+    }
+    else
+    {
+        $('#user-nav').show();
+        $('#guest-nav').hide();
 
-    if(student.exam_round_date !== null && student.exam_round_date !== ''  && student.exam_round_date!==undefined){
-        $('.student-name').text(student.name);
-        $('.student-email').text(student.email);
-        $('.student-phone').text(student.phone);
+        var student = JSON.parse(student);
 
-        $('.exam_round').text(student.exam_round);
-        $('.exam_round_date').text(student.exam_round_date);
-        $('.cert_area').text(student.cert_area);
-
-        $(".student-avatar").attr("src",student.avatar);
-
-        $("#approve-preview").attr("src",student.approve);
-
-        $(".avatar-btn").attr("src",student.avatar);
-        $(".student-regdate").text(student.regdate);
-    }else{
-        getProfile();
-
-        $('.student-name').text(student.name);
-        $('.student-email').text(student.email);
-        $('.student-phone').text(student.phone);
-
-        $('.exam_round').text(student.exam_round);
-        $('.exam_round_date').text(student.exam_round_date);
-        $('.cert_area').text(student.cert_area);
-
-        $(".student-avatar").attr("src",student.avatar);
-
-        $("#approve-preview").attr("src",student.approve);
+        if(student.exam_round_date !== null && student.exam_round_date !== ''  && student.exam_round_date!==undefined){
+            $('.student-name').text(student.name);
+            $('.student-email').text(student.email);
+            $('.student-phone').text(student.phone);
+            $('.exam_round').text(student.exam_round);
+            $('.exam_round_date').text(student.exam_round_date);
+            $('.cert_area').text(student.cert_area);
+            $(".student-avatar").attr("src",student.avatar);
+            $("#approve-preview").attr("src",student.approve);
+            $(".avatar-btn").attr("src",student.avatar);
+            $(".student-regdate").text(student.regdate);
+        }else{
+            getProfile();
+            $('.student-name').text(student.name);
+            $('.student-email').text(student.email);
+            $('.student-phone').text(student.phone);
+            $('.exam_round').text(student.exam_round);
+            $('.exam_round_date').text(student.exam_round_date);
+            $('.cert_area').text(student.cert_area);
+            $(".student-avatar").attr("src",student.avatar);
+            $("#approve-preview").attr("src",student.approve);
+            $(".avatar-btn").attr("src",student.avatar);
+            $(".student-regdate").text(student.regdate);
+        }
+        //--- Student Notification
 
         
-        $(".avatar-btn").attr("src",student.avatar);
-        $(".student-regdate").text(student.regdate);
-    }
-    //--- Student Notification
-    notification();
-    $("img").bind("error", function (e) {
+
+        notification();
+        $("img").bind("error", function (e) {
         var $this = $(this);
         $(this).attr("src","https://burgmaier.com/wp-content/uploads/2021/05/Musterbild-Mann.jpg");
-      });
+        });
+    }
 }
 
 function renderRepeatRegisterStudent(){
@@ -2051,7 +2055,7 @@ function checkFirebasePlayer()
                 console.log(pretestArray)
     
                 if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
-                    window.location.href="course.html";
+                    window.location.href="student.html";
                 } else {
                     console.log(pretestArray);
                 }
@@ -2062,7 +2066,7 @@ function checkFirebasePlayer()
                 console.log(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
-                    window.location.href="course.html";
+                    window.location.href="student.html";
                 } else {
                     console.log(posttestArray);
                 }
@@ -2093,9 +2097,9 @@ function openExam(session,mode)
             console.log(pretestArray)
 
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
-                window.location.href="course.html";
+                window.location.href="student.html";
             } else {
-                window.location.href="exam.html?session=" + session + "&mode=" + mode;
+                window.location.href="exam-" + mode + ".html?session=" + session + "&mode=" + mode;
             }
         },
         error: function(request,msg,error) {
@@ -2199,6 +2203,16 @@ function getFirebasePlayer()
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
             {
                 enroll_status = true;
+                $("#topic-table").append(
+                    "<tr class='topic-pending' id='exam-pretest'>"
+                        +"<th class='p-3'>"
+                            +"<div class='align-items-center'>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='javascript:void(0);' class='topic-name-title'><strong>แบบทดสอบก่อนเรียน</strong></br><small>ทำแบบทดสอบก่อนเรียนแล้ว</small></a></p>"
+                            +"</div>"
+                        +"</th>"
+                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> "+pretestArray.result+"/50 ข้อ </p></td>"
+                    +"</tr>"
+                    )
             } 
             else 
             {
@@ -2207,7 +2221,7 @@ function getFirebasePlayer()
                 "<tr class='topic-processing' id='exam-pretest'>"
                     +"<th class='p-3'>"
                         +"<div class='align-items-center'>"
-                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</a></p>"
+                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-pretest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</br><small>ต้องทำแบบทดสอบก่อนเรียนก่อน</small></a></p>"
                         +"</div>"
                     +"</th>"
                     +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
@@ -2298,7 +2312,7 @@ function getFirebasePlayer()
                     "<tr class='topic-processing' id='exam-pretest'>"
                         +"<th class='p-3'>"
                             +"<div class='align-items-center'>"
-                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam.html?session="+course+"&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-posttest.html?session="+course+"&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
                             +"</div>"
                         +"</th>"
                         +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
@@ -2470,6 +2484,29 @@ function updatePlayerStatus(user,course,player,play, status, duration, uid, vide
         }
     });
 }
+
+function renderResult()
+{   
+    var mode    = $.urlParam('mode');
+    var course  = $.urlParam('session');
+    var token   = Cookies.get('__session');
+    $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course/score/?user=' + token + '&course=' + course + '&score=' + mode,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+        },
+        success: function(result) {
+            $.isLoading( "hide" );
+            $("#result-score").html(result.data.result + " คะแนน");
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
+
 
 function secondsTimeSpanToHMS(s) {
     var h = Math.floor(s / 3600); //Get whole hours
