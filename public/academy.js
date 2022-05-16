@@ -2200,7 +2200,7 @@ function getFirebasePlayer()
                 // Check Topic Status
                 //
                 if(item.status=="pending") {
-                    status_icon = "<i class='uil uil-clock text-muted status-icon-data'></i> <span class='status-icon-label'>รอเรียน</span>";
+                    status_icon = "<i class='uil uil-clock text-muted status-icon-data'></i> <span class='status-icon-label'>คลิ๊กเพื่อเรียน</span>";
                 }
                 else if(item.status=="processing") {
                     status_icon = "<i class='uil uil-play text-warning status-icon-data'></i> <span class='status-icon-label'>เรียนแล้ว</span>";
@@ -2265,7 +2265,7 @@ function getFirebasePlayer()
             $(".progress-bar").css("width", finish_percent + "%");
 
             /*
-            
+
             if(finish_item>12)
             {
                 posttestArray = result.data.scores.posttest
