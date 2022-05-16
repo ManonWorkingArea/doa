@@ -2264,6 +2264,8 @@ function getFirebasePlayer()
             finish_percent = (100/total_item)*finish_item;
             $(".progress-bar").css("width", finish_percent + "%");
 
+            /*
+            
             if(finish_item>12)
             {
                 posttestArray = result.data.scores.posttest
@@ -2283,6 +2285,8 @@ function getFirebasePlayer()
                     )
                 }
             }
+
+            */
         },
         error: function(request,msg,error) {
         }
