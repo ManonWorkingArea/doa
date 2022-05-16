@@ -1,0 +1,111 @@
+import Helpers from "./helpers";
+export interface ErrnoException extends Error {
+    errno?: number;
+    code?: string;
+    path?: string;
+    syscall?: string;
+    stack?: string;
+}
+  
+function MissingRequiredField(message: string) {
+    const error: ErrnoException = new Error(message);
+    error.code = "REQUIRED_FIELDS_MISSING";
+    return error;
+}
+MissingRequiredField.prototype = Object.create(Error.prototype);
+
+abstract class ModelAbstract{
+    name: string
+    firestore: FirebaseFirestore.Firestore | null = null;
+    required_params: string[] = [];
+    required_fields: string[] = [];
+    unique_fields: string[] = [];
+
+    // Collection path in firestore
+    paths: string[] = [];
+    collections: ModelAbstract[] = [];
+
+    constructor(name: string, paths: string[]){
+        this.name = name;
+        this.paths = paths;
+    }
+
+    setFirestore(firestore: FirebaseFirestore.Firestore){
+        this.firestore = firestore;
+        for(const idx in this.collections){
+            this.collections[idx].setFirestore(firestore);
+        }
+    }
+
+    async query(params: Record<string, any>){
+        let path: any = this.firestore;
+        for(let i=0;i<this.paths.length;i++){
+            path = await path.collection(this.paths[i])
+                        .doc(params[this.required_params[i]]);
+        }
+        return path;
+    }
+
+    async exists(params: Record<string, any>){
+        const q = await this.query(params);
+        const collections = await q.listCollections();
+        const snap = await q.get();
+        if ((collections.length > 0) || snap.exists) return true;
+        return false;
+    }
+
+    async getInfo(params: Record<string, any>){
+        const q = await this.query(params);
+        const snap = await q.get();
+        if (!snap.exists) return {};
+        else return snap.data();
+    }
+
+    async checkInfoRequired(data: Record<string, any>){
+        const infoData = data.info;
+        const missing_keys = [];
+        for(const key in this.required_fields){
+            const v = infoData[key];
+            if(v === null || typeof v === 'undefined'){
+                missing_keys.push(key);
+            }
+        }
+        if(missing_keys.length > 0){
+            throw MissingRequiredField(
+                 `Missing required field: ${missing_keys}.`
+             )
+        }
+    }
+
+    async setInfo(params: Record<string, any>,
+                data: Record<string, any>){
+        const q = await this.query(params);
+        try {
+            await q.set(data);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    async deleteInfo(params: Record<string, any>){
+        const q = await this.query(params);
+        try {
+            await q.delete();
+            return true;
+        } catch (error) {
+            return false;
+        }
+
+    }
+
+    async get(params: Record<string, any>){
+        const q = await this.query(params);
+        const info = await this.getInfo(params);
+
+        for(const collection in this.collections){
+            collection
+        }
+
+    }
+}

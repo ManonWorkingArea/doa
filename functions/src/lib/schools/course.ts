@@ -1,5 +1,6 @@
 import Helpers from "../helpers";
 import Exam from "./exam";
+import Player from "./player";
 
 const Course = {
   required: ["school", "course"],
@@ -38,14 +39,23 @@ const Course = {
     const query = await this.query(firestore, params);
     const info = await Helpers.getInfo(query);
     const exams = await query.collection("exams");
-    const docs = await exams.listDocuments();
+    const examDocs = await exams.listDocuments();
     const data: Record<string, any> = {
       info: info,
       exams: {},
+      players: {},
     };
-    for (const doc of docs) {
+    for (const doc of examDocs) {
       const tmpParams = {...params, exam: doc.id};
       data.exams[doc.id] = await Exam.getInfo(
+          firestore,
+          tmpParams);
+    }
+    const players = await query.collection("players");
+    const playerDocs = await players.listDocuments();
+    for (const doc of playerDocs) {
+      const tmpParams = {...params, player: doc.id};
+      data.players[doc.id] = await Player.getInfo(
           firestore,
           tmpParams);
     }
@@ -73,6 +83,18 @@ const Course = {
         ));
       }
     }
+    const players: Record<string, any> = data.players;
+    if (players !== null && typeof players !== "undefined") {
+      // eslint-disable-next-line guard-for-in
+      for (const playerId in players) {
+        const tmpParams = {...params, player: playerId};
+        success = success && (await Player.setInfo(
+            firestore,
+            tmpParams,
+            players[playerId]
+        ));
+      }
+    }
     return success;
   },
   delete: async function(
@@ -83,11 +105,19 @@ const Course = {
     let success = true;
     success = success && (await Helpers.deleteInfo(query));
     const exams = await query.collection("exams");
-    const docs = await exams.listDocuments();
-    for (const doc of docs) {
+    const examDocs = await exams.listDocuments();
+    for (const doc of examDocs) {
       const tmpParams = {...params, exam: doc.id};
       success = success && (
         await Exam.delete(firestore, tmpParams)
+      );
+    }
+    const players = await query.collection("players");
+    const playerDocs = await players.listDocuments();
+    for (const doc of playerDocs) {
+      const tmpParams = {...params, player: doc.id};
+      success = success && (
+        await Player.delete(firestore, tmpParams)
       );
     }
     return success;
