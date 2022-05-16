@@ -2215,17 +2215,19 @@ function getFirebasePlayer()
                 if(enroll_status)
                 {
                     topic_link = "<a href='play.html?token=" + item.uid + "&session=" + item.course + "' class='topic-name-title' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a>";
+                    url = "play.html?token=" + item.uid + "&session=" + item.course;
                 }
                 else
                 {
                     topic_link = "<a href='javascript:void(0);' class='topic-name-title' title='" + item.title + "' data-bs-toggle='tooltip' data-bs-placement='top'>" + item.title + "</a>";
+                    url = "javascript:void(0);";
                 }
 
                 // Add topic item to table
                 // 
                 play_timer = secondsTimeSpanToHMS(item.play);
                 $("#topic-table").append(
-                "<tr class='topic-" + item.status + "' id='" + item.uid + "'>"
+                "<tr class='topic-" + item.status + "' id='" + item.uid + "'><a href='"+url+"'>"
                     +"<th class='p-3'>"
                         +"<div class='align-items-center'>"
                             +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + topic_link + "</p>"
@@ -2233,7 +2235,7 @@ function getFirebasePlayer()
                         +"</div>"
                     +"</th>"
                     +"<td><p class='mb-0 fw-normal'>" + status_icon + " </p></td>"
-                +"</tr>"
+                +"</a></tr>"
                 )
                 /*
                 $("#topic-table").append(

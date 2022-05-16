@@ -112,8 +112,8 @@
 }
 
 .topic-pending, .topic-pending a{ 
-    color: #3c4858;
-    opacity: 0.8;
+    color: #000;
+    opacity: 1;
 }
 
 .topic-active, .topic-active a{
@@ -143,8 +143,8 @@
 
 .topic-pending, .topic-pending a
 {
-  color: #3c4858;
-  opacity: 0.5;
+  color: #000;
+  opacity: 1;
 }
 
 .bg-half-170-home {
