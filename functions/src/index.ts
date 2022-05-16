@@ -8,6 +8,7 @@ import request from "./lib/request";
 import userRoutes from "./lib/users/routes";
 import schoolRoutes from "./lib/schools/routes";
 import Player from "./lib/users/player";
+import Course from "./lib/users/course";
 
 admin.initializeApp();
 const firestore = admin.firestore();
@@ -43,7 +44,66 @@ Object.entries(routes).forEach(([rootPath, subRoutes]) => {
   });
 });
 
+app.get("/user/course/checkPretestStatus", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  const query = Helpers.getQuery(
+      req,
+      res,
+      Course.required
+  );
+  if (query === null) {
+    res.status(400).send({
+      success: false,
+      error: "Invalid or Missing Parameters.",
+    });
+    return;
+  }
+  const exists = await Course.exists(firestore, query);
+  if (!exists) {
+    res.status(404).send({
+      success: false,
+      error: "Not found.",
+    });
+    return;
+  }
+  const ret = await Course.isPretest(
+      firestore,
+      query
+  );
+  res.status(200).send({success: true, pretest: ret});
+});
+
+app.get("/user/course/checkPlayerStatus", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  const query = Helpers.getQuery(
+      req,
+      res,
+      Course.required
+  );
+  if (query === null) {
+    res.status(400).send({
+      success: false,
+      error: "Invalid or Missing Parameters.",
+    });
+    return;
+  }
+  const exists = await Course.exists(firestore, query);
+  if (!exists) {
+    res.status(404).send({
+      success: false,
+      error: "Not found.",
+    });
+    return;
+  }
+  const ret = await Course.isAllPlayerFinish(
+      firestore,
+      query
+  );
+  res.status(200).send({success: true, finish: ret});
+});
+
 app.post("/user/course/player/updateTime", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
   const body = Helpers.getBody(
       req,
       res,

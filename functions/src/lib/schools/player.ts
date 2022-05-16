@@ -2,14 +2,14 @@ import Helpers from "../helpers";
 
 
 const Player = {
-  required: ["user", "course", "player"],
+  required: ["school", "course", "player"],
   query: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>
   ) {
     return await firestore
-        .collection("users")
-        .doc(params.user)
+        .collection("schools")
+        .doc(params.school)
         .collection("courses")
         .doc(params.course)
         .collection("players")
@@ -63,49 +63,6 @@ const Player = {
     let success = true;
     success = success && (await Helpers.deleteInfo(query));
     return success;
-  },
-  updateTime: async function(
-      firestore: FirebaseFirestore.Firestore,
-      params: Record<string, any>,
-      deltaTime: number
-  ) {
-    const query = await this.query(firestore, params);
-    const snap = await query.get();
-    if (!snap.exists) {
-      return {
-        success: false,
-        error: "Not found.",
-      };
-    }// Not found data to update
-    const data = snap.data();
-    if (data === null || typeof data === "undefined") {
-      return {
-        success: false,
-        error: "Not found.",
-      };
-    }
-    const play = Number(data.play);
-    let timer = Number(data.timer);
-    deltaTime = Number(deltaTime);
-    timer = timer - deltaTime;
-    if (timer < 0)timer = 0;
-
-    try {
-      await query.update({
-        play: play + deltaTime,
-        timer: timer,
-        status: (timer > 0)?"processing":"finish",
-      });
-      return {
-        success: true,
-        finish: (timer <= 0),
-      };
-    } catch (error) {
-      return {
-        success: false,
-        error: error,
-      };
-    }
   },
 };
 
