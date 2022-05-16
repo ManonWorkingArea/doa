@@ -2227,15 +2227,17 @@ function getFirebasePlayer()
                 // 
                 play_timer = secondsTimeSpanToHMS(item.play);
                 $("#topic-table").append(
-                "<tr class='topic-" + item.status + "' id='" + item.uid + "'><a href='"+url+"'>"
-                    +"<th class='p-3'>"
-                        +"<div class='align-items-center'>"
-                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + topic_link + "</p>"
-                            +"<p class='mb-0 d-inline fw-normal topic-timer-data'>" + play_timer + " / " + item.duration + "</p>"
-                        +"</div>"
-                    +"</th>"
-                    +"<td><p class='mb-0 fw-normal'>" + status_icon + " </p></td>"
-                +"</a></tr>"
+                "<tr class='topic-" + item.status + " topic-link' id='" + item.uid + "' onclick='page(\""+ url +"\")'>"
+                    +"<a href='"+url+"'>"
+                        +"<th class='p-3'>"
+                            +"<div class='align-items-center'>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + topic_link + "</p>"
+                                +"<p class='mb-0 d-inline fw-normal topic-timer-data'>" + play_timer + " / " + item.duration + "</p>"
+                            +"</div>"
+                        +"</th>"
+                        +"<td><p class='mb-0 fw-normal'>" + status_icon + " </p></td>"
+                    +"</a>"
+                +"</tr>"
                 )
                 /*
                 $("#topic-table").append(
@@ -2476,11 +2478,15 @@ function renderResult()
     });
 }
 
-
 function secondsTimeSpanToHMS(s) {
     var h = Math.floor(s / 3600); //Get whole hours
     s -= h * 3600;
     var m = Math.floor(s / 60); //Get remaining minutes
     s -= m * 60;
     return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+  }
+
+  function page(url) {
+    location.href = url;
+
   }
