@@ -611,6 +611,9 @@
             {
                 mediaSource = $('#topic_video_source').val();
                 mplayer.setVideoSource(mediaSource);
+
+                posterSource = $('#topic_poster_source').val();
+                mplayer.setPosterSource(posterSource);
             }
 
             function updatePosterSourceHandler(e)
