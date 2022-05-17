@@ -2235,7 +2235,7 @@ function getFirebasePlayer()
                         +"<th class='p-3'>"
                             +"<div class='align-items-center'>"
                                 +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + topic_link + "</p>"
-                                +"<p class='mb-0 d-inline fw-normal topic-timer-data'>" + play_timer + " / " + item.duration + "</p>"
+                                +"<p class='mb-0 d-inline fw-normal topic-timer-data'>" + play_timer + " / " + item.master.duration + "</p>"
                             +"</div>"
                         +"</th>"
                         +"<td><p class='mb-0 fw-normal'>" + status_icon + " </p></td>"
