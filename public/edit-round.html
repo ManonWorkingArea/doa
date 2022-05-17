@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>กรมวิชาการเกษตร - ผู้เรียน</title>
+    <title>กรมวิชาการเกษตร - แก้ไขข้อมูรอบการสอบ</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="author" content="TechyDevs">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +70,8 @@
                 </div>
             </div>
 
-                <ul class="buy-button list-inline mb-0" id="user-nav">
+            
+                <ul class="buy-button list-inline mb-0">
                     <li class="list-inline-item mb-0">
                         <a href="student.html">
                             <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
@@ -79,20 +80,6 @@
                     <li class="list-inline-item mb-0">
                         <a href="javascript:void(0);" onclick="logout();">
                             <div class="btn btn-icon btn-pills btn-danger"><i data-feather="power" class="fea icon-sm"></i></div>
-                        </a>
-                    </li>
-                </ul>
-
-                <ul class="buy-button list-inline mb-0" id="guest-nav">
-                    <li class="list-inline-item mb-0">
-                        <a href="register.html">
-                            <div class="btn btn-icon btn-pills btn-primary"><i data-feather="user-plus" class="fea icon-sm"></i></div>
-                        </a>
-                    </li>
-                    
-                    <li class="list-inline-item ps-1 mb-0">
-                        <a href="login.html">
-                            <div class="btn btn-icon btn-pills btn-primary"><i data-feather="key" class="fea icon-sm"></i></div>
                         </a>
                     </li>
                 </ul>
@@ -153,183 +140,98 @@
     <!-- Hero End -->
 
     <!-- Profile Start -->
-    <section class="section student-session">
+    <section class="section edit-profile-session">
         <div class="container mt-lg-3">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-12 d-lg-block d-none">
-                    <div class="sidebar sticky-bar p-4 rounded shadow">
-
-                        <!-- <div class="widget mt-4 pt-2">
-                            <h5 class="widget-title">ความคืบหน้า :</h5>
-                            <div class="progress-box mt-4">
-                                <h6 class="title text-muted">Progress</h6>
-                                <div class="progress">
-                                    <div class="progress-bar position-relative bg-primary" style="width:50%;">
-                                        <div class="progress-value d-block text-muted h6">24 / 100%</div>
+            <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
+                <div class="sidebar sticky-bar p-4 rounded shadow">
+                    <div class="widget">
+                        <div class="border-bottom pb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>ข้อมูลส่วนตัว :</h5>
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center">
+                                    <i data-feather="mail" class="fea icon-ex-md text-muted me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="text-primary mb-0">อีเมล์ :</h6>
+                                        <a href="javascript:void(0)" class="text-muted student-email">...</a>
                                     </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                    <i data-feather="phone" class="fea icon-ex-md text-muted me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="text-primary mb-0">เบอร์โทร :</h6>
+                                        <a href="javascript:void(0)" class="text-muted student-phone">...</a>
+                                    </div>
+                                    </div>
+                                    <div class="d-flex align-items-center mt-3">
+                                    <i data-feather="calendar" class="fea icon-ex-md text-muted me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="text-primary mb-0">วันที่ลงทะเบียน :</h6>
+                                        <a href="javascript:void(0)" class="text-muted student-regdate">...</a>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                        </div>
+                        <ul class="list-unstyled sidebar-nav mb-0" id="navmenu-nav">
+                        <li class="navbar-item account-menu px-0 mt-2">
+                            <a href="javascript:void(0);" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
+                                <span class="h4 mb-0"><i class="uil uil-setting"></i></span>
+                                <h6 class="mb-0 ms-2">ตั้งค่า</h6>
+                            </a>
+                        </li>
+                        <li class="navbar-item account-menu px-0 mt-2">
+                            <a href="javascript:void(0);" onclick="logout();" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
+                                <span class="h4 mb-0"><i class="uil uil-dashboard"></i></span>
+                                <h6 class="mb-0 ms-2">ออกจากระบบ</h6>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+            <div class="col-lg-8 col-12">
+            <div class="card border-0 rounded shadow">
+            <div class="card-body">
+                
+                <form id="frm-edit">
+                    <div class="alert-block"></div>
+                    <input type="hidden" name="student" id="student" value="">
+                
+                    <div class="row mt-4">
+                        <!-- <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">ชื่อ</label>
+                                <div class="form-icon position-relative">
+                                    <i data-feather="user" class="fea icon-sm icons"></i>
+                                    <input name="firstname" id="firstname" type="text" class="form-control ps-5" placeholder="ชื่อ :">
                                 </div>
                             </div>
                         </div> -->
-                        
-                        <div class="widget">
-                            
-                            <div class="border-bottom pb-4">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>ข้อมูลส่วนตัว :</h5>
-                                        <div class="mt-4">
-                                            <div class="d-flex align-items-center">
-                                                <i data-feather="mail" class="fea icon-ex-md text-muted me-3"></i>
-                                                <div class="flex-1">
-                                                    <h6 class="text-primary mb-0">อีเมล์ :</h6>
-                                                    <a href="javascript:void(0)" class="text-muted student-email">...</a>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center mt-3">
-                                                <i data-feather="phone" class="fea icon-ex-md text-muted me-3"></i>
-                                                <div class="flex-1">
-                                                    <h6 class="text-primary mb-0">เบอร์โทร :</h6>
-                                                    <a href="javascript:void(0)" class="text-muted student-phone">...</a>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center mt-3">
-                                                <i data-feather="calendar" class="fea icon-ex-md text-muted me-3"></i>
-                                                <div class="flex-1">
-                                                    <h6 class="text-primary mb-0">วันที่ลงทะเบียน :</h6>
-                                                    <a href="javascript:void(0)" class="text-muted student-regdate">...</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-
-                                    
-                                </div><!--end row-->
-                            </div>
-
-                            <ul class="list-unstyled sidebar-nav mb-0" id="navmenu-nav">
-
-                                <li class="navbar-item account-menu px-0 mt-2">
-                                    <a href="javascript:void(0);" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
-                                        <span class="h4 mb-0"><i class="uil uil-setting"></i></span>
-                                        <h6 class="mb-0 ms-2">ตั้งค่า</h6>
-                                    </a>
-                                </li>
-                                
-                                <li class="navbar-item account-menu px-0 mt-2">
-                                    <a href="javascript:void(0);" onclick="logout();" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
-                                        <span class="h4 mb-0"><i class="uil uil-dashboard"></i></span>
-                                        <h6 class="mb-0 ms-2">ออกจากระบบ</h6>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
                     </div>
-                </div><!--end col-->
 
-                <style>
-                .icon-font-topic
-                {
-                    font-size:30px;
-                }
-                .link-small
-                {
-                    font-size:15px;
-                }
-                </style>
-                <div class="col-lg-9 col-12">
-                    
-                    <div class="row border-bottom pb-4">
-                        <div class="col-md-6 mt-4 pt-2 pt-sm-0">
-                            <h5>พื้นที่ในการขอใบอนุญาติ <a href='edit-area.html' class='link-small'> <i class='uil uil-file-edit-alt align-middle'></i> เปลี่ยนพื้นที่</a></h5>
-                            <div class="mt-4">
-                                <div class="d-flex align-items-center">
-                                    <i class="uil uil-map-pin-alt icon-font-topic text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">สำนักวิจัยและพัฒนาการเกษตรเขตที่ 1</h6>
-                                        <a href="javascript:void(0)" class="text-muted">(เชียงใหม่ แพร่ น่าน ลำปาง เชียงราย แม่ฮ่องสอน)</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end col-->
-
-                        <div class="col-md-6 mt-4 pt-2 pt-sm-0">
-                            <h5>รอบการสอบวัดผล <a href='edit-round.html' class='link-small'> <i class='uil uil-file-edit-alt align-middle'></i> เปลี่ยนรอบสอบ</a></h5>
-                            <div class="mt-4">
-                                <div class="d-flex align-items-center">
-                                    <i class="uil uil-check-circle icon-font-topic text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">รอบที่ 1 : </h6>
-                                        <a href="javascript:void(0)" class="text-muted">สอบวันที่ 30-31 พ.ค.65</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end col-->
-                    </div><!--end row-->
-
-
-                    <div id="course-area" class="pt-3"></div>
-
-                    <!-- <div id="notification-area" class=""></div> -->
-
-                    <div id="order-area" class="pt-2 pb-2"></div>
-
-                    <!-- <div class="col-md-12" id="bill_area">
-                        <div class="home-card rounded shadow">
-                            <div class="title-heading me-lg-4">
-                                <h5 class="display-6 fw-bold mb-3"> ข้อมูลการลงทะเบียน</h5>
-                                <input class="form-control" type="hidden" id="payment_url" name="payment_url">
-                                <input class="form-control" type="hidden" id="invoice_token" name="invoice_token">
-                                <hr>
-                                <p>คลิ๊กที่ปุ่ม <strong class="text-primary">ดูรายละเอียดการชำระเงิน</strong> เพื่อเข้าสู่การชำระเงินการลงทะเบียนหลักสูตรนี้ ตามช่องทางการชำระเงินที่ได้เลือกไว้ในขั้นตอนการสมัคร</p>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a href="javascript:void(0);" class="btn btn-soft-primary w-100 btn-lg m-1" onclick="openPaymentURL();"><i class="mdi mdi-file-document-outline"></i> ดูรายละเอียดการชำระเงิน</a>
-                                    </div>
-                                    <div class="col-md-6" id="receipt_area">
-                                        <a href="javascript:void(0);" class="btn btn-soft-primary w-100 btn-lg m-1" onclick="openReceiptURL();"><i class="mdi mdi-file-document-outline"></i> ใบเสร็จรับเงิน</a>
-                                    </div>
-                                </div>
-                            </div>
+                    </form>
+                    <!--end row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary" type="button" onclick="editprofile();"><i class="mdi mdi-content-save"> </i> บันทึกข้อมูล</button>
                         </div>
-                    </div> -->
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                
+                <!--end form-->
 
-                    <!-- <div class="col-md-12" id="register_area">
-                        <div class="home-card rounded shadow">
-                            <div class="title-heading me-lg-4">
-                                <h5 class="display-6 fw-bold mb-3"> การลงทะเบียนรุ่น 2</h5>
-                                <input class="form-control" type="hidden" id="payment_url" name="payment_url">
-                                <hr>
-                                <p>คลิ๊กที่ปุ่ม <strong class="text-primary">ลงทะเบียนรุ่นที่ 2</strong> เพื่อลงทะเบียนหลักสูตรรุ่นที่ 2 กรุณาตรวจสอบข้อมูลในการลงทะเบียนของคุณให้ถูกต้องก่อนส่งข้อมูล</p>
-                                <a href="register.html" class="btn btn-soft-primary w-100 btn-lg m-1"><i class="mdi mdi-file-document-outline"></i> ลงทะเบียนรุ่นที่ 2</a>
-                                <a href="course.html" class="btn btn-soft-primary w-100 btn-lg m-1"><i class="mdi mdi-file-document-outline"></i> เข้าเรียน รุ่นที่ 2</a>
-                                <a href="javascript:void(0);" onclick="openExam('215','pretest');" class="btn btn-soft-primary w-100 btn-lg m-1"><i class="mdi mdi-file-document-outline"></i> สอบก่อนเรียน รุ่นที่ 2</a>
-                            </div>
-                        </div>
-                    </div> -->
-                    
-                    <!-- <div class='row'>
-
-                        <div class='col-md-12 mt-2 pt-2 pt-sm-0'>
-
-                            <div class='card blog bg-success rounded shadow'>
-                                <a href='certification.html?token=FuVOj3EWVHljmjX3DBBN'>
-                                    <div class='card-body content'>
-                                        <h5><a href='certification.html?token=FuVOj3EWVHljmjX3DBBN' class='card-title title text-dark'>หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร</a></h5>
-                                        <div class='post-meta d-flex justify-content-between mt-3'>
-                                        <a href='certification.html?token=FuVOj3EWVHljmjX3DBBN' class='btn w-100 btn-lg btn-light'> ดูใบประกาศนียบัตรของคุณ <i class='uil uil-angle-right-b align-middle'></i></a>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                    </div> -->
-                                                        
-                </span><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-    </section><!--end section-->
+            </div>
+            <!--end container-->
+        </section>
+        <!--end section-->
     <!-- Profile End -->
 
     <footer class="footer">
@@ -389,24 +291,24 @@
 
     <!-- javascript -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
     <script>
-    jQuery.cachedScript = function( url, options ) {
-    // Allow user to set any option except for dataType, cache, and url
-    options = $.extend( options || {}, {
-        dataType: "script",
-        cache: false,
-        url: url + ".js"
-    });
-    return jQuery.ajax( options );
-    };
-    // Usage
-    $.cachedScript( "academy" ).done(function( script, textStatus ) {
+        jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+            dataType: "script",
+            cache: false,
+            url: url + ".js"
+        });
+        return jQuery.ajax( options );
+        };
+        // Usage
+        $.cachedScript( "academy" ).done(function( script, textStatus ) {
         console.log( "load Default JS : " + textStatus );
-        __session("student");
-        getFirebaseUser()
-    });
-    </script>
+        __session("edit-round");
+        renderSession();
+        renderEditProfile();
+        });
+        </script>
     <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
@@ -417,6 +319,7 @@
     <!-- Main Js -->
     <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
     <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+    <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
     
     <script>
     //checkLobby();
@@ -425,6 +328,8 @@
     <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
     <script>
         
+    
+
     Pusher.logToConsole = false;    
     var pusher = new Pusher('4b7d1b6027780eadf73d',{
         cluster: 'ap1'
