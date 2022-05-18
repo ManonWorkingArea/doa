@@ -2087,6 +2087,12 @@ function getFirebaseUser()
 
             console.log(result);
 
+            if(result.data.info.area ==="1" || result.data.info.area ==="1")
+            {
+                updateFirebaseUser();
+                console.log("Update Profile Data");
+            }
+
             $.each(result.data.courses, function (key, item){
 
                 // Add topic item to table
@@ -2361,6 +2367,73 @@ function updateFirebasePlayer(token,course,code)
         error: function(request,msg,error) {
         }
     });
+}
+
+function updateFirebaseUser()
+{
+    var token   = Cookies.get('__session');
+    
+    if (token == undefined) 
+    {
+        $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+        $.ajax(
+        {
+            url: 'https://api.fti.academy/api/order_data_token/',
+            type : "POST",
+            dataType: "json",
+            contentType : "text/plain",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+            },
+            success: function(result) {
+                $.isLoading( "hide" );
+
+                var jsonObj = {
+                    "user": token,
+                    "data": {
+                        "info": {
+                            "firstname": result.firstname,
+                            "lastname": result.lastname,
+                            "prefix": result.prefix,
+                            "area": result.area,
+                            "exam": result.exam,
+                            "email": result.email,
+                            "phone": result.phone,
+                            "citizen": result.citizen
+                        }
+                    }
+                }
+            
+                $.ajax({
+                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/',
+                    type : "POST",
+                    dataType: "json",
+                    contentType : "application/json",
+                    data: JSON.stringify(jsonObj),
+                    beforeSend: function(xhr) {
+                    },
+                    success: function(result) {
+                    },
+                    error: function(request,msg,error) {
+                    }
+                });
+
+            },
+            error: function(request,msg,error) {
+                //console.log("Error: " + error); //just use the err here
+                output = JSON.stringify(request.responseJSON)
+                // Login undefined
+                if(request.status===0){
+                }
+                else if(request.status===500){
+                }
+                else{
+                    errorMSG = request.responseJSON;
+                }
+            }
+        });
+    }
 }
 
 function stopFirebasePlayer(token,course,code)
