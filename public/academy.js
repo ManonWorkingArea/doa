@@ -1395,8 +1395,8 @@ function renderProfile(){
         $(".avatar-btn").attr("src",student.avatar);
         $(".student-regdate").text(student.regdate);
 
-        $(".exam_name").text(exam);
-        $(".area_name").text(area);
+        $(".exam_name").text(student.exam_round);
+        $(".area_name").text(student.cert_area);
 
         //--- Student Notification
 
