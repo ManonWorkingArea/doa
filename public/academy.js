@@ -489,7 +489,7 @@ function editCertArea() {
             $.isLoading( "hide" );
             var studentArray = JSON.stringify(result.student);
             Cookies.set('__student', studentArray, {expires:1})
-            updateFirebaseUser();
+            //updateFirebaseUser();
             window.location.href="student.html";
         },
         error: function(request,msg,error) {
@@ -539,7 +539,7 @@ function editExamRound() {
             $.isLoading( "hide" );
             var studentArray = JSON.stringify(result.student);
             Cookies.set('__student', studentArray, {expires:1})
-            updateFirebaseUser();
+            //updateFirebaseUser();
             window.location.href="student.html";
         },
         error: function(request,msg,error) {
@@ -2169,7 +2169,7 @@ function getFirebaseUser()
 
             console.log(result);
 
-            updateFirebaseUser();
+            //updateFirebaseUser();
             console.log("Update Profile Data");
 
             $.each(result.data.courses, function (key, item){
