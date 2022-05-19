@@ -89,25 +89,9 @@ function login(){
 
                 var student = Cookies.get('__student');
                 var student = JSON.parse(student);
-                
-                /*
-                var permissionData = readPermission(student.permission.student_id);
-                if(permissionData == student.permission.student_id){
-                    //console.log("Student Has Data");
-                }else{
-                    var permission = {};
-                    permission['sid'] = student.permission.student_id;
-                    permission['pid'] = student.permission.permission_id;
-                    permission['code'] = student.permission.permission_code;
-                    permission['student'] = student.permission.student_id;
-                    permission['lesson'] = student.permission.lesson_id;
-                    permission['timer'] = student.permission.permission_timer;
-                    permission['percent'] = student.permission.permission_percent;
-                    permission['adddate'] = student.permission.permission_adddate;
-                    permission['expire'] = student.permission.permission_expire;
-                    addPermission(permission);
-                }
-                */
+
+                Cookies.set('__exam', student.exam_round, {expires:1});
+                Cookies.set('__area', student.cert_area, {expires:1});
                 
                 // Clear Answer
                 localStorage.removeItem("__exam");
