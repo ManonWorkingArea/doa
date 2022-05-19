@@ -1434,11 +1434,7 @@ function renderEditExam(){
     var student = Cookies.get('__student');
     var student = JSON.parse(student);
     console.log(student.exam_round_data);
-    if(student.exam_round_data==="first"){
-        $("input[name=exam_round][value='first']").prop("checked",true);
-    }else if(student.exam_round==="second"){
-        $("input[name=exam_round][value='second']").prop("checked",true);
-    }
+    $("input[name=exam_round][value='" + student.exam_round_data + "']").prop("checked",true);
 }
 
 function renderEditArea(){
