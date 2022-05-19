@@ -680,6 +680,10 @@ function logout() {
     $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
     Cookies.remove('__session');
     Cookies.remove('__student');
+
+    Cookies.remove('__exam');
+    Cookies.remove('__area');
+
     localStorage.clear();
     $.isLoading( "hide" );
     window.location.href="index.html";
@@ -1275,6 +1279,8 @@ function getCerification(){
 
 function renderProfile(){
     var student = Cookies.get('__student');
+    var exam    = Cookies.get('__exam');
+    var area    = Cookies.get('__area');
     
     if (student == undefined)
     {
@@ -1305,6 +1311,10 @@ function renderProfile(){
             $("#approve-preview").attr("src",student.approve);
             $(".avatar-btn").attr("src",student.avatar);
             $(".student-regdate").text(student.regdate);
+
+            $(".exam_name").text(exam);
+            $(".area_name").text(area);
+
         }else{
             getProfile();
             $('.student-name').text(student.name);
@@ -1317,10 +1327,12 @@ function renderProfile(){
             $("#approve-preview").attr("src",student.approve);
             $(".avatar-btn").attr("src",student.avatar);
             $(".student-regdate").text(student.regdate);
-        }
-        //--- Student Notification
 
-        
+            $(".exam_name").text(exam);
+            $(".area_name").text(area);
+        }
+
+        //--- Student Notification
 
         notification();
         $("img").bind("error", function (e) {
@@ -2087,10 +2099,15 @@ function getFirebaseUser()
 
             console.log(result);
 
-            if(result.data.info.area ==="1" || result.data.info.area ==="1")
+            if(result.data.info.area ==="1" || result.data.info.exam ==="1" || result.data.info.area ===null || result.data.info.area ==="" || result.data.info.exam ===null || result.data.info.exam ===""  )
             {
                 updateFirebaseUser();
                 console.log("Update Profile Data");
+            }
+            else
+            {
+                Cookies.set('__exam', result.data.info.exam, {expires:1})
+                Cookies.set('__area', result.data.info.area, {expires:1})
             }
 
             $.each(result.data.courses, function (key, item){
@@ -2373,67 +2390,70 @@ function updateFirebaseUser()
 {
     var token   = Cookies.get('__session');
     
-    if (token == undefined) 
+    $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+    $.ajax(
     {
-        $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
-        $.ajax(
-        {
-            url: 'https://api.fti.academy/api/order_data_token/',
-            type : "POST",
-            dataType: "json",
-            contentType : "text/plain",
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
-                xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
-            },
-            success: function(result) {
-                $.isLoading( "hide" );
+        url: 'https://api.fti.academy/api/order_data_token/' + token,
+        type : "POST",
+        dataType: "json",
+        data 		: {'token':token},
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+            $.isLoading( "hide" );
 
-                var jsonObj = {
-                    "user": token,
-                    "data": {
-                        "info": {
-                            "firstname": result.firstname,
-                            "lastname": result.lastname,
-                            "prefix": result.prefix,
-                            "area": result.area,
-                            "exam": result.exam,
-                            "email": result.email,
-                            "phone": result.phone,
-                            "citizen": result.citizen
-                        }
+            var jsonObj = {
+                "user": token,
+                "data": {
+                    "info": {
+                        "firstname": result.firstname,
+                        "lastname": result.lastname,
+                        "prefix": result.prefix,
+                        "area": result.area,
+                        "exam": result.exam,
+                        "email": result.email,
+                        "phone": result.phone,
+                        "citizen": result.citizen
                     }
-                }
-            
-                $.ajax({
-                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/',
-                    type : "POST",
-                    dataType: "json",
-                    contentType : "application/json",
-                    data: JSON.stringify(jsonObj),
-                    beforeSend: function(xhr) {
-                    },
-                    success: function(result) {
-                    },
-                    error: function(request,msg,error) {
-                    }
-                });
-
-            },
-            error: function(request,msg,error) {
-                //console.log("Error: " + error); //just use the err here
-                output = JSON.stringify(request.responseJSON)
-                // Login undefined
-                if(request.status===0){
-                }
-                else if(request.status===500){
-                }
-                else{
-                    errorMSG = request.responseJSON;
                 }
             }
-        });
-    }
+
+            Cookies.set('__exam', result.exam, {expires:1})
+            Cookies.set('__area', result.area, {expires:1})
+
+            renderProfile();
+        
+            $.ajax({
+                url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/',
+                type : "POST",
+                dataType: "json",
+                contentType : "application/json",
+                data: JSON.stringify(jsonObj),
+                beforeSend: function(xhr) {
+                },
+                success: function(result) {
+                    renderProfile();
+                },
+                error: function(request,msg,error) {
+                }
+            });
+
+        },
+        error: function(request,msg,error) {
+            //console.log("Error: " + error); //just use the err here
+            output = JSON.stringify(request.responseJSON)
+            // Login undefined
+            if(request.status===0){
+            }
+            else if(request.status===500){
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
+        }
+    });
 }
 
 function stopFirebasePlayer(token,course,code)
