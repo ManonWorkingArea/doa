@@ -140,96 +140,102 @@
     <!-- Hero End -->
 
     <!-- Profile Start -->
-    <section class="section edit-profile-session">
-        <div class="container mt-lg-3">
+    <section class="section edit-session">
+        <div class="container">
             <div class="row">
-            <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
-                <div class="sidebar sticky-bar p-4 rounded shadow">
-                    <div class="widget">
-                        <div class="border-bottom pb-4">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5>ข้อมูลส่วนตัว :</h5>
-                                <div class="mt-4">
-                                    <div class="d-flex align-items-center">
-                                    <i data-feather="mail" class="fea icon-ex-md text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">อีเมล์ :</h6>
-                                        <a href="javascript:void(0)" class="text-muted student-email">...</a>
-                                    </div>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-3">
-                                    <i data-feather="phone" class="fea icon-ex-md text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">เบอร์โทร :</h6>
-                                        <a href="javascript:void(0)" class="text-muted student-phone">...</a>
-                                    </div>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-3">
-                                    <i data-feather="calendar" class="fea icon-ex-md text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">วันที่ลงทะเบียน :</h6>
-                                        <a href="javascript:void(0)" class="text-muted student-regdate">...</a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
-                        </div>
-                        <ul class="list-unstyled sidebar-nav mb-0" id="navmenu-nav">
-                        <li class="navbar-item account-menu px-0 mt-2">
-                            <a href="javascript:void(0);" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
-                                <span class="h4 mb-0"><i class="uil uil-setting"></i></span>
-                                <h6 class="mb-0 ms-2">ตั้งค่า</h6>
-                            </a>
-                        </li>
-                        <li class="navbar-item account-menu px-0 mt-2">
-                            <a href="javascript:void(0);" onclick="logout();" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
-                                <span class="h4 mb-0"><i class="uil uil-dashboard"></i></span>
-                                <h6 class="mb-0 ms-2">ออกจากระบบ</h6>
-                            </a>
-                        </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!--end col-->
-            <div class="col-lg-8 col-12">
+            
+            <div class="col-12">
             <div class="card border-0 rounded shadow">
             <div class="card-body">
-                
-                <form id="frm-edit">
-                    <div class="alert-block"></div>
-                    <input type="hidden" name="student" id="student" value="">
-                    <div class="alert bg-soft-warning fw-medium" role="alert"><i class="uil uil-exclamation-triangle fs-5 align-middle me-1"></i> โปรดตรวจสอบข้อมูลให้ถูกต้องก่อนยืนยัน ข้อมูลที่ท่าน กรอก สามารถแก้ไขได้เพียง 1 ครั้งเท่านั้น</div>
-                    <div class="row mt-3">
-                        
-                        <!-- <div class="col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label">ชื่อ</label>
-                                <div class="form-icon position-relative">
-                                    <i data-feather="user" class="fea icon-sm icons"></i>
-                                    <input name="firstname" id="firstname" type="text" class="form-control ps-5" placeholder="ชื่อ :">
-                                </div>
-                            </div>
-                        </div> -->
-
-                    </div>
-
-                    </form>
-                    <!--end row-->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <button class="btn btn-primary" type="button" onclick="editprofile();"><i class="mdi mdi-content-save"> </i> บันทึกข้อมูล</button>
-                        </div>
-                        <!--end col-->
-                    </div>
-                    <!--end row-->
-                
                 <!--end form-->
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <form id="frm-edit">
 
+                            <input type="hidden" name="student" id="student" value="">
+
+                            <div class="row">
+
+                                    <div class="col-md-12 mt-4">
+                                        <h6 class=" text-uppercase"><span class="la la-calendar input-icon"></span> ท่านนำใบประกาศษนียบัตรที่ผ่านการอบรมไปขอใบอนุญาตครอบครองในพื้นที่เขตใด</h6>
+                                        <hr class="dotted">
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_1" name="area_cert" value="1">
+                                                <label class="form-check-label" for="area_cert_1"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 1</strong></label>
+                                                <span class="item-select-descripton">(เชียงใหม่ แพร่ น่าน ลำปาง เชียงราย แม่ฮ่องสอน)</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_2" name="area_cert" value="2">
+                                                <label class="form-check-label" for="area_cert_2"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 2</strong></label>
+                                                <span class="item-select-descripton">(พิษณุโลก พิจิตร สุโขทัย ตาก อุตรดิตถ์ เพชรบูรณ์)</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_3" name="area_cert" value="3">
+                                                <label class="form-check-label" for="area_cert_3"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 3</strong></label>
+                                                <span class="item-select-descripton">(ขอนแก่น หนองคาย กาฬสินธุ์ เลย อุดรธานี มุกดาหาร สกลนคร นครพนม ชัยภูมิ)</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_4" name="area_cert" value="4">
+                                                <label class="form-check-label" for="area_cert_4"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 4</strong></label>
+                                                <span class="item-select-descripton">(อุบลราชธานี นครราชสีมา สุรินทร์ มหาสารคาม ร้อยเอ็ด บุรีรัมย์  ศรีสะเกษ ยโสธร )</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_5" name="area_cert" value="5">
+                                                <label class="form-check-label" for="area_cert_5"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 5</strong></label>
+                                                <span class="item-select-descripton">(ชัยนาท กาญจนบุรี เพชรรัตน์เพชรบุรี ปทุมธานี ราชบุรี อุทัยธานี  ลพบุรี นครปฐม นครสวรรค์ )</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_6" name="area_cert" value="6">
+                                                <label class="form-check-label" for="area_cert_6"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 6</strong></label>
+                                                <span class="item-select-descripton">(จันทบุรี ระยอง ปราจีนบุรี ฉะเชิงเทรา )</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_7" name="area_cert" value="7">
+                                                <label class="form-check-label" for="area_cert_7"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 7</strong></label>
+                                                <span class="item-select-descripton">(สุราษฎร์ธานี นครศรีธรรมราช กระบี่ ระนอง ภูเก็ต พังงา ชุมพร )</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_8" name="area_cert" value="8">
+                                                <label class="form-check-label" for="area_cert_8"><strong>สำนักวิจัยและพัฒนาการเกษตรเขตที่ 8</strong></label>
+                                                <span class="item-select-descripton">(สงขลา ตาราง ตรัง นราธิวาส ปัตตานี ยะลา พัทลุง สตูล )</span>
+                                            </div>
+                                            <div class="custom-radio">
+                                                <input class="form-check-input" type="radio" id="area_cert_9" name="area_cert" value="9">
+                                                <label class="form-check-label" for="area_cert_9"><strong>สำนักควบคุมพืชและวัสดุการเกษตร</strong></label>
+                                                <span class="item-select-descripton">กรุงเทพมหานคร</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+
+                                    <!-- end col-md-12 -->
+
+                                    <div class="col-lg-12 mt-2 mb-0">
+                                        <div class="alert-block"></div>
+                                        <hr>
+                                        <button class="btn btn-primary" type="button" onclick="editCertArea();"><i class="mdi mdi-content-save"> </i> แก้ไขข้อมูล</button>
+                                        <button class="btn btn-light" type="button" onclick="page('student.html');"><i class="mdi mdi-home"> </i> ยกเลิก</button>
+                                    </div>
+
+                                    <!-- <div class="col-md-12 mt-2">
+                                        <p>เป็นสมาชิก DOA Academy อยู่แล้ว ? <a href="auth/login" class="primary-color-2">เข้าสู่ระบบ</a></p>
+                                    </div> -->
+                                    <!-- end col-md-12 -->
+
+                            </div><!-- end row -->
+
+                        </form>
+
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
             </div>
             <!--end container-->
         </section>
@@ -308,7 +314,7 @@
         console.log( "load Default JS : " + textStatus );
         __session("edit-area");
         renderSession();
-        renderEditProfile();
+        renderEditArea();
         });
         </script>
     <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->

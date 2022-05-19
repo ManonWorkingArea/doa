@@ -1391,3 +1391,7 @@ hr.hr-text::before {
 {
   cursor: pointer;
 }
+
+.edit-session {
+  padding: 30px 0;
+}

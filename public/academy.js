@@ -465,6 +465,106 @@ function editprofile() {
     });
 }
 
+function editCertArea() {   
+    $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+    var formData = $('#frm-edit').serializeArray();
+    formData = formData.reduce(function(obj, item){
+        obj[item.name] = item.value;
+        return obj;
+    }, {});
+    formData = JSON.stringify(formData);
+
+    $.ajax({
+        url: 'https://api.fti.academy/api/editcert',
+        type : "POST",
+        data: formData,
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3"); 
+        },
+        success: function(result) {
+            // handle success
+            $.isLoading( "hide" );
+            var studentArray = JSON.stringify(result.student);
+            Cookies.set('__student', studentArray, {expires:1})
+            updateFirebaseUser();
+            window.location.href="student.html";
+        },
+        error: function(request,msg,error) {
+            $.isLoading( "hide" );
+            $(".alert-block").html("");
+            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            output = JSON.stringify(request.responseJSON)
+            
+            // Login undefined
+            if(request.status===0){
+                editprofile();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else if(request.status===500){
+                editprofile();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
+            $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
+        }
+    });
+}
+
+function editExamRound() {   
+    $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+    var formData = $('#frm-edit').serializeArray();
+    formData = formData.reduce(function(obj, item){
+        obj[item.name] = item.value;
+        return obj;
+    }, {});
+    formData = JSON.stringify(formData);
+
+    $.ajax({
+        url: 'https://api.fti.academy/api/editround',
+        type : "POST",
+        data: formData,
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3"); 
+        },
+        success: function(result) {
+            // handle success
+            $.isLoading( "hide" );
+            var studentArray = JSON.stringify(result.student);
+            Cookies.set('__student', studentArray, {expires:1})
+            updateFirebaseUser();
+            window.location.href="student.html";
+        },
+        error: function(request,msg,error) {
+            $.isLoading( "hide" );
+            $(".alert-block").html("");
+            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            output = JSON.stringify(request.responseJSON)
+            
+            // Login undefined
+            if(request.status===0){
+                editprofile();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else if(request.status===500){
+                editprofile();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
+            $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
+        }
+    });
+}
+
 function submitApproveImage(){   
     $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
     var formData = $('#frm-edit').serializeArray();
@@ -1284,37 +1384,19 @@ function renderProfile(){
 
         var student = JSON.parse(student);
 
-        if(student.exam_round_date !== null && student.exam_round_date !== ''  && student.exam_round_date!==undefined){
-            $('.student-name').text(student.name);
-            $('.student-email').text(student.email);
-            $('.student-phone').text(student.phone);
-            $('.exam_round').text(student.exam_round);
-            $('.exam_round_date').text(student.exam_round_date);
-            $('.cert_area').text(student.cert_area);
-            $(".student-avatar").attr("src",student.avatar);
-            $("#approve-preview").attr("src",student.approve);
-            $(".avatar-btn").attr("src",student.avatar);
-            $(".student-regdate").text(student.regdate);
+        $('.student-name').text(student.name);
+        $('.student-email').text(student.email);
+        $('.student-phone').text(student.phone);
+        $('.exam_round').text(student.exam_round);
+        $('.exam_round_date').text(student.exam_round_date);
+        $('.cert_area').text(student.cert_area);
+        $(".student-avatar").attr("src",student.avatar);
+        $("#approve-preview").attr("src",student.approve);
+        $(".avatar-btn").attr("src",student.avatar);
+        $(".student-regdate").text(student.regdate);
 
-            $(".exam_name").text(exam);
-            $(".area_name").text(area);
-
-        }else{
-            getProfile();
-            $('.student-name').text(student.name);
-            $('.student-email').text(student.email);
-            $('.student-phone').text(student.phone);
-            $('.exam_round').text(student.exam_round);
-            $('.exam_round_date').text(student.exam_round_date);
-            $('.cert_area').text(student.cert_area);
-            $(".student-avatar").attr("src",student.avatar);
-            $("#approve-preview").attr("src",student.approve);
-            $(".avatar-btn").attr("src",student.avatar);
-            $(".student-regdate").text(student.regdate);
-
-            $(".exam_name").text(exam);
-            $(".area_name").text(area);
-        }
+        $(".exam_name").text(exam);
+        $(".area_name").text(area);
 
         //--- Student Notification
 
@@ -1351,11 +1433,19 @@ function renderEditPassword(){
 function renderEditExam(){
     var student = Cookies.get('__student');
     var student = JSON.parse(student);
-    if(student.exam_round==="รอบที่ 1"){
-        $("input[name=order_exam_round][value='1']").prop("checked",true);
-    }else if(student.exam_round==="รอบที่ 2"){
-        $("input[name=order_exam_round][value='2']").prop("checked",true);
+    console.log(student.exam_round_data);
+    if(student.exam_round_data==="first"){
+        $("input[name=exam_round][value='first']").prop("checked",true);
+    }else if(student.exam_round==="second"){
+        $("input[name=exam_round][value='second']").prop("checked",true);
     }
+}
+
+function renderEditArea(){
+    var student = Cookies.get('__student');
+    var student = JSON.parse(student);
+    console.log(student.cert_area_data);
+    $("input[name=area_cert][value='" + student.cert_area_data + "']").prop("checked",true);
 }
 
 function renderExam(){
@@ -2083,16 +2173,8 @@ function getFirebaseUser()
 
             console.log(result);
 
-            if(result.data.info.area ==="1" || result.data.info.exam ==="1" || result.data.info.area ===null || result.data.info.area ==="" || result.data.info.exam ===null || result.data.info.exam ===""  )
-            {
-                updateFirebaseUser();
-                console.log("Update Profile Data");
-            }
-            else
-            {
-                Cookies.set('__exam', result.data.info.exam, {expires:1})
-                Cookies.set('__area', result.data.info.area, {expires:1})
-            }
+            updateFirebaseUser();
+            console.log("Update Profile Data");
 
             $.each(result.data.courses, function (key, item){
 
@@ -2406,8 +2488,6 @@ function updateFirebaseUser()
 
             Cookies.set('__exam', result.exam, {expires:1})
             Cookies.set('__area', result.area, {expires:1})
-
-            renderProfile();
         
             $.ajax({
                 url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/',

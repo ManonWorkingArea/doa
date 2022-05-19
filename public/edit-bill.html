@@ -140,113 +140,285 @@
     <!-- Hero End -->
 
     <!-- Profile Start -->
-    <section class="section edit-profile-session">
-        <div class="container mt-lg-3">
+    <section class="section edit-session">
+        <div class="container">
             <div class="row">
-            <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
-                <div class="sidebar sticky-bar p-4 rounded shadow">
-                    <div class="widget">
-                        <div class="border-bottom pb-4">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5>ข้อมูลส่วนตัว :</h5>
-                                <div class="mt-4">
-                                    <div class="d-flex align-items-center">
-                                    <i data-feather="mail" class="fea icon-ex-md text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">อีเมล์ :</h6>
-                                        <a href="javascript:void(0)" class="text-muted student-email">...</a>
-                                    </div>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-3">
-                                    <i data-feather="phone" class="fea icon-ex-md text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">เบอร์โทร :</h6>
-                                        <a href="javascript:void(0)" class="text-muted student-phone">...</a>
-                                    </div>
-                                    </div>
-                                    <div class="d-flex align-items-center mt-3">
-                                    <i data-feather="calendar" class="fea icon-ex-md text-muted me-3"></i>
-                                    <div class="flex-1">
-                                        <h6 class="text-primary mb-0">วันที่ลงทะเบียน :</h6>
-                                        <a href="javascript:void(0)" class="text-muted student-regdate">...</a>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
-                        </div>
-                        <ul class="list-unstyled sidebar-nav mb-0" id="navmenu-nav">
-                        <li class="navbar-item account-menu px-0 mt-2">
-                            <a href="javascript:void(0);" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
-                                <span class="h4 mb-0"><i class="uil uil-setting"></i></span>
-                                <h6 class="mb-0 ms-2">ตั้งค่า</h6>
-                            </a>
-                        </li>
-                        <li class="navbar-item account-menu px-0 mt-2">
-                            <a href="javascript:void(0);" onclick="logout();" class="navbar-link d-flex rounded shadow align-items-center py-2 px-4">
-                                <span class="h4 mb-0"><i class="uil uil-dashboard"></i></span>
-                                <h6 class="mb-0 ms-2">ออกจากระบบ</h6>
-                            </a>
-                        </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!--end col-->
-            <div class="col-lg-8 col-12">
+            
+            <div class="col-12">
             <div class="card border-0 rounded shadow">
             <div class="card-body">
-                
-                <form id="frm-edit">
-                    <div class="alert-block"></div>
-                    <input type="hidden" name="student" id="student" value="">
-                    <div class="mt-3 text-md-start text-center d-sm-flex">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Fuser%2F01.jpg?alt=media&token=395c5b46-900a-484c-b6a6-060d7cc64f39" id="avatar-preview" class="avatar float-md-left avatar-medium shadow me-md-4" alt="">
-                        <div class="mt-md-4 mt-3 mt-sm-0">
-                            <input type="file" name="avatar-upload" id="avatar-upload" onchange="encodeImgtoBase64_avatar(this)">
-                            <input type="hidden" name="avatar" id="avatar">
-                            <a href="javascript:void(0)" class="btn btn-primary mt-2" id="avatar-change-btn">เปลี่ยนรูปประจำตัว</a>
-                            <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">ลบ</a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="mt-3 text-md-start text-center d-sm-flex">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Fuser%2F01.jpg?alt=media&token=395c5b46-900a-484c-b6a6-060d7cc64f39" id="idcard-preview" class="avatar float-md-left avatar-medium shadow me-md-4" alt="">
-                        <div class="mt-md-4 mt-3 mt-sm-0">
-                            <input type="file" name="idcard-upload" id="idcard-upload" onchange="encodeImgtoBase64_idcard(this)">
-                            <input type="hidden" name="idcard" id="idcard">
-                            <a href="javascript:void(0)" class="btn btn-primary mt-2" id="idcard-change-btn">เปลี่ยนรูปบัตรประชาชน</a>
-                            <a href="javascript:void(0)" class="btn btn-outline-primary mt-2 ms-2">ลบ</a>
-                        </div>
-                    </div>
-                
-                    <div class="row mt-4">
-                        <!-- <div class="col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label">ชื่อ</label>
-                                <div class="form-icon position-relative">
-                                    <i data-feather="user" class="fea icon-sm icons"></i>
-                                    <input name="firstname" id="firstname" type="text" class="form-control ps-5" placeholder="ชื่อ :">
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    </form>
-                    <!--end row-->
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <button class="btn btn-primary" type="button" onclick="editprofile();"><i class="mdi mdi-content-save"> </i> บันทึกข้อมูล</button>
-                        </div>
-                        <!--end col-->
-                    </div>
-                    <!--end row-->
-                
                 <!--end form-->
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <form id="frm-edit">
 
+                            <input type="hidden" name="student" id="student" value="">
+
+                            <div class="row">
+
+                                <div class="col-lg-12 mt-4">
+                                    <h6 class=" text-uppercase"><span class="la la-flag input-icon"></span> ที่อยู่ (ที่สามารถติดต่อได้)</h6>
+                                    <!-- dotted divider -->
+                                    <hr class="dotted">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">เลขที่<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="no_contact" name="no_contact" placeholder="เลขที่">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">หมู่ที่<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="moo_contact" name="moo_contact" placeholder="หมู่ที่">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">ซอย<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="soi_contact" name="soi_contact" placeholder="ซอย">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">อาคาร/ตึก/หมู่บ้าน/โครงการ<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="building_contact" name="building_contact" placeholder="อาคาร/ตึก/หมู่บ้าน/โครงการ">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">ถนน<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="road_contact" name="road_contact" placeholder="ถนน">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">ตำบล<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="subdistrict_contact" name="subdistrict_contact" placeholder="ตำบล">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">อำเภอ<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="district_contact" name="district_contact" placeholder="อำเภอ">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">จังหวัด<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <select class="form-select form-control" id="province_contact" name="province_contact">
+                                            <option>เลือกจังหวัด</option>
+                                            <option value='64'>กระบี่   </option><option value='1'>กรุงเทพมหานคร   </option><option value='56'>กาญจนบุรี   </option><option value='34'>กาฬสินธุ์   </option><option value='49'>กำแพงเพชร   </option><option value='28'>ขอนแก่น   </option><option value='13'>จันทบุรี   </option><option value='15'>ฉะเชิงเทรา   </option><option value='11'>ชลบุรี   </option><option value='9'>ชัยนาท   </option><option value='25'>ชัยภูมิ   </option><option value='69'>ชุมพร   </option><option value='72'>ตรัง   </option><option value='14'>ตราด   </option><option value='50'>ตาก   </option><option value='17'>นครนายก   </option><option value='58'>นครปฐม   </option><option value='36'>นครพนม   </option><option value='19'>นครราชสีมา   </option><option value='63'>นครศรีธรรมราช   </option><option value='47'>นครสวรรค์   </option><option value='3'>นนทบุรี   </option><option value='76'>นราธิวาส   </option><option value='43'>น่าน   </option><option value='77'>บึงกาฬ</option><option value='20'>บุรีรัมย์   </option><option value='4'>ปทุมธานี   </option><option value='62'>ประจวบคีรีขันธ์   </option><option value='16'>ปราจีนบุรี   </option><option value='74'>ปัตตานี   </option><option value='5'>พระนครศรีอยุธยา   </option><option value='44'>พะเยา   </option><option value='65'>พังงา   </option><option value='73'>พัทลุง   </option><option value='53'>พิจิตร   </option><option value='52'>พิษณุโลก   </option><option value='66'>ภูเก็ต   </option><option value='32'>มหาสารคาม   </option><option value='37'>มุกดาหาร   </option><option value='75'>ยะลา   </option><option value='24'>ยโสธร   </option><option value='33'>ร้อยเอ็ด   </option><option value='68'>ระนอง   </option><option value='12'>ระยอง   </option><option value='55'>ราชบุรี   </option><option value='7'>ลพบุรี   </option><option value='40'>ลำปาง   </option><option value='39'>ลำพูน   </option><option value='22'>ศรีสะเกษ   </option><option value='35'>สกลนคร   </option><option value='70'>สงขลา   </option><option value='71'>สตูล   </option><option value='2'>สมุทรปราการ   </option><option value='60'>สมุทรสงคราม   </option><option value='59'>สมุทรสาคร   </option><option value='10'>สระบุรี</option><option value='18'>สระแก้ว   </option><option value='8'>สิงห์บุรี   </option><option value='57'>สุพรรณบุรี   </option><option value='67'>สุราษฎร์ธานี   </option><option value='21'>สุรินทร์   </option><option value='51'>สุโขทัย   </option><option value='31'>หนองคาย   </option><option value='27'>หนองบัวลำภู   </option><option value='6'>อ่างทอง   </option><option value='26'>อำนาจเจริญ   </option><option value='29'>อุดรธานี   </option><option value='41'>อุตรดิตถ์   </option><option value='48'>อุทัยธานี   </option><option value='23'>อุบลราชธานี   </option><option value='45'>เชียงราย   </option><option value='38'>เชียงใหม่   </option><option value='61'>เพชรบุรี   </option><option value='54'>เพชรบูรณ์   </option><option value='30'>เลย   </option><option value='42'>แพร่   </option><option value='46'>แม่ฮ่องสอน   </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">รหัสไปรษณีย์<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="zipcode_contact" name="zipcode_contact" placeholder="รหัสไปรษณีย์">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mt-4">
+                                    <h6 class=" text-uppercase"><span class="la la-flag input-icon"></span> ที่อยู่ (สำหรับออกใบเสร็จรับเงิน)</h6>
+                                    <!-- dotted divider -->
+                                    <hr class="dotted">
+                                </div>
+
+                                <div class="col-lg-12 mt-3 mb-3">
+
+                                    <div class="form-group">
+                                        <div class="custom-checkbox">
+                                            <input type="checkbox" id="same_address" name="same_address">
+                                            <label for="same_address">ใช้ที่อยู่เดียวกับที่อยู่ติดต่อ</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">ชื่อผู้รับ<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="firstname_shipping" name="firstname_shipping" placeholder="ชื่อผู้รับ">
+                                            <span class="la la-user input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">นามสกุลผู้รับ<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="lastname_shipping" name="lastname_shipping" placeholder="นามสกุลผู้รับ">
+                                            <span class="la la-user input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">เบอร์โทรผู้รับ<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="phone_shipping" name="phone_shipping" placeholder="เบอร์โทรผู้รับ">
+                                            <span class="la la-user input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12"><hr></div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">เลขที่<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="no_shipping" name="no_shipping" placeholder="เลขที่">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">หมู่ที่<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="moo_shipping" name="moo_shipping" placeholder="หมู่ที่">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">ซอย<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="soi_shipping" name="soi_shipping" placeholder="ซอย">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">อาคาร/ตึก/หมู่บ้าน/โครงการ<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="building_shipping" name="building_shipping" placeholder="อาคาร/ตึก/หมู่บ้าน/โครงการ">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">ถนน<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="road_shipping" name="road_shipping" placeholder="ถนน">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">ตำบล<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="subdistrict_shipping" name="subdistrict_shipping" placeholder="ตำบล">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">อำเภอ<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="district_shipping" name="district_shipping" placeholder="อำเภอ">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">จังหวัด<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <select class="form-select form-control" id="province_shipping" name="province_shipping">
+                                            <option>เลือกจังหวัด</option>
+                                            <option value='64'>กระบี่   </option><option value='1'>กรุงเทพมหานคร   </option><option value='56'>กาญจนบุรี   </option><option value='34'>กาฬสินธุ์   </option><option value='49'>กำแพงเพชร   </option><option value='28'>ขอนแก่น   </option><option value='13'>จันทบุรี   </option><option value='15'>ฉะเชิงเทรา   </option><option value='11'>ชลบุรี   </option><option value='9'>ชัยนาท   </option><option value='25'>ชัยภูมิ   </option><option value='69'>ชุมพร   </option><option value='72'>ตรัง   </option><option value='14'>ตราด   </option><option value='50'>ตาก   </option><option value='17'>นครนายก   </option><option value='58'>นครปฐม   </option><option value='36'>นครพนม   </option><option value='19'>นครราชสีมา   </option><option value='63'>นครศรีธรรมราช   </option><option value='47'>นครสวรรค์   </option><option value='3'>นนทบุรี   </option><option value='76'>นราธิวาส   </option><option value='43'>น่าน   </option><option value='77'>บึงกาฬ</option><option value='20'>บุรีรัมย์   </option><option value='4'>ปทุมธานี   </option><option value='62'>ประจวบคีรีขันธ์   </option><option value='16'>ปราจีนบุรี   </option><option value='74'>ปัตตานี   </option><option value='5'>พระนครศรีอยุธยา   </option><option value='44'>พะเยา   </option><option value='65'>พังงา   </option><option value='73'>พัทลุง   </option><option value='53'>พิจิตร   </option><option value='52'>พิษณุโลก   </option><option value='66'>ภูเก็ต   </option><option value='32'>มหาสารคาม   </option><option value='37'>มุกดาหาร   </option><option value='75'>ยะลา   </option><option value='24'>ยโสธร   </option><option value='33'>ร้อยเอ็ด   </option><option value='68'>ระนอง   </option><option value='12'>ระยอง   </option><option value='55'>ราชบุรี   </option><option value='7'>ลพบุรี   </option><option value='40'>ลำปาง   </option><option value='39'>ลำพูน   </option><option value='22'>ศรีสะเกษ   </option><option value='35'>สกลนคร   </option><option value='70'>สงขลา   </option><option value='71'>สตูล   </option><option value='2'>สมุทรปราการ   </option><option value='60'>สมุทรสงคราม   </option><option value='59'>สมุทรสาคร   </option><option value='10'>สระบุรี</option><option value='18'>สระแก้ว   </option><option value='8'>สิงห์บุรี   </option><option value='57'>สุพรรณบุรี   </option><option value='67'>สุราษฎร์ธานี   </option><option value='21'>สุรินทร์   </option><option value='51'>สุโขทัย   </option><option value='31'>หนองคาย   </option><option value='27'>หนองบัวลำภู   </option><option value='6'>อ่างทอง   </option><option value='26'>อำนาจเจริญ   </option><option value='29'>อุดรธานี   </option><option value='41'>อุตรดิตถ์   </option><option value='48'>อุทัยธานี   </option><option value='23'>อุบลราชธานี   </option><option value='45'>เชียงราย   </option><option value='38'>เชียงใหม่   </option><option value='61'>เพชรบุรี   </option><option value='54'>เพชรบูรณ์   </option><option value='30'>เลย   </option><option value='42'>แพร่   </option><option value='46'>แม่ฮ่องสอน   </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">รหัสไปรษณีย์<span class="primary-color-2 ml-1">*</span></label>
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" id="zipcode_shipping" name="zipcode_shipping" placeholder="รหัสไปรษณีย์">
+                                            <span class="la la-flag input-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                    <!-- end col-md-12 -->
+
+                                    <div class="col-lg-12 mt-2 mb-0">
+                                        <div class="alert-block"></div>
+                                        <hr>
+                                        <button class="btn btn-primary" type="button" onclick="register();"><i class="mdi mdi-content-save"> </i> แก้ไขข้อมูล</button>
+                                        <button class="btn btn-light" type="button" onclick="page('student.html');"><i class="mdi mdi-home"> </i> ยกเลิก</button>
+                                    </div>
+
+                                    <!-- <div class="col-md-12 mt-2">
+                                        <p>เป็นสมาชิก DOA Academy อยู่แล้ว ? <a href="auth/login" class="primary-color-2">เข้าสู่ระบบ</a></p>
+                                    </div> -->
+                                    <!-- end col-md-12 -->
+
+                            </div><!-- end row -->
+
+                        </form>
+
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
             </div>
             <!--end container-->
         </section>
@@ -396,6 +568,49 @@
             success : function(response){}
         });
     }
+
+    $("#same_address").change(function() 
+    {
+        console.log("same_address");
+        var checkbox = $(this), // Selected or current checkbox
+        value = checkbox.val(); // Value of checkbox
+
+        if (checkbox.is(':checked'))
+        {
+            console.log('checked');
+            $("#firstname_shipping").val($("#firstname").val());
+            $("#lastname_shipping").val($("#lastname").val());
+            $("#phone_shipping").val($("#phone").val());
+            $("#subdistrict_shipping").val($("#subdistrict_contact").val());
+            $("#district_shipping").val($("#district_contact").val());
+            $("#province_shipping").val($("#province_contact").val());
+            $("#zipcode_shipping").val($("#zipcode_contact").val());
+
+            $("#no_shipping").val($("#no_contact").val());
+            $("#moo_shipping").val($("#moo_contact").val());
+            $("#soi_shipping").val($("#soi_contact").val());
+            $("#building_shipping").val($("#building_contact").val());
+            $("#road_shipping").val($("#road_contact").val());
+        }
+        else
+        {
+            console.log('not checked');
+            $("#firstname_shipping").val("");
+            $("#lastname_shipping").val("");
+            $("#phone_shipping").val("");
+            $("#subdistrict_shipping").val("");
+            $("#district_shipping").val("");
+            $("#province_shipping").val("");
+            $("#zipcode_shipping").val("");
+
+            $("#no_shipping").val("");
+            $("#moo_shipping").val("");
+            $("#soi_shipping").val("");
+            $("#building_shipping").val("");
+            $("#road_shipping").val("");
+        }
+    });
+    
     </script>
     <style>
     .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
