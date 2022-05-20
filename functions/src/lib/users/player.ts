@@ -1,8 +1,10 @@
 import Helpers from "../helpers";
+import SPlayer from "../schools/player";
 
 
 const Player = {
   required: ["user", "course", "player"],
+  optional: ["school"],
   query: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>
@@ -27,7 +29,25 @@ const Player = {
       params: Record<string, any>
   ) {
     const query = await this.query(firestore, params);
-    return await Helpers.getInfo(query);
+    const info: Record<string, any> = await Helpers.getInfo(query);
+    // Check if user is in params
+    if (params.school !== null && typeof params.school !== "undefined") {
+      const nParams = {
+        school: params.school,
+        course: params.course,
+        player: params.player,
+      };
+      info.master = await SPlayer.getInfo(firestore, nParams);
+    }
+    return info;
+  },
+  updateInfo: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>,
+      data: any
+  ) {
+    const query = await this.query(firestore, params);
+    return await Helpers.updateInfo(query, data);
   },
   setInfo: async function(
       firestore: FirebaseFirestore.Firestore,

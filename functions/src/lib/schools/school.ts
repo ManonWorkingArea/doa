@@ -3,6 +3,7 @@ import Course from "./course";
 
 const School = {
   required: ["school"],
+  optional: ["user"],
   query: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>) {
@@ -26,6 +27,14 @@ const School = {
       data: any) {
     const query = await this.query(firestore, params);
     return await Helpers.setInfo(query, data);
+  },
+  updateInfo: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>,
+      data: any
+  ) {
+    const query = await this.query(firestore, params);
+    return await Helpers.updateInfo(query, data);
   },
   get: async function(
       firestore: FirebaseFirestore.Firestore,

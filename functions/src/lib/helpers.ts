@@ -53,6 +53,17 @@ const Helpers = {
       return false;
     }
   },
+  updateInfo: async function(
+      query: any,
+      data: any
+  ) {
+    try {
+      await query.update(data);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  },
   deleteInfo: async function(query: any) {
     try {
       await query.delete();
@@ -64,7 +75,8 @@ const Helpers = {
   getQuery: function(
       request: functions.Request,
       response: functions.Response<any>,
-      required: string[]
+      required: string[],
+      optional: string[]
   ) {
     const query: Record<string, string> = {};
     for (const q of required) {
@@ -85,12 +97,31 @@ const Helpers = {
       }
       query[q] = v;
     }
+    if (
+      optional !== null &&
+      typeof optional !== "undefined" &&
+      optional.length > 0
+    ) {
+      for (const q of optional) {
+        const v = request.query[q];
+        if (v === null || typeof v === "undefined") continue;
+        if (typeof v !== "string") {
+          response.status(400).send({
+            success: false,
+            error: `Invalid ${q} parameters, ${q} should be string.`,
+          });
+          return null;
+        }
+        query[q] = v;
+      }
+    }
     return query;
   },
   getBody: function(
       request: functions.Request,
       response: functions.Response<any>,
-      required: string[]
+      required: string[],
+      optional: string[]
   ) {
     const query: Record<string, string> = {};
     for (const q of required) {
@@ -110,6 +141,24 @@ const Helpers = {
         return null;
       }
       query[q] = v;
+    }
+    if (
+      optional !== null &&
+      typeof optional !== "undefined" &&
+      optional.length > 0
+    ) {
+      for (const q of optional) {
+        const v = request.body[q];
+        if (v === null || typeof v === "undefined") continue;
+        if (typeof v !== "string") {
+          response.status(400).send({
+            success: false,
+            error: `Invalid ${q} parameters, ${q} should be string.`,
+          });
+          return null;
+        }
+        query[q] = v;
+      }
     }
     const data = request.body.data;
     if (data === null || typeof data === "undefined") {

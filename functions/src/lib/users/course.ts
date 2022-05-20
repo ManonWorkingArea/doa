@@ -4,6 +4,7 @@ import Score from "./score";
 
 const Course = {
   required: ["user", "course"],
+  optional: ["school"],
   query: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>
@@ -32,6 +33,14 @@ const Course = {
       data: any) {
     const query = await this.query(firestore, params);
     return await Helpers.setInfo(query, data);
+  },
+  updateInfo: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>,
+      data: any
+  ) {
+    const query = await this.query(firestore, params);
+    return await Helpers.updateInfo(query, data);
   },
   get: async function(
       firestore: FirebaseFirestore.Firestore,
@@ -114,6 +123,23 @@ const Course = {
       );
     }
     return success;
+  },
+  getProgress: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>
+  ) {
+    const query = await this.query(firestore, params);
+    const snapshot = await query
+        .collection("players")
+        .where("status", "==", "finish")
+        .get();
+    return snapshot.size;
+  },
+  getScore: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>
+  ) {
+    return await Score.getResult(firestore, params);
   },
   isAllPlayerFinish: async function(
       firestore: FirebaseFirestore.Firestore,
