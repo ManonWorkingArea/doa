@@ -57,7 +57,7 @@ function __page(agenda){
     console.log("Check Data Agenda : " + agenda);
     var course  = $.urlParam('session');
     var date    = new Date().getTime();
-    if(course==="" || agenda==="") {
+    if(course==="false" || agenda==="false") {
         window.location.href="index.html";
     } else {
         $.ajax({
