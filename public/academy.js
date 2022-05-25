@@ -66,16 +66,6 @@ function __page(agenda){
             beforeSend: function(xhr) {
 
                 $("body").append('<div id="processing_overlay"></div>');
-                $("body").append(
-                '<div id="processing_container">' +
-                    //'<div id="processing_title">This is title</div>' +
-                '<div id="processing_content">' +
-                        '<img style="width: 215px; height: 25px;" 
-                    src="img/googleballs.gif" />' +
-                    '<br><br>Please wait' +
-                '</div>' +
-                '</div>');
-
             },
             success: function(result) {
                 $("body").remove("#processing_overlay");
