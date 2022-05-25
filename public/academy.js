@@ -55,7 +55,6 @@ function __session(pagename){
 
 function __page(agenda){
     console.log("Check Data Agenda : " + agenda);
-    var agenda  = $.urlParam('agenda');
     var course  = $.urlParam('session');
     var date    = new Date().getTime();
     $.ajax({
