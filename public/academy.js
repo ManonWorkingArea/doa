@@ -54,15 +54,10 @@ function __session(pagename){
 }
 
 function __page(agenda){
-    
     var course  = $.urlParam('session');
     var date    = new Date().getTime();
-
     console.log("Check Data Agenda : " + agenda + " | Course : " + course);
-    
-    if(!course) {
-        window.location.href="index.html";
-    } else {
+    if(!course){window.location.href="index.html";}else{
         $.ajax({
             url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda='+agenda+'&course='+course+'&date='+date,
             type : "GET",
