@@ -60,7 +60,7 @@ function __page(agenda){
 
     console.log("Check Data Agenda : " + agenda + " | Course : " + course);
     
-    if(course==undefined || course=="false") {
+    if(!course) {
         window.location.href="index.html";
     } else {
         $.ajax({
