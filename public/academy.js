@@ -68,7 +68,7 @@ function __page(agenda){
                 $("body").append('<div id="processing_overlay"></div>');
             },
             success: function(result) {
-                //$("#processing_overlay").remove();
+                $("#processing_overlay").remove();
                 if(!result.agenda){window.location.href="student.html";}
             },
             error: function(request,msg,error) {
