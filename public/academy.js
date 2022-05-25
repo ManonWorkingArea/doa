@@ -66,6 +66,7 @@ function __page(agenda){
         beforeSend: function(xhr) {
         },
         success: function(result) {
+            if(!result.agenda){window.location.href="student.html";}
         },
         error: function(request,msg,error) {
         }
