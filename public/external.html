@@ -14,5 +14,28 @@ return jQuery.ajax( options );
 // Usage
 $.cachedScript( "academy" ).done(function( script, textStatus ) {
 console.log( "load Default JS : " + textStatus );
+
+var session   = $.urlParam('session');
+var target    = $.urlParam('target');
+var date      = new Date().getTime()/1000;
+
+console.log("Session : " + session + " Target : " + target);
+console.log("Check Data Agenda : " + agenda + " | Course : " + course);
+
+if(!course){window.location.href="index.html";}else{
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda='+target+'&course='+session+'&date='+date,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+        },
+        success: function(result) {
+        },
+        error: function(request,msg,error) {
+        }
+    });
+}
+
 });
 </script>
