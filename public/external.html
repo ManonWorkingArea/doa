@@ -1,0 +1,16 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+    jQuery.cachedScript = function( url, options ) {
+    // Allow user to set any option except for dataType, cache, and url
+    options = $.extend( options || {}, {
+        dataType: "script",
+        cache: false,
+        url: url + ".js"
+    });
+    return jQuery.ajax( options );
+    };
+    // Usage
+    $.cachedScript( "academy" ).done(function( script, textStatus ) {
+        console.log( "load Default JS : " + textStatus );
+    });
+    </script>
