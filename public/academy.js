@@ -64,7 +64,7 @@ function __page(agenda){
             dataType: "json",
             contentType : "text/plain",
             beforeSend: function(xhr) {
-                $("body").append('<div id="processing_overlay"></div>');
+                $("body").append('<div id="processing_overlay">กำลังโหลดหน้า กรุณารอสักครู่...</div>');
             },
             success: function(result) {
                 $("#processing_overlay").remove();
