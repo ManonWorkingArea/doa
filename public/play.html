@@ -266,6 +266,7 @@
         $.cachedScript( "academy" ).done(function( script, textStatus ) {
         console.log( "load Default JS : " + textStatus );
         __session("play");
+        __page("course");
         $(function() {
             console.log("ready!");
             renderPlayer();
