@@ -1,16 +1,18 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
 <script>
-    jQuery.cachedScript = function( url, options ) {
-    // Allow user to set any option except for dataType, cache, and url
-    options = $.extend( options || {}, {
-        dataType: "script",
-        cache: false,
-        url: url + ".js"
-    });
-    return jQuery.ajax( options );
-    };
-    // Usage
-    $.cachedScript( "academy" ).done(function( script, textStatus ) {
-        console.log( "load Default JS : " + textStatus );
-    });
-    </script>
+jQuery.cachedScript = function( url, options ) {
+// Allow user to set any option except for dataType, cache, and url
+options = $.extend( options || {}, {
+dataType: "script",
+cache: false,
+url: url + ".js"
+});
+return jQuery.ajax( options );
+};
+// Usage
+$.cachedScript( "academy" ).done(function( script, textStatus ) {
+console.log( "load Default JS : " + textStatus );
+});
+</script>
