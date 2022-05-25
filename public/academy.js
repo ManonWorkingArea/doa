@@ -55,7 +55,7 @@ function __session(pagename){
 
 function __page(agenda){
     var course  = $.urlParam('session');
-    var date    = new Date().getTime();
+    var date    = new Date().getTime()/1000;
     console.log("Check Data Agenda : " + agenda + " | Course : " + course);
     if(!course){window.location.href="index.html";}else{
         $.ajax({
