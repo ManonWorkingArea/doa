@@ -1,8 +1,7 @@
 import Helpers from "../helpers";
-import Course from "./course";
 
-const Score = {
-  required: ["user", "course", "score"],
+const Bill = {
+  required: ["user", "bill"],
   query: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>
@@ -10,10 +9,8 @@ const Score = {
     return await firestore
         .collection("users")
         .doc(params.user)
-        .collection("courses")
-        .doc(params.course)
-        .collection("scores")
-        .doc(params.score);
+        .collection("bill")
+        .doc(params.bill);
   },
   exists: async function(
       firestore: FirebaseFirestore.Firestore,
@@ -61,10 +58,6 @@ const Score = {
         firestore,
         params,
         data));
-    await Course.updateFTI(firestore, {
-      user: params.user,
-      course: params.course,
-    });
     return success;
   },
   delete: async function(
@@ -76,15 +69,6 @@ const Score = {
     success = success && (await Helpers.deleteInfo(query));
     return success;
   },
-  getResult: async function(
-      firestore: FirebaseFirestore.Firestore,
-      params: Record<string, any>
-  ) {
-    const data = await this.getInfo(
-        firestore, params
-    );
-    return data["result"];
-  },
 };
 
-export default Score;
+export default Bill;

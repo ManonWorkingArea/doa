@@ -1,4 +1,5 @@
 import * as functions from "firebase-functions";
+import axios from "axios";
 
 export interface ErrnoException extends Error {
   errno?: number;
@@ -15,6 +16,7 @@ function MissingRequiredField(message: string) {
 }
 MissingRequiredField.prototype = Object.create(Error.prototype);
 
+const ftiIntegrationURL = "https://api.fti.academy/api/firebase_integrate";
 
 const Helpers = {
   exists: async function(query: any) {
@@ -170,6 +172,18 @@ const Helpers = {
     }
     query.data = data;
     return query;
+  },
+  sendFTIUserIntegration: async function(params: Record<string, any>) {
+    // Send data from parameters
+    try {
+      const response = await axios.get(ftiIntegrationURL, {params});
+      if (response.status === 200) {
+        return true;
+      }
+      return false;
+    } catch (err) {
+      return false;
+    }
   },
 };
 

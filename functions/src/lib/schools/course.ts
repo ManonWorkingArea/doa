@@ -1,6 +1,7 @@
 import Helpers from "../helpers";
 import Exam from "./exam";
 import Player from "./player";
+import Agenda from "./agenda";
 
 const Course = {
   required: ["school", "course"],
@@ -53,6 +54,7 @@ const Course = {
       info: info,
       exams: {},
       players: {},
+      agendas: {},
     };
     for (const doc of examDocs) {
       const tmpParams = {...params, exam: doc.id};
@@ -65,6 +67,14 @@ const Course = {
     for (const doc of playerDocs) {
       const tmpParams = {...params, player: doc.id};
       data.players[doc.id] = await Player.getInfo(
+          firestore,
+          tmpParams);
+    }
+    const agendas = await query.collection("agendas");
+    const agendaDocs = await agendas.listDocuments();
+    for (const doc of agendaDocs) {
+      const tmpParams = {...params, agenda: doc.id};
+      data.agendas[doc.id] = await Agenda.getInfo(
           firestore,
           tmpParams);
     }
@@ -104,6 +114,18 @@ const Course = {
         ));
       }
     }
+    const agendas: Record<string, any> = data.agendas;
+    if (agendas !== null && typeof agendas !== "undefined") {
+      // eslint-disable-next-line guard-for-in
+      for (const agendaId in agendas) {
+        const tmpParams = {...params, agenda: agendaId};
+        success = success && (await Agenda.setInfo(
+            firestore,
+            tmpParams,
+            agendas[agendaId]
+        ));
+      }
+    }
     return success;
   },
   delete: async function(
@@ -127,6 +149,14 @@ const Course = {
       const tmpParams = {...params, player: doc.id};
       success = success && (
         await Player.delete(firestore, tmpParams)
+      );
+    }
+    const agendas = await query.collection("agendas");
+    const agendaDocs = await agendas.listDocuments();
+    for (const doc of agendaDocs) {
+      const tmpParams = {...params, agenda: doc.id};
+      success = success && (
+        await Agenda.delete(firestore, tmpParams)
       );
     }
     return success;

@@ -9,7 +9,8 @@ import userRoutes from "./lib/users/routes";
 import schoolRoutes from "./lib/schools/routes";
 import Player from "./lib/users/player";
 import Course from "./lib/users/course";
-import CourseReport from "./lib/reports/course";
+import Agenda from "./lib/schools/agenda";
+// import CourseReport from "./lib/reports/course";
 
 admin.initializeApp();
 const firestore = admin.firestore();
@@ -164,6 +165,34 @@ app.get("/user/course/getProgress", async (req, res) => {
       query
   );
   res.status(200).send({success: true, progress: ret});
+});
+
+app.get("/school/course/agenda/check", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  const query = Helpers.getQuery(
+      req,
+      res,
+      [...Agenda.required, "date"],
+      Agenda.optional || []
+  );
+  if (query === null) {
+    res.status(400).send({
+      success: false,
+      error: "Invalid or Missing Parameters.",
+    });
+    return;
+  }
+  const exists = await Agenda.exists(firestore, query);
+  if (!exists) {
+    // Not exists mean no constraint
+    res.status(200).send({success: true, agenda: true});
+    return;
+  }
+  const ret = await Agenda.checkTime(
+      firestore,
+      query
+  );
+  res.status(200).send({success: true, agenda: ret});
 });
 
 // Took too long for response
