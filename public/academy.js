@@ -64,7 +64,6 @@ function __page(agenda){
             dataType: "json",
             contentType : "text/plain",
             beforeSend: function(xhr) {
-
                 $("body").append('<div id="processing_overlay"></div>');
             },
             success: function(result) {
