@@ -40,7 +40,9 @@ function __session(pagename){
     var pathname    = window.location.pathname;
     pathname        = pathname.replace("/", "");
     pathname        = pathname.replace(".html", "");
+
     console.log(pathname);
+
     if (token == undefined) {
         window.location.href="index.html";
     } else {
@@ -49,6 +51,25 @@ function __session(pagename){
             window.location.href="student.html";
         }
     }
+}
+
+function __page(agenda){
+    console.log(agenda);
+    var agenda  = $.urlParam('session');
+    var course  = $.urlParam('session');
+    var date    = new Date().getTime();
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda='+agenda+'&course='+course+'&date='+date,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+        },
+        success: function(result) {
+        },
+        error: function(request,msg,error) {
+        }
+    });
 }
 
 function login(){   
@@ -1373,6 +1394,9 @@ function renderProfile(){
 
         $('.user-block').hide();
         $('.guest-block').show();
+
+        $(".user-block").css("display", "none");
+        $(".guest-block").css("display", "block");
     }
     else
     {
@@ -1381,6 +1405,9 @@ function renderProfile(){
 
         $('.user-block').show();
         $('.guest-block').hide();
+
+        $(".guest-block").css("display", "none");
+        $(".user-block").css("display", "block");
 
         var student = JSON.parse(student);
 

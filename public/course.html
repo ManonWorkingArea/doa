@@ -265,6 +265,7 @@
         $.cachedScript( "academy" ).done(function( script, textStatus ) {
             console.log( "load Default JS : " + textStatus );
             __session("course");
+            __page("course");
             getFirebasePlayer();
         });
         </script>

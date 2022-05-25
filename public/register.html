@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 
-                    <ul class="buy-button list-inline mb-0" id="user-nav">
+                    <ul class="buy-button list-inline mb-0 user-block" id="user-nav">
                         <li class="list-inline-item mb-0">
                             <a href="student.html">
                                 <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
@@ -64,7 +64,7 @@
                         </li>
                     </ul>
 
-                    <ul class="buy-button list-inline mb-0" id="guest-nav">
+                    <ul class="buy-button list-inline mb-0 guest-block" id="guest-nav">
                         <li class="list-inline-item mb-0">
                             <a href="register.html">
                                 <div class="btn btn-icon btn-pills btn-primary"><i data-feather="user-plus" class="fea icon-sm"></i></div>
@@ -115,10 +115,33 @@
                 </div>
             </div> <!--end container-->
         </section>
-
     
         <section class="section section-course">
             <div class="container">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="home-card rounded shadow">
+                            <div class="title-heading me-lg-4">
+                                <h5 class="display-6 fw-bold mb-3"> ผู้สมัครใหม่</h5>
+                                <hr>
+                                <a href="javascript:void(0);" class="btn btn-soft-light w-100 btn-lg m-1"><i class="mdi mdi-account-plus"></i> ลงทะเบียนด้านล่าง</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="home-card rounded shadow">
+                            <div class="title-heading me-lg-4">
+                                <h5 class="display-6 fw-bold mb-3"> ผู้สมัครเก่า</h5>
+                                <hr>
+                                <a href='javascript:void(0);' class='btn btn-soft-light w-100 btn-lg m-1 user-block'><i class='mdi mdi-key'></i> กรอกข้อมูลด้านล่าง</a>
+                                <a href='login-register.html' class='btn btn-soft-primary w-100 btn-lg m-1 guest-block'><i class='mdi mdi-key'></i> เข้าสู่ระบบ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <!-- BLog Start -->
 
