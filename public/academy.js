@@ -57,19 +57,23 @@ function __page(agenda){
     console.log("Check Data Agenda : " + agenda);
     var course  = $.urlParam('session');
     var date    = new Date().getTime();
-    $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda='+agenda+'&course='+course+'&date='+date,
-        type : "GET",
-        dataType: "json",
-        contentType : "text/plain",
-        beforeSend: function(xhr) {
-        },
-        success: function(result) {
-            if(!result.agenda){window.location.href="student.html";}
-        },
-        error: function(request,msg,error) {
-        }
-    });
+    if(course==="" || agenda==="") {
+        window.location.href="index.html";
+    } else {
+        $.ajax({
+            url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda='+agenda+'&course='+course+'&date='+date,
+            type : "GET",
+            dataType: "json",
+            contentType : "text/plain",
+            beforeSend: function(xhr) {
+            },
+            success: function(result) {
+                if(!result.agenda){window.location.href="student.html";}
+            },
+            error: function(request,msg,error) {
+            }
+        });
+    }
 }
 
 function login(){   
