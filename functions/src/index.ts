@@ -9,6 +9,7 @@ import userRoutes from "./lib/users/routes";
 import schoolRoutes from "./lib/schools/routes";
 import Player from "./lib/users/player";
 import Course from "./lib/users/course";
+import CourseReport from "./lib/reports/course";
 
 admin.initializeApp();
 const firestore = admin.firestore();
@@ -49,7 +50,8 @@ app.get("/user/course/checkPretestStatus", async (req, res) => {
   const query = Helpers.getQuery(
       req,
       res,
-      Course.required
+      Course.required || [],
+      Course.optional || []
   );
   if (query === null) {
     res.status(400).send({
@@ -78,7 +80,8 @@ app.get("/user/course/checkPlayerStatus", async (req, res) => {
   const query = Helpers.getQuery(
       req,
       res,
-      Course.required
+      Course.required || [],
+      Course.optional || []
   );
   if (query === null) {
     res.status(400).send({
@@ -107,7 +110,8 @@ app.post("/user/course/player/updateTime", async (req, res) => {
   const body = Helpers.getBody(
       req,
       res,
-      Player.required
+      Player.required || [],
+      Player.optional || []
   );
   if (body === null) {
     res.status(400).send({
@@ -131,6 +135,81 @@ app.post("/user/course/player/updateTime", async (req, res) => {
   );
   res.status(ret.success?200:500).send(ret);
 });
+
+app.get("/user/course/getProgress", async (req, res) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  const query = Helpers.getQuery(
+      req,
+      res,
+      Course.required || [],
+      Course.optional || []
+  );
+  if (query === null) {
+    res.status(400).send({
+      success: false,
+      error: "Invalid or Missing Parameters.",
+    });
+    return;
+  }
+  const exists = await Course.exists(firestore, query);
+  if (!exists) {
+    res.status(404).send({
+      success: false,
+      error: "Not found.",
+    });
+    return;
+  }
+  const ret = await Course.getProgress(
+      firestore,
+      query
+  );
+  res.status(200).send({success: true, progress: ret});
+});
+
+// Took too long for response
+// app.get("/report/course/getProgress", async (req, res) => {
+//   res.set("Access-Control-Allow-Origin", "*");
+//   const query = Helpers.getQuery(
+//       req,
+//       res,
+//       ["course"],
+//       []
+//   );
+//   if (query === null) {
+//     res.status(400).send({
+//       success: false,
+//       error: "Invalid or Missing Parameters.",
+//     });
+//     return;
+//   }
+//   const ret = await CourseReport.getProgress(
+//       firestore,
+//       query
+//   );
+//   res.status(200).send({success: true, result: ret});
+// });
+
+// app.get("/report/course/getScore", async (req, res) => {
+//   res.set("Access-Control-Allow-Origin", "*");
+//   const query = Helpers.getQuery(
+//       req,
+//       res,
+//       ["course", "score"],
+//       ["minScore", "maxScore"]
+//   );
+//   if (query === null) {
+//     res.status(400).send({
+//       success: false,
+//       error: "Invalid or Missing Parameters.",
+//     });
+//     return;
+//   }
+//   const ret = await CourseReport.getScore(
+//       firestore,
+//       query
+//   );
+//   res.status(200).send({success: true, result: ret});
+// });
 
 exports.api = functions.region("asia-southeast1")
     .https.onRequest(app);

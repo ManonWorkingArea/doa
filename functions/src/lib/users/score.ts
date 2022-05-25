@@ -37,6 +37,14 @@ const Score = {
     const query = await this.query(firestore, params);
     return await Helpers.setInfo(query, data);
   },
+  updateInfo: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>,
+      data: any
+  ) {
+    const query = await this.query(firestore, params);
+    return await Helpers.updateInfo(query, data);
+  },
   get: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>
@@ -63,6 +71,15 @@ const Score = {
     let success = true;
     success = success && (await Helpers.deleteInfo(query));
     return success;
+  },
+  getResult: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>
+  ) {
+    const data = await this.getInfo(
+        firestore, params
+    );
+    return data["result"];
   },
 };
 

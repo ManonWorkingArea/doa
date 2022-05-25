@@ -37,6 +37,14 @@ const Exam = {
     const query = await this.query(firestore, params);
     return await Helpers.setInfo(query, data);
   },
+  updateInfo: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>,
+      data: any
+  ) {
+    const query = await this.query(firestore, params);
+    return await Helpers.updateInfo(query, data);
+  },
   get: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>

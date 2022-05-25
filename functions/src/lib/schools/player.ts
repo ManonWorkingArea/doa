@@ -1,8 +1,9 @@
 import Helpers from "../helpers";
-
+import UPlayer from "../users/player";
 
 const Player = {
   required: ["school", "course", "player"],
+  optional: ["user"],
   query: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>
@@ -27,7 +28,17 @@ const Player = {
       params: Record<string, any>
   ) {
     const query = await this.query(firestore, params);
-    return await Helpers.getInfo(query);
+    const info: Record<string, any> = await Helpers.getInfo(query);
+    // Check if user is in params
+    if (params.user !== null && typeof params.user !== "undefined") {
+      const nParams = {
+        user: params.user,
+        course: params.course,
+        player: params.player,
+      };
+      info.user = await UPlayer.getInfo(firestore, nParams);
+    }
+    return info;
   },
   setInfo: async function(
       firestore: FirebaseFirestore.Firestore,
@@ -36,6 +47,14 @@ const Player = {
   ) {
     const query = await this.query(firestore, params);
     return await Helpers.setInfo(query, data);
+  },
+  updateInfo: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>,
+      data: any
+  ) {
+    const query = await this.query(firestore, params);
+    return await Helpers.updateInfo(query, data);
   },
   get: async function(
       firestore: FirebaseFirestore.Firestore,

@@ -10,7 +10,8 @@ async function runGet(
   const query = Helpers.getQuery(
       req,
       res,
-      obj.required
+      obj.required || [],
+      obj.optional || []
   );
   if (query === null) {
     res.status(400).send({
@@ -44,7 +45,8 @@ async function runPost(
   const body = Helpers.getBody(
       req,
       res,
-      obj.required
+      obj.required || [],
+      obj.optional || []
   );
   if (body === null) {
     res.status(400).send({
@@ -62,6 +64,34 @@ async function runPost(
   return;
 }
 
+async function runPut(
+    req: functions.Request,
+    res: functions.Response<any>,
+    firestore: FirebaseFirestore.Firestore,
+    obj: any
+) {
+  const body = Helpers.getBody(
+      req,
+      res,
+      obj.required || [],
+      obj.optional || []
+  );
+  if (body === null) {
+    res.status(400).send({
+      success: false,
+      error: "Invalid or Missing Parameters.",
+    });
+    return;
+  }
+  const success = await obj.updateInfo(
+      firestore,
+      body,
+      body.data
+  );
+  res.status(200).send({success: success});
+  return;
+}
+
 async function runDelete(
     req: functions.Request,
     res: functions.Response<any>,
@@ -71,7 +101,8 @@ async function runDelete(
   const query = Helpers.getQuery(
       req,
       res,
-      obj.required
+      obj.required || [],
+      obj.optional || []
   );
   if (query === null) {
     res.status(400).send({
@@ -118,6 +149,8 @@ export default async function(
     return await runGet(req, res, firestore, obj);
   } else if (req.method === "POST") {
     return await runPost(req, res, firestore, obj);
+  } else if (req.method === "PUT") {
+    return await runPut(req, res, firestore, obj);
   } else if (req.method === "DELETE") {
     return await runDelete(req, res, firestore, obj);
   } else if (req.method === "OPTIONS") {
