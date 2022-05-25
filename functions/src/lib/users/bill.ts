@@ -9,7 +9,7 @@ const Bill = {
     return await firestore
         .collection("users")
         .doc(params.user)
-        .collection("bill")
+        .collection("bills")
         .doc(params.bill);
   },
   exists: async function(

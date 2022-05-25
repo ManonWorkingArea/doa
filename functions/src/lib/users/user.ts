@@ -59,7 +59,7 @@ const User = {
           firestore,
           tmpParams);
     }
-    const bills = await query.collection("bill");
+    const bills = await query.collection("bills");
     const billDocs = await bills.listDocuments();
     for (const doc of billDocs) {
       const tmpParams = {...params, bill: doc.id};
@@ -127,7 +127,7 @@ const User = {
             tmpParams)
       );
     }
-    const bills = await query.collection("bill");
+    const bills = await query.collection("bills");
     const billDocs = await bills.listDocuments();
     for (const doc of billDocs) {
       const tmpParams = {...params, bill: doc.id};
