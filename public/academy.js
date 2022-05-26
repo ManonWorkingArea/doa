@@ -158,14 +158,16 @@ function getLogin()
 
 function renderLogin()
 {
+    var username    = $.urlParam('username');
+    var password    = $.urlParam('password');
+
     if(!username&&!password)
     {
-
+        console.log("Default Login");
     }
     else
     {
-        var username    = $.urlParam('username');
-        var password    = $.urlParam('password');
+        console.log("Register Login");
         $("#password").val(password);
         $("#username").val(username);
         login();
