@@ -149,6 +149,28 @@ function login(){
     });
 }
 
+function getLogin()
+{
+    var username  = $("#username").val();
+    var password  = $("#password").val();
+    window.location.href="login.html?username=" + username + "&password=" + password;
+}
+
+function renderLogin()
+{
+    if(!username&&!password)
+    {
+
+    }
+    else
+    {
+        var username    = $.urlParam('username');
+        var password    = $.urlParam('password');
+        $("#password").val(password);
+        $("#username").val(username);
+        login();
+    }
+}
 
 function register(){   
     $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
@@ -179,7 +201,7 @@ function register(){
 
             if(result.status==="true")
             {
-                window.location.href="register_confirm.php?token=" + result.token;
+                window.location.href="register_confirm.html?token=" + result.token;
             }
             else if(result.status==="false")
             {
@@ -232,6 +254,8 @@ function renderRegisterConfirm(token) {
                 $(".username").html(result.profile.username);
                 $(".password").html(result.profile.password);
                 $("#payment_url").val(result.payment);
+                $("#username").val(result.profile.username);
+                $("#password").val(result.profile.password);
             }
             else
             {
