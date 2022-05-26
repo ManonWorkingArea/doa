@@ -2358,6 +2358,10 @@ function getFirebaseUser()
                 {
                     bill_btn = "<a href='bill.html?session="+item.course+"&token="+item.uid+"' class='btn btn-lg btn-light'> ใบเสร็จ <i class='uil uil-receipt align-middle'></i></a>";
                 }
+                else if(item.status=="reject")
+                {
+                    bill_btn = "<a href='javascript:void(0);' class='btn btn-lg btn-dark'> การลงทะเบียนถูกยกเลิก</a>";
+                }
                 // Add topic item to table
                 $("#order-area").append(
                 "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
