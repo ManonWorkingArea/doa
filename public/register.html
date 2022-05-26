@@ -1048,6 +1048,7 @@
         $.cachedScript( "academy" ).done(function( script, textStatus ) {
             console.log( "load Default JS : " + textStatus );
             __page("register_special");
+            renderRepeatRegisterStudent();
             //__session("course");
             //getFirebasePlayer();
         });
