@@ -2352,7 +2352,7 @@ function getFirebaseUser()
                 }
                 else if(item.status=="confirm")
                 {
-                    bill_btn = "<a href='bill.html?session="+item.course+"&token="+item.uid+"' class='btn btn-lg btn-light'> ใบเสร็จ <i class='uil uil-receipt align-middle'></i></a>";
+                    bill_btn = "<a href='javascript:void(0);' class='btn btn-lg btn-light' onclick='openPaymentURL(" + item.course + ");'> ชำระเงิน <i class='uil uil-receipt align-middle'></i></a>";
                 }
                 else if(item.status=="complete")
                 {
