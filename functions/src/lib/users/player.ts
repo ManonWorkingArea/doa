@@ -1,5 +1,6 @@
 import Helpers from "../helpers";
 import SPlayer from "../schools/player";
+import Course from "./course";
 
 
 const Player = {
@@ -73,6 +74,10 @@ const Player = {
         firestore,
         params,
         data));
+    await Course.updateFTI(firestore, {
+      user: params.user,
+      course: params.course,
+    });
     return success;
   },
   delete: async function(

@@ -1,19 +1,20 @@
 import Helpers from "../helpers";
-import Course from "./course";
 
-const Score = {
-  required: ["user", "course", "score"],
+
+const Agenda = {
+  required: ["school", "course", "agenda"],
+  optional: [],
   query: async function(
       firestore: FirebaseFirestore.Firestore,
       params: Record<string, any>
   ) {
     return await firestore
-        .collection("users")
-        .doc(params.user)
+        .collection("schools")
+        .doc(params.school)
         .collection("courses")
         .doc(params.course)
-        .collection("scores")
-        .doc(params.score);
+        .collection("agendas")
+        .doc(params.agenda);
   },
   exists: async function(
       firestore: FirebaseFirestore.Firestore,
@@ -61,10 +62,6 @@ const Score = {
         firestore,
         params,
         data));
-    await Course.updateFTI(firestore, {
-      user: params.user,
-      course: params.course,
-    });
     return success;
   },
   delete: async function(
@@ -76,15 +73,27 @@ const Score = {
     success = success && (await Helpers.deleteInfo(query));
     return success;
   },
-  getResult: async function(
+  checkTime: async function(
       firestore: FirebaseFirestore.Firestore,
-      params: Record<string, any>
+      params: Record<string, any>,
   ) {
-    const data = await this.getInfo(
-        firestore, params
-    );
-    return data["result"];
+    const data = await this.getInfo(firestore, params);
+    const date: number | null = Number(params.date);
+    if (date === null || typeof date === "undefined") {
+      return false;
+    }
+    const startDate = Number(data.start);
+    if (
+      (data.start != null && typeof data.start != "undefined") &&
+      startDate > date
+    ) return false;
+    const endDate = Number(data.end);
+    if (
+      (data.end != null && typeof data.end != "undefined") &&
+        endDate < date
+    ) return false;
+    return true;
   },
 };
 
-export default Score;
+export default Agenda;

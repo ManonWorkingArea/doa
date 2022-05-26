@@ -1,4 +1,5 @@
 import Helpers from "../helpers";
+import Bill from "./bill";
 import Course from "./course";
 
 const User = {
@@ -46,14 +47,23 @@ const User = {
     const info = await Helpers.getInfo(query);
     // Custom loop get players
     const courses = await query.collection("courses");
-    const docs = await courses.listDocuments();
+    const courseDocs = await courses.listDocuments();
     const data: Record<string, any> = {
       info: info,
       courses: {},
+      bills: {},
     };
-    for (const doc of docs) {
+    for (const doc of courseDocs) {
       const tmpParams = {...params, course: doc.id};
       data.courses[doc.id] = await Course.get(
+          firestore,
+          tmpParams);
+    }
+    const bills = await query.collection("bills");
+    const billDocs = await bills.listDocuments();
+    for (const doc of billDocs) {
+      const tmpParams = {...params, bill: doc.id};
+      data.bills[doc.id] = await Bill.get(
           firestore,
           tmpParams);
     }
@@ -85,6 +95,19 @@ const User = {
         ));
       }
     }
+    const bills = data.bills;
+    if (bills !== null && typeof bills !== "undefined") {
+      // Set players by looping
+      // eslint-disable-next-line guard-for-in
+      for (const billId in bills) {
+        const tmpParams = {...params, bill: billId};
+        success = success && (await Bill.set(
+            firestore,
+            tmpParams,
+            bills[billId]
+        ));
+      }
+    }
     return success;
   },
   delete: async function(
@@ -95,11 +118,21 @@ const User = {
     let success = true;
     success = success && (await Helpers.deleteInfo(query));
     const courses = await query.collection("courses");
-    const docs = await courses.listDocuments();
-    for (const doc of docs) {
+    const courseDocs = await courses.listDocuments();
+    for (const doc of courseDocs) {
       const tmpParams = {...params, course: doc.id};
       success = success && (
         await Course.delete(
+            firestore,
+            tmpParams)
+      );
+    }
+    const bills = await query.collection("bills");
+    const billDocs = await bills.listDocuments();
+    for (const doc of billDocs) {
+      const tmpParams = {...params, bill: doc.id};
+      success = success && (
+        await Bill.delete(
             firestore,
             tmpParams)
       );

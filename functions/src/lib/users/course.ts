@@ -69,7 +69,21 @@ const Course = {
           firestore,
           tmpParams);
     }
+    await this.updateFTI(firestore, params);
     return data;
+  },
+  updateFTI: async function(
+      firestore: FirebaseFirestore.Firestore,
+      params: Record<string, any>
+  ) {
+    const tmpParams = {
+      user: params.user,
+      course: params.course,
+      progress: await this.getProgress(firestore, params),
+      pretest: await this.getScore(firestore, {...params, score: "pretest"}),
+      posttest: await this.getScore(firestore, {...params, score: "posttest"}),
+    };
+    await Helpers.sendFTIUserIntegration(tmpParams);
   },
   set: async function(
       firestore: FirebaseFirestore.Firestore,
