@@ -2276,6 +2276,10 @@ function getFirebaseUser()
             });
         },
         error: function(request,msg,error) {
+            $.isLoading( "hide" );
+            console.log(result);
+            //updateFirebaseUser();
+            console.log("No Found Profile Data");
         }
     });
 }
