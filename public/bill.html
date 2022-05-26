@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>กรมวิชาการเกษตร - ใบเสร็จ</title>
+        <title>กรมวิชาการเกษตร - ใบเสร็จรับเงิน</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="author" content="TechyDevs">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
         <!-- favicon -->
         <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Ffavicon.ico?alt=media&token=9729026e-83ca-4f97-a3b2-79ded306ab11">
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css" integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Icons -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.8.55/css/materialdesignicons.min.css" rel="stylesheet" media="all">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
@@ -19,30 +19,22 @@
         <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fstyle.css?alt=media&token=a8ee131c-7ee8-45d2-9005-31624ddfb8e6" rel="stylesheet" type="text/css" id="theme-opt" />
         <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fcolors%2Fdefault.css?alt=media&token=53dc6813-4ba8-4505-9100-e0928e52282b" rel="stylesheet" id="color-opt">
         <link href="academy.css" rel="stylesheet" type="text/css" id="theme-opt" />
+
     </head>
 
     <body>
-        <!-- Loader -->
-        <!-- <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Loader -->
         
         <!-- Navbar STart -->
         <header id="topnav" class="defaultscroll sticky bg-white">
             <div class="container">
                 <!-- Logo container-->
                 <a class="logo" href="index.html">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
+                    <span class="logo-light-mode">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
+                    </span>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-dark-mode" alt="">
                 </a>
-                
-                <!-- Logo End -->
 
                 <!-- End Logo container-->
                 <div class="menu-extras">
@@ -58,99 +50,162 @@
                         <!-- End mobile menu toggle-->
                     </div>
                 </div>
-
-                <ul class="buy-button list-inline mb-0">
-                    <li class="list-inline-item mb-0">
-                        <a href="register.html">
-                            <div class="btn btn-icon btn-pills btn-primary"><i data-feather="user-plus" class="fea icon-sm"></i></div>
-                        </a>
-                    </li>
-                    
-                    <li class="list-inline-item ps-1 mb-0">
-                        <a href="login.html">
-                            <div class="btn btn-icon btn-pills btn-primary"><i data-feather="key" class="fea icon-sm"></i></div>
-                        </a>
-                    </li>
-                </ul>
-        
-                <div id="navigation">
-                    <ul class="navigation-menu">
-                        <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
-                        <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
-                        <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
-                        <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
-                        <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
-                        <li><a href="login.html" target="" class="sub-menu-item">เข้าสู่ระบบ</a></li>
+                
+                    <ul class="buy-button list-inline mb-0 user-block" id="user-nav">
+                        <li class="list-inline-item mb-0">
+                            <a href="student.html">
+                                <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
+                            </a>
+                        </li>
+                        <li class="list-inline-item mb-0">
+                            <a href="javascript:void(0);" onclick="logout();">
+                                <div class="btn btn-icon btn-pills btn-danger"><i data-feather="power" class="fea icon-sm"></i></div>
+                            </a>
+                        </li>
                     </ul>
-                </div>
 
+                    <ul class="buy-button list-inline mb-0 guest-block" id="guest-nav">
+                        <li class="list-inline-item mb-0">
+                            <a href="register.html">
+                                <div class="btn btn-icon btn-pills btn-primary"><i data-feather="user-plus" class="fea icon-sm"></i></div>
+                            </a>
+                        </li>
+                        
+                        <li class="list-inline-item ps-1 mb-0">
+                            <a href="login.html">
+                                <div class="btn btn-icon btn-pills btn-primary"><i data-feather="key" class="fea icon-sm"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+            
+                    <div id="navigation">
+                        <ul class="navigation-menu">
+                            <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
+                            <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
+                            <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
+                            <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
+                            <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
+                            <li><a href="student.html" target="" class="sub-menu-item">ผู้อบรม</a></li>
+                        </ul>
+                    </div>
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
         
-        <!-- Hero Start -->
-        <section class="bg-half-170-home d-table w-100 bg-light">
+        <section class="bg-invoice bg-light">
             <div class="container">
-                <div class="row mt-sm-0 align-items-center">
+                <div class="row gutters" id="printarea">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <div class="card-body p-0">
+                                    <div class="invoice-container">
+                                        <div class="invoice-header">
+                                            <!-- Row start -->
 
-                    <div class="col-md-12">
-                        <div class="title-heading me-lg-4">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Fdoa-banner-2.png?alt=media&token=6f5467d0-5d3e-4ec0-a73c-f3cef7782281" class="img-fluid rounded-md shadow-lg">
-                            <h5 class="display-6 fw-bold mt-5 mb-3"> หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร ๒๕๖๕</h5>
-                            <p class="text-muted para-desc mb-0">รุ่นที่ 2 ระหว่างวันที่ 16 พ.ค. - 14 มิ.ย.65</p>
-                            <p class="text-muted para-desc mb-0">ราคาท่านละ <strong>700</strong> บาท (รวม Vat 7% แล้ว)</p>
-                            <p class="text-muted para-desc mb-0">ลงทะเบียนเพื่อสำรองสิทธิ์เข้าอบรมและการประเมินผ่านระบบออนไลน์<br><br></p>
-                        </div>
-                    </div><!--end col-->
+                                            <div class="row gutters" id="btnarea">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="custom-actions-btns mb-5">
+                                                        <a href="javascript:void(0);" onclick="download_receipt()" class="btn btn-primary">
+                                                            <i class="icon-download"></i> Download
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                    <div class="col-md-6">
-                        <div class="home-card rounded shadow">
-                            <div class="title-heading me-lg-4">
-                                <h5 class="display-6 fw-bold mb-3"> ผู้สมัครใหม่</h5>
-                                <hr>
-                                <a href="register.html" class="btn btn-soft-primary w-100 btn-lg m-1"><i class="mdi mdi-account-plus"></i> ลงทะเบียน</a>
-                            </div>
-                        </div>
-                    </div>
+                                            <!-- Row end -->
+                                            <!-- Row start -->
+                                            <div class="row gutters">
+                                                <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
+                                                    <a href="index.html" class="invoice-logo">
+                                                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Ffti_logo_receipt.png?alt=media&token=a8949971-a38a-42e6-82c2-5c7f7a909415" class="logo-dark-mode" alt="">
+                                                    </a>
+                                                    <address class="text-right">
+                                                    <strong>สภาอุตสาหกรรมแห่งประเทศไทย</strong> <small>(สำนักงานใหญ่)</small><br>
+                                                    เลขที่ 2 อาคารปฏิบัติการเทคโนโลยีเชิงสร้างสรรค์ ชั้น 7 ถนนนางลิ้นจี่ แขวงทุ่งมหาเมฆ เขตสาทร กรุงเทพมหานคร 10120<br>
+                                                    โทร : 02-345-1000
+                                                    </address>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                                    <h4 class="mt-3">ใบเสร็จรับเงิน/Receipt</h4>
+                                                </div>
 
-                    <div class="col-md-6">
-                        <div class="home-card rounded shadow">
-                            <div class="title-heading me-lg-4">
-                                <h5 class="display-6 fw-bold mb-3"> ผู้สมัครเก่า</h5>
-                                <hr>
-                                <a href="login.html" class="btn btn-soft-primary w-100 btn-lg m-1"><i class="mdi mdi-key"></i> เข้าสู่ระบบ</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="content mt-md-4 pt-md-2">
-                        <div class="row">
-                            <div class="col-lg-10 text-center">
-                                <div class="row">
-                                    <div class="col-md-2 mt-4 pt-2">
-                                        <div class="section-title text-md-start">
-                                        <a href="https://line.me/R/ti/p/@032jkdja" traget="_blank"><img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Ffti-academy-lineOA.png?alt=media&token=6e940e60-8fc2-4cbe-bd7f-5b8770889367" class="img-fluid d-block mx-auto" alt=""></a>
+                                                <hr class="mt-3">
+                                            </div>
+                                            <!-- Row end -->
+                                            <!-- Row start -->
+                                            <div class="row gutters">
+                                                <div class="col-xl-8 col-lg-9 col-md-12 col-sm-12 col-12">
+                                                    <div class="invoice-details">
+                                                        <address>
+                                                            ชื่อลูกค้า : <strong><span class="receipt-name"></span></strong><br>
+                                                            ที่อยู่ : <span class="receipt-address"></span><br>
+                                                            เบอร์โทร : <span class="receipt-phone"></span>
+                                                        </address>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4 col-lg-3 col-md-12 col-sm-12 col-12">
+                                                    <div class="invoice-details">
+                                                        <div class="invoice-num">
+                                                            <div>เลขที่อ้างอิง 1 : <strong><span class="receipt-ref1"></span></strong></div>
+                                                            <div>เลขที่อ้างอิง 2 : <strong><span class="receipt-ref2"></span></strong></div>
+                                                            <div>วันที่ <span class="receipt-date"></span></div>
+                                                        </div>
+                                                    </div>													
+                                                </div>
+                                            </div>
+                                            <!-- Row end -->
                                         </div>
-                                    </div>
+                                        <div class="invoice-body">
+                                            <!-- Row start -->
+                                            <div class="row gutters">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="table-responsive">
 
-                                    <div class="col-md-10 col-12 mt-4 pt-md-2">
-                                        <div class="section-title text-md-start">
-                                            <p class="para-desc">กรุณา Scan หรือ คลิ๊กที่ QRCODE
-                                            LINE OA : @ftiacademy เพื่อติดต่อทีมงาน</br>
-                                            </br></br>
-                                            หรือติดต่อสอบถามได้ที่ 1453 ต่อ 12</br>
-                                            สภาอุตสาหกรรมแห่งประเทศไทย</p>
+                                                        <table class="table custom-table m-0">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>ลำดับ</th>
+                                                                <th>รหัส</th>
+                                                                <th>รายการ</th>
+                                                                <th>จำนวน</th>
+                                                                <th>ราคาต่อหน่วย</th>
+                                                                <th>ส่วนลด</th>
+                                                                <th>จำนวนเงิน</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td><span class="receipt-code"></span></td>
+                                                                <td><span class="receipt-item"></span></td>
+                                                                <td>1</td>
+                                                                <td>654.21</td>
+                                                                <td>0</td>
+                                                                <td>654.21</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3" class="text-center"><h6>- เจ็ดร้อยบาทถ้วน -</h6></td>
+                                                                <td colspan="3">รวม (Sub Total)<br>ภาษีมูลค่าเพิ่ม (Vat) 7%<br>จำนวนเงินรวม (Net Total)</td>
+                                                                <td>654.21<br>45.79<br>700.00</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Row end -->
                                         </div>
+                                        <div class="invoice-footer"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </div><!--end container fluid-->
-        </section><!--end section-->
-        <!-- Hero End -->
+            </section>
+
+            <span class="certdata"></span>
 
         <footer class="footer">
             <div class="container">
@@ -169,8 +224,9 @@
                             <div class="col-6 mb-0 mb-md-4 pb-0">
                                 <p class="">ติดต่อสอบถามข้อมูล</p>
                                 <strong>สภาอุตสาหกรรมแห่งประเทศไทย</strong><br>
+                                ทัศนีย์วรรณ รัตนธัญกุล<br>
                                 FTI Academy <br> 
-                                เบอร์โทร : 1453 กด 12<br>
+                                เบอร์โทร : 02-3451226<br>
                                 email: thassaneewanr@fti.or.th
                             </div>
                         </div>
@@ -191,7 +247,6 @@
                     </div>
                 </div>
             </div>
-            <span class="browser"></span>
         </footer>
 
         <!-- Cookies Start -->
@@ -209,26 +264,46 @@
         <!-- Back to top -->
 
         <!-- javascript -->
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
         <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-        <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js" integrity="sha512-70OZ+iUuudMmd7ikkUWcEogIw/+MIE17z17bboHhj56voxuy+OPB71GWef47xDEt5+MxFdrigC1tRDmuvIVrCA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+        <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
         <!-- Bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Icons -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" integrity="sha512-24XP4a9KVoIinPFUbcnjIjAjtS59PUoxQj3GNVpWc86bCqPuy3YxAcxJrxFCxXe4GHtAumCbO2Ze2bddtuxaRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
         <!-- Main Js -->
         <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
         <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
-        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
-        <script src="academy.js"></script>
-        
         <script>
+        jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+            dataType: "script",
+            cache: false,
+            url: url + ".js"
+        });
+        return jQuery.ajax( options );
+        };
+        // Usage
+        $.cachedScript( "academy" ).done(function( script, textStatus ) {
+            console.log( "load Default JS : " + textStatus );
+            var code    = $.urlParam('token');
+            renderOrderConfirm(code)
+            renderOrderReceipt();
+            //__page("register_confirm");
+            //__session("course");
+            //getFirebasePlayer();
+        });
+        </script>
 
-        __session("bill");
-
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+        <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fbootstrap-birthday.js?alt=media&token=16ee7bcc-a285-49ef-8e19-d4d272c102b0"></script>
+        <script>
         Pusher.logToConsole = false;    
         var pusher = new Pusher('4b7d1b6027780eadf73d',{
             cluster: 'ap1'
@@ -257,10 +332,12 @@
                 }
             }
         });
+
         function remoteAlert(title,text)
         {
             $.alert(text,function(){});
         }
+
         function online()
         {
             if(window.matchMedia("(max-width: 767px)").matches){
@@ -271,11 +348,182 @@
             $.ajax(
             {
                 type : "POST",  
-                url : "https://player.fti.academy/api/online/" + token + "/home/" + device,
+                url : "https://player.fti.academy/api/online/" + token + "/course/" + device,
                 dataType : "json",
                 success : function(response){}
             });
         }
+
+        $('#row-col').bootstrapBirthday({
+            dateFormat:'littleEndian',
+            futureDates:false,
+            minAge: 18,
+            maxAge: 100,// Localization.
+            text: 
+            {
+                year: "ปี พ.ศ.",
+                month: "เดือน",
+                day: "วันที่",
+                months: {
+                    short: 
+                    [
+                        "ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."
+                    ],
+                    long: 
+                    [
+                        "January","February","March","April","May","June","July","August","September","October","November","December"
+                    ]
+                }
+            },
+            widget: 
+            {
+                wrapper: 
+                {
+                    tag: 'div',
+                    class: 'row'
+                },
+                wrapperYear: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                wrapperMonth: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                wrapperDay: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                selectYear: {
+                    name: 'birthday[year]',
+                    class: 'form-select form-control form-control-birthdate'
+                },
+                selectMonth: {
+                    name: 'birthday[month]',
+                    class: 'form-select form-control form-control-birthdate'
+                },
+                selectDay: {
+                    name: 'birthday[day]',
+                    class: 'form-select form-control form-control-birthdate'
+            }
+        }
+        });
+
+        function selectProfileImage ()
+        {
+            $("input[id='profile-image-file']").click();
+        }
+
+        $("#profile-image-file").change(function()
+        {
+            var file 			= $('#profile-image-file')[0].files[0];
+            var reader 			= new FileReader();
+            var baseString;
+            reader.onloadend 	= function ()
+            {
+                baseString = reader.result;
+                $("#profile-image-preview").attr('src',baseString);
+                $("#profile-image-data").val(baseString);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function selectCitizenImage ()
+        {
+            $("input[id='citizen-image-file']").click();
+        }
+
+        $("#citizen-image-file").change(function()
+        {
+            var file 			= $('#citizen-image-file')[0].files[0];
+            var reader 			= new FileReader();
+            var baseString;
+            reader.onloadend 	= function ()
+            {
+                baseString = reader.result;
+                $("#citizen-image-preview").attr('src',baseString);
+                $("#citizen-image-data").val(baseString);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+        $("#same_address").change(function() 
+        {
+            console.log("same_address");
+            var checkbox = $(this), // Selected or current checkbox
+            value = checkbox.val(); // Value of checkbox
+
+            if (checkbox.is(':checked'))
+            {
+                console.log('checked');
+                $("#firstname_shipping").val($("#firstname").val());
+                $("#lastname_shipping").val($("#lastname").val());
+                $("#phone_shipping").val($("#phone").val());
+                $("#subdistrict_shipping").val($("#subdistrict_contact").val());
+                $("#district_shipping").val($("#district_contact").val());
+                $("#province_shipping").val($("#province_contact").val());
+                $("#zipcode_shipping").val($("#zipcode_contact").val());
+
+                $("#no_shipping").val($("#no_contact").val());
+                $("#moo_shipping").val($("#moo_contact").val());
+                $("#soi_shipping").val($("#soi_contact").val());
+                $("#building_shipping").val($("#building_contact").val());
+                $("#road_shipping").val($("#road_contact").val());
+            }
+            else
+            {
+                console.log('not checked');
+                $("#firstname_shipping").val("");
+                $("#lastname_shipping").val("");
+                $("#phone_shipping").val("");
+                $("#subdistrict_shipping").val("");
+                $("#district_shipping").val("");
+                $("#province_shipping").val("");
+                $("#zipcode_shipping").val("");
+
+                $("#no_shipping").val("");
+                $("#moo_shipping").val("");
+                $("#soi_shipping").val("");
+                $("#building_shipping").val("");
+                $("#road_shipping").val("");
+            }
+        });
+
+        $("input[name='get_receipt_online']").change(function() 
+        {
+            var val = $("input[type='radio'][name='get_receipt_online']:checked").val();
+
+            if(val==="offline")
+            {
+                $("#select-bill-type").show();
+            }
+            else if(val==="online")
+            {
+                $("#select-bill-type").hide();
+                $("#fill-corp-address").hide();
+            }
+        });
+
+
+        $("input[name='receipt_type']").change(function() 
+        {
+            var val = $("input[type='radio'][name='receipt_type']:checked").val();
+
+            if(val==="corp")
+            {
+                $("#fill-corp-address").show();
+            }
+            else if(val==="personal")
+            {
+                $("#fill-corp-address").hide();
+            }
+        });
+        
         </script>
         <style>
         .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
@@ -289,6 +537,10 @@
         .alert_tips div{box-siziong:border-box;display:inline-block;padding:15px;border-radius:10px;background:rgba(0,0,0,.7);min-width:50px;max-width:230px;text-align:center;color:#fff;animation: tipsshow 3s .01s ease;opacity:0;}
         @keyframes alertshow {0% {opacity: 0;transform: scale(.5)}70% {opacity: .7;transform: scale(1.05)}100% {opacity: 1;transform: scale(1)}}
         @keyframes tipsshow {0% {opacity: 0;transform:scale(1.4) rotateX(-360deg)}20% {opacity:1;transform:scale(1) rotateX(0deg)}80% {opacity:1;transform:scale(1) rotateX(0deg)}100% {opacity:0;transform:scale(1.4) rotateX(360deg)}}
+        .certdata
+        {
+            display:none;
+        }
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
@@ -298,7 +550,22 @@
         gtag('js', new Date());
 
         gtag('config', 'G-M0JGCQ3SKK');
+
+        function download_receipt() {
+            $('#btnarea').hide();
+            var download_cert_name = $('.certdata').html();
+            html2canvas(document.querySelector('#printarea'), {useCORS: true}).then(function(canvas) {
+                let img = new Image();
+                img.src = canvas.toDataURL('image/jpeg');
+                img.onload = function () {
+                    let pdf = new jsPDF('landscape', 'mm', 'a4');
+                    pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
+                    pdf.save(download_cert_name + '.pdf');
+                    $('#btnarea').show();
+                };
+            });
+        }
+
         </script>
-        
     </body>
 </html>

@@ -1409,3 +1409,18 @@ hr.hr-text::before {
   padding-top: 25%;
   font-size: 18px;
 }
+
+.payment-label {
+  float: right;
+  background: #3c4858;
+  padding: 7px;
+  font-size: 13px;
+  color: #fff;
+  text-transform: capitalize;
+}
+h5.bill-title
+{
+  border-bottom: 1px solid #e7e7e7;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}

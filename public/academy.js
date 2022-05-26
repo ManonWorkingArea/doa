@@ -149,6 +149,79 @@ function login(){
     });
 }
 
+function login_register(){   
+    $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+
+    var formData = $('#frm-login').serializeArray();
+    formData = formData.reduce(function(obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+    }, {});
+    formData = JSON.stringify(formData);
+
+    $.ajax({
+        url: 'https://api.fti.academy/api/login',
+        type : "POST",
+        data: formData,
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3"); 
+        },
+        success: function(result) {
+            // handle success
+            $.isLoading( "hide" );
+            var studentArray = JSON.stringify(result);
+
+            if (result.isStudent=="no") {
+                window.location.href="permission.php";
+            }
+            else
+            {
+                Cookies.set('__session', result.token, {expires:1})
+                Cookies.set('__student', studentArray, {expires:1})
+                // Clear Data
+                localStorage.removeItem("__topic");
+                localStorage.removeItem("__course");
+
+                var student = Cookies.get('__student');
+                var student = JSON.parse(student);
+
+                Cookies.set('__exam', student.exam_round, {expires:1});
+                Cookies.set('__area', student.cert_area, {expires:1});
+                
+                // Clear Answer
+                localStorage.removeItem("__exam");
+                localStorage.removeItem("__question");
+                localStorage.removeItem("__access");
+
+                window.location.href="external.html?session=215&target=register&document=register_special";
+            }
+        },
+        error: function(request,msg,error) {
+            $.isLoading( "hide" );
+            $(".alert-block").html("");
+            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            output = JSON.stringify(request.responseJSON)
+            
+            // Login undefined
+            if(request.status===0){
+                login();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else if(request.status===500){
+                login();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
+            $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
+        }
+    });
+}
+
 function getLogin()
 {
     var username  = $("#username").val();
@@ -348,9 +421,9 @@ function renderRegisterOld(token) {
     });
 }
 
-function openPaymentURL()
+function openPaymentURL(uid)
 {
-    var url = $("#payment_url").val();
+    var url = $("#payment_url_" + uid).val();
     window.open(url, '_blank');
 }
 
@@ -2223,12 +2296,8 @@ function getFirebaseUser()
         },
         success: function(result) {
             $.isLoading( "hide" );
-
             console.log(result);
-
-            //updateFirebaseUser();
             console.log("Update Profile Data");
-
             $.each(result.data.courses, function (key, item){
 
                 // Add topic item to table
@@ -2274,11 +2343,44 @@ function getFirebaseUser()
                         )
                 }
             });
+
+            $.each(result.data.bills, function (key, item){
+
+                if(item.status=="buy")
+                {
+                    bill_btn = "<a href='javascript:void(0);' class='btn btn-lg btn-light' onclick='openPaymentURL(" + item.course + ");'> ชำระเงิน <i class='uil uil-receipt align-middle'></i></a>";
+                }
+                else if(item.status=="confirm")
+                {
+                    bill_btn = "<a href='bill.html?session="+item.course+"&token="+item.uid+"' class='btn btn-lg btn-light'> ใบเสร็จ <i class='uil uil-receipt align-middle'></i></a>";
+                }
+                else if(item.status=="complete")
+                {
+                    bill_btn = "<a href='bill.html?session="+item.course+"&token="+item.uid+"' class='btn btn-lg btn-light'> ใบเสร็จ <i class='uil uil-receipt align-middle'></i></a>";
+                }
+                // Add topic item to table
+                $("#order-area").append(
+                "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
+                    +"<div class='card blog rounded shadow'> <input class='form-control' type='hidden' id='payment_url_"+item.course+"' name='payment_url_"+item.course+"' value='https://payment.fti.academy/transaction/pay/"+item.uid+"'>"
+                        +"<a href='javascript:void(0);'>"
+                            +"</a><div class='card-body content'><a href='javascript:void(0);'>"
+                                +"</a><h5 class='bill-title'><a href='javascript:void(0);'></a><a href='javascript:void(0);' class='card-title title text-dark'>"+item.title+"</a>"
+                                +"<span class='payment-label'>"+item.payment+"</span></h5>"
+                                +"<p class='post-meta'>Ref 1 :"+item.ref1+"</p>"
+                                +"<p class='post-meta'>Ref 2 :"+item.ref2+"</p>"
+                                +"<div class='post-meta d-flex justify-content-between mt-3'>"
+                                +bill_btn
+                                +"<a href='edit-bill.html?session="+item.course+"' class='btn btn-lg btn-primary'> แก้ไขข้อมูลที่อยู่ <i class='uil uil-angle-right-b align-middle'></i></a>"
+                                +"</div>"
+                            +"</div>"
+                    +"</div>"
+                +"</div>"
+                );
+            });
         },
         error: function(request,msg,error) {
             $.isLoading( "hide" );
-            console.log(result);
-            //updateFirebaseUser();
+            console.log(msg);
             console.log("No Found Profile Data");
         }
     });
@@ -2692,6 +2794,48 @@ function renderResult()
             $("#result-score").html(result.data.result + " คะแนน");
         },
         error: function(request,msg,error) {
+        }
+    });
+}
+
+function renderOrderReceipt() {
+    var code    = $.urlParam('token');
+    $.ajax({
+        url: 'https://api.fti.academy/api/order_receipt/' + code,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+            if(result.status ==="true")
+            {
+                console.log(result.name);
+                $(".receipt-name").html(result.name);
+                $(".receipt-ref1").html(result.ref1);
+                $(".receipt-ref2").html(result.ref2);
+                $(".receipt-address").html(result.address);
+                $(".receipt-date").html(result.date);
+                $(".receipt-phone").html(result.phone);
+                $(".receipt-item").html(result.receiptname);
+                $(".receipt-code").html(result.ref1);
+            }
+        },
+        error: function(request,msg,error) {
+            
+            output = JSON.stringify(request.responseJSON)
+            // Login undefined
+            if(request.status===0){
+                renderRegisterConfirm(token);
+            }
+            else if(request.status===500){
+                renderRegisterConfirm(token);
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
         }
     });
 }
