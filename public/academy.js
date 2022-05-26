@@ -2366,11 +2366,9 @@ function getFirebaseUser()
                 $("#order-area").append(
                 "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
                     +"<div class='card blog rounded shadow'> <input class='form-control' type='hidden' id='payment_url_"+item.course+"' name='payment_url_"+item.course+"' value='https://payment.fti.academy/transaction/pay/"+item.uid+"'>"
-                        +"<a href='javascript:void(0);'>"
-                            +"</a><div class='card-body content'><a href='javascript:void(0);'>"
-                                +"</a><h5 class='bill-title'><a href='javascript:void(0);'></a><a href='javascript:void(0);' class='card-title title text-dark'>"+item.title+"</a>"
-                                +"<span class='payment-label'>"+item.payment+"</span></h5>"
-                                +"<p class='post-meta'>Ref 1 :"+item.ref1+"</p>"
+                            +"<div class='card-body content'>"
+                                +"<h5 class='bill-title'><a href='javascript:void(0);'></a><a href='javascript:void(0);' class='card-title title text-dark'>"+item.title+"</a></h5>"
+                                +"<p class='post-meta'>Ref 1 :"+item.ref1+" <span class='payment-label'>"+item.payment+"</span></p>"
                                 +"<p class='post-meta'>Ref 2 :"+item.ref2+"</p>"
                                 +"<div class='post-meta d-flex justify-content-between mt-3'>"
                                 +bill_btn
