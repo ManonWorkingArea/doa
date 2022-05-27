@@ -2312,7 +2312,7 @@ function getFirebaseUser()
                             +"<div class='card blog rounded shadow'>"
                                 +"<a href='javascript:void(0);'>"
                                     +"</a><div class='card-body content'><a href='javascript:void(0);'>"
-                                        +"</a><h5><a href='javascript:void(0);'></a><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                        +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
                                         +"<p class='post-meta'>"+item.info.description+"</p>"
                                         +"<p class='post-meta'>"+item.info.date+"</p>"
                                         +"<div class='post-meta d-flex justify-content-between mt-3'>"
@@ -2328,15 +2328,12 @@ function getFirebaseUser()
                             +"<div class='card blog rounded shadow'>"
                                 +"<a href='course.html?session="+item.info.uid+"'>"
                                     +"</a><div class='card-body content'><a href='course.html?session="+item.info.uid+"'>"
-                                        +"</a><h5><a href='course.html?session="+item.info.uid+"'></a><a href='course.html?session="+item.info.uid+"' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                        +"</a><h5><a href='course.html?session="+item.info.uid+"'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='course.html?session="+item.info.uid+"' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
                                         +"<p class='post-meta'>"+item.info.description+"</p>"
                                         +"<p class='post-meta'>"+item.info.date+"</p>"
                                         +"<div class='post-meta d-flex justify-content-between mt-3'>"
-                                        +"<a href='course.html?session="+item.info.uid+"' class='btn btn-lg btn-light'> ใบเสร็จ <i class='uil uil-receipt align-middle'></i></a>"
-                                        +"<a href='course.html?session="+item.info.uid+"' class='btn btn-lg btn-primary'> เข้าเรียน <i class='uil uil-angle-right-b align-middle'></i></a>"
+                                        +"<a href='course.html?session="+item.info.uid+"' class='btn btn-lg btn-primary'> เข้าเรียน <i class='uil uil-angle-right-b'></i></a>"
                                         +"</div>"
-                                        +"<hr>"
-                                        +"<p class='post-meta'><a href='edit-bill.html' class=''> <i class='uil uil-file-edit-alt align-middle'></i> แก้ไขข้อมูลที่อยู่ออกใบเสร็จ</a></p>"
                                     +"</div>"
                             +"</div>"
                         +"</div>"
@@ -2348,32 +2345,37 @@ function getFirebaseUser()
 
                 if(item.status=="buy")
                 {
-                    bill_btn = "<a href='javascript:void(0);' class='btn btn-lg btn-light' onclick='openPaymentURL(" + item.course + ");'> ชำระเงิน <i class='uil uil-receipt align-middle'></i></a>";
+                    bill_status = "สั่งซื้อ";
+                    bill_btn    = "<a href='javascript:void(0);' class='btn btn-light' onclick='openPaymentURL(" + item.course + ");'> ชำระเงิน <i class='uil uil-receipt align-middle'></i></a>";
                 }
                 else if(item.status=="confirm")
                 {
-                    bill_btn = "<a href='javascript:void(0);' class='btn btn-lg btn-light' onclick='openPaymentURL(" + item.course + ");'> ชำระเงิน <i class='uil uil-receipt align-middle'></i></a>";
+                    bill_status = "แจ้งโอน";
+                    bill_btn    = "<a href='javascript:void(0);' class='btn btn-light' onclick='openPaymentURL(" + item.course + ");'> ชำระเงิน <i class='uil uil-receipt align-middle'></i></a>";
                 }
                 else if(item.status=="complete")
                 {
-                    bill_btn = "<a href='bill.html?session="+item.course+"&token="+item.uid+"' class='btn btn-lg btn-light'> ใบเสร็จ <i class='uil uil-receipt align-middle'></i></a>";
+                    bill_status = "ยืนยัน";
+                    bill_btn    = "<a href='bill.html?session="+item.course+"&token="+item.uid+"' class='btn btn-light'> ใบเสร็จ <i class='uil uil-receipt align-middle'></i></a>";
                 }
                 else if(item.status=="reject")
                 {
-                    bill_btn = "<a href='javascript:void(0);' class='btn btn-lg btn-dark'> การลงทะเบียนถูกยกเลิก</a>";
+                    bill_status = "ยกเลิก";
+                    bill_btn    = "<a href='javascript:void(0);' class='btn btn-dark'> การลงทะเบียนถูกยกเลิก</a>";
                 }
                 // Add topic item to table
                 $("#order-area").append(
                 "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
                     +"<div class='card blog rounded shadow'> <input class='form-control' type='hidden' id='payment_url_"+item.course+"' name='payment_url_"+item.course+"' value='https://payment.fti.academy/transaction/pay/"+item.uid+"'>"
                             +"<div class='card-body content'>"
-                                +"<h5 class='bill-title'><a href='javascript:void(0);'></a><a href='javascript:void(0);' class='card-title title text-dark'>"+item.title+"</a></h5>"
-                                +"<p class='post-meta'>Ref 1 :"+item.ref1+" <span class='payment-label'>"+item.payment+"</span></p>"
-                                +"<p class='post-meta'>Ref 2 :"+item.ref2+"</p>"
-                                +"<div class='post-meta d-flex justify-content-between mt-3'>"
-                                +bill_btn
-                                +"<a href='edit-bill.html?session="+item.course+"' class='btn btn-lg btn-primary'> แก้ไขข้อมูลที่อยู่ <i class='uil uil-angle-right-b align-middle'></i></a>"
-                                +"</div>"
+                                + "<h5 class='bill-title'><span class='bill-title-small'><i class='uil uil-shopping-cart-alt'></i> สั่งซื้อและลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.title+"</a></h5>"
+                                + "<p class='post-meta meta-border-bottom'><span class='payment-label-title'><i class='uil uil-bell'></i> สถานะ</span><span class='payment-label'>"+bill_status+"</span></p>"
+                                + "<p class='post-meta meta-border-bottom'><span class='payment-label-title'><i class='uil uil-bill'></i> การชำระเงิน</span><span class='payment-label'>"+item.payment+"</span></p>"
+                                + "<p class='post-meta meta-border-bottom'><span class='payment-label-title'><i class='uil uil-calendar-alt'></i> วันที่ลงทะเบียน</span><span class='payment-label'>"+item.createAt+"</span></p>"
+                                + "<div class='post-meta d-flex justify-content-between mt-3'>"
+                                + bill_btn
+                                + "<a href='edit-bill.html?session="+item.course+"' class='btn btn-ligth btn-md'> แก้ไขที่อยู่ <i class='uil uil-angle-right-b align-middle'></i></a>"
+                                + "</div>"
                             +"</div>"
                     +"</div>"
                 +"</div>"

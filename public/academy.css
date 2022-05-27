@@ -1420,7 +1420,28 @@ hr.hr-text::before {
 }
 h5.bill-title
 {
-  border-bottom: 1px solid #e7e7e7;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 15px;
+  margin-bottom: 2px;
+}
+
+.bill-title-small
+{
+  font-size: 15px;
+  color: #a3a3a3;
+  font-weight: normal;
+}
+
+.meta-border-bottom
+{
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 8px;
+  margin-bottom: 2px;
+}
+
+.payment-label-title
+{
+  line-height: 30px;
+  color: #2f55d4;
+  font-size: 14px;
 }
