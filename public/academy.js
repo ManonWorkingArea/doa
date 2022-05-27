@@ -2372,7 +2372,7 @@ function getFirebaseUser()
                             +"</div>"
                         +"</div>"
                         )
-                } else {
+                }else{
                     $("#course-area").append(
                         "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
                             +"<div class='card blog rounded shadow'>"
