@@ -2333,6 +2333,7 @@ function getFirebaseUser()
                                         +"<p class='post-meta'>"+item.info.date+"</p>"
                                         +"<div class='post-meta d-flex justify-content-between mt-3'>"
                                         +"<a href='course.html?session="+item.info.uid+"' class='btn btn-lg btn-primary'> เข้าเรียน <i class='uil uil-angle-right-b'></i></a>"
+                                        + "<a href='javascript:void(0);' onclick='createUserBilling("+item.info.uid+");' class='btn btn-ligth btn-md'> ดึงข้อมูลคำสั่งซื้อ <i class='uil uil-bill align-middle'></i></a>"
                                         +"</div>"
                                     +"</div>"
                             +"</div>"
@@ -2931,6 +2932,27 @@ function getUserBilling() {
             xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
         },
         success: function(result) {
+            
+        },
+        error: function(request,msg,error) {
+            output = JSON.stringify(request.responseJSON)
+        }
+    });
+}
+
+function createUserBilling(course) {
+    var token   = Cookies.get('__session');
+    $.ajax({
+        url: 'https://api.fti.academy/api/order_billing/' + course + "/" + token,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+            location.reload();
         },
         error: function(request,msg,error) {
             output = JSON.stringify(request.responseJSON)
