@@ -1445,3 +1445,6 @@ h5.bill-title
   color: #2f55d4;
   font-size: 14px;
 }
+.blog:hover {
+  transform:unset;
+}
