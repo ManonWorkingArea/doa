@@ -2803,7 +2803,9 @@ function renderResult()
 }
 
 function renderOrderReceipt() {
-    var code    = $.urlParam('token');
+    var code = $.urlParam('token');
+    var course  = $.urlParam('session');
+    var token   = Cookies.get('__session');
     $.ajax({
         url: 'https://api.fti.academy/api/order_receipt/' + code,
         type : "GET",
@@ -2816,15 +2818,29 @@ function renderOrderReceipt() {
         success: function(result) {
             if(result.status ==="true")
             {
-                console.log(result.name);
-                $(".receipt-name").html(result.name);
-                $(".receipt-ref1").html(result.ref1);
-                $(".receipt-ref2").html(result.ref2);
-                $(".receipt-address").html(result.address);
-                $(".receipt-date").html(result.date);
-                $(".receipt-phone").html(result.phone);
-                $(".receipt-item").html(result.receiptname);
-                $(".receipt-code").html(result.ref1);
+                $.ajax({
+                    url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/bill/?user=' + token + '&bill=' + course,
+                    type : "GET",
+                    dataType: "json",
+                    contentType : "text/plain",
+                    beforeSend: function(xhr) {
+                    },
+                    success: function(result) 
+                    {
+                        console.log(result.name);
+                        $(".receipt-name").html(result.name);
+                        $(".receipt-ref1").html(result.ref1);
+                        $(".receipt-ref2").html(result.ref2);
+                        $(".receipt-address").html(result.address);
+                        $(".receipt-date").html(result.date);
+                        $(".receipt-phone").html(result.phone);
+                        $(".receipt-item").html(result.receiptname);
+                        $(".receipt-code").html(result.ref1);
+                    },
+                    error: function(request,msg,error) {
+                    }
+                });
+                
             }
         },
         error: function(request,msg,error) {
