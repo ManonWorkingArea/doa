@@ -1428,6 +1428,8 @@ function getProfileRepeat(){
             // handle success
             $.isLoading( "hide" );
 
+            var token   = Cookies.get('__session');
+            $('#student').val(token);
             $('#citizen').val(result.student.citizen);
             $('#phone').val(result.student.phone);
             $('#email').val(result.student.email);
