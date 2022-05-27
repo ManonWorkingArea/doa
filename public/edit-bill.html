@@ -495,9 +495,12 @@
         // Usage
         $.cachedScript( "academy" ).done(function( script, textStatus ) {
         console.log( "load Default JS : " + textStatus );
+        var code = $.urlParam('token');
         __session("edit-bill");
         renderSession();
         renderEditProfile();
+        renderOrderConfirm(code)
+        renderOrderReceipt();
         });
         </script>
     <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
