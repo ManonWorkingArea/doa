@@ -589,6 +589,54 @@ function editprofile() {
     });
 }
 
+function editbilling() {   
+    $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+    var formData = $('#frm-edit').serializeArray();
+    formData = formData.reduce(function(obj, item){
+        obj[item.name] = item.value;
+        return obj;
+    }, {});
+    formData = JSON.stringify(formData);
+
+    $.ajax({
+        url: 'https://api.fti.academy/api/editbilling_firebase',
+        type : "POST",
+        data: formData,
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3"); 
+        },
+        success: function(result) {
+            // handle success
+            $.isLoading( "hide" );
+            //window.location.href="student.html";
+            location.reload();
+        },
+        error: function(request,msg,error) {
+            $.isLoading( "hide" );
+            $(".alert-block").html("");
+            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            output = JSON.stringify(request.responseJSON)
+            
+            // Login undefined
+            if(request.status===0){
+                editbilling();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else if(request.status===500){
+                editbilling();
+                errorMSG = "กำลังเข้าระบบอีกครั้ง";
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
+            $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
+        }
+    });
+}
+
 function editCertArea() {   
     $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
     var formData = $('#frm-edit').serializeArray();
@@ -2873,7 +2921,7 @@ function renderEditBilling() {
                     success: function(result) 
                     {
                         console.log(result);
-
+                        $("#token").val(result.data.uid);
                         $('#taX_PROVINCE_TH option:contains(' + result.data.bill_address.taX_PROVINCE_TH + ')').attr('selected', 'selected');
                         $("#taX_BUILDING_TH").val(result.data.bill_address.taX_BUILDING_TH);
                         $("#taX_COUNTRY").val(result.data.bill_address.taX_COUNTRY);
