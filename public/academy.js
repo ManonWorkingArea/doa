@@ -2818,6 +2818,50 @@ function renderOrderReceipt() {
         success: function(result) {
             if(result.status ==="true")
             {
+                console.log(result.name);
+                $(".receipt-name").html(result.name);
+                $(".receipt-ref1").html(result.ref1);
+                $(".receipt-ref2").html(result.ref2);
+                $(".receipt-address").html(result.address);
+                $(".receipt-date").html(result.date);
+                $(".receipt-phone").html(result.phone);
+                $(".receipt-item").html(result.receiptname);
+                $(".receipt-code").html(result.ref1);
+            }
+        },
+        error: function(request,msg,error) {
+            
+            output = JSON.stringify(request.responseJSON)
+            // Login undefined
+            if(request.status===0){
+                renderOrderReceipt(token);
+            }
+            else if(request.status===500){
+                renderOrderReceipt(token);
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
+        }
+    });
+}
+
+function renderEditBilling() {
+    var code = $.urlParam('token');
+    var course  = $.urlParam('session');
+    var token   = Cookies.get('__session');
+    $.ajax({
+        url: 'https://api.fti.academy/api/order_receipt/' + code,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+            if(result.status ==="true")
+            {
                 $.ajax({
                     url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/bill/?user=' + token + '&bill=' + course,
                     type : "GET",
@@ -2827,17 +2871,7 @@ function renderOrderReceipt() {
                     },
                     success: function(result) 
                     {
-                        console.log(result.name);
-                        $(".receipt-name").html(result.name);
-                        $(".receipt-ref1").html(result.ref1);
-                        $(".receipt-ref2").html(result.ref2);
-                        $(".receipt-address").html(result.address);
-                        $(".receipt-date").html(result.date);
-                        $(".receipt-phone").html(result.phone);
-                        $(".receipt-item").html(result.receiptname);
-                        $(".receipt-code").html(result.ref1);
-
-                        console.log(result.data.bill_address.taX_PROVINCE_TH)
+                        console.log(result);
 
                         $('#taX_PROVINCE_TH option:contains(' + result.data.bill_address.taX_PROVINCE_TH + ')').attr('selected', 'selected');
                         $("#taX_BUILDING_TH").val(result.data.bill_address.taX_BUILDING_TH);
@@ -2872,10 +2906,10 @@ function renderOrderReceipt() {
             output = JSON.stringify(request.responseJSON)
             // Login undefined
             if(request.status===0){
-                renderRegisterConfirm(token);
+                renderEditBilling(token);
             }
             else if(request.status===500){
-                renderRegisterConfirm(token);
+                renderEditBilling(token);
             }
             else{
                 errorMSG = request.responseJSON;
