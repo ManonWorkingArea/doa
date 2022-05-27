@@ -2836,6 +2836,30 @@ function renderOrderReceipt() {
                         $(".receipt-phone").html(result.phone);
                         $(".receipt-item").html(result.receiptname);
                         $(".receipt-code").html(result.ref1);
+
+                        console.log(result.data.bill_address.taX_PROVINCE_TH)
+
+                        $('#taX_PROVINCE_TH option:contains(' + result.data.bill_address.taX_PROVINCE_TH + ')').attr('selected', 'selected');
+                        $("#taX_BUILDING_TH").val(result.data.bill_address.taX_BUILDING_TH);
+                        $("#taX_COUNTRY").val(result.data.bill_address.taX_COUNTRY);
+                        $("#taX_DISTRICT_TH").val(result.data.bill_address.taX_DISTRICT_TH);
+                        $("#taX_MOO").val(result.data.bill_address.taX_MOO);
+                        $("#taX_NO").val(result.data.bill_address.taX_NO);
+                        $("#taX_POST_CODE").val(result.data.bill_address.taX_POST_CODE);
+                        $("#taX_ROAD_TH").val(result.data.bill_address.taX_ROAD_TH);
+                        $("#taX_SOI_TH").val(result.data.bill_address.taX_SOI_TH);
+                        $("#taX_SUB_DISTRICT_TH").val(result.data.bill_address.taX_SUB_DISTRICT_TH);
+
+                        $('#mailinG_PROVINCE_TH option:contains(' + result.data.tax_address.mailinG_PROVINCE_TH + ')').attr('selected', 'selected');
+                        $("#mailinG_BUILDING_TH").val(result.data.tax_address.mailinG_BUILDING_TH);
+                        $("#mailinG_COUNTRY").val(result.data.tax_address.mailinG_COUNTRY);
+                        $("#mailinG_DISTRICT_TH").val(result.data.tax_address.mailinG_DISTRICT_TH);
+                        $("#mailinG_MOO").val(result.data.tax_address.mailinG_MOO);
+                        $("#mailinG_NO").val(result.data.tax_address.mailinG_NO);
+                        $("#mailinG_POST_CODE").val(result.data.tax_address.mailinG_POST_CODE);
+                        $("#mailinG_ROAD_TH").val(result.data.tax_address.mailinG_ROAD_TH);
+                        $("#mailinG_SOI_TH").val(result.data.tax_address.mailinG_SOI_TH);
+                        $("#mailinG_SUB_DISTRICT_TH").val(result.data.tax_address.mailinG_SUB_DISTRICT_TH);
                     },
                     error: function(request,msg,error) {
                     }
@@ -2856,6 +2880,26 @@ function renderOrderReceipt() {
             else{
                 errorMSG = request.responseJSON;
             }
+        }
+    });
+}
+
+function getUserBilling() {
+    var course  = $.urlParam('session');
+    var token   = Cookies.get('__session');
+    $.ajax({
+        url: 'https://api.fti.academy/api/order_billing/' + course + "/" + token,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+        },
+        error: function(request,msg,error) {
+            output = JSON.stringify(request.responseJSON)
         }
     });
 }
