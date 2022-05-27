@@ -2374,7 +2374,7 @@ function getFirebaseUser()
                                 + "<p class='post-meta meta-border-bottom'><span class='payment-label-title'><i class='uil uil-calendar-alt'></i> วันที่ลงทะเบียน</span><span class='payment-label'>"+item.createAt+"</span></p>"
                                 + "<div class='post-meta d-flex justify-content-between mt-3'>"
                                 + bill_btn
-                                + "<a href='edit-bill.html?session="+item.course+"' class='btn btn-ligth btn-md'> แก้ไขที่อยู่ <i class='uil uil-angle-right-b align-middle'></i></a>"
+                                + "<a href='edit-bill.html?session="+item.course+"&token="+item.uid+"' class='btn btn-ligth btn-md'> แก้ไขที่อยู่ <i class='uil uil-angle-right-b align-middle'></i></a>"
                                 + "</div>"
                             +"</div>"
                     +"</div>"
