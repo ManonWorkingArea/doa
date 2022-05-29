@@ -2604,7 +2604,7 @@ function getFirebasePlayer()
                                 )
                             }
                         }
-                        else
+                        else if(result_2.data.info.exam =="รอบที่ 2 วันที่ 14 - 15 มิ.ย.65")
                         {
                             posttestArray = result.data.scores.posttest
                             console.log(posttestArray)
