@@ -2574,29 +2574,61 @@ function getFirebasePlayer()
             finish_percent = (100/total_item)*finish_item;
             $(".progress-bar").css("width", finish_percent + "%");
 
-            /*
+            $.ajax({
+                url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user?user=' + token + '&shallow=1&school=1',
+                type : "GET",
+                dataType: "json",
+                contentType : "text/plain",
+                beforeSend: function(xhr) {
+                },
+                success: function(result_2) {
 
-            if(finish_item>12)
-            {
-                posttestArray = result.data.scores.posttest
-                console.log(posttestArray)
+                    if(finish_item>12)
+                    {
+                        if(result_2.data.info.exam =="รอบที่ 1 วันที่ 30-31 พ.ค.65")
+                        {
+                            posttestArray = result.data.scores.posttest
+                            console.log(posttestArray)
 
-                if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
-                } else {
-                    $("#topic-table").append(
-                    "<tr class='topic-processing' id='exam-pretest'>"
-                        +"<th class='p-3'>"
-                            +"<div class='align-items-center'>"
-                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-posttest.html?session="+course+"&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
-                            +"</div>"
-                        +"</th>"
-                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
-                    +"</tr>"
-                    )
+                            if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                            } else {
+                                $("#topic-table").append(
+                                "<tr class='topic-processing' id='exam-pretest'>"
+                                    +"<th class='p-3'>"
+                                        +"<div class='align-items-center'>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + item.course + "&target=exam-posttest-1-TAF7eX65i7&document=posttest_1&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน รอบที่ 1</a></p>"
+                                        +"</div>"
+                                    +"</th>"
+                                    +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                                +"</tr>"
+                                )
+                            }
+                        }
+                        else
+                        {
+                            posttestArray = result.data.scores.posttest
+                            console.log(posttestArray)
+
+                            if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                            } else {
+                                $("#topic-table").append(
+                                "<tr class='topic-processing' id='exam-pretest'>"
+                                    +"<th class='p-3'>"
+                                        +"<div class='align-items-center'>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + item.course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_2&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน รอบที่ 2</a></p>"
+                                        +"</div>"
+                                    +"</th>"
+                                    +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                                +"</tr>"
+                                )
+                            }
+                        }
+                    }
+
+                },
+                error: function(request,msg,error) {
                 }
-            }
-
-            */
+            });
         },
         error: function(request,msg,error) {
         }
