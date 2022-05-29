@@ -23,11 +23,11 @@
                   contentType: "text/plain",
                   beforeSend: function (e) {},
                   success: function (e) {
-                      e.agenda ? (window.location.href = t + ".html?session=" + n + "&mode=" + m) : (window.location.href = "index.html");
+                      e.agenda ? (window.location.href = t + ".html?session=" + n + "&mode=" + m) : (window.history.back());
                   },
                   error: function (e, a, n) {},
               })
-            : (window.location.href = "index.html");
+            : (window.history.back());
     });
 
 </script>

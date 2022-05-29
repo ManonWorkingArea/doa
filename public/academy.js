@@ -2596,7 +2596,8 @@ function getFirebasePlayer()
                                 "<tr class='topic-processing' id='exam-pretest'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + item.course + "&target=exam-posttest-1-TAF7eX65i7&document=posttest_1&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน รอบที่ 1</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-1-TAF7eX65i7&document=posttest_1&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + result_2.data.info.exam + "</p>"
                                         +"</div>"
                                     +"</th>"
                                     +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
@@ -2615,10 +2616,31 @@ function getFirebasePlayer()
                                 "<tr class='topic-processing' id='exam-pretest'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + item.course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_2&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน รอบที่ 2</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_2&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + result_2.data.info.exam + "</p>"
                                         +"</div>"
                                     +"</th>"
                                     +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                                +"</tr>"
+                                )
+                            }
+                        }
+                        else
+                        {
+                            posttestArray = result.data.scores.posttest
+                            console.log(posttestArray)
+
+                            if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                            } else {
+                                $("#topic-table").append(
+                                "<tr class='topic-processing' id='exam-pretest'>"
+                                    +"<th class='p-3'>"
+                                        +"<div class='align-items-center'>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html' class='topic-name-title'>ไม่พบข้อมูลรอบการสอบ</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>กรุณาดำเนินการแก้ไขรอบการสอบก่อน</p>"
+                                        +"</div>"
+                                    +"</th>"
+                                    +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-warning'></i> เกิดข้อผิดพลาด </p></td>"
                                 +"</tr>"
                                 )
                             }
