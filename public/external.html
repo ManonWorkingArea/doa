@@ -4,5 +4,31 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
-<script>jQuery.cachedScript=function(e,a){return a=$.extend(a||{},{dataType:"script",cache:!1,url:e+".js"}),jQuery.ajax(a)},$.cachedScript("academy").done(function(e,a){console.log("load Default JS : "+a);var n=$.urlParam("session"),t=$.urlParam("target"),o=$.urlParam("document"),c=(new Date).getTime()/1e3;n&&t&&o?$.ajax({url:"https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda="+o+"&course="+n+"&date="+c,type:"GET",dataType:"json",contentType:"text/plain",beforeSend:function(e){},success:function(e){e.agenda?window.location.href=t+".html?session="+n:window.location.href="index.html"},error:function(e,a,n){}}):window.location.href="index.html"});</script>
+<script>
+    (jQuery.cachedScript = function (e, a) {
+    return (a = $.extend(a || {}, { dataType: "script", cache: !1, url: e + ".js" })), jQuery.ajax(a);
+    }),
+    $.cachedScript("academy").done(function (e, a) {
+        console.log("load Default JS : " + a);
+        var n = $.urlParam("session"),
+            t = $.urlParam("target"),
+            o = $.urlParam("document"),
+            m = $.urlParam("mode"),
+            c = new Date().getTime() / 1e3;
+            n && t && o
+            ? $.ajax({
+                  url: "https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda=" + o + "&course=" + n + "&date=" + c,
+                  type: "GET",
+                  dataType: "json",
+                  contentType: "text/plain",
+                  beforeSend: function (e) {},
+                  success: function (e) {
+                      e.agenda ? (window.location.href = t + ".html?session=" + n + "&mode=" + m) : (window.location.href = "index.html");
+                  },
+                  error: function (e, a, n) {},
+              })
+            : (window.location.href = "index.html");
+    });
+
+</script>
 </html>
