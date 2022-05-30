@@ -2633,15 +2633,15 @@ function getFirebasePlayer()
                             if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
                             } else {
                                 $("#topic-table").append(
-                                "<tr class='topic-processing' id='exam-pretest'><a href='edit-round.html' class='topic-name-title'>"
+                                "<tr class='topic-processing' id='exam-pretest'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
                                             +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html' class='topic-name-title'>ไม่พบข้อมูลรอบการสอบ</a></p>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>กรุณาดำเนินการแก้ไขรอบการสอบก่อน</p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html'>กรุณาดำเนินการแก้ไขรอบการสอบก่อน</a></p>"
                                         +"</div>"
                                     +"</th>"
-                                    +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-warning'></i> เกิดข้อผิดพลาด </p></td>"
-                                +"</a></tr>"
+                                    +"<td><a href='edit-round.html'><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-warning'></i> เกิดข้อผิดพลาด </p></a></td>"
+                                +"</tr>"
                                 )
                             }
                         }
