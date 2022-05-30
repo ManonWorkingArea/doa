@@ -2633,7 +2633,7 @@ function getFirebasePlayer()
                             if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
                             } else {
                                 $("#topic-table").append(
-                                "<tr class='topic-processing' id='exam-pretest'>"
+                                "<tr class='topic-processing' id='exam-pretest'><a href='edit-round.html' class='topic-name-title'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
                                             +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html' class='topic-name-title'>ไม่พบข้อมูลรอบการสอบ</a></p>"
@@ -2641,7 +2641,7 @@ function getFirebasePlayer()
                                         +"</div>"
                                     +"</th>"
                                     +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-warning'></i> เกิดข้อผิดพลาด </p></td>"
-                                +"</tr>"
+                                +"</a></tr>"
                                 )
                             }
                         }
