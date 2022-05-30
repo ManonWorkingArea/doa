@@ -2365,6 +2365,7 @@ function getFirebaseUser()
                                         +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
                                         +"<p class='post-meta'>"+item.info.description+"</p>"
                                         +"<p class='post-meta'>"+item.info.date+"</p>"
+                                        +"<p class='post-meta'>📣 <strong>ประกาศผลสอบ</strong> วันที่ 2 มิ.ย. 65 โดยตรวจสอบคะแนนของตนเองด้วยการ login เข้าสู่ระบบอบรมปกติ</p>"
                                         +"<div class='post-meta d-flex justify-content-between mt-3'>"
                                         +"<a href='javascript:void(0);' class='btn w-100 btn-lg btn-light'> จบหลักสูตรแล้ว</a>"
                                         +"</div>"
