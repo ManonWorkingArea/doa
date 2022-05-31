@@ -2952,6 +2952,51 @@ function renderOrderReceipt() {
     });
 }
 
+function renderOrderPrintReceipt() {
+    var code = $.urlParam('token');
+    var course  = $.urlParam('session');
+    var token   = Cookies.get('__session');
+    $.ajax({
+        url: 'https://api.fti.academy/api/order_receipt/' + code,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+            xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3");
+        },
+        success: function(result) {
+            if(result.status ==="true")
+            {
+                console.log(result.name);
+                $(".receipt-name").html(result.name);
+                $(".receipt-ref1").html(result.ref1);
+                $(".receipt-ref2").html(result.ref2);
+                $(".receipt-address").html(result.address);
+                $(".receipt-date").html(result.date);
+                $(".receipt-phone").html(result.phone);
+                $(".receipt-item").html(result.receiptname);
+                $(".receipt-code").html(result.ref1);
+                download_receipt();
+            }
+        },
+        error: function(request,msg,error) {
+            
+            output = JSON.stringify(request.responseJSON)
+            // Login undefined
+            if(request.status===0){
+                renderOrderReceipt(token);
+            }
+            else if(request.status===500){
+                renderOrderReceipt(token);
+            }
+            else{
+                errorMSG = request.responseJSON;
+            }
+        }
+    });
+}
+
 function renderEditBilling() {
     var code = $.urlParam('token');
     var course  = $.urlParam('session');
@@ -3073,9 +3118,20 @@ function secondsTimeSpanToHMS(s) {
     var m = Math.floor(s / 60); //Get remaining minutes
     s -= m * 60;
     return h + ":" + (m < 10 ? '0' + m : m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
-  }
+}
 
-  function page(url) {
+function page(url) {
     location.href = url;
+}
 
-  }
+function printerPopup(url){
+    console.log("Printer");
+    $("<iframe id='printabel'>")
+    .attr("src", url)
+    .appendTo("body");
+}
+
+function hideAlert()
+{
+    $.isLoading( "hide" );
+}

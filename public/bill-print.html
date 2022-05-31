@@ -20,102 +20,26 @@
         <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fcolors%2Fdefault.css?alt=media&token=53dc6813-4ba8-4505-9100-e0928e52282b" rel="stylesheet" id="color-opt">
         <link href="academy.css" rel="stylesheet" type="text/css" id="theme-opt" />
 
+        <style>
+            .printsize
+            {
+                width: 29cm;
+                height: 21cm;
+            }
+        </style>
+
     </head>
 
     <body>
         
-        <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky bg-white">
-            <div class="container">
-                <!-- Logo container-->
-                <a class="logo" href="index.html">
-                    <span class="logo-light-mode">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
-                    </span>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-dark-mode" alt="">
-                </a>
-
-                <!-- End Logo container-->
-                <div class="menu-extras">
-                    <div class="menu-item">
-                        <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
-                            <div class="lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                        <!-- End mobile menu toggle-->
-                    </div>
-                </div>
-                
-                    <ul class="buy-button list-inline mb-0 user-block" id="user-nav">
-                        <li class="list-inline-item mb-0">
-                            <a href="student.html">
-                                <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
-                            </a>
-                        </li>
-                        <li class="list-inline-item mb-0">
-                            <a href="javascript:void(0);" onclick="logout();">
-                                <div class="btn btn-icon btn-pills btn-danger"><i data-feather="power" class="fea icon-sm"></i></div>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <ul class="buy-button list-inline mb-0 guest-block" id="guest-nav">
-                        <li class="list-inline-item mb-0">
-                            <a href="register.html">
-                                <div class="btn btn-icon btn-pills btn-primary"><i data-feather="user-plus" class="fea icon-sm"></i></div>
-                            </a>
-                        </li>
-                        
-                        <li class="list-inline-item ps-1 mb-0">
-                            <a href="login.html">
-                                <div class="btn btn-icon btn-pills btn-primary"><i data-feather="key" class="fea icon-sm"></i></div>
-                            </a>
-                        </li>
-                    </ul>
-            
-                    <div id="navigation">
-                        <ul class="navigation-menu">
-                            <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
-                            <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
-                            <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
-                            <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
-                            <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
-                            <li><a href="student.html" target="" class="sub-menu-item">ผู้อบรม</a></li>
-                        </ul>
-                    </div>
-            </div><!--end container-->
-        </header><!--end header-->
-        <!-- Navbar End -->
-        
         <section class="bg-invoice bg-light">
             <div class="container">
-                <div class="row gutters" id="printarea">
+                <div class="row gutters printsize" id="printarea">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-body p-0">
                                     <div class="invoice-container">
                                         <div class="invoice-header">
-                                            <!-- Row start -->
-                                            <div class="row gutters" id="btnarea">
-                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="custom-actions-btns">
-                                                        <a href="student.html" class="btn btn-light">
-                                                            <i class='uil uil-home'></i> หน้าหลัก
-                                                        </a>
-                                                        <a href="javascript:void(0);" onclick="download_receipt()" class="btn btn-primary">
-                                                            <i class="uil uil-download-alt"></i> ดาวน์โหลด
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <hr class="mt-3">
-                                            </div>
-
-                                            <!-- Row end -->
                                             <!-- Row start -->
                                             <div class="row gutters">
                                                 <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6">
@@ -296,7 +220,8 @@
             console.log( "load Default JS : " + textStatus );
             var code    = $.urlParam('token');
             renderOrderConfirm(code)
-            renderOrderReceipt();
+            renderOrderPrintReceipt();
+            
             //__page("register_confirm");
             //__session("course");
             //getFirebasePlayer();
@@ -551,17 +476,16 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-M0JGCQ3SKK');
+        
+        $.isLoading( "hide" );
 
         function download_receipt() {
 
-            $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
-            printerPopup("bill-print.html?session=215&token=a3013835233c7efd6668597432a5e930");
+            var code = $.urlParam('token');
+            var token   = Cookies.get('__session');
 
-            /*
-            $('#btnarea').hide();
-            var download_cert_name = $('.certdata').html();
+            var download_cert_name = "Receipt#" + code;
             html2canvas(document.querySelector('#printarea'), {useCORS: true}).then(function(canvas) {
                 let img = new Image();
                 img.src = canvas.toDataURL('image/jpeg');
@@ -570,9 +494,9 @@
                     pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
                     pdf.save(download_cert_name + '.pdf');
                     $('#btnarea').show();
+                    window.parent.hideAlert();
                 };
-            });
-            */
+            });  
         }
 
         </script>
