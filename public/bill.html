@@ -555,24 +555,10 @@
         gtag('config', 'G-M0JGCQ3SKK');
 
         function download_receipt() {
-
+            var code    = $.urlParam('token');
+            var course  = $.urlParam('session');
             $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
-            printerPopup("bill-print.html?session=215&token=a3013835233c7efd6668597432a5e930");
-
-            /*
-            $('#btnarea').hide();
-            var download_cert_name = $('.certdata').html();
-            html2canvas(document.querySelector('#printarea'), {useCORS: true}).then(function(canvas) {
-                let img = new Image();
-                img.src = canvas.toDataURL('image/jpeg');
-                img.onload = function () {
-                    let pdf = new jsPDF('landscape', 'mm', 'a4');
-                    pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
-                    pdf.save(download_cert_name + '.pdf');
-                    $('#btnarea').show();
-                };
-            });
-            */
+            printerPopup("bill-print.html?session=" + course + "&token=" + code);
         }
 
         </script>
