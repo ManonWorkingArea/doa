@@ -414,6 +414,7 @@
                                         <div class="alert-block"></div>
                                         <hr>
                                         <button class="btn btn-primary" type="button" onclick="editbilling();"><i class="mdi mdi-content-save"> </i> แก้ไขข้อมูล</button>
+                                        <button class="btn btn-light" type="button" onclick="show_receipt();"><i class="uil uil-receipt align-middle"> </i> ดูใบเสร็จ</button>
                                         <button class="btn btn-light" type="button" onclick="page('student.html');"><i class="mdi mdi-home"> </i> ย้อนกลับ</button>
                                     </div>
 
@@ -650,6 +651,12 @@
     function remoteAlert(title,text)
     {
         $.alert(text,function(){});
+    }
+
+    function show_receipt() {
+        var code    = $.urlParam('token');
+        var course  = $.urlParam('session');
+        page("bill.html?session=" + course + "&token=" + code);
     }
 
     </script>
