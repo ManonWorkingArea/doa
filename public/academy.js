@@ -2348,6 +2348,7 @@ function getFirebaseUser()
             $.isLoading( "hide" );
             console.log(result);
             console.log("Update Profile Data");
+
             $.each(result.data.courses, function (key, item){
 
                 // Add topic item to table
@@ -2357,22 +2358,68 @@ function getFirebaseUser()
                 console.log(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
-                    $("#course-area").append(
-                        "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
-                            +"<div class='card blog rounded shadow'>"
-                                +"<a href='javascript:void(0);'>"
-                                    +"</a><div class='card-body content'><a href='javascript:void(0);'>"
-                                        +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
-                                        +"<p class='post-meta'>"+item.info.description+"</p>"
-                                        +"<p class='post-meta'>"+item.info.date+"</p>"
-                                        +"<p class='post-meta'>📣 <strong>ประกาศผลสอบ</strong> วันที่ 2 มิ.ย. 65 โดยตรวจสอบคะแนนของตนเองด้วยการ login เข้าสู่ระบบอบรมปกติ</p>"
-                                        +"<div class='post-meta d-flex justify-content-between mt-3'>"
-                                        +"<a href='javascript:void(0);' class='btn w-100 btn-lg btn-light'> จบหลักสูตรแล้ว</a>"
-                                        +"</div>"
+
+                    var post_score = posttestArray.result
+                    if(post_score>37)
+                    {
+                        result_icon = "uil uil-check";
+                        result_bg = "bg-success";
+                        result_message = "ผ่านการทดสอบ";
+                    }
+                    else if(post_score>38)
+                    {
+                        result_icon = "uil uil-times-circle";
+                        result_bg = "bg-danger";
+                        result_message = "ไม่ผ่านการทดสอบ";
+                    }
+
+                    c = new Date().getTime() / 1e3;
+
+                    $.ajax({
+                        url: "https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda=showscore_posttest&course=" + item.info.uid + "&date=" + c,
+                        type : "GET",
+                        dataType: "json",
+                        contentType : "text/plain",
+                        beforeSend: function(xhr) {
+                        },
+                        success: function(result) {
+
+                            if(result.agenda)
+                            {
+                                var showscore =  "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                                    +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
+                                    +"<div class='flex-1 content ms-3 border-left-white'>"
+                                        +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
+                                        +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
                                     +"</div>"
-                            +"</div>"
-                        +"</div>"
-                        )
+                                +"</div>";
+                            }
+                            else
+                            {
+                                var showscore = "<p class='post-meta'>📣 <strong>ประกาศผลสอบ</strong> วันที่ 2 มิ.ย. 65 เวลา 09:00 น. โดยตรวจสอบคะแนนของตนเองด้วยการ login เข้าสู่ระบบอบรมปกติ</p>" 
+                                +"<div class='post-meta d-flex justify-content-between mt-3'>"
+                                +"<a href='javascript:void(0);' class='btn w-100 btn-lg btn-light'> จบหลักสูตรแล้ว</a>"
+                                +"</div>";
+                            }
+
+                            $("#course-area").append(
+                                "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
+                                    +"<div class='card blog rounded shadow'>"
+                                        +"<a href='javascript:void(0);'>"
+                                            +"</a><div class='card-body content'><a href='javascript:void(0);'>"
+                                                +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                                +"<p class='post-meta'>"+item.info.description+"</p>"
+                                                +"<p class='post-meta'>"+item.info.date+"</p>"
+                                                
+                                                + showscore
+                                            +"</div>"
+                                    +"</div>"
+                                +"</div>"
+                                );
+                        },
+                        error: function(request,msg,error) {
+                        }
+                    });
                 }else{
                     $("#course-area").append(
                         "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"

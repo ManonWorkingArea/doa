@@ -158,7 +158,7 @@
 
 .dashboard-icon
 {
-    font-size:34px;
+    font-size:65px;
 }
 
 .isloading-wrapper.isloading-right{margin-left:10px;}
@@ -1447,4 +1447,10 @@ h5.bill-title
 }
 .blog:hover {
   transform:unset;
+}
+
+.border-left-white
+{
+  border-left: 1px solid rgb(255 255 255 / 30%);
+    padding-left: 20px;
 }
