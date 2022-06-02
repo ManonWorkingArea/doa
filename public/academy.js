@@ -2366,7 +2366,7 @@ function getFirebaseUser()
                         result_bg = "bg-success";
                         result_message = "ผ่านการทดสอบ";
                     }
-                    else if(post_score>38)
+                    else if(post_score<38)
                     {
                         result_icon = "uil uil-times-circle";
                         result_bg = "bg-danger";
