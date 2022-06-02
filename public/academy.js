@@ -2386,7 +2386,8 @@ function getFirebaseUser()
 
                             if(result.agenda)
                             {
-                                var showscore =  "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                                var showscore = "<p class='post-meta'>📣 <strong>ประกาศ</strong> ระบบจะแจ้งกำหนดการในการรับใบรับรองแบบอิเลคทรอนิกส์อีกครั้ง กรุณารอประกาศจากทางทีมงานค่ะ</p>" 
+                                    +"<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
                                     +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
                                     +"<div class='flex-1 content ms-3 border-left-white'>"
                                         +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
@@ -2410,7 +2411,6 @@ function getFirebaseUser()
                                                 +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
                                                 +"<p class='post-meta'>"+item.info.description+"</p>"
                                                 +"<p class='post-meta'>"+item.info.date+"</p>"
-                                                
                                                 + showscore
                                             +"</div>"
                                     +"</div>"
