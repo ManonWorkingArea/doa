@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>กรมวิชาการเกษตร - หลักสูตร</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="author" content="TechyDevs">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Ffavicon.ico?alt=media&token=9729026e-83ca-4f97-a3b2-79ded306ab11">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/css/bootstrap.min.css" integrity="sha512-6KY5s6UI5J7SVYuZB4S/CZMyPylqyyNZco376NM2Z8Sb8OxEdp02e1jkKk/wZxIEmjQ6DRCEBhni+gpr9c4tvA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.8.55/css/materialdesignicons.min.css" rel="stylesheet" media="all">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+        <!-- Main Css -->
+        <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fstyle.css?alt=media&token=a8ee131c-7ee8-45d2-9005-31624ddfb8e6" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/css%2Fcolors%2Fdefault.css?alt=media&token=53dc6813-4ba8-4505-9100-e0928e52282b" rel="stylesheet" id="color-opt">
+        <link href="academy.css" rel="stylesheet" type="text/css" id="theme-opt" />
+
+    </head>
+
+    <body>
+        
+        <!-- Navbar STart -->
+        <header id="topnav" class="defaultscroll sticky">
+            <div class="container">
+                <!-- Logo container-->
+                <a class="logo" href="index.html">
+                    <span class="logo-light-mode">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-light-mode" alt="">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-light.png?alt=media&token=1a7eac44-29a6-473f-9e0f-701b70e34291" height="60" class="logo-dark-mode" alt="">
+                    </span>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" height="60" class="logo-dark-mode" alt="">
+                </a>
+
+                <!-- End Logo container-->
+                <div class="menu-extras">
+                    <div class="menu-item">
+                        <!-- Mobile menu toggle-->
+                        <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                            <div class="lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                        <!-- End mobile menu toggle-->
+                    </div>
+                </div>
+                    <ul class="buy-button list-inline mb-0">
+                        <li class="list-inline-item mb-0">
+                            <a href="student.html">
+                            <img src="" class="avatar rounded-circle shadow d-block mx-auto student-avatar avatar-btn" alt="">
+                            </a>
+                        </li>
+                        <li class="list-inline-item mb-0">
+                            <a href="javascript:void(0);" onclick="logout();">
+                                <div class="btn btn-icon btn-pills btn-danger"><i data-feather="power" class="fea icon-sm"></i></div>
+                            </a>
+                        </li>
+                    </ul>
+            
+                    <div id="navigation">
+                        <ul class="navigation-menu">
+                            <li><a href="index.html" class="sub-menu-item">หน้าหลัก</a></li>
+                            <li><a href="course.html" target="" class="sub-menu-item">หลักสูตร</a></li>
+                            <li><a href="javascript:void(0);" target="" class="sub-menu-item">ตารางการอบรม</a></li>
+                            <li><a href="contact.html" target="" class="sub-menu-item">ติดต่อเรา</a></li>
+                            <li><a href="register.html" target="" class="sub-menu-item">ลงทะเบียน</a></li>
+                            <li><a href="student.html" target="" class="sub-menu-item">ผู้อบรม</a></li>
+                        </ul>
+                    </div>
+            </div><!--end container-->
+        </header><!--end header-->
+        <!-- Navbar End -->
+        
+        <section class="bg-half-170 bg-light d-table w-100">
+            <div class="container">
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="pages-heading">
+                            <div class="lesson-name">...</div>
+                            <ul class="list-unstyled mt-4 mb-0">
+                                <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i> <span class="lesson-period">...</span></li>
+                                <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> ระหว่าง <span class="lesson-date">...</span></li>
+                            </ul>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+                
+                <div class="position-breadcrumb">
+                    <nav aria-label="breadcrumb" class="d-inline-block">
+                        <ul class="breadcrumb bg-white rounded shadow mb-0 px-4 py-2">
+                            <li class="breadcrumb-item"><a href="index.html">หน้าหลัก</a></li>
+                            <li class="breadcrumb-item"><a href="student.html">สมาชิก</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);" onclick="openCourse();">หลักสูตร</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><span class="active-topic-name"></span></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div> <!--end container-->
+        </section>
+
+    
+        <section class="section section-player">
+            <div class="container">
+                <div class="row">
+                    <!-- BLog Start -->
+                    <div class="col-lg-12">
+                        <div class="card blog blog-detail border-0 shadow rounded">
+
+                            <div id="avPlayer"></div>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="player-control">
+                                        <button class="btn btn-primary" id="playbtn" onclick="play();" type="button"><i class="mdi mdi-play"> </i> เล่นวีดีโอ</button>
+                                        <button class="btn btn-primary" id="pausebtn" onclick="pause();" type="button"><i class="mdi mdi-pause"> </i></button>
+                                        <!-- <button class="btn btn-light" onclick="playResume();" type="button">เล่นต่อจากครั้งที่แล้ว</button>
+                                        <button class="btn btn-light" onclick="restart();" type="button">เรียนซ้ำ</button> -->
+                                        <button class="btn btn-light" id="unmutebtn" onclick="unmute();" type="button"><i class="mdi mdi-volume-off"> </i></button>
+                                        <button class="btn btn-light" id="mutebtn" onclick="mute();" type="button"><i class="mdi mdi-volume-high"> </i></button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="player-time">
+                                        <span class="player-time-cuerrent"></span>/<span class="player-time-total">00:00:00</span>
+                                    </dvi>
+                                </div>
+
+                                <input type="hidden" id="post_topic_timer" name="post_topic_timer" value="">
+                                <input type="hidden" id="topiclastplay" name="topiclastplay" value="0">
+                                <input type="hidden" id="topic_video_source" name="topic_video_source" value="">
+                                <input type="hidden" id="topic_poster_source" name="topic_poster_source" value="">
+                                <input type="hidden" id="topic_course" name="topic_course" value="">
+                                
+                            </div>
+                        </div>
+
+                        <div id="logger" class="web_console"></div>
+
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        <div class="card blog blog-detail border-0 shadow rounded">
+
+                            <div class="section-title">
+            
+                                <div class="row">
+                                    <div class="col-md-12 mt-1 pt-1">
+                                        <h5 class="mb-0">เนื้อหาหลักสูตร 
+                                            <span class="enroll_process">
+                                                <span class="enrol_item_finish">0</span>/<span class="enrol_item_total">13</span>
+                                            </span>
+                                        </h5>
+
+                                        <div class="table-responsive bg-white shadow rounded mt-4">
+                                            <table class="table mb-0 table-center">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3" style="min-width: 100px;">เนื้อหา</th>
+                                                        <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end">สถานะ</th>
+                                                        <!-- <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end">สถานะ</th> -->
+                                                    </tr>
+                                                </thead>
+                
+                                                <tbody id="topic-table">
+                                                    
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div><!--end col-->
+
+                                </div><!--end row-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BLog End -->
+
+                    <!-- START SIDEBAR -->
+                    
+                    <!-- END SIDEBAR -->
+                </div><!--end row-->
+            </div><!--end container-->
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-py-60">
+                        <div class="row">
+                            <div class="col-6 mb-0 mb-md-4 pb-0">
+                                <p class="">ติดต่อสอบถามข้อมูล</p>
+                                <strong>กรมวิชาการเกษตร</strong><br>
+                                กลุ่มสารวัตรเกษตร กรมวิชาการเกษตร<br>
+                                เบอร์โทร : 02-940-5434 / 02-940-6670 ต่อ 121-124<br>
+                                email: inspector.doa@gmail.com
+                            </div>
+                            <!--end col-->
+                            <div class="col-6 mb-0 mb-md-4 pb-0">
+                                <p class="">ติดต่อสอบถามข้อมูล</p>
+                                <strong>สภาอุตสาหกรรมแห่งประเทศไทย</strong><br>
+                                ทัศนีย์วรรณ รัตนธัญกุล<br>
+                                FTI Academy <br> 
+                                เบอร์โทร : 02-3451226<br>
+                                email: thassaneewanr@fti.or.th
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-py-30 footer-bar">
+                <div class="container text-center">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <div class="text-sm-start">
+                                <p class="mb-0">
+                                    © 2022 กรมวิชาการเกษตร. Engine with <i class="mdi mdi-heart text-danger"></i> by <a href="https://fti.academy/" target="_blank" class="text-reset">fti.academy</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cookies Start -->
+        <!-- <div class="cookie-popup bg-white shadow rounded py-3 px-4">
+            <p class="text-muted mb-0">This website uses cookies to provide you with a great user experience. By using it, you accept our <a href="https://shreethemes.in" target="_blank" class="text-success h6">use of cookies</a></p>
+            <div class="cookie-popup-actions text-end">
+                <button><i class="uil uil-times text-dark fs-4"></i></button>
+            </div>
+        </div> -->
+        <!--Note: Cookies Js including in plugins.init.js (path like; js/plugins.init.js) and Cookies css including in _helper.scss (path like; scss/_helper.scss)-->
+        <!-- Cookies End -->
+
+        <!-- Back to top -->
+        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>
+        <!-- Back to top -->
+
+        <!-- javascript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
+        <!-- Player -->
+        <link href="https://fti-player.pages.dev/start/content/global.css" rel='stylesheet' type='text/css'/>
+        <script type="text/javascript" src="https://fti-player.pages.dev/start/java/FWDEVPlayer.js"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
+        <script>
+        jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+            dataType: "script",
+            cache: false,
+            url: url + ".js"
+        });
+        return jQuery.ajax( options );
+        };
+        // Usage
+        $.cachedScript( "academy" ).done(function( script, textStatus ) {
+        console.log( "load Default JS : " + textStatus );
+        __page("course");
+        __session("play-dev");
+        $(function() {
+            console.log("ready!");
+            renderPlayer();
+            getFirebasePlayer();
+            getFirebasePlayerTopic();
+        });
+        });
+        </script>
+        
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Icons -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+        <!-- Main Js -->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+        <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
+        <script>
+        Pusher.logToConsole = false;    
+        var pusher = new Pusher('4b7d1b6027780eadf73d',{
+            cluster: 'ap1'
+        });
+        var channel = pusher.subscribe('my-channel');
+        var token   = Cookies.get('__session');
+        channel.bind('my-event', function(data)
+        {
+            if(data.mode == "clear"){
+                logout();
+            }
+            if(data.token==token){
+                switch (data.mode){
+                    case "logout":
+                    logout()
+                    break;
+                    case "reload":
+                    resetData();
+                    break;
+                    case "check":
+                    online();
+                    break;
+                    case "alert":
+                    remoteAlert(data.title,data.text);
+                    break;
+                }
+            }
+        });
+
+        function remoteAlert(title,text)
+        {
+            $.alert(text,function(){});
+        }
+
+        function online()
+        {
+            if(window.matchMedia("(max-width: 767px)").matches){
+                device = "mobile";
+            } else{
+                device = "desktop";
+            }
+            $.ajax(
+            {
+                type : "POST",  
+                url : "https://player.fti.academy/api/online/" + token + "/course/" + device,
+                dataType : "json",
+                success : function(response){}
+            });
+        }
+        
+        </script>
+        <style>
+        .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
+        .alert_msg{position:fixed;width:280px;left:50%;margin-left:-140px;top:20%;z-index:1000;border:1px solid #ccc;border-radius:4px;box-shadow:0 0 15px rgba(0,0,0,.3);background:#fff;animation: alertshow .2s ease}
+        .alert_content{padding:20px;font-size:14px;text-align:left}
+        .alert_buttons{text-align:center;border-top:1px solid #ccc;-webkit-user-select:none}
+        .alert_buttons .alert_btn{display:inline-block;width:50%;border:none;height:45px;line-height:45px;font-size:14px;outline:0;-webkit-appearance:none;background:#fff;-webkit-tap-highlight-color:transparent;border-radius:0 0 4px 4px;}
+        .alert_buttons .alert_btn:only-child{width:100%}
+        .alert_buttons .alert_btn:first-child+.alert_btn{border-left:1px solid #ccc;border-radius:0 0 4px 0;}
+        .alert_tips{position:fixed;z-index:10176523;width:100%;top:55%;pointer-events:none;text-align:center;}
+        .alert_tips div{box-siziong:border-box;display:inline-block;padding:15px;border-radius:10px;background:rgba(0,0,0,.7);min-width:50px;max-width:230px;text-align:center;color:#fff;animation: tipsshow 3s .01s ease;opacity:0;}
+        @keyframes alertshow {0% {opacity: 0;transform: scale(.5)}70% {opacity: .7;transform: scale(1.05)}100% {opacity: 1;transform: scale(1)}}
+        @keyframes tipsshow {0% {opacity: 0;transform:scale(1.4) rotateX(-360deg)}20% {opacity:1;transform:scale(1) rotateX(0deg)}80% {opacity:1;transform:scale(1) rotateX(0deg)}100% {opacity:0;transform:scale(1.4) rotateX(360deg)}}
+        </style>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
+        
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M0JGCQ3SKK');
+        </script>
+
+        <script type="text/javascript">
+            FWDEVPUtils.onReady(function()
+            {
+                FWDEVPlayer.videoStartBehaviour = "play";
+                new FWDEVPlayer(
+                {
+                    //main settings
+                    instanceName:"mplayer",
+                    parentId:"avPlayer",
+                    mainFolderPath:"https://fti-player.pages.dev/start/content",
+                    initializeOnlyWhenVisible:"no",
+                    skinPath:"minimal_skin_dark",
+                    displayType:"responsive",
+                    fillEntireVideoScreen:"no",
+                    playsinline:"yes",
+                    useWithoutVideoScreen:"no",
+                    autoScale:"yes",
+                    openDownloadLinkOnMobile:"no",
+                    useVectorIcons:"no",
+                    useResumeOnPlay:"yes",
+                    goFullScreenOnButtonPlay:"no",
+                    useHEXColorsForSkin:"no",
+                    normalHEXButtonsColor:"#FF0000",
+                    privateVideoPassword:"428c841430ea18a70f7b06525d4b748a",
+                    startAtTime:"",
+                    stopAtTime:"",
+                    startAtVideoSource:0,
+                    videoSource:[{source:"https://firebasestorage.googleapis.com/v0/b/academy-f0925-static/o/vdo%2FEP7.mp4?alt=media&token=c76534d3-f2b8-45d8-83f2-ff4da50a6acd"}],
+                    posterPath:"",
+                    showErrorInfo:"no",
+                    fillEntireScreenWithPoster:"yes",
+                    disableDoubleClickFullscreen:"no",
+                    addKeyboardSupport:"no",
+                    useChromeless:"no",
+                    showPreloader:"yes",
+                    preloaderColors:["#2e3092", "#ed1c24"],
+                    autoPlay:"no",
+                    autoPlayText:"คลิ๊กเพื่อเปิดเสียง",
+                    loop:"no",
+                    scrubAtTimeAtFirstPlay:"00:00:00",
+                    maxWidth:1440,
+                    maxHeight:800,
+                    volume:1,
+                    greenScreenTolerance:200,
+                    backgroundColor:"#000000",
+                    posterBackgroundColor:"#000000",
+                    //lightbox settings
+                    closeLightBoxWhenPlayComplete:"no",
+                    lightBoxBackgroundOpacity:.6,
+                    lightBoxBackgroundColor:"#000000",
+                    //logo settings
+                    showLogo:"yes",
+                    hideLogoWithController:"yes",
+                    logoPosition:"topLeft",
+                    logoLink:"https://doa.fti.academy/",
+                    logoPath:"https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5",
+                    logoMargins:5,
+                    //controller settings
+                    showController:'yes',                  					
+                    showDefaultControllerForVimeo:"no",
+                    showScrubberWhenControllerIsHidden:"yes",
+                    showControllerWhenVideoIsStopped:"yes",
+                    showVolumeScrubber:"yes",
+                    showVolumeButton:"yes",
+                    showTime:"yes",
+                    showRewindButton:"no",
+                    showQualityButton:"no",
+                    showShareButton:"no",
+                    showEmbedButton:"no",
+                    showDownloadButton:"no",
+                    showMainScrubberToolTipLabel:"yes",
+                    showChromecastButton:"no",
+                    showFullScreenButton:"yes",
+                    repeatBackground:"yes",
+                    controllerHeight:41,
+                    controllerHideDelay:3,
+                    startSpaceBetweenButtons:7,
+                    spaceBetweenButtons:9,
+                    mainScrubberOffestTop:14,
+                    scrubbersOffsetWidth:4,
+                    timeOffsetLeftWidth:5,
+                    timeOffsetRightWidth:3,
+                    volumeScrubberWidth:80,
+                    volumeScrubberOffsetRightWidth:0,
+                    timeColor:"#777777",
+                    youtubeQualityButtonNormalColor:"#777777",
+                    youtubeQualityButtonSelectedColor:"#FFFFFF",
+                    scrubbersToolTipLabelBackgroundColor:"#FFFFFF",
+                    scrubbersToolTipLabelFontColor:"#5a5a5a",
+                    //redirect at video end
+                    redirectURL:"",
+                    redirectTarget:"_self",
+                    //cuepoints
+                    executeCuepointsOnlyOnce:"no",
+                    cuepoints:[],
+                    //annotations
+                    annotiationsListId:"none",
+                    showAnnotationsPositionTool:"no",
+
+                    //audio visualizer
+                    audioVisualizerLinesColor:"#0099FF",
+                    audioVisualizerCircleColor:"#FFFFFF",
+                    //advertisement on pause window
+                    aopwTitle:"Advertisement",
+                    aopwSource:"",
+                    aopwWidth:400,
+                    aopwHeight:240,
+                    aopwBorderSize:6,
+                    aopwTitleColor:"#FFFFFF",
+                    //playback rate / speed
+                    showPlaybackRateButton:"yes",
+                    defaultPlaybackRate:"1", //0.25, 0.5, 1, 1.25, 1.5, 2
+                    //sticky on scroll
+                    stickyOnScroll:"no",
+                    stickyOnScrollShowOpener:"no",
+                    stickyOnScrollWidth:"450",
+                    stickyOnScrollHeight:"250",
+                    //sticky display settings
+                    showOpener:"yes",
+                    showOpenerPlayPauseButton:"yes",
+                    verticalPosition:"bottom",
+                    horizontalPosition:"center",
+                    showPlayerByDefault:"yes",
+                    animatePlayer:"no",
+                    openerAlignment:"right",
+                    mainBackgroundImagePath:"https://fti-player.pages.dev/start/content/minimal_skin_dark/main-background.png",
+                    openerEqulizerOffsetTop:-1,
+                    openerEqulizerOffsetLeft:3,
+                    offsetX:0,
+                    offsetY:0,
+                    //embed window
+                    embedWindowCloseButtonMargins:15,
+                    borderColor:"#333333",
+                    mainLabelsColor:"#FFFFFF",
+                    secondaryLabelsColor:"#a1a1a1",
+                    shareAndEmbedTextColor:"#5a5a5a",
+                    inputBackgroundColor:"#000000",
+                    inputColor:"#FFFFFF",
+                    //ads
+                    openNewPageAtTheEndOfTheAds:"no",
+                    adsSource:[],
+                    adsButtonsPosition:"right",
+                    skipToVideoText:"You can skip to video in: ",
+                    skipToVideoButtonText:"Skip Ad",
+                    timeToHoldAds:4,
+                    adsTextNormalColor:"#999999",
+                    adsTextSelectedColor:"#FFFFFF",
+                    adsBorderNormalColor:"#666666",
+                    adsBorderSelectedColor:"#FFFFFF",
+                    //a to b loop
+                    useAToB:"no",
+                    atbTimeBackgroundColor:"transparent",
+                    atbTimeTextColorNormal:"#888888",
+                    atbTimeTextColorSelected:"#FFFFFF",
+                    atbButtonTextNormalColor:"#888888",
+                    atbButtonTextSelectedColor:"#FFFFFF",
+                    atbButtonBackgroundNormalColor:"#FFFFFF",
+                    atbButtonBackgroundSelectedColor:"#000000",
+                    //thumbnails preview
+                    thumbnailsPreview:"auto",
+                    thumbnailsPreviewWidth:196,
+                    thumbnailsPreviewHeight:110,
+                    thumbnailsPreviewBackgroundColor:"#000000",
+                    thumbnailsPreviewBorderColor:"#666",
+                    thumbnailsPreviewLabelBackgroundColor:"#666",
+                    thumbnailsPreviewLabelFontColor:"#FFF",
+                    // context menu
+                    contextMenuType:'none',
+                    showScriptDeveloper:"no",
+                    contextMenuBackgroundColor:"#1f1f1f",
+                    contextMenuBorderColor:"#1f1f1f",
+                    contextMenuSpacerColor:"#333",
+                    contextMenuItemNormalColor:"#888888",
+                    contextMenuItemSelectedColor:"#FFFFFF",
+                    contextMenuItemDisabledColor:"#444",
+                    //annotations
+                    annotiationsListId:"fwdAnnotations",
+                    showAnnotationsPositionTool:"no",
+                });
+                registerAPI();
+            });
+
+            var trigger_config  = 10;
+            var timer           = 0;
+            var trigger         = 0;
+            var count           = 36000000;
+            var starter          = false;
+
+            var registerAPIInterval;
+
+            function registerAPI()
+            {
+                clearInterval(registerAPIInterval);
+                if(window.mplayer)
+                {
+                    mplayer.addListener(FWDEVPlayer.READY, readyHandler);
+                    mplayer.addListener(FWDEVPlayer.STOP, stopHandler);
+                    mplayer.addListener(FWDEVPlayer.PLAY, playHandler);
+                    mplayer.addListener(FWDEVPlayer.PAUSE, pauseHandler);
+                    mplayer.addListener(FWDEVPlayer.UPDATE_TIME, updateTimeHandler);
+                    mplayer.addListener(FWDEVPlayer.UPDATE_TIME, getCurrentTimer);
+                }
+                else
+                {
+                    registerAPIInterval = setInterval(registerAPI, 100);
+                }
+            };
+            function readyHandler(e)
+            {
+                $('#pausebtn').hide();
+                $('#unmutebtn').hide();
+                $('.player-time-cuerrent').text("00:00:00");
+                updateVideoSourceHandler();
+                playResume();
+                console.log(starter);
+            }
+
+            function playHandler(e)
+            {
+                console.log("Play");
+                $('#pausebtn').show();
+                $('#playbtn').hide();
+                starter = true;
+            }
+
+            function pauseHandler(e)
+            {
+                $('#pausebtn').hide();
+                $('#playbtn').show();
+                currentTime = $('#post_topic_timer').val();
+                pauseTimer(currentTime);
+            }
+
+            function stopHandler(time)
+            {
+                if(starter)
+                {
+                    console.log("Stop Handle");
+                    var code    = $.urlParam('token');
+                    var course  = $.urlParam('session');
+                    var token   = Cookies.get('__session');
+
+                    stopFirebasePlayer(token, course, code);
+                }
+            }
+
+            function updateVideoSourceHandler(e)
+            {
+                mediaSource = $('#topic_video_source').val();
+                mplayer.setVideoSource(mediaSource);
+
+                posterSource = $('#topic_poster_source').val();
+                mplayer.setPosterSource(posterSource);
+            }
+
+            function updatePosterSourceHandler(e)
+            {
+                
+            }
+
+            function play()
+            {
+                mplayer.play();
+                updateVideoSourceHandler();
+                starter = true;
+                console.log(starter);
+            }
+
+            function restart()
+            {
+                mplayer.scrubbAtTime("0");
+                mplayer.play();
+            }
+
+            function pause()
+            {
+                mplayer.pause(); 
+            }
+
+            function stop()
+            {
+            }
+
+            function scrub(percent)
+            {
+            }
+
+            function setVolume(percent)
+            {
+                mplayer.setVolume(percent); 
+            }
+
+            function mute()
+            {
+                $('#mutebtn').hide();
+                $('#unmutebtn').show();
+                mplayer.setVolume(0); 
+            }
+
+            function unmute()
+            {
+                $('#mutebtn').show();
+                $('#unmutebtn').hide();
+                mplayer.setVolume(1); 
+            }
+
+            function goFullScreen()
+            {
+            }
+
+            function getCurrentTimer(e)
+            {
+            }
+
+            function updateTimeHandler(e)
+            {
+                if(timer<3)
+                {
+                    timer++;
+                }
+                else
+                {
+                    timer=0
+                }
+
+                if(timer==3)
+                {
+                    updatetimer(e.currentTime);
+                    $('#post_topic_timer').val(e.currentTime);
+                }
+                $('.player-time-cuerrent').text(e.currentTime);
+            }
+
+            function playResume()
+            {
+                //playerTimer = '0';
+                //mplayer.play();
+            }
+
+            function updatetimer(time)
+            {
+                var code      = $.urlParam('token');
+                var course    = $.urlParam('session');
+                var token     = Cookies.get('__session');
+
+                updateFirebasePlayer(token, course, code);
+            }
+
+            function pauseTimer(time)
+            {
+                player = 'ep1';
+
+                var student     = Cookies.get('__student');
+                var student     = JSON.parse(student);
+                var topic_play  = Cookies.get('__topic');
+            }
+            </script>
+
+            <script type="text/javascript">
+
+                // Overriding console object
+                var console = {};
+
+                // Getting div to insert logs
+                var logger = document.getElementById("logger");
+
+                // Adding log method from our console object
+                console.log = function(text)
+                {
+                    var element = document.createElement("div");
+                    var txt = document.createTextNode(text);
+
+                    element.appendChild(txt);
+                    logger.appendChild(element);
+                }
+
+                // testing
+                console.log("Hello World...");
+                console.log("WOW");
+
+                /**
+                    console.log prints the message in the page instead browser console, useful to programming and debugging JS using a Android phone
+
+                */
+            </script>
+
+    </body>
+</html>
