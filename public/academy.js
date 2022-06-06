@@ -2740,7 +2740,7 @@ function getFirebasePlayerTopic()
 
             if(browserOS==="Android")
             {
-                $("#topic_video_source").val(result.data.master.video);
+                $("#topic_video_source").val(result.data.master.video_direct);
             }
             else
             {
