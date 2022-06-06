@@ -1,4 +1,4 @@
-console.log("JS V.2.0");
+consoleLoger("JS V.2.0");
 
 $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)')
@@ -35,13 +35,21 @@ resetPassword()
 
 renderProfile();
 
+function consoleLoger(str)
+{
+    dev = $.urlParam('dev');
+    if(dev){
+        consoleLoger(str);
+    }
+}
+
 function __session(pagename){
     var token       = Cookies.get('__session');
     var pathname    = window.location.pathname;
     pathname        = pathname.replace("/", "");
     pathname        = pathname.replace(".html", "");
 
-    console.log(pathname);
+    consoleLoger(pathname);
 
     if (token == undefined) {
         window.location.href="index.html";
@@ -56,7 +64,7 @@ function __session(pagename){
 function __page(agenda){
     var course  = $.urlParam('session');
     var date    = new Date().getTime()/1000;
-    console.log("Check Data Agenda : " + agenda + " | Course : " + course);
+    consoleLoger("Check Data Agenda : " + agenda + " | Course : " + course);
     if(!course){window.location.href="index.html";}else{
         $.ajax({
             url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda='+agenda+'&course='+course+'&date='+date,
@@ -129,7 +137,7 @@ function login(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -202,7 +210,7 @@ function login_register(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -236,11 +244,11 @@ function renderLogin()
 
     if(!username&&!password)
     {
-        console.log("Default Login");
+        consoleLoger("Default Login");
     }
     else
     {
-        console.log("Register Login");
+        consoleLoger("Register Login");
         $("#password").val(password);
         $("#username").val(username);
         login();
@@ -291,7 +299,7 @@ function register(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -452,7 +460,7 @@ function login_token(){
             // handle success
             $.isLoading( "hide" );
             var studentArray = JSON.stringify(result);
-            //console.log(result.isStudent);
+            //consoleLoger(result.isStudent);
             if (result.isStudent=="no") {
                 window.location.href="permission.html";
             } else{
@@ -472,7 +480,7 @@ function login_token(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             // Login undefined
             if(request.status===0){
@@ -507,8 +515,8 @@ function notification() {
 
             $("#notification-area").html("");
             $.each(result.notification, function(key, val){
-                console.log(key);
-                console.log(val.message);
+                consoleLoger(key);
+                consoleLoger(val.message);
                 $("#notification-area").append(
                 "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
                     +"<div class='d-flex bg-" + val.type + " key-feature align-items-center p-3 rounded shadow mt-4'>"
@@ -569,7 +577,7 @@ function editprofile() {
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -617,7 +625,7 @@ function editbilling() {
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -667,7 +675,7 @@ function editCertArea() {
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -717,7 +725,7 @@ function editExamRound() {
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -765,7 +773,7 @@ function submitApproveImage(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -813,7 +821,7 @@ function editExamPeriod() {
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -866,7 +874,7 @@ function changePassword(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -912,7 +920,7 @@ function resetPassword() {
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -967,10 +975,10 @@ function resetData(){
             var courseArray     = JSON.stringify(result.course);
             var topicArray      = JSON.stringify(result.topic);
             localStorage.setItem('__course', courseArray);
-            //console.log("__course ajax: " + localStorage.getItem('__course')); //just use the err here 
+            //consoleLoger("__course ajax: " + localStorage.getItem('__course')); //just use the err here 
             var topicContent = [];
             $.each(JSON.parse(topicArray), function (key, item){
-                //console.log(key + ":" + item.name);
+                //consoleLoger(key + ":" + item.name);
                 topicContent.push({'tid': item.tid,'name': item.name,'next': item.next,'code': item.code,'tip': item.tip,'time': item.time,'current': item.current,'percent': item.percent,'percent_gui': item.percent_gui,'url':item.url,'icon':item.icon,'icon_percent':item.icon_percent,'typeicon':item.typeicon,'type':item.type,'status':item.status,'total': item.total,'count': item.count,'used': item.used});
             });
             localStorage.setItem('__topic', JSON.stringify(topicContent));
@@ -990,7 +998,7 @@ function resetData(){
         },
         error: function(request,msg,error) {
             //g("Error: " + error); //just use the err here
-            //console.log("Error: " + error); //just use the err here
+            //consoleLoger("Error: " + error); //just use the err here
             // Login undefined
             if(request.status===0){
                 resetData();
@@ -1029,7 +1037,7 @@ function renderCourseContent(datatype) {
 
                 $.each(JSON.parse(topicArray), function (key, item) 
                 {
-                    //console.log(key + ":" + item.name);
+                    //consoleLoger(key + ":" + item.name);
                     topicContent.push({'tid': item.tid,'name': item.name,'next': item.next,'code': item.code,'tip': item.tip,'time': item.time,'current': item.current,'percent': item.percent,'percent_gui': item.percent_gui,'url':item.url,'icon':item.icon,'icon_percent':item.icon_percent,'typeicon':item.typeicon,'type':item.type,'status':item.status,'total': item.total,'count': item.count,'used': item.used});
                 });
 
@@ -1053,7 +1061,7 @@ function renderCourseContent(datatype) {
             }
         });
     }else{
-        //console.log("__course session: " + course); //just use the err here 
+        //consoleLoger("__course session: " + course); //just use the err here 
         renderTopic(datatype);
     }
 }
@@ -1085,7 +1093,7 @@ function renderCourseContentAll(datatype){
 
                 $.each(JSON.parse(topicArray), function (key, item) 
                 {
-                    //console.log(key + ":" + item.name);
+                    //consoleLoger(key + ":" + item.name);
                     topicContent.push({'tid': item.tid,'name': item.name,'next': item.next,'code': item.code,'tip': item.tip,'time': item.time,'current': item.current,'percent': item.percent,'percent_gui': item.percent_gui,'url':item.url,'icon':item.icon,'icon_percent':item.icon_percent,'typeicon':item.typeicon,'type':item.type,'status':item.status,'total': item.total,'count': item.count,'used': item.used});
                 });
 
@@ -1109,7 +1117,7 @@ function renderCourseContentAll(datatype){
             }
         });
     }else{
-        //console.log("__course session: " + course); //just use the err here 
+        //consoleLoger("__course session: " + course); //just use the err here 
         renderTopic(datatype);
     }
 }
@@ -1127,7 +1135,7 @@ function renderTopic(type){
     $(".lesson-poster").attr("src",course.poster);
     $(".progress-bar").css('width', course.topic_play_percent + '%');
     $(".progress-value").text(course.topic_play_percent + "%");
-    //console.log("Percent" + course.topic_play_percent);
+    //consoleLoger("Percent" + course.topic_play_percent);
     $("#topic-table").html("");
     $.each(topic, function (key, item){
         if(item.type=="exam" || item.type=="content"){
@@ -1258,7 +1266,7 @@ function renderNext()
         localStorage.setItem('__topic', JSON.stringify(topic));
     }
 
-    //console.log("Next = " + next + " Index = " + nextIndex);
+    //consoleLoger("Next = " + next + " Index = " + nextIndex);
     */
     resetData();
     renderCourseContent();
@@ -1268,7 +1276,7 @@ function renderPlayer(){
 
     /*
     var code    = $.urlParam('token');
-    //console.log("GET param = " + code);
+    //consoleLoger("GET param = " + code);
     var course  = localStorage.getItem('__course');
     var course  = JSON.parse(course);
     var topic   = localStorage.getItem('__topic');
@@ -1320,7 +1328,7 @@ function renderCurrent(){
     var query       = ref.orderByChild('topic').equalTo(topic_play);
     query.once('value', function(snapshot){
         if (!snapshot.exists()){
-        //console.log("NO");
+        //consoleLoger("NO");
         var token   = Cookies.get('__session');
         $.ajax(
         {
@@ -1351,7 +1359,7 @@ function renderCurrent(){
             }
         });
         }else{
-            //console.log("YES");
+            //consoleLoger("YES");
         }
     });
 
@@ -1390,7 +1398,7 @@ function getProfile(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -1448,7 +1456,7 @@ function getProfileRepeat(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -1472,14 +1480,14 @@ function nextCert()
 {
     var next = $('#nextBTN').attr('data-next');
 
-    console.log(next);
+    consoleLoger(next);
     window.location.href="certification_admin.php?token=" + next;
 }
 
 function prevCert()
 {
     var prev = $('#prevBTN').attr('data-prev');
-    console.log(prev);
+    consoleLoger(prev);
     window.location.href="certification_admin.php?token=" + prev;
 }
 
@@ -1515,7 +1523,7 @@ function getCerification(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -1613,14 +1621,14 @@ function renderEditPassword(){
 function renderEditExam(){
     var student = Cookies.get('__student');
     var student = JSON.parse(student);
-    console.log(student.exam_round_data);
+    consoleLoger(student.exam_round_data);
     $("input[name=exam_round][value='" + student.exam_round_data + "']").prop("checked",true);
 }
 
 function renderEditArea(){
     var student = Cookies.get('__student');
     var student = JSON.parse(student);
-    console.log(student.cert_area_data);
+    consoleLoger(student.cert_area_data);
     $("input[name=area_cert][value='" + student.cert_area_data + "']").prop("checked",true);
 }
 
@@ -1648,7 +1656,7 @@ function renderExam(){
                 var accessArray     = JSON.stringify(result.access);
                 localStorage.setItem('__access', accessArray);
 
-                //console.log("__question ajax: " + localStorage.getItem('__question')); //just use the err here
+                //consoleLoger("__question ajax: " + localStorage.getItem('__question')); //just use the err here
                 var access          = localStorage.getItem('__access');
                 var access          = JSON.parse(access);
                 /*
@@ -1663,7 +1671,7 @@ function renderExam(){
 
                 */
 
-                //console.log("renderExam");
+                //consoleLoger("renderExam");
                 if(result.status==="denied")
                 {
                     window.location.href = "exam_wait.php";
@@ -1674,7 +1682,7 @@ function renderExam(){
                 }
             },
             error: function(request,msg,error) {
-                //console.log("Error: " + error); //just use the err here
+                //consoleLoger("Error: " + error); //just use the err here
                 output = JSON.stringify(request.responseJSON)
                 // Login undefined
                 if(request.status===0){
@@ -1707,10 +1715,10 @@ function checkAccess(){
         window.location.href="course.php";
     } else if (d < 0){
         if(access.access_status==="denied"){
-            console.log("Close");
+            consoleLoger("Close");
             window.location.href="course.php";
         }else{
-            console.log("Open");
+            consoleLoger("Open");
             window.location.href="exam_final.php?token=kJVNdUpeEVYBeZt3tgcuQqgzwsm771";
         }
     }
@@ -1739,7 +1747,7 @@ function renderScoreSession(){
         error: function(request,msg,error) {
             $.isLoading( "hide" );
             $(".alert-block").html("");
-            //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+            //consoleLoger("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
             output = JSON.stringify(request.responseJSON)
             
             // Login undefined
@@ -1803,7 +1811,7 @@ function renderAccess(){
             window.location.href=result.access.access_callback;
         },
         error: function(request,msg,error) {
-            //console.log("Error: " + error); //just use the err here
+            //consoleLoger("Error: " + error); //just use the err here
             output = JSON.stringify(request.responseJSON)
             // Login undefined
             if(request.status===0){
@@ -1881,7 +1889,7 @@ function renderExamContent(){
                 $.isLoading( "hide" );
             },
             error: function(request,msg,error) {
-                //console.log("Error: " + error); //just use the err here
+                //consoleLoger("Error: " + error); //just use the err here
                 output = JSON.stringify(request.responseJSON)
                 // Login undefined
                 if(request.status===0){
@@ -1918,11 +1926,11 @@ function renderQuestion(){
     /*
     firebase.database().ref('data/' + studentID + '/exam/').orderByChild('contest').equalTo(access.contest_id).once("value", function(snapshot) 
     {
-        console.log(snapshot.val());
+        consoleLoger(snapshot.val());
         snapshot.forEach(function(dataRow) 
         {
             firebase.database().ref('data/' + studentID + '/exam/' + dataRow.key).once("value", function(snapshot){
-              console.log(dataRow.key + " : " + snapshot.val().status);
+              consoleLoger(dataRow.key + " : " + snapshot.val().status);
               if(snapshot.val().status==="accept")
               {
                 addQuestion(dataRow.key,studentID,question);
@@ -2202,7 +2210,7 @@ function preLoadExam()
                 $.isLoading( "hide" );
             },
             error: function(request,msg,error) {
-                //console.log("Error: " + error); //just use the err here
+                //consoleLoger("Error: " + error); //just use the err here
                 output = JSON.stringify(request.responseJSON)
                 // Login undefined
                 if(request.status===0){
@@ -2231,8 +2239,8 @@ function find(){
     firebase.database().ref('data/' + student + '/exam/').orderByChild('contest').equalTo('96').once("value", function(snapshot) 
     {
         console.clear()
-        console.log(snapshot.val());
-        //console.log(JSON.stringify(snapshot.val(), null, 4));
+        consoleLoger(snapshot.val());
+        //consoleLoger(JSON.stringify(snapshot.val(), null, 4));
     });
 }
 
@@ -2277,23 +2285,23 @@ function checkFirebasePlayer()
             if(mode=="pretest")
             {
                 pretestArray = result.data.scores.pretest
-                console.log(pretestArray)
+                consoleLoger(pretestArray)
     
                 if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
                     window.location.href="student.html";
                 } else {
-                    console.log(pretestArray);
+                    consoleLoger(pretestArray);
                 }
             }
             else if(mode=="posttest")
             {
                 posttestArray = result.data.scores.posttest
-                console.log(posttestArray)
+                consoleLoger(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
                     window.location.href="student.html";
                 } else {
-                    console.log(posttestArray);
+                    consoleLoger(posttestArray);
                 }
             }
             
@@ -2319,7 +2327,7 @@ function openExam(session,mode)
         success: function(result) {
             $.isLoading( "hide" );
             pretestArray = result.data.scores.pretest
-            console.log(pretestArray)
+            consoleLoger(pretestArray)
 
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) {
                 window.location.href="student.html";
@@ -2346,8 +2354,8 @@ function getFirebaseUser()
         },
         success: function(result) {
             $.isLoading( "hide" );
-            console.log(result);
-            console.log("Update Profile Data");
+            consoleLoger(result);
+            consoleLoger("Update Profile Data");
 
             $.each(result.data.courses, function (key, item){
 
@@ -2355,7 +2363,7 @@ function getFirebaseUser()
                 // 
                 course_id = item.scores.posttest
                 posttestArray = item.scores.posttest
-                console.log(posttestArray)
+                consoleLoger(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
 
@@ -2483,8 +2491,8 @@ function getFirebaseUser()
         },
         error: function(request,msg,error) {
             $.isLoading( "hide" );
-            console.log(msg);
-            console.log("No Found Profile Data");
+            consoleLoger(msg);
+            consoleLoger("No Found Profile Data");
         }
     });
 }
@@ -2513,10 +2521,10 @@ function getFirebasePlayer()
             $(".lesson-detail").html(result.data.info.description);
             $(".lesson-poster").attr("src",result.data.info.poster);
 
-            console.log(result.data.players)
+            consoleLoger(result.data.players)
 
             pretestArray = result.data.scores.pretest
-            console.log(pretestArray)
+            consoleLoger(pretestArray)
             if(pretestArray !== null && pretestArray !== ''  && pretestArray !==undefined) 
             {
                 enroll_status = true;
@@ -2636,7 +2644,7 @@ function getFirebasePlayer()
                         if(result_2.data.info.exam =="รอบที่ 1 วันที่ 30-31 พ.ค.65")
                         {
                             posttestArray = result.data.scores.posttest
-                            console.log(posttestArray)
+                            consoleLoger(posttestArray)
 
                             if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
                             } else {
@@ -2656,7 +2664,7 @@ function getFirebasePlayer()
                         else if(result_2.data.info.exam =="รอบที่ 2 วันที่ 14 - 15 มิ.ย.65")
                         {
                             posttestArray = result.data.scores.posttest
-                            console.log(posttestArray)
+                            consoleLoger(posttestArray)
 
                             if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
                             } else {
@@ -2676,7 +2684,7 @@ function getFirebasePlayer()
                         else
                         {
                             posttestArray = result.data.scores.posttest
-                            console.log(posttestArray)
+                            consoleLoger(posttestArray)
 
                             if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
                             } else {
@@ -2721,7 +2729,7 @@ function getFirebasePlayerTopic()
         success: function(result) {
             $.isLoading( "hide" );
             // handle success
-            console.log(result.data.timer);
+            consoleLoger(result.data.timer);
 
             if(result.data.timer <1)
             {
@@ -2736,7 +2744,7 @@ function getFirebasePlayerTopic()
             // Detect Android Source
             //
             browserOS = getOS();
-            console.log("Browser : " + browserOS);
+            consoleLoger("Browser : " + browserOS);
 
             if(browserOS!="Android")
             {
@@ -2835,7 +2843,7 @@ function updateFirebaseUser()
 
         },
         error: function(request,msg,error) {
-            //console.log("Error: " + error); //just use the err here
+            //consoleLoger("Error: " + error); //just use the err here
             output = JSON.stringify(request.responseJSON)
             // Login undefined
             if(request.status===0){
@@ -2859,7 +2867,7 @@ function stopFirebasePlayer(token,course,code)
         beforeSend: function(xhr) {
         },
         success: function(result) {
-            console.log(result)
+            consoleLoger(result)
 
             var jsonObj = {
                 "user": token,
@@ -2877,7 +2885,7 @@ function stopFirebasePlayer(token,course,code)
                 beforeSend: function(xhr) {
                 },
                 success: function(result) {
-                    console.log(result)
+                    consoleLoger(result)
                 },
                 error: function(request,msg,error) {
                 }
@@ -2914,7 +2922,7 @@ function stopFirebasePlayer(token,course,code)
 function updatePlayerStatus(user,course,player,play, status, duration, uid, video, timer, course, title, new_status)
 {   
     //
-    console.log( new_status + " : Player");
+    consoleLoger( new_status + " : Player");
     var jsonObj = {
         "user": user,
         "course": course,
@@ -2993,7 +3001,7 @@ function renderOrderReceipt() {
                     },
                     success: function(result2) 
                     {
-                        console.log(result2);
+                        consoleLoger(result2);
                         $(".receipt-name").html(result.name);
                         $(".receipt-ref1").html(result2.data.ref1);
                         $(".receipt-ref2").html(result2.data.ref2);
@@ -3050,7 +3058,7 @@ function renderOrderPrintReceipt() {
                     },
                     success: function(result2) 
                     {
-                        console.log(result2);
+                        consoleLoger(result2);
                         $(".receipt-name").html(result.name);
                         $(".receipt-ref1").html(result2.data.ref1);
                         $(".receipt-ref2").html(result2.data.ref2);
@@ -3108,7 +3116,7 @@ function renderEditBilling() {
                     },
                     success: function(result) 
                     {
-                        console.log(result);
+                        consoleLoger(result);
                         $("#token").val(result.data.uid);
                         $('#taX_PROVINCE_TH option:contains(' + result.data.bill_address.taX_PROVINCE_TH + ')').attr('selected', 'selected');
                         $("#taX_BUILDING_TH").val(result.data.bill_address.taX_BUILDING_TH);
@@ -3211,7 +3219,7 @@ function page(url) {
 }
 
 function printerPopup(url){
-    console.log("Printer");
+    consoleLoger("Printer");
     $("<iframe id='printabel'>")
     .attr("src", url)
     .appendTo("body");
