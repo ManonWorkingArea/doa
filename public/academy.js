@@ -2733,7 +2733,20 @@ function getFirebasePlayerTopic()
                 //updatePlayerStatus(token, course, code, result.data.play, result.data.status, result.data.duration, result.data.uid, result.data.video, result.data.timer, result.data.course, result.data.title, "processing");
             }
 
-            $("#topic_video_source").val(result.data.master.video);
+            // Detect Android Source
+            //
+            browserOS = getOS();
+            console.log("Browser : " + browserOS);
+
+            if(browserOS==="Android")
+            {
+                $("#topic_video_source").val(result.data.master.video_direct);
+            }
+            else
+            {
+                $("#topic_video_source").val(result.data.master.video);
+            }
+            
             $("#topic_poster_source").val(result.data.master.poster);
             $("#topic_course").val(course);
             $(".active-topic-name").html(result.data.master.title);
@@ -3207,4 +3220,27 @@ function printerPopup(url){
 function hideAlert()
 {
     $.isLoading( "hide" );
+}
+
+function getOS() {
+    var userAgent = window.navigator.userAgent,
+        platform = window.navigator?.userAgentData?.platform ?? window.navigator.platform,
+        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+        iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+        os = null;
+
+    if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS';
+    } else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = 'iOS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows';
+    } else if (/Android/.test(userAgent)) {
+        os = 'Android';
+    } else if (!os && /Linux/.test(platform)) {
+        os = 'Linux';
+    }
+
+    return os;
 }
