@@ -2738,13 +2738,13 @@ function getFirebasePlayerTopic()
             browserOS = getOS();
             console.log("Browser : " + browserOS);
 
-            if(browserOS==="Android" || browserOS==="" || browserOS===undefined  || browserOS==="null")
+            if(browserOS!="Android")
             {
-                $("#topic_video_source").val(result.data.master.video_direct);
+                $("#topic_video_source").val(result.data.master.video);
             }
             else
             {
-                $("#topic_video_source").val(result.data.master.video);
+                $("#topic_video_source").val(result.data.master.video_direct);
             }
             
             $("#topic_poster_source").val(result.data.master.poster);
