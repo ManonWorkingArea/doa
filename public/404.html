@@ -19,7 +19,7 @@ for(var i=0;i<splitted.length;i++){
         [key] : value
     };
     paramObj.push(obj);
-    }
+}
 //console.log(paramObj);
 
 console.log("URL:" + paramObj[0]);
@@ -34,7 +34,7 @@ console.log("filename:"+filename);
 if(filename=="certification.php")
 {
     console.log("Con 1 : " + filename);
-    location.href = 'https://doasrv.fti.academy/certification.html?token=' + urlData;
+    location.href = 'https://doasrv.fti.academy/certification.html?' + urlData;
 }
 else
 {
