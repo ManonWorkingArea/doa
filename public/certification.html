@@ -297,8 +297,12 @@ position: absolute;
 					<div class="footer">
 						<div class="avartar"><img src="" alt="" class="student_profile"></div>
 						<div class="qrcode">
-						<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=1OqRw4QViF0IZxXTjUP2&session=195" title="Certification Verify QRCODE" />
-						<div class="code">1OqRw4QViF0IZxXTjUP2</div></div>
+						    <img id="gqrcode" src="" title="Certification Verify QRCODE" />
+                            <div class="code">
+                                <strong><span class='certcode'></span></strong></br>
+                                <span class='certdata'></span>
+                            </div>
+                        </div>
 					</div>
 
 				</div>
@@ -338,10 +342,11 @@ position: absolute;
             var session = $.urlParam('session');
 
             console.log("code:"+code + " session:" + session);
+            __session("certification");
+            getCertification();
             //renderOrderConfirm(code)
             //renderOrderReceipt();
             //__page("register_confirm");
-            //__session("course");
             //getFirebasePlayer();
         });
         </script>
@@ -606,10 +611,6 @@ position: absolute;
         .alert_tips div{box-siziong:border-box;display:inline-block;padding:15px;border-radius:10px;background:rgba(0,0,0,.7);min-width:50px;max-width:230px;text-align:center;color:#fff;animation: tipsshow 3s .01s ease;opacity:0;}
         @keyframes alertshow {0% {opacity: 0;transform: scale(.5)}70% {opacity: .7;transform: scale(1.05)}100% {opacity: 1;transform: scale(1)}}
         @keyframes tipsshow {0% {opacity: 0;transform:scale(1.4) rotateX(-360deg)}20% {opacity:1;transform:scale(1) rotateX(0deg)}80% {opacity:1;transform:scale(1) rotateX(0deg)}100% {opacity:0;transform:scale(1.4) rotateX(360deg)}}
-        .certdata
-        {
-            display:none;
-        }
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
@@ -638,6 +639,63 @@ position: absolute;
             var course  = $.urlParam('session');
             page("bill.html?session=" + course + "&token=" + code);
         }
+
+
+
+        function getCertification(){   
+
+            var token       = $.urlParam('token');
+            var session     = $.urlParam('session');
+            $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+
+            $.ajax({
+                url: 'https://api.fti.academy/api/getcertification/' + token  + "/" + session,
+                type : "GET",
+                dataType: "json",
+                contentType : "text/plain",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                    xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3"); 
+                },
+                success: function(result) {
+                    // handle success
+                    $.isLoading( "hide" );
+                    $('.student_name').text(result.certification.name);
+                    $('.cert_date').text(result.certification.cert_date);
+                    $('.cert_expire').text(result.certification.cert_expire);
+                    $(".student_profile").attr("src",result.certification.profile);
+
+                    //$(".cert-number").text(result.certification.cert_id);
+
+                    $(".certdata").html("65/01/" + result.certification.cert_id );
+
+                    $('#nextBTN').attr('data-next',result.certification.cert_nav.NextToken); //setter
+                    $('#prevBTN').attr('data-prev',result.certification.cert_nav.PrevToken); //setter
+                },
+                error: function(request,msg,error) {
+                    $.isLoading( "hide" );
+                    $(".alert-block").html("");
+                    //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+                    output = JSON.stringify(request.responseJSON)
+                    
+                    // Login undefined
+                    if(request.status===0){
+                        getCerification();
+                        errorMSG = "กำลังพยายามดึงข้อมูลของคุณ";
+                    }
+                    else if(request.status===500){
+                        getCerification();
+                        errorMSG = "กำลังพยายามดึงข้อมูลของคุณ";
+                    }
+                    else{
+                        errorMSG = request.responseJSON;
+                    }
+                    $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
+                }
+            });
+            }
+
+
         </script>
 	</body>
 </html>

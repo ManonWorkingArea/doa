@@ -1483,13 +1483,14 @@ function prevCert()
     window.location.href="certification_admin.php?token=" + prev;
 }
 
-function getCerification(){   
+function getCertification(){   
 
-    var token  = $.urlParam('token');
+    var token       = $.urlParam('token');
+    var session     = $.urlParam('session');
     $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
 
     $.ajax({
-        url: 'https://api.fti.academy/api/getcertification/' + token,
+        url: 'https://api.fti.academy/api/getcertification/' + token  + "/" + session,
         type : "GET",
         dataType: "json",
         contentType : "text/plain",
@@ -1504,11 +1505,10 @@ function getCerification(){
             $('.cert_date').text(result.certification.cert_date);
             $('.cert_expire').text(result.certification.cert_expire);
             $(".student_profile").attr("src",result.certification.profile);
-
             $(".cert-number").text(result.certification.cert_id);
-
-            $(".certdata").html("65-01-" + result.certification.cert_id );
-
+            $(".certdata").html("65/01/" + result.certification.cert_id );
+            $(".certcode").html(token);
+            $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "&session=" + session);
             $('#nextBTN').attr('data-next',result.certification.cert_nav.NextToken); //setter
             $('#prevBTN').attr('data-prev',result.certification.cert_nav.PrevToken); //setter
         },
@@ -1580,7 +1580,7 @@ function renderProfile(){
 
         //--- Student Notification
 
-        notification();
+        //notification();
         $("img").bind("error", function (e) {
         var $this = $(this);
         $(this).attr("src","https://burgmaier.com/wp-content/uploads/2021/05/Musterbild-Mann.jpg");
@@ -3064,7 +3064,7 @@ function renderOrderPrintReceipt() {
                     success: function(result2) 
                     {
                         console.log(result2);
-                        
+
                         if(result2.data.type==="corp")
                         {
                             $(".receipt-name").html("ลูกค้านิติบุคคล : <strong>" + result2.data.corp_name + "</strong> </br>เลขประจำตัวผู้เสียภาษี : " + result2.data.corp_tax);
