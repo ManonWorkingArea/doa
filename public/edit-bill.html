@@ -266,6 +266,29 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-12 mt-4">
+                                    <h6 class=" text-uppercase"><span class="la la-file-text-o input-icon"></span> ประเภทใบเสร็จ</h6>
+                                    <hr class="dotted">
+                                </div>
+
+                                <div class="col-md-12 mb-4">
+                                    <div class="form-group">
+
+                                        <div class="custom-radio">
+                                            <input class="form-check-input" type="radio" id="receipt_type_personal" name="receipt_type" value="personal" checked="checked">
+                                            <label class="form-check-label" for="receipt_type_personal"><strong>บุคคลธรรมดา </strong></label>
+                                            <span class="item-select-descripton">ไม่ต้องกรอกข้อมูลเพิ่ม</span>
+                                        </div>
+
+                                        <div class="custom-radio">
+                                            <input class="form-check-input" type="radio" id="receipt_type_corp" name="receipt_type" value="corp">
+                                            <label class="form-check-label" for="receipt_type_corp"><strong>นิติบุคคล </strong></label>
+                                            <span class="item-select-descripton">ระบุข้อมูลขององค์กรของคุณ</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-12 mt-4">
                                     <h6 class=" text-uppercase"><span class="la la-flag input-icon"></span> ที่อยู่ (สำหรับออกใบเสร็จรับเงิน)</h6>
                                     <!-- dotted divider -->
@@ -282,38 +305,31 @@
                                     </div>
 
                                 </div> -->
+                                <div id="corp-form-input">
 
-                                <!-- <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">ชื่อผู้รับ<span class="primary-color-2 ml-1">*</span></label>
-                                        <div class="form-group">
-                                            <input class="form-control" type="text" id="firstname_shipping" name="firstname_shipping" placeholder="ชื่อผู้รับ">
-                                            <span class="la la-user input-icon"></span>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">เลขที่ประจำตัวผู้เสียภาษี<span class="primary-color-2 ml-1">*</span></label>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" id="corp_tax" name="corp_tax" placeholder="เลขที่ประจำตัวผู้เสียภาษี">
+                                                <span class="la la-flag input-icon"></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">นามสกุลผู้รับ<span class="primary-color-2 ml-1">*</span></label>
-                                        <div class="form-group">
-                                            <input class="form-control" type="text" id="lastname_shipping" name="lastname_shipping" placeholder="นามสกุลผู้รับ">
-                                            <span class="la la-user input-icon"></span>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">ชื่อนิติบุคคล<span class="primary-color-2 ml-1">*</span></label>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" id="corp_name" name="corp_name" placeholder="ชื่อนิติบุคคล">
+                                                <span class="la la-flag input-icon"></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">เบอร์โทรผู้รับ<span class="primary-color-2 ml-1">*</span></label>
-                                        <div class="form-group">
-                                            <input class="form-control" type="text" id="phone_shipping" name="phone_shipping" placeholder="เบอร์โทรผู้รับ">
-                                            <span class="la la-user input-icon"></span>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <div class="col-lg-12"><hr></div>
 
-                                <div class="col-lg-12"><hr></div> -->
+                                </div>
 
                                 <div class="col-lg-4">
                                     <div class="mb-3">
@@ -413,7 +429,7 @@
                                     <div class="col-lg-12 mt-2 mb-0">
                                         <div class="alert-block"></div>
                                         <hr>
-                                        <button class="btn btn-primary" type="button" onclick="editbilling();"><i class="mdi mdi-content-save"> </i> แก้ไขข้อมูล</button>
+                                        <button class="btn btn-primary" type="button" onclick="editbilling();"><i class="mdi mdi-content-save"> </i> บันทึกข้อมูลใบเสร็จ</button>
                                         <button class="btn btn-light" type="button" onclick="show_receipt();"><i class="uil uil-receipt align-middle"> </i> ดูใบเสร็จ</button>
                                         <button class="btn btn-light" type="button" onclick="page('student.html');"><i class="mdi mdi-home"> </i> ย้อนกลับ</button>
                                     </div>
@@ -658,6 +674,20 @@
         var course  = $.urlParam('session');
         page("bill.html?session=" + course + "&token=" + code);
     }
+
+    $("input[name='receipt_type']").change(function() 
+        {
+            var val = $("input[type='radio'][name='receipt_type']:checked").val();
+
+            if(val==="corp")
+            {
+                $("#corp-form-input").show();
+            }
+            else if(val==="personal")
+            {
+                $("#corp-form-input").hide();
+            }
+        });
 
     </script>
 

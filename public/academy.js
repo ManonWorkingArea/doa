@@ -2994,7 +2994,20 @@ function renderOrderReceipt() {
                     success: function(result2) 
                     {
                         console.log(result2);
-                        $(".receipt-name").html(result.name);
+
+                        if(result2.data.type==="corp")
+                        {
+                            $(".receipt-name").html("ลูกค้านิติบุคคล : <strong>" + result2.data.corp_name + "</strong> </br>เลขประจำตัวผู้เสียภาษี : " + result2.data.corp_tax);
+                        }
+                        else if(result2.data.type==="personal")
+                        {
+                            $(".receipt-name").html("ลูกค้าบุคคลธรรมดา : <strong>" + result.name + "</strong>");
+                        }
+                        else
+                        {
+                            $(".receipt-name").html("ลูกค้าบุคคลธรรมดา : <strong>" + result.name + "</strong>");
+                        }
+
                         $(".receipt-ref1").html(result2.data.ref1);
                         $(".receipt-ref2").html(result2.data.ref2);
                         $(".receipt-address").html("อาคาร " + result2.data.bill_address.taX_BUILDING_TH + " เลขที่ " + result2.data.bill_address.taX_NO + " หมู่ที่ " + result2.data.bill_address.taX_MOO + " ซอย " + result2.data.bill_address.taX_SOI_TH + " ถนน " + result2.data.bill_address.taX_ROAD_TH + " ตำบล " + result2.data.bill_address.taX_SUB_DISTRICT_TH + " อำเภอ " + result2.data.bill_address.taX_DISTRICT_TH + " จังหวัด " + result2.data.bill_address.taX_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.bill_address.taX_POST_CODE);
@@ -3108,6 +3121,27 @@ function renderEditBilling() {
                     },
                     success: function(result) 
                     {
+                        if(result.data.type ==="corp")
+                        {
+                            $('input:radio[name="receipt_type"]').filter('[value="corp"]').attr('checked', true);
+                            $("#corp_tax").val(result.data.corp_tax);
+                            $("#corp_name").val(result.data.corp_name);
+                            $("#corp-form-input").show();
+                        }
+                        else if(result.data.type ==="personal")
+                        {
+                            $('input:radio[name="receipt_type"]').filter('[value="personal"]').attr('checked', true);
+                            $("#corp_tax").val("");
+                            $("#corp_name").val("");
+                            $("#corp-form-input").hide();
+                        }
+                        else
+                        {
+                            $('input:radio[name="receipt_type"]').filter('[value="personal"]').attr('checked', true);
+                            $("#corp_tax").val("");
+                            $("#corp_name").val("");
+                            $("#corp-form-input").hide();
+                        }
                         console.log(result);
                         $("#token").val(result.data.uid);
                         $('#taX_PROVINCE_TH option:contains(' + result.data.bill_address.taX_PROVINCE_TH + ')').attr('selected', 'selected');

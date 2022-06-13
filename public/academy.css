@@ -1129,6 +1129,9 @@ hr.hr-text::before {
 }
 
 #select-bill-type{
+}
+
+#corp-form-input{
   display: none;
 }
 
