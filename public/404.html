@@ -26,7 +26,9 @@ console.log("URL:" + paramObj[0]);
 console.log("Param:" + paramObj[1]);
 
 var path = window.location.pathname;
+var filename = path.split('/').pop().split('?')[0];
 
 console.log("path:"+path);
+console.log("filename:"+filename);
 //Loop through paramObj to get all the params in query string.
 </script>
