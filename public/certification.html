@@ -280,7 +280,7 @@ position: absolute;
               {
                 let pdf = new jsPDF('landscape', 'mm', 'a4');
                 pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
-                pdf.save('<?php echo $data["Certification"]['certification']['stu_cert_token'];?>.pdf');
+                pdf.save('1234.pdf');
                 $('#topbar').show();
               };
             });
@@ -325,8 +325,8 @@ position: absolute;
 					<div class="footer">
 						<div class="avartar"><img src="" alt="" class="student_profile"></div>
 						<div class="qrcode">
-						<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doa1.fti.academy/certification.php?token=<?php echo $token;?>" title="Certification Verify QRCODE" />
-						<div class="code"><?php echo $token;?></div></div>
+						<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=1234" title="Certification Verify QRCODE" />
+						<div class="code">1234</div></div>
 					</div>
 
 				</div>
