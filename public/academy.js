@@ -1482,7 +1482,7 @@ function prevCert()
     console.log(prev);
     window.location.href="certification_admin.php?token=" + prev;
 }
-
+/*
 function getCertification(){   
 
     var token       = $.urlParam('token');
@@ -1535,6 +1535,7 @@ function getCertification(){
     });
 }
 
+*/
 function renderProfile(){
     var student = Cookies.get('__student');
     var exam    = Cookies.get('__exam');

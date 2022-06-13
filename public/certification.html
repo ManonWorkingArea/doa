@@ -664,11 +664,10 @@ position: absolute;
                     $('.cert_date').text(result.certification.cert_date);
                     $('.cert_expire').text(result.certification.cert_expire);
                     $(".student_profile").attr("src",result.certification.profile);
-
-                    //$(".cert-number").text(result.certification.cert_id);
-
+                    $(".cert-number").text(result.certification.cert_id);
                     $(".certdata").html("65/01/" + result.certification.cert_id );
-
+                    $(".certcode").html(token);
+                    $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "&session=" + session);
                     $('#nextBTN').attr('data-next',result.certification.cert_nav.NextToken); //setter
                     $('#prevBTN').attr('data-prev',result.certification.cert_nav.PrevToken); //setter
                 },
@@ -693,7 +692,7 @@ position: absolute;
                     $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
                 }
             });
-            }
+        }
 
 
         </script>
