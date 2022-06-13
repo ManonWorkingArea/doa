@@ -1,13 +1,8 @@
 <script>
-console.log("Certification URL");
-//Get URL
 var loc = window.location.href;
 console.log(loc);
 var index = loc.indexOf("?");
 var urlData = loc.substr(index+1);
-
-console.log("urlData  : " + urlData);
-
 var splitted = loc.substr(index+1).split('&');
 //console.log(splitted);
 var paramObj = [];
@@ -20,25 +15,15 @@ for(var i=0;i<splitted.length;i++){
     };
     paramObj.push(obj);
 }
-//console.log(paramObj);
-
-console.log("URL:" + paramObj[0]);
-console.log("Param:" + paramObj[1]);
-
 var path = window.location.pathname;
 var filename = path.split('/').pop().split('?')[0];
 
-console.log("path:"+path);
-console.log("filename:"+filename);
-
 if(filename=="certification.php")
 {
-    console.log("Con 1 : " + filename);
-    location.href = 'https://doasrv.fti.academy/certification.html?' + urlData;
+    location.href = 'https://doasrv.fti.academy/certification.html?' + urlData + "&session=195";
 }
 else
 {
-    console.log("Con 2 : " + filename);
     location.href = 'https://doasrv.fti.academy/index.html';
 }
 //Loop through paramObj to get all the params in query string.
