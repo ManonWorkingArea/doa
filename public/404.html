@@ -1,3 +1,22 @@
 <script>
 console.log("Certification URL");
+//Get URL
+var loc = window.location.href;
+console.log(loc);
+var index = loc.indexOf("?");
+console.log(loc.substr(index+1));
+var splitted = loc.substr(index+1).split('&');
+console.log(splitted);
+var paramObj = [];
+for(var i=0;i<splitted.length;i++){
+    var params = splitted[i].split('=');
+    var key = params[0];
+    var value = params[1];
+    var obj = {
+        [key] : value
+    };
+    paramObj.push(obj);
+    }
+console.log(paramObj);
+//Loop through paramObj to get all the params in query string.
 </script>
