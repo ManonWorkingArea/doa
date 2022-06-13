@@ -258,31 +258,7 @@ position: absolute;
 
       </style>
 
-      <script>
-
-        function print()
-        {
-          $("#printarea").print();
-        }
-
-        function download()
-        {
-            $('#topbar').hide();
-            html2canvas(document.querySelector('#printarea'), {useCORS: true}).then(function(canvas)
-            {
-              let img = new Image();
-              img.src = canvas.toDataURL('image/jpeg');
-              img.onload = function ()
-              {
-                let pdf = new jsPDF('landscape', 'mm', 'a4');
-                pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
-                pdf.save('1234.pdf');
-                $('#topbar').show();
-              };
-            });
-        }
-
-      </script>
+      
 	</head>
 
 	<body class="unselectable">
@@ -593,8 +569,31 @@ position: absolute;
                 $("#fill-corp-address").hide();
             }
         });
-        
+
+        function print()
+        {
+        $("#printarea").print();
+        }
+
+        function download()
+        {
+            $('#topbar').hide();
+            html2canvas(document.querySelector('#printarea'), {useCORS: true}).then(function(canvas)
+            {
+            let img = new Image();
+            img.src = canvas.toDataURL('image/jpeg');
+            img.onload = function ()
+            {
+                let pdf = new jsPDF('landscape', 'mm', 'a4');
+                pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
+                pdf.save('1234.pdf');
+                $('#topbar').show();
+            };
+            });
+        }
+
         </script>
+
         <style>
         .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
         .alert_msg{position:fixed;width:280px;left:50%;margin-left:-140px;top:20%;z-index:1000;border:1px solid #ccc;border-radius:4px;box-shadow:0 0 15px rgba(0,0,0,.3);background:#fff;animation: alertshow .2s ease}
