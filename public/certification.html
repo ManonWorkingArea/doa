@@ -335,29 +335,49 @@ position: absolute;
 		</div>
 
 		<!-- javascript -->
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js" integrity="sha512-70OZ+iUuudMmd7ikkUWcEogIw/+MIE17z17bboHhj56voxuy+OPB71GWef47xDEt5+MxFdrigC1tRDmuvIVrCA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-firestore.js"></script> -->
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+        <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Icons -->
-        <script src="js/feather.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
         <!-- Main Js -->
-        <script src="js/plugins.init.js"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
-        <script src="js/app.js"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
-        <script src="js/loader.js"></script>
-        <script src="js/academy.js?v=<?php echo time();?>"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
         <script>
-        //checkLobby();
+        jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+            dataType: "script",
+            cache: false,
+            url: url + ".js"
+        });
+        return jQuery.ajax( options );
+        };
+        // Usage
+        $.cachedScript( "academy" ).done(function( script, textStatus ) {
+            console.log( "load Default JS : " + textStatus );
+            var code    = $.urlParam('token');
+            var session = $.urlParam('session');
+
+            console.log("code:"+code + " session:" + session);
+            //renderOrderConfirm(code)
+            //renderOrderReceipt();
+            //__page("register_confirm");
+            //__session("course");
+            //getFirebasePlayer();
+        });
         </script>
+
         <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
         <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fbootstrap-birthday.js?alt=media&token=16ee7bcc-a285-49ef-8e19-d4d272c102b0"></script>
         <script>
-
-		getCerification();
-
         Pusher.logToConsole = false;    
         var pusher = new Pusher('4b7d1b6027780eadf73d',{
             cluster: 'ap1'
@@ -386,10 +406,12 @@ position: absolute;
                 }
             }
         });
+
         function remoteAlert(title,text)
         {
             $.alert(text,function(){});
         }
+
         function online()
         {
             if(window.matchMedia("(max-width: 767px)").matches){
@@ -400,11 +422,182 @@ position: absolute;
             $.ajax(
             {
                 type : "POST",  
-                url : "https://player.fti.academy/api/online/" + token + "/student/" + device,
+                url : "https://player.fti.academy/api/online/" + token + "/course/" + device,
                 dataType : "json",
                 success : function(response){}
             });
         }
+
+        $('#row-col').bootstrapBirthday({
+            dateFormat:'littleEndian',
+            futureDates:false,
+            minAge: 18,
+            maxAge: 100,// Localization.
+            text: 
+            {
+                year: "ปี พ.ศ.",
+                month: "เดือน",
+                day: "วันที่",
+                months: {
+                    short: 
+                    [
+                        "ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."
+                    ],
+                    long: 
+                    [
+                        "January","February","March","April","May","June","July","August","September","October","November","December"
+                    ]
+                }
+            },
+            widget: 
+            {
+                wrapper: 
+                {
+                    tag: 'div',
+                    class: 'row'
+                },
+                wrapperYear: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                wrapperMonth: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                wrapperDay: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                selectYear: {
+                    name: 'birthday[year]',
+                    class: 'form-select form-control form-control-birthdate'
+                },
+                selectMonth: {
+                    name: 'birthday[month]',
+                    class: 'form-select form-control form-control-birthdate'
+                },
+                selectDay: {
+                    name: 'birthday[day]',
+                    class: 'form-select form-control form-control-birthdate'
+            }
+        }
+        });
+
+        function selectProfileImage ()
+        {
+            $("input[id='profile-image-file']").click();
+        }
+
+        $("#profile-image-file").change(function()
+        {
+            var file 			= $('#profile-image-file')[0].files[0];
+            var reader 			= new FileReader();
+            var baseString;
+            reader.onloadend 	= function ()
+            {
+                baseString = reader.result;
+                $("#profile-image-preview").attr('src',baseString);
+                $("#profile-image-data").val(baseString);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function selectCitizenImage ()
+        {
+            $("input[id='citizen-image-file']").click();
+        }
+
+        $("#citizen-image-file").change(function()
+        {
+            var file 			= $('#citizen-image-file')[0].files[0];
+            var reader 			= new FileReader();
+            var baseString;
+            reader.onloadend 	= function ()
+            {
+                baseString = reader.result;
+                $("#citizen-image-preview").attr('src',baseString);
+                $("#citizen-image-data").val(baseString);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+        $("#same_address").change(function() 
+        {
+            console.log("same_address");
+            var checkbox = $(this), // Selected or current checkbox
+            value = checkbox.val(); // Value of checkbox
+
+            if (checkbox.is(':checked'))
+            {
+                console.log('checked');
+                $("#firstname_shipping").val($("#firstname").val());
+                $("#lastname_shipping").val($("#lastname").val());
+                $("#phone_shipping").val($("#phone").val());
+                $("#subdistrict_shipping").val($("#subdistrict_contact").val());
+                $("#district_shipping").val($("#district_contact").val());
+                $("#province_shipping").val($("#province_contact").val());
+                $("#zipcode_shipping").val($("#zipcode_contact").val());
+
+                $("#no_shipping").val($("#no_contact").val());
+                $("#moo_shipping").val($("#moo_contact").val());
+                $("#soi_shipping").val($("#soi_contact").val());
+                $("#building_shipping").val($("#building_contact").val());
+                $("#road_shipping").val($("#road_contact").val());
+            }
+            else
+            {
+                console.log('not checked');
+                $("#firstname_shipping").val("");
+                $("#lastname_shipping").val("");
+                $("#phone_shipping").val("");
+                $("#subdistrict_shipping").val("");
+                $("#district_shipping").val("");
+                $("#province_shipping").val("");
+                $("#zipcode_shipping").val("");
+
+                $("#no_shipping").val("");
+                $("#moo_shipping").val("");
+                $("#soi_shipping").val("");
+                $("#building_shipping").val("");
+                $("#road_shipping").val("");
+            }
+        });
+
+        $("input[name='get_receipt_online']").change(function() 
+        {
+            var val = $("input[type='radio'][name='get_receipt_online']:checked").val();
+
+            if(val==="offline")
+            {
+                $("#select-bill-type").show();
+            }
+            else if(val==="online")
+            {
+                $("#select-bill-type").hide();
+                $("#fill-corp-address").hide();
+            }
+        });
+
+
+        $("input[name='receipt_type']").change(function() 
+        {
+            var val = $("input[type='radio'][name='receipt_type']:checked").val();
+
+            if(val==="corp")
+            {
+                $("#fill-corp-address").show();
+            }
+            else if(val==="personal")
+            {
+                $("#fill-corp-address").hide();
+            }
+        });
+        
         </script>
         <style>
         .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
@@ -418,6 +611,10 @@ position: absolute;
         .alert_tips div{box-siziong:border-box;display:inline-block;padding:15px;border-radius:10px;background:rgba(0,0,0,.7);min-width:50px;max-width:230px;text-align:center;color:#fff;animation: tipsshow 3s .01s ease;opacity:0;}
         @keyframes alertshow {0% {opacity: 0;transform: scale(.5)}70% {opacity: .7;transform: scale(1.05)}100% {opacity: 1;transform: scale(1)}}
         @keyframes tipsshow {0% {opacity: 0;transform:scale(1.4) rotateX(-360deg)}20% {opacity:1;transform:scale(1) rotateX(0deg)}80% {opacity:1;transform:scale(1) rotateX(0deg)}100% {opacity:0;transform:scale(1.4) rotateX(360deg)}}
+        .certdata
+        {
+            display:none;
+        }
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
@@ -425,13 +622,27 @@ position: absolute;
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+
         gtag('config', 'G-M0JGCQ3SKK');
 
-        function remoteAlert(title,text)
-        {
-            $.alert(text,function(){});
+        function download_receipt() {
+            var code    = $.urlParam('token');
+            var course  = $.urlParam('session');
+            $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
+            printerPopup("bill-print.html?session=" + course + "&token=" + code);
         }
 
+        function edit_receipt() {
+            var code    = $.urlParam('token');
+            var course  = $.urlParam('session');
+            page("edit-bill.html?session=" + course + "&token=" + code);
+        }
+
+        function show_receipt() {
+            var code    = $.urlParam('token');
+            var course  = $.urlParam('session');
+            page("bill.html?session=" + course + "&token=" + code);
+        }
         </script>
 	</body>
 </html>
