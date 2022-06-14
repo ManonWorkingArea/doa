@@ -2376,8 +2376,50 @@ function getFirebaseUser()
 
                     c = new Date().getTime() / 1e3;
 
+                    // Check Exam Round
+                    //
+                    if(result.data.info.exam==="รอบที่ 2 วันที่ 14 - 15 มิ.ย.65") 
+                    {
+                        console.log("Exam Round 2 : " + result.data.info.exam);
+                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+
+                        if(item.info.title==="แบบทดสอบวัดผล รุ่นที่ 2 รอบที่ 2")
+                        {
+                            exam_agenda = "showscore_posttest_2";
+                        }
+                        else if(item.info.title==="แบบทดสอบวัดผล รุ่นที่ 2 รอบที่ 1")
+                        {
+                            exam_agenda = "showscore_posttest_1";
+                        }
+                        else
+                        {
+                            exam_agenda = "showscore_posttest_2";
+                        }
+                        
+                    } 
+                    else if(result.data.info.exam==="รอบที่ 1 วันที่ 30-31 พ.ค.65") 
+                    {
+                        console.log("Exam Round 1 : " + result.data.info.exam);
+                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+
+                        if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 2 รอบที่ 2")
+                        {
+                            exam_agenda = "showscore_posttest_2";
+                        }
+                        else if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 2 รอบที่ 1")
+                        {
+                            exam_agenda = "showscore_posttest_1";
+                        }
+                        else
+                        {
+                            exam_agenda = "showscore_posttest_1";
+                        }
+                    }
+                    //
+                    // Check Exam Round
+
                     $.ajax({
-                        url: "https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda=showscore_posttest&course=" + item.info.uid + "&date=" + c,
+                        url: "https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda=" + exam_agenda + "&course=" + item.info.uid + "&date=" + c,
                         type : "GET",
                         dataType: "json",
                         contentType : "text/plain",
