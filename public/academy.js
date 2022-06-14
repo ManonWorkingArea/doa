@@ -2645,7 +2645,7 @@ function getFirebasePlayer()
                                 "<tr class='topic-processing' id='exam-pretest'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-2-TAF7eX65i7&document=posttest_1&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_1&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
                                             +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + result_2.data.info.exam + " เวลา 9.00 น. เป็นต้นไป</p>"
                                         +"</div>"
                                     +"</th>"
