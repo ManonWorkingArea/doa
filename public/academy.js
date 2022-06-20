@@ -2568,7 +2568,7 @@ function getCertAgenda(uid)
 
             if(result.agenda)
             {
-                var showcert = "<a href='javascript:void(0);' onclick='page(\"certification.html?token="+token+"&session="+uid+"\");' class='btn btn-light w-100'> เปิดใบประกาศ <i class='uil uil-bill align-middle'></i></a>";
+                var showcert = "<a href='javascript:void(0);' onclick='page(\"certification.html?token="+token+"&session="+uid+"\");' class='btn btn-light w-100'> ดูใบประกาศของคุณ <i class='uil uil-analysis align-middle'></i></a>";
             }
             else
             {
