@@ -666,7 +666,7 @@ position: absolute;
                     $(".cert-number").text(result.certification.cert_id);
                     $(".certdata").html("65/01/" + result.certification.cert_id );
                     $(".certcode").html(token);
-                    $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "&session=" + result.certification.cert_lesson);
+                    $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "%26session=" + result.certification.cert_lesson);
                     $('#nextBTN').attr('data-next',result.certification.cert_nav.NextToken); //setter
                     $('#prevBTN').attr('data-prev',result.certification.cert_nav.PrevToken); //setter
                 },
