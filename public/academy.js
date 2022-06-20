@@ -2446,8 +2446,13 @@ function getFirebaseUser()
                                     +"<div class='flex-1 content ms-3 border-left-white'>"
                                         +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
                                         +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
+                                        +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
                                     +"</div>"
                                 +"</div>";
+
+                                if(post_score>37){
+                                    getCertAgenda(item.info.uid);
+                                }
                             }
                             else
                             {
@@ -2544,6 +2549,36 @@ function getFirebaseUser()
             $.isLoading( "hide" );
             console.log(msg);
             console.log("No Found Profile Data");
+        }
+    });
+}
+
+function getCertAgenda(uid)
+{
+    c = new Date().getTime() / 1e3;
+    var token   = Cookies.get('__session');
+    $.ajax({
+        url: "https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda=show_cert&course=" + uid + "&date=" + c,
+        type : "GET",
+        dataType: "json",
+        contentType : "text/plain",
+        beforeSend: function(xhr) {
+        },
+        success: function(result) {
+
+            if(result.agenda)
+            {
+                var showcert = "<a href='javascript:void(0);' onclick='page(\"certification.html?token="+token+"&session="+uid+"\");' class='btn btn-light w-100'> เปิดใบประกาศ <i class='uil uil-bill align-middle'></i></a>";
+            }
+            else
+            {
+                var showcert = "";
+            }
+
+            $("#load_cert_" + uid).append(showcert);
+
+        },
+        error: function(request,msg,error) {
         }
     });
 }

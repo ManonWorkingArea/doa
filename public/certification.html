@@ -52,7 +52,7 @@
 	  	body {
      		background: rgb(204,204,204);
      		margin: 0 auto;
-     		font-family: 'Sarabun', sans-serif;
+     		font-family: 'Prompt', sans-serif;
 		}
 		page {
 			position: relative;
@@ -219,6 +219,7 @@ position: absolute;
     bottom: -13.5cm;
     left: 6.5cm;
     font-size: 0.5cm;
+    display: none;
 }
 
 
@@ -284,9 +285,15 @@ position: absolute;
                     ให้ไว้ ณ <span class="cert_date"></span> และใช้ได้ถึงวันที่ <span class="cert_expire">00/00/00000</span>
 					</div>
 					<!------------------------ Date Display ----------------------------->
-                    <div class="sign1">
-                    <div class="sign_img"><img src="https://content.fti.academy/fti-doa/16445526561827314469/16488727821446844460.jpg" alt=""></div>
-                    นายสุพันธุ์ มงคลสุธี</br>ประธานสภาอุตสาหกรรมแห่งประเทศไทย</br>
+
+                    <div id="lesson_195" class="sign1">
+                        <div class="sign_img"><img src="https://content.fti.academy/fti-doa/16445526561827314469/16488727821446844460.jpg" alt=""></div>
+                        นายสุพันธุ์ มงคลสุธี</br>ประธานสภาอุตสาหกรรมแห่งประเทศไทย</br>
+					</div>
+
+                    <div id="lesson_215" class="sign1">
+                        <div class="sign_img"><img src="https://content.fti.academy/fti-doa/1639420526776809325/1655758312287111770.jpg" alt=""></div>
+                        นายเกรียงไกร เธียรนุกุล</br>ประธานสภาอุตสาหกรรมแห่งประเทศไทย</br>
 					</div>
 
                     <div class="sign2">
@@ -670,8 +677,7 @@ position: absolute;
                         $(".certdata").html("65/01/" + result.certification.cert_id );
                         $(".certcode").html(token);
                         $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "%26session=" + result.certification.cert_lesson);
-                        $('#nextBTN').attr('data-next',result.certification.cert_nav.NextToken); //setter
-                        $('#prevBTN').attr('data-prev',result.certification.cert_nav.PrevToken); //setter
+                        $('#lesson_' + result.certification.cert_lesson).show();
                     }
                     else
                     {
