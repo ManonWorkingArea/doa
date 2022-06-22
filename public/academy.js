@@ -55,6 +55,7 @@ function __session(pagename){
 
 function __page(agenda){
     var course  = $.urlParam('session');
+    var token   = Cookies.get('__session');
     var date    = new Date().getTime()/1000;
     console.log("Check Data Agenda : " + agenda + " | Course : " + course);
     if(!course){window.location.href="index.html";}else{
@@ -68,7 +69,15 @@ function __page(agenda){
             },
             success: function(result) {
                 $("#processing_overlay").remove();
-                if(!result.agenda){window.location.href="student.html";}
+
+                if(token==="fXM74eSf0pyf6Pgb9ozE" || token==="dwdpmeUJ1cOg44gt2M0R")
+                {
+
+                }
+                else
+                {
+                    if(!result.agenda){window.location.href="student.html";}
+                }
             },
             error: function(request,msg,error) {
             }
@@ -2627,17 +2636,37 @@ function getFirebasePlayer()
             } 
             else 
             {
-                enroll_status = false;
-                $("#topic-table").append(
-                "<tr class='topic-processing' id='exam-pretest'>"
-                    +"<th class='p-3'>"
-                        +"<div class='align-items-center'>"
-                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-pretest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</br><small>ต้องทำแบบทดสอบก่อนเรียนก่อน</small></a></p>"
-                        +"</div>"
-                    +"</th>"
-                    +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
-                +"</tr>"
-                )
+
+                if(token==="fXM74eSf0pyf6Pgb9ozE" || token==="dwdpmeUJ1cOg44gt2M0R")
+                {
+                    enroll_status = false;
+                    $("#topic-table").append(
+                    "<tr class='topic-processing' id='exam-pretest'>"
+                        +"<th class='p-3'>"
+                            +"<div class='align-items-center'>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-demotest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</br><small>ต้องทำแบบทดสอบก่อนเรียนก่อน</small></a></p>"
+                            +"</div>"
+                        +"</th>"
+                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                    +"</tr>"
+                    )
+                }
+                else
+                {
+                    enroll_status = false;
+                    $("#topic-table").append(
+                    "<tr class='topic-processing' id='exam-pretest'>"
+                        +"<th class='p-3'>"
+                            +"<div class='align-items-center'>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-pretest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</br><small>ต้องทำแบบทดสอบก่อนเรียนก่อน</small></a></p>"
+                            +"</div>"
+                        +"</th>"
+                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                    +"</tr>"
+                    )
+                }
+
+                
             }
 
             total_item = 0;
