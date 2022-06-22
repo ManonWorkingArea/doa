@@ -3121,7 +3121,7 @@ function renderOrderReceipt() {
                         if(result2.data.type==="corp")
                         {
                             $(".receipt-name").html("ลูกค้านิติบุคคล : <strong>" + result2.data.corp_name + "</strong> </br>เลขประจำตัวผู้เสียภาษี : " + result2.data.corp_tax);
-                            $(".receipt-address").html("อาคาร " + result2.data.tax_address.mailinG_BUILDING_TH + " เลขที่ " + result2.data.mailinG_address.mailinG_NO + " หมู่ที่ " + result2.data.mailinG_address.mailinG_MOO + " ซอย " + result2.data.mailinG_address.mailinG_SOI_TH + " ถนน " + result2.data.tax_address.mailinG_ROAD_TH + " ตำบล " + result2.data.tax_address.mailinG_SUB_DISTRICT_TH + " อำเภอ " + result2.data.tax_address.mailinG_DISTRICT_TH + " จังหวัด " + result2.data.tax_address.mailinG_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.tax_address.mailinG_POST_CODE);
+                            $(".receipt-address").html("อาคาร " + result2.data.tax_address.mailinG_BUILDING_TH + " เลขที่ " + result2.data.tax_address.mailinG_NO + " หมู่ที่ " + result2.data.tax_address.mailinG_MOO + " ซอย " + result2.data.tax_address.mailinG_SOI_TH + " ถนน " + result2.data.tax_address.mailinG_ROAD_TH + " ตำบล " + result2.data.tax_address.mailinG_SUB_DISTRICT_TH + " อำเภอ " + result2.data.tax_address.mailinG_DISTRICT_TH + " จังหวัด " + result2.data.tax_address.mailinG_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.tax_address.mailinG_POST_CODE);
                         }
                         else if(result2.data.type==="personal")
                         {
