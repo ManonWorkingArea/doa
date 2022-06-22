@@ -2647,7 +2647,7 @@ function getFirebasePlayer()
                                 +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-demotest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</br><small>ต้องทำแบบทดสอบก่อนเรียนก่อน</small></a></p>"
                             +"</div>"
                         +"</th>"
-                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
+                        +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 10 ข้อ </p></td>"
                     +"</tr>"
                     )
                 }
