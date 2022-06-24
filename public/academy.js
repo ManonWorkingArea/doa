@@ -35,7 +35,7 @@ resetPassword()
 
 renderProfile();
 
-function __session(pagename){
+function __session(pagename) {
     var token       = Cookies.get('__session');
     var pathname    = window.location.pathname;
     pathname        = pathname.replace("/", "");
@@ -45,10 +45,14 @@ function __session(pagename){
 
     if (token == undefined) {
         window.location.href="index.html";
+        // Log User Login
+        addLogs(token, pathname, "fail");
     } else {
-        if(pathname!=pagename)
-        {
+        if(pathname!=pagename) {
             window.location.href="student.html";
+            addLogs(token, pathname, "fail");
+        } else {
+            addLogs(token, pathname, "success");
         }
     }
 }
@@ -3430,9 +3434,6 @@ function addLogs(user,page,type)
             "date": date,
             "page": page,
             "type": type,
-            "ip": "127.0.0.1",
-            "browser": "test",
-            "os": "test"
         }
     }
 
