@@ -132,6 +132,9 @@ function login(){
                 localStorage.removeItem("__question");
                 localStorage.removeItem("__access");
 
+                // Log User Login
+                addLogs(result.token, "login", "success");
+
                 window.location.href="student.html";
             }
         },
@@ -3414,4 +3417,33 @@ function getOS() {
     }
 
     return os;
+}
+
+function addLogs(user,page,type)
+{   
+    var date   = new Date().getTime()/1000;
+    //
+    console.log( "Add Logs : " + user);
+    var jsonObj = {
+        "user": user,
+        "data": {
+            "date": date,
+            "page": page,
+            "type": type,
+            "ip": "127.0.0.1",
+            "browser": "test",
+            "os": "test"
+        }
+    }
+
+    $.ajax({
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/log',
+        type : "POST",
+        dataType: "json",
+        contentType : "application/json",
+        data: JSON.stringify(jsonObj),
+        beforeSend: function(xhr) {},
+        success: function(result) {},
+        error: function(request,msg,error) {}
+    });
 }
