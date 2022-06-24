@@ -38,6 +38,7 @@ renderProfile();
 function __session(pagename) {
     var token       = Cookies.get('__session');
     var pathname    = window.location.pathname;
+    var raw_page    = window.location.pathname;
     pathname        = pathname.replace("/", "");
     pathname        = pathname.replace(".html", "");
 
@@ -46,13 +47,13 @@ function __session(pagename) {
     if (token == undefined) {
         window.location.href="index.html";
         // Log User Login
-        addLogs(token, pathname, "access", "fail");
+        addLogs(token, raw_page, "access", "fail");
     } else {
         if(pathname!=pagename) {
             window.location.href="student.html";
-            addLogs(token, pathname, "access", "fail");
+            addLogs(token, raw_page, "access", "fail");
         } else {
-            addLogs(token, pathname, "access", "success");
+            addLogs(token, raw_page, "access", "success");
         }
     }
 }
