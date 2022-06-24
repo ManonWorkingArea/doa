@@ -47,13 +47,13 @@ function __session(pagename) {
     if (token == undefined) {
         window.location.href="index.html";
         // Log User Login
-        addLogs(token, raw_page, "access", "fail");
+        addLogs(token, raw_page, "access", "fail", pathname);
     } else {
         if(pathname!=pagename) {
             window.location.href="student.html";
-            addLogs(token, raw_page, "access", "fail");
+            addLogs(token, raw_page, "access", "fail", pathname);
         } else {
-            addLogs(token, raw_page, "access", "success");
+            addLogs(token, raw_page, "access", "success", pathname);
         }
     }
 }
@@ -138,7 +138,7 @@ function login(){
                 localStorage.removeItem("__access");
 
                 // Log User Login
-                addLogs(result.token, "login", "login", "success");
+                addLogs(result.token, "login", "login", "success","");
 
                 window.location.href="student.html";
             }
@@ -3424,7 +3424,7 @@ function getOS() {
     return os;
 }
 
-function addLogs(user,page,type,status)
+function addLogs(user,page,type,status,mode)
 {   
     var date   = new Date().getTime()/1000;
     //
@@ -3436,6 +3436,7 @@ function addLogs(user,page,type,status)
             "page": page,
             "status": status,
             "type": type,
+            "mode": mode
         }
     }
 
