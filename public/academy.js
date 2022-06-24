@@ -38,7 +38,7 @@ renderProfile();
 function __session(pagename) {
     var token       = Cookies.get('__session');
     var pathname    = window.location.pathname;
-    var raw_page    = window.location.pathname;
+    var raw_page    = window.location.href;
     pathname        = pathname.replace("/", "");
     pathname        = pathname.replace(".html", "");
 
