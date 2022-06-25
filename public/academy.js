@@ -2308,10 +2308,47 @@ function checkFirebasePlayer()
                 posttestArray = result.data.scores.posttest
                 console.log(posttestArray)
 
-                if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
-                    window.location.href="student.html";
-                } else {
-                    console.log(posttestArray);
+                pathname    = window.location.pathname;
+                pathname    = pathname.replace("/", "");
+                pathname    = pathname.replace(".html", "");
+
+                var user_array = 
+                [
+                    '3102200623970','3560400010739','3640600020923','1720300093031','3720800290583','1730600055444','1909800932909','3130600480627','3909800333696','3360200113471',
+                    '1601300011591','1330200002193','1560100303084','1490700041464','3849800082287','1110200060624','1841701148863','1920900015659','1411500117336','3200200382325',
+                    '3101600466412','3220500217371','1610100108451','1420900037797','1600900017034','3200200563508','3910100375398','3470100630511','5909899004360','5640190016481',
+                    '1509900134251','3860500084006','1600100316185','3530100283837','1411200106011','3520300305681','3411700579151','2340201028721','3570300220766','3300600437703',
+                    '1141000036291','3400500069213','3360400539057','3520600237893','5490100007756','1860700040243','1669800206330','3470400012741','3341900312672'
+                ];
+
+                var student     = Cookies.get('__student');
+                var student     = JSON.parse(student);
+                var user_search = student.citizen
+
+                var index = jQuery.inArray(user_search, user_array);
+                console.log("pathname : " + pathname);
+                console.log("index : " + index);
+
+                if(pathname==="exam-posttest-3-XG6eCQLYIx"){
+                    if(index<0){
+                        console.log("Not Found");
+                        window.location.href="student.html";
+                    } else {
+                        console.log("Found");
+                        if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                            window.location.href="student.html";
+                        } else {
+                            console.log(posttestArray);
+                        }
+                    }
+                }
+                else
+                {
+                    if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
+                        window.location.href="student.html";
+                    } else {
+                        console.log(posttestArray);
+                    }
                 }
             }
             
