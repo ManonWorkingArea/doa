@@ -213,7 +213,7 @@ function login_register(){
                 localStorage.removeItem("__question");
                 localStorage.removeItem("__access");
 
-                window.location.href="external.html?session=215&target=register&document=register_special";
+                window.location.href="external.html?session=219&target=register&document=register_special";
             }
         },
         error: function(request,msg,error) {
@@ -2283,7 +2283,7 @@ function checkFirebasePlayer()
     var mode    = $.urlParam('mode');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=219',
         type : "GET",
         dataType: "json",
         contentType : "text/plain",
@@ -2364,7 +2364,7 @@ function openExam(session,mode)
     var token   = Cookies.get('__session');
     $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
     $.ajax({
-        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=215',
+        url: 'https://asia-southeast1-academy-f0925.cloudfunctions.net/api/user/course?user=' + token + '&course=219',
         type : "GET",
         dataType: "json",
         contentType : "text/plain",
@@ -2419,8 +2419,19 @@ function getFirebaseUser()
             var student     = JSON.parse(student);
             var user_search = student.citizen
 
-            $.each(result.data.courses, function (key, item){
-
+            $.each(result.data.courses, function (key, item)
+            {
+                if(item.info.uid === "195") {
+                    course_status_class = "unactive " + item.info.uid;
+                } else if(item.info.uid === "215"){
+                    course_status_class = "unactive " + item.info.uid;
+                } else if(item.info.uid === "219"){
+                    course_status_class = "active " + item.info.uid;
+                }
+                else
+                {
+                    course_status_class = "unactive " + item.info.uid;
+                }
                 // Add topic item to table
                 // 
                 course_id = item.scores.posttest
@@ -2490,6 +2501,48 @@ function getFirebaseUser()
                             exam_result_data = "จะประกาศผลเร็วๆนี้";
                         }
                     }
+                    else if(result.data.info.exam==="รอบที่ 1 วันที่ 15 - 16 ส.ค.65") 
+                    {
+                        console.log("Exam Round 1 : " + result.data.info.exam);
+                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+
+                        if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 3 รอบที่ 2")
+                        {
+                            exam_agenda = "showscore_posttest_2";
+                            exam_result_data = "จะประกาศผลเร็วๆนี้";
+                        }
+                        else if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 3 รอบที่ 1")
+                        {
+                            exam_agenda = "showscore_posttest_1";
+                            exam_result_data = "จะประกาศผลเร็วๆนี้";
+                        }
+                        else
+                        {
+                            exam_agenda = "showscore_posttest_1";
+                            exam_result_data = "จะประกาศผลเร็วๆนี้";
+                        }
+                    }
+                    else if(result.data.info.exam==="รอบที่ 2 วันที่ 30 - 31 ส.ค.65") 
+                    {
+                        console.log("Exam Round 2 : " + result.data.info.exam);
+                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+
+                        if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 3 รอบที่ 2")
+                        {
+                            exam_agenda = "showscore_posttest_2";
+                            exam_result_data = "จะประกาศผลเร็วๆนี้";
+                        }
+                        else if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 3 รอบที่ 1")
+                        {
+                            exam_agenda = "showscore_posttest_1";
+                            exam_result_data = "จะประกาศผลเร็วๆนี้";
+                        }
+                        else
+                        {
+                            exam_agenda = "showscore_posttest_1";
+                            exam_result_data = "จะประกาศผลเร็วๆนี้";
+                        }
+                    }
                     //
                     // Check Exam Round
 
@@ -2504,13 +2557,7 @@ function getFirebaseUser()
 
                             if(result.agenda)
                             {
-                                var showscore = "<p class='post-meta'>"
-                                +"📣 ประกาศคะแนนการทดสอบ รอบที่ 2 </br>"
-                                +"วันที่ 14-15 มิ.ย. 65 </br>"
-                                +"หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่นที่ 2 </br>"
-                                +"ตรวจสอบคะแนนได้โดยการ Login เข้าสู่ระบบอบรมปกติ ได้ตั้งแต่ วันที่ 17 มิ.ย.65 เวลา 09:00 น. เป็นต้นไป </br>"
-                                +"🎉 ผู้ผ่านเกณฑ์การทดสอบต้องได้คะแนนมากกว่า 75% หรือ 38 คะแนนขึ้นไป</p>"  
-                                    +"<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                                var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
                                     +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
                                     +"<div class='flex-1 content ms-3 border-left-white'>"
                                         +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
@@ -2518,6 +2565,21 @@ function getFirebaseUser()
                                         +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
                                     +"</div>"
                                 +"</div>";
+
+                                // var showscore = "<p class='post-meta'>"
+                                // +"📣 ประกาศคะแนนการทดสอบ รอบที่ 2 </br>"
+                                // +"วันที่ 14-15 มิ.ย. 65 </br>"
+                                // +"หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่นที่ 2 </br>"
+                                // +"ตรวจสอบคะแนนได้โดยการ Login เข้าสู่ระบบอบรมปกติ ได้ตั้งแต่ วันที่ 17 มิ.ย.65 เวลา 09:00 น. เป็นต้นไป </br>"
+                                // +"🎉 ผู้ผ่านเกณฑ์การทดสอบต้องได้คะแนนมากกว่า 75% หรือ 38 คะแนนขึ้นไป</p>"  
+                                //     +"<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                                //     +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
+                                //     +"<div class='flex-1 content ms-3 border-left-white'>"
+                                //         +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
+                                //         +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
+                                //         +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
+                                //     +"</div>"
+                                // +"</div>";
 
                                 if(post_score>37){
                                     getCertAgenda(item.info.uid);
@@ -2534,10 +2596,20 @@ function getFirebaseUser()
                                 +"<div class='post-meta d-flex justify-content-between mt-3'>"
                                 +"<a href='javascript:void(0);' class='btn w-100 btn-lg btn-light'> จบหลักสูตรแล้ว</a>"
                                 +"</div>";
+
+                                // var showscore = "<p class='post-meta'>"
+                                // +"📣 ประกาศคะแนนการทดสอบ รอบที่ 2 </br>"
+                                // +"วันที่ 14-15 มิ.ย. 65 </br>"
+                                // +"หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่นที่ 2 </br>"
+                                // +"ตรวจสอบคะแนนได้โดยการ Login เข้าสู่ระบบอบรมปกติ ได้ตั้งแต่ วันที่ 17 มิ.ย.65 เวลา 09:00 น. เป็นต้นไป </br>"
+                                // +"🎉 ผู้ผ่านเกณฑ์การทดสอบต้องได้คะแนนมากกว่า 75% หรือ 38 คะแนนขึ้นไป</p>" 
+                                // +"<div class='post-meta d-flex justify-content-between mt-3'>"
+                                // +"<a href='javascript:void(0);' class='btn w-100 btn-lg btn-light'> จบหลักสูตรแล้ว</a>"
+                                // +"</div>";
                             }
 
                             $("#course-area").append(
-                                "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
+                                "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
                                     +"<div class='card blog rounded shadow'>"
                                         +"<a href='javascript:void(0);'>"
                                             +"</a><div class='card-body content'><a href='javascript:void(0);'>"
@@ -2555,7 +2627,7 @@ function getFirebaseUser()
                     });
                 }else{
                     $("#course-area").append(
-                        "<div class='col-md-12 mt-2 pt-2 pt-sm-0'>"
+                        "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
                             +"<div class='card blog rounded shadow'>"
                                 +"<a href='course.html?session="+item.info.uid+"'>"
                                     +"</a><div class='card-body content'><a href='course.html?session="+item.info.uid+"'>"
@@ -2614,6 +2686,7 @@ function getFirebaseUser()
                 );
             });
 
+            /*
             var index = jQuery.inArray(user_search, user_array);
             console.log("index : " + index);
 
@@ -2634,6 +2707,7 @@ function getFirebaseUser()
                 +"</div>"
                 );
             }
+            */
 
         },
         error: function(request,msg,error) {
@@ -2709,7 +2783,7 @@ function getFirebasePlayer()
                 "<tr class='topic-pending' id='exam-pretest'>"
                     +"<th class='p-3'>"
                         +"<div class='align-items-center'>"
-                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='javascript:void(0);' class='topic-name-title'><strong>แบบทดสอบก่อนเรียน</strong></br><small>ทำแบบทดสอบก่อนเรียนแล้ว</small></a></p>"
+                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='javascript:void(0);' class='topic-name-title'><strong>แบบทดสอบก่อนเรียน 50 ข้อ เวลา 20 นาที</strong></br><small>ทำแบบทดสอบก่อนเรียนแล้ว</small></a></p>"
                         +"</div>"
                     +"</th>"
                     +"<td><p class='mb-0 fw-normal topic-duration-badge'> "+pretestArray.result+" คะแนน</p></td>"
@@ -2726,7 +2800,7 @@ function getFirebasePlayer()
                     "<tr class='topic-processing' id='exam-pretest'>"
                         +"<th class='p-3'>"
                             +"<div class='align-items-center'>"
-                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-demotest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</br><small>ต้องทำแบบทดสอบก่อนเรียนก่อน</small></a></p>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-demotest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน 50 ข้อ เวลา 20 นาที</br><small>โปรดทำแบบทดสอบก่อนคลิกเข้าอบรมแต่ละหัวข้อ</small></a></p>"
                             +"</div>"
                         +"</th>"
                         +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 10 ข้อ </p></td>"
@@ -2740,7 +2814,7 @@ function getFirebasePlayer()
                     "<tr class='topic-processing' id='exam-pretest'>"
                         +"<th class='p-3'>"
                             +"<div class='align-items-center'>"
-                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-pretest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน</br><small>ต้องทำแบบทดสอบก่อนเรียนก่อน</small></a></p>"
+                                +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='exam-pretest.html?session="+course+"&mode=pretest' class='topic-name-title'>แบบทดสอบก่อนเรียน 50 ข้อ เวลา 20 นาที</br><small>โปรดทำแบบทดสอบก่อนคลิกเข้าอบรมแต่ละหัวข้อ</small></a></p>"
                             +"</div>"
                         +"</th>"
                         +"<td><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-clock'></i> 50 ข้อ </p></td>"
@@ -2762,10 +2836,10 @@ function getFirebasePlayer()
                     status_icon = "<i class='uil uil-clock text-muted status-icon-data'></i> <span class='status-icon-label'>คลิ๊กเพื่อเรียน</span>";
                 }
                 else if(item.status=="processing") {
-                    status_icon = "<i class='uil uil-play text-warning status-icon-data'></i> <span class='status-icon-label'>เรียนแล้ว</span>";
+                    status_icon = "<i class='uil uil-play text-warning status-icon-data'></i> <span class='status-icon-label'>ยังเรียนไม่จบ</span>";
                 }
                 else if(item.status=="finish") {
-                    status_icon = "<i class='uil uil-check-circle text-success status-icon-data'></i> <span class='status-icon-label'>จบแล้ว</span>";
+                    status_icon = "<i class='uil uil-check-circle text-success status-icon-data'></i> <span class='status-icon-label'>เรียนจบแล้ว</span>";
                     finish_item++;
                 }
 

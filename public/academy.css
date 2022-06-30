@@ -148,7 +148,7 @@
 }
 
 .bg-half-170-home {
-    padding: 150px 0;
+    padding: 100px 0;
 }
 
 .player-control
@@ -1458,3 +1458,26 @@ h5.bill-title
     padding-left: 20px;
 }
 
+.mobileshow    { display:block; }
+
+@media screen and (min-width: 500px) {
+    .mobileshow   { display:none; }
+}
+
+.desktopshow    { display:none; }
+
+@media screen and (min-width: 500px) {
+    .desktopshow   { display:block; }
+}
+
+.title-heading h5 small 
+{
+  font-size: 16px;
+  font-weight: normal;
+  color: #9f9f9f;
+}
+
+.unactive
+{
+  opacity: 0.6;
+}
