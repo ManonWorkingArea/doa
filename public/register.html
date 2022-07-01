@@ -307,7 +307,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">หมายเลขบัตรประจำตัวประชาชน<span class="primary-color-2 ml-1">*</span></label>
                                                     <small class="text-danger">ใช้เป็น <strong>ชื่อผู้ใช้งาน</strong> เพื่อเข้าสู่ระบบ ให้พิพม์เป็นตัวเลขติดกัน เช่น 12345678</small>
-                                                    <input class="form-control" type="text" id="citizen" name="citizen" placeholder="หมายเลขบัตรประจำตัวประชาชน 13 หลัก">
+                                                    <input class="form-control" type="number" min="13" max="13" id="citizen" name="citizen" placeholder="หมายเลขบัตรประจำตัวประชาชน 13 หลัก">
                                                     <span class="la la-credit-card input-icon"></span>
                                                 </div>
                                             </div>
@@ -317,7 +317,7 @@
                                                     <label class="form-label">เบอร์โทร<span class="primary-color-2 ml-1">*</span></label>
                                                     <small class="text-danger">ใช้เป็น <strong>รหัสผ่าน</strong> ในการเข้าใช้งานระบบ ให้พิพม์เป็นตัวเลขติดกัน เช่น 12345678</small>
                                                     <div class="form-group">
-                                                        <input class="form-control" type="text" id="phone" name="phone" placeholder="เบอร์โทร">
+                                                        <input class="form-control" type="number" min="10" max="10" id="phone" name="phone" placeholder="เบอร์โทร">
                                                         <span class="la la-phone input-icon"></span>
                                                     </div>
                                                 </div>
