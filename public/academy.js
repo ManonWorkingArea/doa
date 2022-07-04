@@ -2388,6 +2388,10 @@ function openExam(session,mode)
     });
 }
 
+function exists(arr, search) {
+    return arr.some(row => row.includes(search));
+}
+
 function getFirebaseUser()
 {   
     var token   = Cookies.get('__session');
@@ -2418,6 +2422,12 @@ function getFirebaseUser()
             var student     = Cookies.get('__student');
             var student     = JSON.parse(student);
             var user_search = student.citizen
+
+            // Round 2
+            //var round_2_score = result.data.courses.215.scores.posttest.result;
+            //console.log("Round Score : " + round_2_score);
+
+            
 
             $.each(result.data.courses, function (key, item)
             {
@@ -2645,7 +2655,14 @@ function getFirebaseUser()
                 }
             });
 
+            let has_bill = true;
+            
             $.each(result.data.bills, function (key, item){
+
+                if(item.course==210)
+                {
+                    has_bill = false;
+                }
 
                 if(item.status=="buy")
                 {
@@ -2685,6 +2702,22 @@ function getFirebaseUser()
                 +"</div>"
                 );
             });
+
+
+            // Round2
+            var course_215 = result.data.courses[215].scores.posttest.result;
+            
+            console.log("215 : " , course_215);
+            console.log("Bill : " , has_bill);
+
+            if(course_215<38)
+            {
+                if(has_bill)
+                {
+                    console.log("Show Register 219");
+                    $(".new_course_219").show();
+                }
+            }
 
             /*
             var index = jQuery.inArray(user_search, user_array);
