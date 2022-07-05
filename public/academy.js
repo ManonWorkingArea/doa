@@ -2659,7 +2659,7 @@ function getFirebaseUser()
             
             $.each(result.data.bills, function (key, item){
 
-                if(item.course==210)
+                if(item.course==219)
                 {
                     has_bill = false;
                 }
