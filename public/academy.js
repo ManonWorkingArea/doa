@@ -3474,7 +3474,7 @@ function renderEditBilling() {
                         }
                         console.log(result);
                         $("#token").val(result.data.uid);
-                        $("#lesson").val(token);
+                        $("#lesson").val(course);
                         $('#taX_PROVINCE_TH option:contains(' + result.data.bill_address.taX_PROVINCE_TH + ')').attr('selected', 'selected');
                         $("#taX_BUILDING_TH").val(result.data.bill_address.taX_BUILDING_TH);
                         $("#taX_COUNTRY").val(result.data.bill_address.taX_COUNTRY);
