@@ -31,29 +31,51 @@
 
       <style type="text/css">
 
+        body {
+     		background: rgb(204,204,204);
+     		margin: 0 auto;
+     		font-family: 'Prompt', sans-serif;
+		}
+
+        .isloading-overlay {
+            width: 100%!important;
+            height: 100%!important;
+            background: rgb(255 255 255)!important;
+            text-align: center;
+            padding-top: 20%;
+            font-size: 40px;
+        }
 
         .logo {
             height: 50px;
         }
 
         *.unselectable {
-   -moz-user-select: none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            /*
+            Introduced in Internet Explorer 10.
+            See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+            */
+            -ms-user-select: none;
+            user-select: none;
+        }
 
-   /*
-     Introduced in Internet Explorer 10.
-     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-   */
-   -ms-user-select: none;
-   user-select: none;
-}
+        .progress_text {
+            width: 100px;
+            height: 40px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            text-align: center;
+            border-radius: 4px;
+            margin-top: 0px;
+            top: 1px;
+            position: relative;
+            color: #8d8d8d;
+            line-height: 39px;
+        }
 
-	  	body {
-     		background: rgb(204,204,204);
-     		margin: 0 auto;
-     		font-family: 'Prompt', sans-serif;
-		}
 		page {
 			position: relative;
 			background: white;
@@ -268,6 +290,18 @@ position: absolute;
 			<div class="col-6 text-right">
 			<button type="button" class="btn btn-primary" onclick="download();"><i class="fa fa-download"></i> Download</button>
 			<button type="button" class="btn btn-primary" onclick="print();"><i class="fa fa-print"></i> Print</button>
+
+            <input type="button"  class="btn btn-primary" id="stop" onclick="autorunCert_func();"value="Auto"/>
+            <input type="button"  class="btn btn-primary" id="start" onclick="manualrunCert_func();"value="Manual"/>
+
+            <input class="progress_text" type="text" id="progress" name="progress" value="0/0">
+
+            <button type="button" class="btn btn-primary" id="prevBTN" onclick="prevCert_func();"><< Prev</button>
+            <button type="button" class="btn btn-primary" id="nextBTN" onclick="nextCert_func();">Next >></button>
+            
+            <input type="hidden" id="current_token" name="current_token">
+            <input type="hidden" id="next_token" name="next_token">
+            <input type="hidden" id="prev_token" name="prev_token">
 		</nav>
 
 		<div class="container">
@@ -590,7 +624,8 @@ position: absolute;
         function download()
         {
             $('#topbar').hide();
-            var filename = $(".certdata").html();
+            var filename    = $(".certdata").html();
+            var current     = $("#current_token").val();
             html2canvas(document.querySelector('#printarea'), {useCORS: true}).then(function(canvas)
             {
             let img = new Image();
@@ -599,7 +634,7 @@ position: absolute;
             {
                 let pdf = new jsPDF('landscape', 'mm', 'a4');
                 pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
-                pdf.save(filename + '.pdf');
+                pdf.save(current + "-" + filename + '.pdf');
                 $('#topbar').show();
             };
             });
@@ -648,14 +683,43 @@ position: absolute;
             page("bill.html?session=" + course + "&token=" + code);
         }
 
+        function nextCert_func() {
+            var token       = $.urlParam('token');
+            var new_token   = $("#next_token").val();
+            var session     = $.urlParam('session');
+            var run         = $.urlParam('run');
+            page("certification-admin.html?token="+ new_token +"&session=" + session + "&run=" + run);
+        }
+
+        function prevCert_func() {
+            var token       = $.urlParam('token');
+            var new_token   = $("#prev_token").val();
+            var session     = $.urlParam('session');
+            var run         = $.urlParam('run');
+            page("certification-admin.html?token="+ new_token +"&session=" + session + "&run=" + run);
+        }
+
+        function autorunCert_func() {
+            var token       = $.urlParam('token');
+            var session     = $.urlParam('session');
+            page("certification-admin.html?token="+ token +"&session=" + session + "&run=auto");
+        }
+
+        function manualrunCert_func() {
+            var token       = $.urlParam('token');
+            var session     = $.urlParam('session');
+            page("certification-admin.html?token="+ token +"&session=" + session + "&run=manual");
+        }
+        
         function getCertification(){   
 
             var token       = $.urlParam('token');
             var session     = $.urlParam('session');
+            var run         = $.urlParam('run');
             $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
 
             $.ajax({
-                url: 'https://api.fti.academy/api/getcertification/' + token  + "/" + session,
+                url: 'https://api.fti.academy/api/getcertification_admin/' + token  + "/" + session,
                 type : "GET",
                 dataType: "json",
                 contentType : "text/plain",
@@ -674,14 +738,31 @@ position: absolute;
                         $('.cert_expire').text(result.certification.cert_expire);
                         $(".student_profile").attr("src",result.certification.profile);
                         $(".cert-number").text(result.certification.cert_id);
-                        $(".certdata").html("65/01/" + result.certification.cert_id );
+                        $(".certdata").html("65/02/" + result.certification.cert_id );
                         $(".certcode").html(token);
                         $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "%26session=" + result.certification.cert_lesson);
                         $('#lesson_' + result.certification.cert_lesson).show();
+                        
+                        // Cert Nav
+                        $("#next_token").val(result.certification.cert_next);
+                        $("#prev_token").val(result.certification.cert_prev);
+
+                        $("#current_token").val(result.certification.cert_current);
+
+                        $("#progress").val(result.certification.cert_current + "/" + result.certification.cert_total);
+                         
+                        // Wait 2 Sec to Downlload
+                        //setTimeout(() => { download(); }, 2000);
+                        //setTimeout(() => { nextCert_func(); }, 3000);
+                        if(run==="auto")
+                        {
+                            setTimeout(() => { download(); }, 2000);
+                            setTimeout(() => { nextCert_func(); }, 3000);
+                        }
                     }
                     else
                     {
-                        page("index.html");
+                        //page("index.html");
                     }
                 },
                 error: function(request,msg,error) {
@@ -706,7 +787,6 @@ position: absolute;
                 }
             });
         }
-
 
         </script>
 	</body>
