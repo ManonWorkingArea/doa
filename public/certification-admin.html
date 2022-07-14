@@ -738,7 +738,7 @@ position: absolute;
                         $('.cert_expire').text(result.certification.cert_expire);
                         $(".student_profile").attr("src",result.certification.profile);
                         $(".cert-number").text(result.certification.cert_id);
-                        $(".certdata").html("65/02/" + result.certification.cert_id );
+                        $(".certdata").html(result.certification.cert_number);
                         $(".certcode").html(token);
                         $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "%26session=" + result.certification.cert_lesson);
                         $('#lesson_' + result.certification.cert_lesson).show();
