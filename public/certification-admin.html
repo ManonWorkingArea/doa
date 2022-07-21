@@ -781,6 +781,7 @@ position: absolute;
                         errorMSG = "กำลังพยายามดึงข้อมูลของคุณ";
                     }
                     else{
+                        getCerification();
                         errorMSG = request.responseJSON;
                     }
                     $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
