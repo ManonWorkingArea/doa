@@ -716,6 +716,7 @@ position: absolute;
             var token       = $.urlParam('token');
             var session     = $.urlParam('session');
             var run         = $.urlParam('run');
+            var mode        = $.urlParam('mode');
             $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
 
             $.ajax({
@@ -754,10 +755,16 @@ position: absolute;
                         // Wait 2 Sec to Downlload
                         //setTimeout(() => { download(); }, 2000);
                         //setTimeout(() => { nextCert_func(); }, 3000);
+                        
                         if(run==="auto")
                         {
                             setTimeout(() => { download(); }, 2000);
                             setTimeout(() => { nextCert_func(); }, 3000);
+                        }
+
+                        if(mode==="download")
+                        {
+                            setTimeout(() => { download(); }, 2000);
                         }
                     }
                     else
