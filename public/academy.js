@@ -3315,12 +3315,12 @@ function renderOrderReceipt() {
                         else if(result2.data.type==="personal")
                         {
                             $(".receipt-name").html("ลูกค้าบุคคลธรรมดา : <strong>" + result.name + "</strong>");
-                            $(".receipt-address").html("อาคาร " + result2.data.bill_address.taX_BUILDING_TH + " เลขที่ " + result2.data.bill_address.taX_NO + " หมู่ที่ " + result2.data.bill_address.taX_MOO + " ซอย " + result2.data.bill_address.taX_SOI_TH + " ถนน " + result2.data.bill_address.taX_ROAD_TH + " ตำบล " + result2.data.bill_address.taX_SUB_DISTRICT_TH + " อำเภอ " + result2.data.bill_address.taX_DISTRICT_TH + " จังหวัด " + result2.data.bill_address.taX_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.bill_address.taX_POST_CODE);
+                            $(".receipt-address").html("อาคาร " + result2.data.tax_address.mailinG_BUILDING_TH + " เลขที่ " + result2.data.tax_address.mailinG_NO + " หมู่ที่ " + result2.data.tax_address.mailinG_MOO + " ซอย " + result2.data.tax_address.mailinG_SOI_TH + " ถนน " + result2.data.tax_address.mailinG_ROAD_TH + " ตำบล " + result2.data.tax_address.mailinG_SUB_DISTRICT_TH + " อำเภอ " + result2.data.tax_address.mailinG_DISTRICT_TH + " จังหวัด " + result2.data.tax_address.mailinG_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.tax_address.mailinG_POST_CODE);
                         }
                         else
                         {
                             $(".receipt-name").html("ลูกค้าบุคคลธรรมดา : <strong>" + result.name + "</strong>");
-                            $(".receipt-address").html("อาคาร " + result2.data.bill_address.taX_BUILDING_TH + " เลขที่ " + result2.data.bill_address.taX_NO + " หมู่ที่ " + result2.data.bill_address.taX_MOO + " ซอย " + result2.data.bill_address.taX_SOI_TH + " ถนน " + result2.data.bill_address.taX_ROAD_TH + " ตำบล " + result2.data.bill_address.taX_SUB_DISTRICT_TH + " อำเภอ " + result2.data.bill_address.taX_DISTRICT_TH + " จังหวัด " + result2.data.bill_address.taX_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.bill_address.taX_POST_CODE);
+                            $(".receipt-address").html("อาคาร " + result2.data.tax_address.mailinG_BUILDING_TH + " เลขที่ " + result2.data.tax_address.mailinG_NO + " หมู่ที่ " + result2.data.tax_address.mailinG_MOO + " ซอย " + result2.data.tax_address.mailinG_SOI_TH + " ถนน " + result2.data.tax_address.mailinG_ROAD_TH + " ตำบล " + result2.data.tax_address.mailinG_SUB_DISTRICT_TH + " อำเภอ " + result2.data.tax_address.mailinG_DISTRICT_TH + " จังหวัด " + result2.data.tax_address.mailinG_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.tax_address.mailinG_POST_CODE);
                         }
 
                         $(".receipt-ref1").html(result2.data.ref1);
@@ -3331,6 +3331,17 @@ function renderOrderReceipt() {
                         $(".receipt-code").html(result2.data.ref1);
                     },
                     error: function(request,msg,error) {
+                        output = JSON.stringify(request.responseJSON)
+                        // Login undefined
+                        if(request.status===0){
+                            renderOrderReceipt(token);
+                        }
+                        else if(request.status===500){
+                            renderOrderReceipt(token);
+                        }
+                        else{
+                            errorMSG = request.responseJSON;
+                        }
                     }
                 });
             }
@@ -3387,12 +3398,12 @@ function renderOrderPrintReceipt() {
                         else if(result2.data.type==="personal")
                         {
                             $(".receipt-name").html("ลูกค้าบุคคลธรรมดา : <strong>" + result.name + "</strong>");
-                            $(".receipt-address").html("อาคาร " + result2.data.bill_address.taX_BUILDING_TH + " เลขที่ " + result2.data.bill_address.taX_NO + " หมู่ที่ " + result2.data.bill_address.taX_MOO + " ซอย " + result2.data.bill_address.taX_SOI_TH + " ถนน " + result2.data.bill_address.taX_ROAD_TH + " ตำบล " + result2.data.bill_address.taX_SUB_DISTRICT_TH + " อำเภอ " + result2.data.bill_address.taX_DISTRICT_TH + " จังหวัด " + result2.data.bill_address.taX_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.bill_address.taX_POST_CODE);
+                            $(".receipt-address").html("อาคาร " + result2.data.tax_address.mailinG_BUILDING_TH + " เลขที่ " + result2.data.tax_address.mailinG_NO + " หมู่ที่ " + result2.data.tax_address.mailinG_MOO + " ซอย " + result2.data.tax_address.mailinG_SOI_TH + " ถนน " + result2.data.tax_address.mailinG_ROAD_TH + " ตำบล " + result2.data.tax_address.mailinG_SUB_DISTRICT_TH + " อำเภอ " + result2.data.tax_address.mailinG_DISTRICT_TH + " จังหวัด " + result2.data.tax_address.mailinG_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.tax_address.mailinG_POST_CODE);
                         }
                         else
                         {
                             $(".receipt-name").html("ลูกค้าบุคคลธรรมดา : <strong>" + result.name + "</strong>");
-                            $(".receipt-address").html("อาคาร " + result2.data.bill_address.taX_BUILDING_TH + " เลขที่ " + result2.data.bill_address.taX_NO + " หมู่ที่ " + result2.data.bill_address.taX_MOO + " ซอย " + result2.data.bill_address.taX_SOI_TH + " ถนน " + result2.data.bill_address.taX_ROAD_TH + " ตำบล " + result2.data.bill_address.taX_SUB_DISTRICT_TH + " อำเภอ " + result2.data.bill_address.taX_DISTRICT_TH + " จังหวัด " + result2.data.bill_address.taX_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.bill_address.taX_POST_CODE);
+                            $(".receipt-address").html("อาคาร " + result2.data.tax_address.mailinG_BUILDING_TH + " เลขที่ " + result2.data.tax_address.mailinG_NO + " หมู่ที่ " + result2.data.tax_address.mailinG_MOO + " ซอย " + result2.data.tax_address.mailinG_SOI_TH + " ถนน " + result2.data.tax_address.mailinG_ROAD_TH + " ตำบล " + result2.data.tax_address.mailinG_SUB_DISTRICT_TH + " อำเภอ " + result2.data.tax_address.mailinG_DISTRICT_TH + " จังหวัด " + result2.data.tax_address.mailinG_PROVINCE_TH + " รหัสไปรษณีย์ " + result2.data.tax_address.mailinG_POST_CODE);
                         }
 
                         $(".receipt-ref1").html(result2.data.ref1);
@@ -3405,6 +3416,17 @@ function renderOrderPrintReceipt() {
                         download_receipt();
                     },
                     error: function(request,msg,error) {
+                        output = JSON.stringify(request.responseJSON)
+                        // Login undefined
+                        if(request.status===0){
+                            renderOrderReceipt(token);
+                        }
+                        else if(request.status===500){
+                            renderOrderReceipt(token);
+                        }
+                        else{
+                            errorMSG = request.responseJSON;
+                        }
                     }
                 });
             }
@@ -3498,6 +3520,17 @@ function renderEditBilling() {
                         $("#mailinG_SUB_DISTRICT_TH").val(result.data.tax_address.mailinG_SUB_DISTRICT_TH);
                     },
                     error: function(request,msg,error) {
+                        output = JSON.stringify(request.responseJSON)
+                        // Login undefined
+                        if(request.status===0){
+                            renderEditBilling(token);
+                        }
+                        else if(request.status===500){
+                            renderEditBilling(token);
+                        }
+                        else{
+                            errorMSG = request.responseJSON;
+                        }
                     }
                 });
                 
