@@ -1618,6 +1618,7 @@ function renderEditProfile(){
     $('#email').val(student.email);
     $('#phone').val(student.phone);
     $('#citizen').val(student.citizen);
+    $('#perfix').val(student.perfix);
     $("#avatar-preview").attr("src",student.avatar);
     $("#idcard-preview").attr("src",student.idcard);
 }
