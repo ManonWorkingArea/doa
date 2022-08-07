@@ -2554,6 +2554,10 @@ function getFirebaseUser()
                             exam_result_data = "จะประกาศผลเร็วๆนี้";
                         }
                     }
+                    else
+                    {
+                        exam_agenda = "showscore_posttest_1";
+                    }
                     //
                     // Check Exam Round
 
