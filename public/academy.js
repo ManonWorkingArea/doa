@@ -2950,7 +2950,7 @@ function getFirebasePlayer()
 
                     if(finish_item>12)
                     {
-                        if(result_2.data.info.exam =="รอบที่ 1 วันที่ 30-31 พ.ค.65")
+                        if(result_2.data.info.exam =="รอบที่ 1 วันที่ 15 - 16 ส.ค.65")
                         {
                             posttestArray = result.data.scores.posttest
                             console.log(posttestArray)
@@ -2961,7 +2961,7 @@ function getFirebasePlayer()
                                 "<tr class='topic-processing' id='exam-pretest'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_2&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_1&mode=posttest' class='topic-name-title'>คลิ๊กทำข้อสอบ</a></p>"
                                             +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + result_2.data.info.exam + " เวลา 9.00 น. เป็นต้นไป</p>"
                                         +"</div>"
                                     +"</th>"
@@ -2970,7 +2970,7 @@ function getFirebasePlayer()
                                 )
                             }
                         }
-                        else if(result_2.data.info.exam =="รอบที่ 2 วันที่ 14 - 15 มิ.ย.65" || result_2.data.info.exam =="รอบที่ 1 วันที่ 30-31 พ.ค.65")
+                        else if(result_2.data.info.exam =="รอบที่ 2 วันที่ 30 - 31 ส.ค.65")
                         {
                             posttestArray = result.data.scores.posttest
                             console.log(posttestArray)
@@ -2981,7 +2981,7 @@ function getFirebasePlayer()
                                 "<tr class='topic-processing' id='exam-pretest'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_2&mode=posttest' class='topic-name-title'>แบบทดสอบหลังเรียน</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='external.html?session=" + course + "&target=exam-posttest-2-y9U23jEyA3&document=posttest_2&mode=posttest' class='topic-name-title'>คลิ๊กทำข้อสอบ</a></p>"
                                             +"<p class='mb-0 d-inline fw-normal topic-name-list h6'>" + result_2.data.info.exam + " เวลา 9.00 น. เป็นต้นไป</p>"
                                         +"</div>"
                                     +"</th>"
@@ -3001,11 +3001,11 @@ function getFirebasePlayer()
                                 "<tr class='topic-processing' id='exam-pretest'>"
                                     +"<th class='p-3'>"
                                         +"<div class='align-items-center'>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html' class='topic-name-title'>ไม่พบข้อมูลรอบการสอบ</a></p>"
-                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html'>กรุณาดำเนินการแก้ไขรอบการสอบก่อน</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html' class='topic-name-title'>รอเข้ารับการทดสอบ</a></p>"
+                                            +"<p class='mb-0 d-inline fw-normal topic-name-list h6'><a href='edit-round.html'>โปรดตรวจสอบรอบสอบของท่าน</a></p>"
                                         +"</div>"
                                     +"</th>"
-                                    +"<td><a href='edit-round.html'><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-warning'></i> เกิดข้อผิดพลาด </p></a></td>"
+                                    +"<td><a href='edit-round.html'><p class='mb-0 fw-normal topic-duration-badge'> <i class='uil uil-warning'></i> ตรวจสอบรอบสอบ </p></a></td>"
                                 +"</tr>"
                                 )
                             }
