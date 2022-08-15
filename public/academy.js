@@ -2572,24 +2572,14 @@ function getFirebaseUser()
 
                             if(result.agenda)
                             {
-                                var showscore = "<p class='post-meta'>"
-                                +"📣 ประกาศคะแนนการทดสอบ รอบที่ 1 </br>"
-                                +"วันที่ 15 - 16 ส.ค.65 </br>"
-                                +"หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่นที่ 3 </br>"
-                                +"ตรวจสอบคะแนนได้โดยการ Login เข้าสู่ระบบอบรมปกติ ได้ตั้งแต่ วันที่ 18 ส.ค. 65 (จะแจ้งเวลาให้ทราบภายหลัง) </br>"
-                                +"🎉 ผู้ผ่านเกณฑ์การทดสอบต้องได้คะแนนมากกว่า 75% หรือ 38 คะแนนขึ้นไป</p>" 
-                                +"<div class='post-meta d-flex justify-content-between mt-3'>"
-                                +"<a href='javascript:void(0);' class='btn w-100 btn-lg btn-light'> จบหลักสูตรแล้ว</a>"
+                                var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                                    +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
+                                    +"<div class='flex-1 content ms-3 border-left-white'>"
+                                        +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
+                                        +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
+                                        +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
+                                    +"</div>"
                                 +"</div>";
-                                
-                                // var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
-                                //     +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
-                                //     +"<div class='flex-1 content ms-3 border-left-white'>"
-                                //         +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
-                                //         +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
-                                //         +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
-                                //     +"</div>"
-                                // +"</div>";
 
                                 // var showscore = "<p class='post-meta'>"
                                 // +"📣 ประกาศคะแนนการทดสอบ รอบที่ 2 </br>"
