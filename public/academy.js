@@ -2428,7 +2428,9 @@ function getFirebaseUser()
             //var round_2_score = result.data.courses.215.scores.posttest.result;
             //console.log("Round Score : " + round_2_score);
 
-            
+            let result_icon         = "";
+            let result_bg           = "";
+            let result_message      = "";
 
             $.each(result.data.courses, function (key, item)
             {
@@ -2447,23 +2449,9 @@ function getFirebaseUser()
                 // 
                 course_id = item.scores.posttest
                 posttestArray = item.scores.posttest
-                console.log(posttestArray)
+                // console.log(posttestArray)
 
                 if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
-
-                    var post_score = posttestArray.result
-                    if(post_score>37)
-                    {
-                        result_icon = "uil uil-check";
-                        result_bg = "bg-success";
-                        result_message = "ผ่านการทดสอบ";
-                    }
-                    else if(post_score<38)
-                    {
-                        result_icon = "uil uil-times-circle";
-                        result_bg = "bg-danger";
-                        result_message = "ไม่ผ่านการทดสอบ";
-                    }
 
                     c = new Date().getTime() / 1e3;
 
@@ -2471,8 +2459,8 @@ function getFirebaseUser()
                     //
                     if(result.data.info.exam==="รอบที่ 2 วันที่ 14 - 15 มิ.ย.65") 
                     {
-                        console.log("Exam Round 2 : " + result.data.info.exam);
-                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+                        //console.log("Exam Round 2 : " + result.data.info.exam);
+                       // console.log("Exam Round 2 Title : " + item.scores.posttest.title);
 
                         if(item.info.title==="แบบทดสอบวัดผล รุ่นที่ 2 รอบที่ 2")
                         {
@@ -2493,8 +2481,8 @@ function getFirebaseUser()
                     } 
                     else if(result.data.info.exam==="รอบที่ 1 วันที่ 30-31 พ.ค.65") 
                     {
-                        console.log("Exam Round 1 : " + result.data.info.exam);
-                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+                        //console.log("Exam Round 1 : " + result.data.info.exam);
+                        //console.log("Exam Round 2 Title : " + item.scores.posttest.title);
 
                         if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 2 รอบที่ 2")
                         {
@@ -2514,8 +2502,8 @@ function getFirebaseUser()
                     }
                     else if(result.data.info.exam==="รอบที่ 1 วันที่ 15 - 16 ส.ค.65") 
                     {
-                        console.log("Exam Round 1 : " + result.data.info.exam);
-                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+                        //console.log("Exam Round 1 : " + result.data.info.exam);
+                        //console.log("Exam Round 2 Title : " + item.scores.posttest.title);
 
                         if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 3 รอบที่ 2")
                         {
@@ -2535,8 +2523,8 @@ function getFirebaseUser()
                     }
                     else if(result.data.info.exam==="รอบที่ 2 วันที่ 30 - 31 ส.ค.65") 
                     {
-                        console.log("Exam Round 2 : " + result.data.info.exam);
-                        console.log("Exam Round 2 Title : " + item.scores.posttest.title);
+                        //console.log("Exam Round 2 : " + result.data.info.exam);
+                        //console.log("Exam Round 2 Title : " + item.scores.posttest.title);
 
                         if(item.scores.posttest.title==="แบบทดสอบวัดผล รุ่นที่ 3 รอบที่ 2")
                         {
@@ -2561,6 +2549,8 @@ function getFirebaseUser()
                     //
                     // Check Exam Round
 
+                    
+
                     $.ajax({
                         url: "https://asia-southeast1-academy-f0925.cloudfunctions.net/api/school/course/agenda/check?school=1&agenda=" + exam_agenda + "&course=" + item.info.uid + "&date=" + c,
                         type : "GET",
@@ -2572,6 +2562,29 @@ function getFirebaseUser()
 
                             if(result.agenda)
                             {
+
+                                course_id       = item.scores.posttest
+                                posttestArray   = item.scores.posttest
+                                var post_score  = posttestArray.result
+
+                                console.log("UID : " + item.info.uid + " : " + post_score);
+
+                                if(post_score >=38)
+                                {
+                                    result_icon = "uil uil-check";
+                                    result_bg = "bg-success";
+                                    result_message = "ผ่านการทดสอบ";
+                                    console.log("result pass : " + post_score);
+                                }
+                                else if(post_score<38)
+                                {
+                                    result_icon = "uil uil-times-circle";
+                                    result_bg = "bg-danger";
+                                    result_message = "ไม่ผ่านการทดสอบ";
+                                    console.log("result not pass : " + post_score);
+                                }
+
+                                console.log("result_message",result_message);
                                 var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
                                     +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
                                     +"<div class='flex-1 content ms-3 border-left-white'>"
