@@ -50,7 +50,7 @@ function __session(pagename) {
         addLogs(token, raw_page, "access", "fail", pathname);
     } else {
         if(pathname!=pagename) {
-            window.location.href="student.html";
+            //window.location.href="student.html";
             addLogs(token, raw_page, "access", "fail", pathname);
         } else {
             addLogs(token, raw_page, "access", "success", pathname);
@@ -2334,11 +2334,11 @@ function checkFirebasePlayer()
                 if(pathname==="exam-posttest-3-XG6eCQLYIx"){
                     if(index<0){
                         console.log("Not Found");
-                        window.location.href="student.html";
+                        //window.location.href="student.html";
                     } else {
                         console.log("Found");
                         if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
-                            window.location.href="student.html";
+                            //window.location.href="student.html";
                         } else {
                             console.log(posttestArray);
                         }
@@ -2347,7 +2347,7 @@ function checkFirebasePlayer()
                 else
                 {
                     if(posttestArray !== null && posttestArray !== ''  && posttestArray !==undefined) {
-                        window.location.href="student.html";
+                        //window.location.href="student.html";
                     } else {
                         console.log(posttestArray);
                     }
