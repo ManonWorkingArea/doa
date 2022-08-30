@@ -2588,7 +2588,7 @@ function getFirebaseUser()
                                 
                                 if(item.info.uid==="219")
                                 {
-                                    var showscore = "กำลังประมวลผลคำตอบ กรุณารอประกาศจากทีมงานเพื่อตรวจสอบผลการอบรม";
+                                    var showscore = "<span class='text-primary'><strong>ทำแบบทดสอบเรียบร้อยแล้ว</strong></br>ระบบกำลังประมวลผลคำตอบ กรุณารอประกาศจากทีมงานเพื่อตรวจสอบผลการอบรม</span>";
                                 }
                                 else
                                 {
