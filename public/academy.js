@@ -2585,9 +2585,24 @@ function getFirebaseUser()
                                 }
 
                                 console.log("result_message",result_message);
+                                
+                                if(item.info.uid==="219")
+                                {
+                                    var showscore = "กำลังประมวลผลคำตอบ กรุณารอประกาศจากทีมงานเพื่อตรวจสอบผลการอบรม";
+                                }
+                                else
+                                {
+                                    var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                                        +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
+                                        +"<div class='flex-1 content ms-3 border-left-white'>"
+                                            +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
+                                            +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
+                                            +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
+                                        +"</div>"
+                                    +"</div>";
+                                }
 
                                 /*
-
                                 var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
                                     +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
                                     +"<div class='flex-1 content ms-3 border-left-white'>"
@@ -2596,7 +2611,6 @@ function getFirebaseUser()
                                         +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
                                     +"</div>"
                                 +"</div>";
-
                                 */
 
                                 // var showscore = "<p class='post-meta'>"
