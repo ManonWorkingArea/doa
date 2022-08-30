@@ -2585,6 +2585,9 @@ function getFirebaseUser()
                                 }
 
                                 console.log("result_message",result_message);
+                                
+                                /*
+
                                 var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
                                     +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
                                     +"<div class='flex-1 content ms-3 border-left-white'>"
@@ -2593,6 +2596,8 @@ function getFirebaseUser()
                                         +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
                                     +"</div>"
                                 +"</div>";
+
+                                */
 
                                 // var showscore = "<p class='post-meta'>"
                                 // +"📣 ประกาศคะแนนการทดสอบ รอบที่ 2 </br>"
