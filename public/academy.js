@@ -2983,7 +2983,7 @@ function getFirebasePlayer()
                                 )
                             }
                         }
-                        else if(result_2.data.info.exam =="รอบที่ 2 วันที่ 30 - 31 ส.ค.65")
+                        else if(result_2.data.info.exam =="รอบที่ 2 วันที่ 30 - 31 ส.ค.65" || result_2.data.info.exam =="รอบที่ 1 วันที่ 15 - 16 ส.ค.65")
                         {
                             posttestArray = result.data.scores.posttest
                             console.log(posttestArray)
