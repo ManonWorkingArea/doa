@@ -2586,21 +2586,16 @@ function getFirebaseUser()
 
                                 console.log("result_message",result_message);
                                 
-                                if(item.info.uid==="219")
-                                {
-                                    var showscore = "<span class='text-primary'><strong>ทำแบบทดสอบเรียบร้อยแล้ว</strong></br>ระบบกำลังประมวลผลคำตอบ กรุณารอประกาศจากทีมงานเพื่อตรวจสอบผลการอบรม</span>";
-                                }
-                                else
-                                {
-                                    var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
-                                        +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
-                                        +"<div class='flex-1 content ms-3 border-left-white'>"
-                                            +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
-                                            +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
-                                            +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
-                                        +"</div>"
-                                    +"</div>";
-                                }
+
+                                var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                                    +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
+                                    +"<div class='flex-1 content ms-3 border-left-white'>"
+                                        +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
+                                        +"<span class='mb-0 text-white'><span class='score-number'>"+post_score+"</span> <small>คะแนน</small></br>"+result_message+"</span>"
+                                        +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
+                                    +"</div>"
+                                +"</div>";
+
 
                                 /*
                                 var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
@@ -2656,39 +2651,67 @@ function getFirebaseUser()
                             }
 
                             $("#course-area").append(
-                                "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
-                                    +"<div class='card blog rounded shadow'>"
-                                        +"<a href='javascript:void(0);'>"
-                                            +"</a><div class='card-body content'><a href='javascript:void(0);'>"
-                                                +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
-                                                +"<p class='post-meta'>"+item.info.description+"</p>"
-                                                +"<p class='post-meta'>"+item.info.date+"</p>"
-                                                + showscore
-                                            +"</div>"
-                                    +"</div>"
+                            "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
+                                +"<div class='card blog rounded shadow'>"
+                                    +"<a href='javascript:void(0);'>"
+                                        +"</a><div class='card-body content'><a href='javascript:void(0);'>"
+                                            +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                            +"<p class='post-meta'>"+item.info.description+"</p>"
+                                            +"<p class='post-meta'>"+item.info.date+"</p>"
+                                            + showscore
+                                        +"</div>"
                                 +"</div>"
-                                );
+                            +"</div>"
+                            );
                         },
                         error: function(request,msg,error) {
                         }
                     });
                 }else{
-                    $("#course-area").append(
-                        "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
-                            +"<div class='card blog rounded shadow'>"
-                                +"<a href='course.html?session="+item.info.uid+"'>"
-                                    +"</a><div class='card-body content'><a href='course.html?session="+item.info.uid+"'>"
-                                        +"</a><h5><a href='course.html?session="+item.info.uid+"'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='course.html?session="+item.info.uid+"' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
-                                        +"<p class='post-meta'>"+item.info.description+"</p>"
-                                        +"<p class='post-meta'>"+item.info.date+"</p>"
-                                        +"<div class='post-meta d-flex justify-content-between mt-3'>"
-                                        +"<a href='course.html?session="+item.info.uid+"' class='btn btn-lg btn-primary'> เข้าเรียน <i class='uil uil-angle-right-b'></i></a>"
-                                        + "<a href='javascript:void(0);' onclick='createUserBilling("+item.info.uid+");' class='btn btn-ligth btn-md'> ดึงข้อมูลคำสั่งซื้อ <i class='uil uil-bill align-middle'></i></a>"
-                                        +"</div>"
+                    
+                    /*$("#course-area").append(
+                    "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
+                        +"<div class='card blog rounded shadow'>"
+                            +"<a href='course.html?session="+item.info.uid+"'>"
+                                +"</a><div class='card-body content'><a href='course.html?session="+item.info.uid+"'>"
+                                    +"</a><h5><a href='course.html?session="+item.info.uid+"'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='course.html?session="+item.info.uid+"' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                    +"<p class='post-meta'>"+item.info.description+"</p>"
+                                    +"<p class='post-meta'>"+item.info.date+"</p>"
+                                    +"<div class='post-meta d-flex justify-content-between mt-3'>"
+                                    +"<a href='course.html?session="+item.info.uid+"' class='btn btn-lg btn-primary'> เข้าเรียน <i class='uil uil-angle-right-b'></i></a>"
+                                    + "<a href='javascript:void(0);' onclick='createUserBilling("+item.info.uid+");' class='btn btn-ligth btn-md'> ดึงข้อมูลคำสั่งซื้อ <i class='uil uil-bill align-middle'></i></a>"
                                     +"</div>"
-                            +"</div>"
+                                +"</div>"
                         +"</div>"
-                        )
+                    +"</div>"
+                    )*/
+
+                    result_icon = "uil uil-times-circle";
+                    result_bg = "bg-danger";
+                    result_message = "ไม่ผ่านการทดสอบ เนื่องจากท่านไม่ได้อบรม หรือเข้าสอบในเวลาที่กำหนด";
+
+                    var showscore = "<div class='d-flex "+result_bg+" key-feature align-items-center p-3 rounded shadow mt-4'>"
+                        +"<i class='"+result_icon+" me-1 dashboard-icon text-white'></i>"
+                        +"<div class='flex-1 content ms-3 border-left-white'>"
+                            +"<h4 class='title mb-0 text-white'>ผลการอบรม</h4>"
+                            +"<span class='mb-0 text-white'><span class='score-number'>ไม่มี</span> <small>คะแนน</small></br>"+result_message+"</span>"
+                            +"<span class='mb-0 text-white' id='load_cert_"+item.info.uid+"'></span>"
+                        +"</div>"
+                    +"</div>";
+
+                    $("#course-area").append(
+                    "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
+                        +"<div class='card blog rounded shadow'>"
+                            +"<a href='javascript:void(0);'>"
+                                +"</a><div class='card-body content'><a href='javascript:void(0);'>"
+                                    +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> หลักสูตรที่ลงทะเบียน</span></br><a href='javascript:void(0);' class='card-title title text-dark'>"+item.info.title+"</a></h5>"
+                                    +"<p class='post-meta'>"+item.info.description+"</p>"
+                                    +"<p class='post-meta'>"+item.info.date+"</p>"
+                                    + showscore
+                                +"</div>"
+                        +"</div>"
+                    +"</div>"
+                    );
                 }
             });
 
