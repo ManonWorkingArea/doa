@@ -2669,7 +2669,7 @@ function getFirebaseUser()
                     });
                 }else{
                     
-                    /*$("#course-area").append(
+                    $("#course-area").append(
                     "<div class='col-md-12 mt-2 pt-2 pt-sm-0 " + course_status_class + "'>"
                         +"<div class='card blog rounded shadow'>"
                             +"<a href='course.html?session="+item.info.uid+"'>"
@@ -2684,8 +2684,9 @@ function getFirebaseUser()
                                 +"</div>"
                         +"</div>"
                     +"</div>"
-                    )*/
-
+                    )
+                    
+                    /*
                     result_icon = "uil uil-times-circle";
                     result_bg = "bg-danger";
                     result_message = "ไม่ผ่านการทดสอบ เนื่องจากท่านไม่ได้อบรม หรือเข้าสอบในเวลาที่กำหนด";
@@ -2712,6 +2713,8 @@ function getFirebaseUser()
                         +"</div>"
                     +"</div>"
                     );
+
+                    */
                 }
             });
 
