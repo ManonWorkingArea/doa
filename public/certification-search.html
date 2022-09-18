@@ -294,9 +294,9 @@ position: absolute;
 			<button type="button" class="btn btn-primary" onclick="print();"><i class="fa fa-print"></i> Print</button>
             <input class="progress_text" type="text" id="number" name="number" value="">
             <button type="button" class="btn btn-primary" id="prevBTN" onclick="searchCert_func();">Search</button>
-            <input type="text" id="current_token" name="current_token">
-            <input type="text" id="next_token" name="next_token">
-            <input type="text" id="prev_token" name="prev_token">
+            <input type="hidden" id="current_token" name="current_token">
+            <input type="hidden" id="next_token" name="next_token">
+            <input type="hidden" id="prev_token" name="prev_token">
 		</nav>
 
 		<div class="container">
@@ -750,6 +750,7 @@ position: absolute;
                         $('#lesson_' + result.certification.cert_lesson).show();
                         
                         // Cert Nav
+                        $("#number").val(number);
                         $("#next_token").val(result.certification.cert_next);
                         $("#prev_token").val(result.certification.cert_prev);
 
