@@ -723,11 +723,12 @@ position: absolute;
             var token       = $.urlParam('token');
             var session     = $.urlParam('session');
             var run         = $.urlParam('run');
+            var number      = $.urlParam('number');
             var mode        = $.urlParam('mode');
             $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
 
             $.ajax({
-                url: 'https://api.fti.academy/api/getcertification_admin/' + token  + "/" + session,
+                url: 'https://api.fti.academy/api/getcertification_admin/' + token  + "/" + session + "/" + number,
                 type : "GET",
                 dataType: "json",
                 contentType : "text/plain",
