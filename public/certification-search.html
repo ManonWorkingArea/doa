@@ -745,8 +745,8 @@ position: absolute;
                         $(".student_profile").attr("src",result.certification.profile);
                         $(".cert-number").text(result.certification.cert_id);
                         $(".certdata").html(result.certification.cert_number);
-                        $(".certcode").html(token);
-                        $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "%26session=" + result.certification.cert_lesson);
+                        $(".certcode").html(result.certification.cert_keys);
+                        $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + result.certification.cert_keys + "%26session=" + result.certification.cert_lesson);
                         $('#lesson_' + result.certification.cert_lesson).show();
                         
                         // Cert Nav
