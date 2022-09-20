@@ -2782,7 +2782,7 @@ function getFirebaseUser()
                 }
             }
 
-            /*
+            
             var index = jQuery.inArray(user_search, user_array);
             console.log("index : " + index);
 
@@ -2803,7 +2803,7 @@ function getFirebaseUser()
                 +"</div>"
                 );
             }
-            */
+            
 
         },
         error: function(request,msg,error) {
