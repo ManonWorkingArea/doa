@@ -1973,7 +1973,10 @@
             //__page("posttest_2");
             //checkFirebasePlayer();
 
-            var user_array = ['3331001250011'];
+            var user_array  = ['3331001250011'];
+            var student     = Cookies.get('__student');
+            var student     = JSON.parse(student);
+            var user_search = student.citizen
 
             var index = jQuery.inArray(user_search, user_array);
             console.log("index : " + index);
