@@ -75,7 +75,7 @@ function __page(agenda){
             success: function(result) {
                 $("#processing_overlay").remove();
 
-                if(token==="fXM74eSf0pyf6Pgb9ozE" || token==="dwdpmeUJ1cOg44gt2M0R")
+                if(token==="fXM74eSf0pyf6Pgb9ozE" || token==="dwdpmeUJ1cOg44gt2M0R" || token==="Gl2viJay5G8Lkw0gkrAg")
                 {
 
                 }
