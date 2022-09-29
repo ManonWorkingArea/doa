@@ -2768,7 +2768,7 @@ function getFirebaseUser()
 
 
             // Round2
-            var course_215 = result.data.courses[215].scores.posttest.result;
+            /*var course_215 = result.data.courses[215].scores.posttest.result;
             
             console.log("215 : " , course_215);
             console.log("Bill : " , has_bill);
@@ -2781,8 +2781,8 @@ function getFirebaseUser()
                     $(".new_course_219").show();
                 }
             }
+            */
 
-            
             var index = jQuery.inArray(user_search, user_array);
             console.log("index : " + index);
 
@@ -2796,7 +2796,7 @@ function getFirebaseUser()
                         +"<a href='javascript:void(0);'>"
                             +"</a><div class='card-body content'><a href='javascript:void(0);'>"
                                 +"</a><h5><a href='javascript:void(0);'></a><span class='bill-title-small'><i class='uil uil-file-bookmark-alt'></i> แบบทดสอบรอบพิเศษ</span></br><a href='javascript:void(0);' class='card-title title text-dark'>หลักสูตรผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร รุ่น 3 (แบบทดสอบรอบพิเศษ)</a></h5>"
-                                +"<p class='post-meta'>วันที่ 20 ก.ย.65 ตั้งแต่ 08:00 เริ่มสอบ เวลา 08:00-12:00 น.</p>"
+                                +"<p class='post-meta'>วันที่ 29 ก.ย.65 ตั้งแต่ 08:00 เริ่มสอบ เวลา 08:00-12:00 น.</p>"
                                 +"<a href='exam-posttest-3-XG6eCQLYIx.html?session=219&mode=posttest' class='btn btn-lg btn-danger w-100'> ทำแบทดสอบ <i class='uil uil-angle-right-b'></i></a>"
                             +"</div>"
                     +"</div>"
