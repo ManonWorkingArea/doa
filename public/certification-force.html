@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,maximum-scale=1.0">
+	  <title>กรมวิชาการเกษตร - ใบประกาศนียบัตร</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta name="description" content="">
+      <meta name="keywords" content="">
+
+      <!-- Favicon -->
+      <link rel="icon" href="https://www.fti.or.th/wp-content/uploads/2020/03/cropped-favicon_v2-32x32.png" sizes="32x32" />
+      <link rel="icon" href="https://www.fti.or.th/wp-content/uploads/2020/03/cropped-favicon_v2-192x192.png" sizes="192x192" />
+
+      <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"></script>
+
+      <!-- Bootstrap files (jQuery first, then Popper.js, then Bootstrap JS) -->
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+      <script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.0/jQuery.print.js"></script>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+      <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+      <style type="text/css">
+
+
+        .logo {
+            height: 50px;
+        }
+
+        *.unselectable {
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in Internet Explorer 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+	  	body {
+     		background: rgb(204,204,204);
+     		margin: 0 auto;
+     		font-family: 'Prompt', sans-serif;
+		}
+		page {
+			position: relative;
+			background: white;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 0.5cm;
+		}
+		page:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			opacity: 1;
+		}
+		page[size="A4"] {
+			width: 21cm;
+			height: 29.7cm;
+		}
+		page[size="A4"][layout="landscape"] {
+			width: 29.7cm;
+			height: 21cm;
+			top: 2cm;
+		}
+		page[size="A3"] {
+			width: 29.7cm;
+			height: 42cm;
+		}
+		page[size="A3"][layout="landscape"] {
+			width: 42cm;
+			height: 29.7cm;
+		}
+		page[size="A5"] {
+			width: 14.8cm;
+			height: 21cm;
+		}
+		page[size="A5"][layout="landscape"] {
+			width: 21cm;
+			height: 14.8cm;
+		}
+		@media print {
+			body,html {
+				margin-bottom: 0cm;
+				margin: 0;
+				box-shadow: 0 0 0cm rgba(0,0,0,0);
+				border: 0px solid black;
+			}
+			page {
+				margin-bottom: 0cm;
+				margin: 0;
+				box-shadow: 0 0 0cm rgba(0,0,0,0);
+				border: 0px solid black;
+			}
+			page[size="A4"][layout="landscape"] {
+				width: 29.7cm;
+				height: 21cm;
+				top: 0cm;
+			}
+			@page {
+				size: landscape;
+				margin-bottom: 0cm;
+				margin: 0;
+			}
+			.top-bar {
+				display: none;
+			}
+		}
+		.certified {
+			text-align: center;
+			padding: 0.5cm;
+			position: relative;
+			z-index: 2;
+		}
+
+		.title {
+			margin-top: 1cm;
+			font-size: 0.4cm;
+		}
+		.sub {
+			margin-top: 1cm;
+			font-size: 0.3cm;
+		}
+		.student {
+			margin-top: 8.6cm;
+			margin-bottom: 1.4cm;
+			font-size: 0.7cm;
+		}
+
+		.lesson {
+			margin-top: 1cm;
+			font-size: 0.6cm;
+		}
+		.teacher {
+			margin-top: 1cm;
+			font-size: 0.4cm;
+		}
+
+.footer {
+margin-top: 5cm;
+font-size: 0.3cm;
+}
+
+		.sign {
+			text-align: center;
+			padding: 0.5cm;
+		}
+
+.paragraph {
+margin-top: 5cm;
+position: absolute;
+font-size: 0.7cm;
+width: 100%;
+line-height: 48px;
+}
+
+.paragraph .bold1
+{
+font-size: 1.1cm;
+font-weight:bold;
+}
+
+.paragraph .bold2
+{
+font-size: 0.9cm;
+font-weight:bold;
+}
+
+.qrcode {
+bottom: -13cm;
+position: absolute;
+right: 2cm;
+width: 3cm;
+height: 3cm;
+}
+
+.avartar {
+width: 3cm;
+height: 3cm;
+bottom: -12.5cm;
+left: 2cm;
+position: absolute;
+}
+
+.avartar img {
+ width: 3cm;
+}
+
+.sign2
+{
+    position: absolute;
+    bottom: -13.5cm;
+    right: 7cm;
+    font-size: 0.5cm;
+}
+
+.sign1
+{
+    position: absolute;
+    bottom: -13.5cm;
+    left: 6.5cm;
+    font-size: 0.5cm;
+    display: none;
+}
+
+
+.sign_img img 
+{
+    width: 5cm;
+    top: -0.7cm;
+    position: relative;
+}
+
+		.code {
+			position: absolute;
+			font-size: 0.3cm;
+			left: 0cm;
+			background: #fff;
+			padding-left: 10px;
+			padding-right: 16px;
+			margin-top: -20px;
+		}
+		.navbar {
+			min-height: 50px;
+			color: #000;
+			background: rgb(246,246,246);
+			background: linear-gradient(0deg, rgba(246,246,246,1) 0%, rgba(233,233,233,1) 54%);
+		}
+		.page_bg {
+			position: absolute;
+			top: 0;
+			width: 29.7cm;
+			height: 21cm;
+			z-index: 1;
+		}
+		.page_bg img {
+			width: 29.7cm;
+			height: 21cm;
+		}
+
+      </style>
+
+      
+	</head>
+
+	<body class="unselectable">
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="topbar">
+			<div class="col-6 text-left"><img src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/image%2Flogo-dark.png?alt=media&token=7a2b52cd-b8e0-4820-87f9-4529196e23a5" alt="logo" class="logo"></div>
+			<div class="col-6 text-right">
+			<button type="button" class="btn btn-primary" onclick="download();"><i class="fa fa-download"></i> Download</button>
+			<button type="button" class="btn btn-primary" onclick="print();"><i class="fa fa-print"></i> Print</button>
+		</nav>
+
+		<div class="container">
+			<page size="A4" layout="landscape" id="printarea" class="html-content">
+				<div class="certified">
+                    
+                    <div class="paragraph">
+
+                    <span class="bold1">กรมวิชาการเกษตร</span></br>
+                    <span class="bold2">กระทรวงเกษตรและสหกรณ์</span></br>
+                    ใบประกาศนียบัตรฉบับนี้ให้ไว้เพื่อแสดงว่า</br>
+                    <span class="student_name">Student Name</span></br>
+                    ได้ผ่านการฝึกอบรมหลักสูตร</br>
+                    <span class="bold2">ผู้ควบคุมการขายวัตถุอันตรายทางการเกษตร</span></br>
+                    ให้ไว้ ณ <span class="cert_date"></span> และใช้ได้ถึงวันที่ <span class="cert_expire">00/00/00000</span>
+					</div>
+					<!------------------------ Date Display ----------------------------->
+
+                    <div id="lesson_195" class="sign1">
+                        <div class="sign_img"><img src="https://content.fti.academy/fti-doa/16445526561827314469/16488727821446844460.jpg" alt=""></div>
+                        นายสุพันธุ์ มงคลสุธี</br>ประธานสภาอุตสาหกรรมแห่งประเทศไทย</br>
+					</div>
+
+                    <div id="lesson_215" class="sign1">
+                        <div class="sign_img"><img src="https://content.fti.academy/fti-doa/1639420526776809325/1655758312287111770.jpg" alt=""></div>
+                        นายเกรียงไกร เธียรนุกุล</br>ประธานสภาอุตสาหกรรมแห่งประเทศไทย</br>
+					</div>
+
+                    <div id="lesson_219" class="sign1">
+                        <div class="sign_img"><img src="https://content.fti.academy/fti-doa/1639420526776809325/1655758312287111770.jpg" alt=""></div>
+                        นายเกรียงไกร เธียรนุกุล</br>ประธานสภาอุตสาหกรรมแห่งประเทศไทย</br>
+					</div>
+
+                    <div class="sign2">
+                    <div class="sign_img"><img src="https://content.fti.academy/fti-doa/16445526561827314469/16488727871640952699.jpg" alt=""></div>
+                    นายระพีภัทร์ จันทรศรีวงศ์</br>อธิบดีกรมวิชาการเกษตร</br>
+					</div>
+
+					<div class="footer">
+						<div class="avartar"><img src="" alt="" class="student_profile"></div>
+						<div class="qrcode">
+						    <img id="gqrcode" src="" title="Certification Verify QRCODE" />
+                            <div class="code">
+                                <strong><span class='certcode'></span></strong></br>
+                                <span class='certdata'></span>
+                            </div>
+                        </div>
+					</div>
+
+				</div>
+				<div class="page_bg"><img src="https://content.fti.academy/fti-doa/16445526561827314469/16488731451571189913.jpg" title="Certification BG" /></div>
+			</page>
+		</div>
+
+		<!-- javascript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Floader.js?alt=media&token=30d11280-59a9-4c8b-a3ad-1ee88577cb02"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.20/ua-parser.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+        <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Icons -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+        <!-- Main Js -->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fplugins.init.js?alt=media&token=b2e0f5c1-93b4-4b59-887b-632a1683ff98"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fapp.js?alt=media&token=3c47acc7-e0f6-4631-82a0-eda2dd6c12cb"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+        <script defer data-domain="fti.academy" src="https://plausible.io/js/plausible.js"></script>
+        <script>
+        jQuery.cachedScript = function( url, options ) {
+        // Allow user to set any option except for dataType, cache, and url
+        options = $.extend( options || {}, {
+            dataType: "script",
+            cache: false,
+            url: url + ".js"
+        });
+        return jQuery.ajax( options );
+        };
+        // Usage
+        $.cachedScript( "academy" ).done(function( script, textStatus ) {
+            console.log( "load Default JS : " + textStatus );
+            var code    = $.urlParam('token');
+            var session = $.urlParam('session');
+
+            console.log("code:"+code + " session:" + session);
+            //__session("certification");
+            getCertification();
+            //renderOrderConfirm(code)
+            //renderOrderReceipt();
+            //__page("register_confirm");
+            //getFirebasePlayer();
+        });
+        </script>
+
+        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+        <script src="https://www.jqueryscript.net/demo/Mobile-friendly-Dialog-Toast-Plugin-With-jQuery-alert-js/alert.mob.js"></script>
+        <script src="https://firebasestorage.googleapis.com/v0/b/academy-f0925.appspot.com/o/js%2Fbootstrap-birthday.js?alt=media&token=16ee7bcc-a285-49ef-8e19-d4d272c102b0"></script>
+        <script>
+        Pusher.logToConsole = false;    
+        var pusher = new Pusher('4b7d1b6027780eadf73d',{
+            cluster: 'ap1'
+        });
+        var channel = pusher.subscribe('my-channel');
+        var token   = Cookies.get('__session');
+        channel.bind('my-event', function(data)
+        {
+            if(data.mode == "clear"){
+                logout();
+            }
+            if(data.token==token){
+                switch (data.mode){
+                    case "logout":
+                    logout()
+                    break;
+                    case "reload":
+                    resetData();
+                    break;
+                    case "check":
+                    online();
+                    break;
+                    case "alert":
+                    remoteAlert(data.title,data.text);
+                    break;
+                }
+            }
+        });
+
+        function remoteAlert(title,text)
+        {
+            $.alert(text,function(){});
+        }
+
+        function online()
+        {
+            if(window.matchMedia("(max-width: 767px)").matches){
+                device = "mobile";
+            } else{
+                device = "desktop";
+            }
+            $.ajax(
+            {
+                type : "POST",  
+                url : "https://player.fti.academy/api/online/" + token + "/course/" + device,
+                dataType : "json",
+                success : function(response){}
+            });
+        }
+
+        $('#row-col').bootstrapBirthday({
+            dateFormat:'littleEndian',
+            futureDates:false,
+            minAge: 18,
+            maxAge: 100,// Localization.
+            text: 
+            {
+                year: "ปี พ.ศ.",
+                month: "เดือน",
+                day: "วันที่",
+                months: {
+                    short: 
+                    [
+                        "ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."
+                    ],
+                    long: 
+                    [
+                        "January","February","March","April","May","June","July","August","September","October","November","December"
+                    ]
+                }
+            },
+            widget: 
+            {
+                wrapper: 
+                {
+                    tag: 'div',
+                    class: 'row'
+                },
+                wrapperYear: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                wrapperMonth: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                wrapperDay: {
+                    use: true,
+                    tag: 'div',
+                    class: 'col-sm-4'
+                },
+                selectYear: {
+                    name: 'birthday[year]',
+                    class: 'form-select form-control form-control-birthdate'
+                },
+                selectMonth: {
+                    name: 'birthday[month]',
+                    class: 'form-select form-control form-control-birthdate'
+                },
+                selectDay: {
+                    name: 'birthday[day]',
+                    class: 'form-select form-control form-control-birthdate'
+            }
+        }
+        });
+
+        function selectProfileImage ()
+        {
+            $("input[id='profile-image-file']").click();
+        }
+
+        $("#profile-image-file").change(function()
+        {
+            var file 			= $('#profile-image-file')[0].files[0];
+            var reader 			= new FileReader();
+            var baseString;
+            reader.onloadend 	= function ()
+            {
+                baseString = reader.result;
+                $("#profile-image-preview").attr('src',baseString);
+                $("#profile-image-data").val(baseString);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function selectCitizenImage ()
+        {
+            $("input[id='citizen-image-file']").click();
+        }
+
+        $("#citizen-image-file").change(function()
+        {
+            var file 			= $('#citizen-image-file')[0].files[0];
+            var reader 			= new FileReader();
+            var baseString;
+            reader.onloadend 	= function ()
+            {
+                baseString = reader.result;
+                $("#citizen-image-preview").attr('src',baseString);
+                $("#citizen-image-data").val(baseString);
+
+            };
+            reader.readAsDataURL(file);
+        });
+
+        $("#same_address").change(function() 
+        {
+            console.log("same_address");
+            var checkbox = $(this), // Selected or current checkbox
+            value = checkbox.val(); // Value of checkbox
+
+            if (checkbox.is(':checked'))
+            {
+                console.log('checked');
+                $("#firstname_shipping").val($("#firstname").val());
+                $("#lastname_shipping").val($("#lastname").val());
+                $("#phone_shipping").val($("#phone").val());
+                $("#subdistrict_shipping").val($("#subdistrict_contact").val());
+                $("#district_shipping").val($("#district_contact").val());
+                $("#province_shipping").val($("#province_contact").val());
+                $("#zipcode_shipping").val($("#zipcode_contact").val());
+
+                $("#no_shipping").val($("#no_contact").val());
+                $("#moo_shipping").val($("#moo_contact").val());
+                $("#soi_shipping").val($("#soi_contact").val());
+                $("#building_shipping").val($("#building_contact").val());
+                $("#road_shipping").val($("#road_contact").val());
+            }
+            else
+            {
+                console.log('not checked');
+                $("#firstname_shipping").val("");
+                $("#lastname_shipping").val("");
+                $("#phone_shipping").val("");
+                $("#subdistrict_shipping").val("");
+                $("#district_shipping").val("");
+                $("#province_shipping").val("");
+                $("#zipcode_shipping").val("");
+
+                $("#no_shipping").val("");
+                $("#moo_shipping").val("");
+                $("#soi_shipping").val("");
+                $("#building_shipping").val("");
+                $("#road_shipping").val("");
+            }
+        });
+
+        $("input[name='get_receipt_online']").change(function() 
+        {
+            var val = $("input[type='radio'][name='get_receipt_online']:checked").val();
+
+            if(val==="offline")
+            {
+                $("#select-bill-type").show();
+            }
+            else if(val==="online")
+            {
+                $("#select-bill-type").hide();
+                $("#fill-corp-address").hide();
+            }
+        });
+
+
+        $("input[name='receipt_type']").change(function() 
+        {
+            var val = $("input[type='radio'][name='receipt_type']:checked").val();
+
+            if(val==="corp")
+            {
+                $("#fill-corp-address").show();
+            }
+            else if(val==="personal")
+            {
+                $("#fill-corp-address").hide();
+            }
+        });
+
+        function print()
+        {
+        $("#printarea").print();
+        }
+
+        function download()
+        {
+            $('#topbar').hide();
+            var filename = $(".certdata").html();
+            html2canvas(document.querySelector('#printarea'), {useCORS: true}).then(function(canvas)
+            {
+            let img = new Image();
+            img.src = canvas.toDataURL('image/jpeg');
+            img.onload = function ()
+            {
+                let pdf = new jsPDF('landscape', 'mm', 'a4');
+                pdf.addImage(img, 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
+                pdf.save(filename + '.pdf');
+                $('#topbar').show();
+            };
+            });
+        }
+
+        </script>
+
+        <style>
+        .alert_overlay{position:fixed;width:100%;height:100%;top:0;left:0;z-index:1000;background:rgba(0,0,0,.9)}
+        .alert_msg{position:fixed;width:280px;left:50%;margin-left:-140px;top:20%;z-index:1000;border:1px solid #ccc;border-radius:4px;box-shadow:0 0 15px rgba(0,0,0,.3);background:#fff;animation: alertshow .2s ease}
+        .alert_content{padding:20px;font-size:14px;text-align:left}
+        .alert_buttons{text-align:center;border-top:1px solid #ccc;-webkit-user-select:none}
+        .alert_buttons .alert_btn{display:inline-block;width:50%;border:none;height:45px;line-height:45px;font-size:14px;outline:0;-webkit-appearance:none;background:#fff;-webkit-tap-highlight-color:transparent;border-radius:0 0 4px 4px;}
+        .alert_buttons .alert_btn:only-child{width:100%}
+        .alert_buttons .alert_btn:first-child+.alert_btn{border-left:1px solid #ccc;border-radius:0 0 4px 0;}
+        .alert_tips{position:fixed;z-index:10176523;width:100%;top:55%;pointer-events:none;text-align:center;}
+        .alert_tips div{box-siziong:border-box;display:inline-block;padding:15px;border-radius:10px;background:rgba(0,0,0,.7);min-width:50px;max-width:230px;text-align:center;color:#fff;animation: tipsshow 3s .01s ease;opacity:0;}
+        @keyframes alertshow {0% {opacity: 0;transform: scale(.5)}70% {opacity: .7;transform: scale(1.05)}100% {opacity: 1;transform: scale(1)}}
+        @keyframes tipsshow {0% {opacity: 0;transform:scale(1.4) rotateX(-360deg)}20% {opacity:1;transform:scale(1) rotateX(0deg)}80% {opacity:1;transform:scale(1) rotateX(0deg)}100% {opacity:0;transform:scale(1.4) rotateX(360deg)}}
+        </style>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0JGCQ3SKK"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M0JGCQ3SKK');
+
+        function download_receipt() {
+            var code    = $.urlParam('token');
+            var course  = $.urlParam('session');
+            $.isLoading({text: "กำลังดึงข้อมูล ขั้นตอนนี้อาจจะใช้เวลา 1-2 นาที</br>กรุณารอสักครู่ ..."});
+            printerPopup("bill-print.html?session=" + course + "&token=" + code);
+        }
+
+        function edit_receipt() {
+            var code    = $.urlParam('token');
+            var course  = $.urlParam('session');
+            page("edit-bill.html?session=" + course + "&token=" + code);
+        }
+
+        function show_receipt() {
+            var code    = $.urlParam('token');
+            var course  = $.urlParam('session');
+            page("bill.html?session=" + course + "&token=" + code);
+        }
+
+        function getCertification(){   
+
+            var token       = $.urlParam('token');
+            var session     = $.urlParam('session');
+            $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
+
+            $.ajax({
+                url: 'https://api.fti.academy/api/getcertificationForce/' + token  + "/" + session,
+                type : "GET",
+                dataType: "json",
+                contentType : "text/plain",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("API-KEY", "5CB584F5ECFD7");
+                    xhr.setRequestHeader("SECRET-KEY", "6A5891C7352197F8A5CE8A9B67EF3"); 
+                },
+                success: function(result) {
+                    // handle success
+                    $.isLoading( "hide" );
+
+                    if(result.status)
+                    {
+                        $('.student_name').text(result.certification.name);
+                        $('.cert_date').text(result.certification.cert_date);
+                        $('.cert_expire').text(result.certification.cert_expire);
+                        $(".student_profile").attr("src",result.certification.profile);
+                        $(".cert-number").text(result.certification.cert_id);
+                        $(".certdata").html(result.certification.cert_number );
+                        $(".certcode").html(token);
+                        $("#gqrcode").attr("src","https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=https://doasrv.fti.academy/certification.html?token=" + token + "%26session=" + result.certification.cert_lesson);
+                        $('#lesson_' + result.certification.cert_lesson).show();
+                    }
+                    else
+                    {
+                        //page("index.html");
+                    }
+                },
+                error: function(request,msg,error) {
+                    $.isLoading( "hide" );
+                    $(".alert-block").html("");
+                    //console.log("Error: " + error + " / " + JSON.stringify(request) + " / " + JSON.stringify(msg)); //just use the err here
+                    output = JSON.stringify(request.responseJSON)
+                    
+                    // Login undefined
+                    if(request.status===0){
+                        getCerification();
+                        errorMSG = "กำลังพยายามดึงข้อมูลของคุณ";
+                    }
+                    else if(request.status===500){
+                        getCerification();
+                        errorMSG = "กำลังพยายามดึงข้อมูลของคุณ";
+                    }
+                    else{
+                        errorMSG = request.responseJSON;
+                    }
+                    $(".alert-block").append("<div class='alert alert-danger' role='alert'>" + errorMSG + "</div>");
+                }
+            });
+        }
+
+
+        </script>
+	</body>
+</html>
