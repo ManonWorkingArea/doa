@@ -658,6 +658,7 @@ position: absolute;
 
             var token       = $.urlParam('token');
             var session     = $.urlParam('session');
+            var rotate = $.urlParam('rotate')
             $.isLoading({text: "กำลังโหลดข้อมูลกรุณารอสักครู่ ..."});
 
             $.ajax({
@@ -679,6 +680,14 @@ position: absolute;
                         $('.cert_date').text(result.certification.cert_date);
                         $('.cert_expire').text(result.certification.cert_expire);
                         $(".student_profile").attr("src",result.certification.profile);
+                        if(rotate!=undefined){
+                            $(".student_profile").css({
+        "-webkit-transform": "rotate("+rotate+"deg)",
+        "-moz-transform": "rotate("+rotate+"deg)",
+        "transform": "rotate("+rotate+"deg)" /* For modern browsers(CSS3)  */
+    });
+
+                        }
                         $(".cert-number").text(result.certification.cert_id);
                         $(".certdata").html(result.certification.cert_number );
                         $(".certcode").html(token);
